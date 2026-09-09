@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>کانون فرهنگی دینی انوارالرضا(ع)</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f4f7f7;color:#172326}
+header{background:linear-gradient(135deg,#084c47,#117a70);color:#fff;padding:18px 6%;position:sticky;top:0;z-index:5;box-shadow:0 4px 18px #0002}
+nav{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:bold;font-size:20px}.links a{color:#fff;text-decoration:none;margin:0 7px;font-size:13px}
+.hero{padding:65px 7%;background:linear-gradient(135deg,#e5f6f2,#fff);display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+h1{font-size:40px;color:#084c47;margin:8px 0 14px}.hero p{line-height:2;color:#59676c}.btn{display:inline-block;border:0;border-radius:11px;padding:12px 18px;background:#117a70;color:#fff;cursor:pointer;font:inherit;font-weight:bold;text-decoration:none}.btn.alt{background:#fff;color:#117a70;border:1px solid #117a70}
+section{padding:50px 7%}.title{text-align:center;margin-bottom:28px}.title h2{color:#084c47}.card{background:#fff;border:1px solid #e0e8e7;border-radius:18px;padding:22px;box-shadow:0 7px 24px #1231}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{text-align:center}.stat b{display:block;font-size:28px;color:#117a70}
+form{display:grid;gap:11px}input,select,textarea{width:100%;padding:12px;border:1px solid #ccd8d7;border-radius:10px;font:inherit}textarea{min-height:100px}
+.notice{padding:12px;border-radius:10px;background:#fff7dc;border:1px solid #f0df9d;font-size:13px;line-height:1.8}
+#members{display:grid;gap:10px}.member{padding:14px;border:1px solid #e1e8e8;border-radius:12px;background:#fafcfc}
+.badge{display:inline-block;padding:5px 9px;border-radius:15px;background:#e6f6f3;color:#08665e;font-size:11px}
+footer{background:#10282a;color:#dce8e8;text-align:center;padding:28px}
+@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.links{display:none}h1{font-size:30px}}
+</style>
+</head>
+<body>
+<header>
+<nav><div class="logo">انوارالرضا(ع)</div><div class="links">
+<a href="#home">خانه</a><a href="#register">ثبت‌نام</a><a href="#think">اتاق فکر</a><a href="#admin">مدیریت</a>
+</div></nav>
+</header>
+
+<section class="hero" id="home">
+<div>
+<span class="badge">کانون فرهنگی دینی انوارالرضا(ع)</span>
+<h1>از دل تا حرم 💚</h1>
+<p>سامانه ارتباط با اعضا، ثبت‌نام و اتاق فکر کانون.</p>
+<a class="btn" href="#register">ثبت‌نام عضو</a>
+</div>
+<div class="card">
+<h3>آمار اعضا</h3>
+<div class="stats"><div class="stat"><b id="memberCount">۰</b>عضو ثبت‌نام‌شده</div>
+<div class="stat"><b id="ideaCount">۰</b>ایده ثبت‌شده</div>
+<div class="stat"><b id="doneCount">۰</b>ایده اجراشده</div></div>
+</div>
+</section>
+
+<section id="register">
+<div class="title"><h2>📝 ثبت‌نام اعضا</h2><p>فرم عضویت کانون</p></div>
+<div class="card" style="max-width:700px;margin:auto">
+<div class="notice">برای نسخه آزمایشی، اطلاعات واقعی هویتی وارد نکنید. این صفحه هنوز به سرور امن و پایگاه‌داده متصل نیست.</div><br>
+<form id="registerForm">
+<input id="fullName" placeholder="نام و نام خانوادگی" required>
+<input id="nationalId" inputmode="numeric" maxlength="10" placeholder="کد ملی" required>
+<input id="birthDate" type="date" required>
+<input id="phone" type="tel" inputmode="tel" placeholder="شماره تلفن" required>
+<button class="btn" type="submit">ثبت درخواست عضویت</button>
+</form>
+<p id="registerMsg"></p>
+</div>
+</section>
+
+<section id="think">
+<div class="title"><h2>💡 اتاق فکر انوارالرضا</h2><p>اگر مسئول هیئت بودی، چه چیزی را تغییر می‌دادی؟</p></div>
+<div class="grid">
+<div class="card"><h3>ثبت ایده</h3>
+<form id="ideaForm"><input id="ideaName" placeholder="نام (اختیاری)">
+<select id="ideaCat"><option>برنامه‌ها</option><option>فرهنگی</option><option>ورزشی</option><option>ارتباط با اعضا</option><option>رسانه</option><option>سایر</option></select>
+<textarea id="ideaText" placeholder="ایده خودت را بنویس..." required></textarea>
+<button class="btn">ثبت ایده</button></form></div>
+<div class="card"><h3>ایده‌های اخیر</h3><div id="ideas"></div></div>
+<div class="card"><h3>وضعیت ایده</h3><p>📝 ثبت شد</p><p>🔎 در حال بررسی</p><p>✅ تأیید شد</p><p>🚀 در حال اجرا</p><p>🏆 اجرا شد</p></div>
+</div>
+</section>
+
+<section id="admin">
+<div class="title"><h2>🔐 پنل مدیر</h2><p>نمایش اعضای ثبت‌شده و ایده‌ها</p></div>
+<div class="card">
+<div class="notice">این پنل فقط نمایشی است. برای «مدیر واقعی» باید ورود با رمز عبور و یک سرور امن اضافه شود؛ اطلاعات اعضا نباید در یک فایل عمومی یا LocalStorage نگهداری شود.</div>
+<h3>اعضای ثبت‌شده</h3><div id="members"></div>
+</div>
+</section>
+
+<footer>کانون فرهنگی دینی انوارالرضا(ع) • انوارالرضا؛ از دل تا حرم</footer>
+
+<script>
+const memberKey="anvarMembers", ideaKey="anvarIdeas";
+const fa=n=>new Intl.NumberFormat("fa-IR").format(n);
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function render(){
+ const ms=JSON.parse(localStorage.getItem(memberKey)||"[]"), is=JSON.parse(localStorage.getItem(ideaKey)||"[]");
+ memberCount.textContent=fa(ms.length); ideaCount.textContent=fa(is.length); doneCount.textContent="۰";
+ members.innerHTML=ms.length?ms.slice().reverse().map((m,i)=>`<div class="member"><b>${esc(m.name)}</b><br><small>کد ملی: ${esc(m.nationalId)} | تولد: ${esc(m.birthDate)} | تلفن: ${esc(m.phone)}</small></div>`).join(""):"هنوز عضوی ثبت نشده است.";
+ ideas.innerHTML=is.length?is.slice().reverse().map(x=>`<div class="member"><b>${esc(x.text)}</b><br><small>${esc(x.cat)} • ${esc(x.name||"ناشناس")}</small></div>`).join(""):"هنوز ایده‌ای ثبت نشده.";
+}
+registerForm.addEventListener("submit",e=>{
+ e.preventDefault();
+ const n=nationalId.value.trim();
+ if(!/^\d{10}$/.test(n)){registerMsg.textContent="کد ملی باید ۱۰ رقم باشد.";return}
+ const ms=JSON.parse(localStorage.getItem(memberKey)||"[]");
+ ms.push({name:fullName.value,nationalId:n,birthDate:birthDate.value,phone:phone.value});
+ localStorage.setItem(memberKey,JSON.stringify(ms)); registerMsg.textContent="درخواست عضویت ثبت شد. ✅"; e.target.reset(); render();
+});
+ideaForm.addEventListener("submit",e=>{
+ e.preventDefault(); const is=JSON.parse(localStorage.getItem(ideaKey)||"[]");
+ is.push({name:ideaName.value,cat:ideaCat.value,text:ideaText.value});
+ localStorage.setItem(ideaKey,JSON.stringify(is)); e.target.reset(); render();
+});
+render();
+</script>
+</body>
+</html>
