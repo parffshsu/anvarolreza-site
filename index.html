@@ -60,6 +60,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .weekly-card .info b{color:#0b6b62}
 .weekly-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
 .weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
+.about-content{background:#fff;border-radius:14px;padding:30px;box-shadow:0 6px 20px rgba(0,0,0,.06);line-height:2;font-size:15px;white-space:pre-line;color:#333}
+.about-content a{color:#0b6b62;font-weight:bold}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -70,6 +72,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 <div class="menu" id="menu">
 <a href="#home" onclick="toggleMenu()">صفحه اصلی</a>
+<a href="#about" onclick="toggleMenu()">درباره کانون</a>
 <a href="#weekly" onclick="toggleMenu()">برنامه هفتگی</a>
 <a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
 <a href="#think" onclick="toggleMenu()">اتاق فکر</a>
@@ -94,6 +97,11 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="stat"><b id="doneCount">۰</b>ایده اجراشده</div>
 </div>
 </div>
+</section>
+
+<section id="about">
+<div class="title"><h2 id="aboutTitle">🌟 درباره کانون انوارالرضا</h2></div>
+<div id="aboutBox" class="about-content"></div>
 </section>
 
 <section id="weekly">
@@ -171,6 +179,16 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 <div id="members"></div>
 
+<h3 style="margin-top:30px">🌟 ویرایش درباره کانون</h3>
+<div class="card" style="background:#f7fafc">
+<form id="aboutForm">
+<input id="aboutTitleInput" placeholder="عنوان (مثلاً: درباره کانون انوارالرضا)" required>
+<textarea id="aboutContentInput" style="min-height:200px" placeholder="متن درباره کانون..." required></textarea>
+<button class="btn" type="submit">ذخیره تغییرات</button>
+</form>
+<p id="aboutMsg"></p>
+</div>
+
 <h3 style="margin-top:30px">💡 مدیریت ایده‌ها</h3>
 <div id="adminIdeas"></div>
 
@@ -228,6 +246,10 @@ function toggleMenu() {
   document.getElementById("menu").classList.toggle("open");
 }
 
+function linkify(text) {
+  return esc(text).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g, '<a href="https://$1" target="_blank">$1</a>');
+}
+
 async function render() {
   const { data: memberCount } = await db.rpc("get_member_count");
   const { data: ideasData } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(50);
@@ -251,12 +273,31 @@ async function render() {
       : "<p>هنوز ایده‌ای ثبت نشده.</p>";
   }
 
+  await loadAbout();
   await loadWeekly();
   await loadGallery();
 
   if (adminPassword) {
     await loadMembers();
     await loadAdminIdeas();
+  }
+}
+
+async function loadAbout() {
+  const box = document.getElementById("aboutBox");
+  const titleEl = document.getElementById("aboutTitle");
+  if (!box) return;
+  const { data } = await db.from("about").select("*").limit(1);
+  if (!data || !data.length) {
+    box.innerHTML = "<p style='text-align:center;color:#888'>هنوز متنی برای درباره کانون نوشته نشده.</p>";
+    return;
+  }
+  const a = data[0];
+  if (a.title) titleEl.textContent = "🌟 " + a.title;
+  box.innerHTML = linkify(a.content || "");
+  if (adminPassword) {
+    document.getElementById("aboutTitleInput").value = a.title || "";
+    document.getElementById("aboutContentInput").value = a.content || "";
   }
 }
 
@@ -427,6 +468,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   loadAdminIdeas();
   loadGallery();
   loadWeekly();
+  loadAbout();
 });
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -437,6 +479,7 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
   document.getElementById("loginMsg").textContent = "";
   loadGallery();
   loadWeekly();
+  loadAbout();
 });
 
 document.getElementById("uploadForm").addEventListener("submit", async (e) => {
@@ -499,7 +542,29 @@ document.getElementById("weeklyForm").addEventListener("submit", async (e) => {
   loadWeekly();
 });
 
+document.getElementById("aboutForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("aboutMsg");
+  const title = document.getElementById("aboutTitleInput").value.trim();
+  const content = document.getElementById("aboutContentInput").value.trim();
+
+  if (!title || !content) { msg.textContent = "عنوان و متن الزامی است"; msg.style.color = "red"; return; }
+
+  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
+
+  const { error } = await db.rpc("admin_update_about", {
+    admin_pass: adminPassword,
+    p_title: title,
+    p_content: content
+  });
+
+  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
+
+  msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
+  loadAbout();
+});
+
 render();
 </script>
 </body>
-  </html>   
+  </html> 
