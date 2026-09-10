@@ -93,6 +93,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .modal h3{color:#084c47;margin:0 0 16px}
 .modal form{display:grid;gap:11px}
 .modal .close{background:transparent;border:none;color:#888;font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
+.profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:12px;margin-bottom:16px}
+.profile-avatar{width:64px;height:64px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold}
+.profile-info h3{margin:0 0 4px;color:#084c47;font-size:18px}
+.profile-info p{margin:2px 0;font-size:13px;color:#555}
+.myidea{padding:12px 14px;border-radius:10px;background:#f2faf8;margin:8px 0;font-size:13px;border-right:4px solid #0b6b62;position:relative}
+.myidea .content{margin:6px 0;line-height:1.7}
+.myidea .del-idea{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;transition:transform .15s ease}
+.myidea .del-idea:active{transform:scale(.92)}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -106,6 +114,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <a href="#about" onclick="toggleMenu()">درباره کانون</a>
 <a href="#weekly" onclick="toggleMenu()">برنامه هفتگی</a>
 <a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
+<a href="#member" onclick="toggleMenu()">پنل اعضا</a>
 <a href="#think" onclick="toggleMenu()">اتاق فکر</a>
 <a href="#gallery" onclick="toggleMenu()">گالری</a>
 <a href="#admin" onclick="toggleMenu()">مدیریت</a>
@@ -167,6 +176,48 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </section>
 
+<section id="member">
+<div class="title"><h2>👤 پنل اعضا</h2></div>
+<div class="card" style="max-width:700px;margin:auto">
+<div id="memberLoginBox">
+<p>برای ورود به پنل شخصی، کد ملی و شماره تماس خود را وارد کنید:</p>
+<form id="memberLoginForm">
+<input id="mLoginNid" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
+<input id="mLoginPhone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
+<button class="btn" type="submit">ورود به پنل</button>
+</form>
+<p id="memberLoginMsg"></p>
+</div>
+<div id="memberPanelBox" style="display:none">
+<div class="profile-header">
+<div class="profile-avatar" id="avatarLetter">?</div>
+<div class="profile-info">
+<h3 id="mName">-</h3>
+<p>کد ملی: <span id="mNid">-</span></p>
+<p>تاریخ تولد: <span id="mBirth">-</span></p>
+<p>تلفن: <span id="mPhone">-</span></p>
+</div>
+</div>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+<button class="btn" id="memberLogoutBtn" style="background:#c94f4f">🚪 خروج از پنل</button>
+<button class="btn" onclick="toggleEditPhone()" style="background:#1e6bb8">✏ ویرایش تلفن</button>
+</div>
+
+<div id="editPhoneBox" style="display:none;margin-bottom:16px">
+<form id="editPhoneForm">
+<input id="newPhone" type="tel" inputmode="tel" placeholder="شماره تماس جدید" required>
+<button class="btn" type="submit">ذخیره</button>
+</form>
+<p id="editPhoneMsg"></p>
+</div>
+
+<h3 style="color:#084c47;margin-top:20px">💡 ایده‌های من</h3>
+<div id="myIdeas"><p style="color:#888">هنوز ایده‌ای ثبت نکرده‌اید.</p></div>
+</div>
+</div>
+</section>
+
 <section id="think">
 <div class="title"><h2>💡 اتاق فکر انوارالرضا</h2>
 <p>اگر مسئول هیئت بودی، چه چیزی را تغییر می‌دادی؟</p>
@@ -174,6 +225,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="grid">
 <div class="card">
 <h3>ثبت ایده</h3>
+<div id="ideaUserNotice" style="display:none;padding:10px;background:#e6f5f3;border-radius:8px;font-size:13px;color:#084c47;margin-bottom:10px">
+✅ وارد شده‌اید به عنوان: <b id="ideaUserName"></b>
+</div>
 <form id="ideaForm">
 <input id="ideaName" placeholder="نام شما (اختیاری)">
 <select id="ideaCat">
@@ -315,10 +369,10 @@ const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;"
 
 let adminPassword = null;
 let allMembers = [];
+let currentMember = null;
 
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-// ساخت گزینه‌های روز، ماه، سال
 function fillDateSelects(dayId, monthId, yearId) {
   const dayEl = document.getElementById(dayId);
   const monthEl = document.getElementById(monthId);
@@ -654,18 +708,36 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   }]);
 
   if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; }
-  else { msg.textContent = "ثبت‌نام با موفقیت انجام شد ✅"; msg.style.color = "green"; e.target.reset(); render(); }
+  else {
+    msg.textContent = "✅ ثبت‌نام شد! حالا می‌توانید با کد ملی و شماره تماس وارد پنل شخصی شوید.";
+    msg.style.color = "green";
+    e.target.reset();
+    render();
+  }
 });
 
 document.getElementById("ideaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
+  const name = currentMember ? currentMember.name : (ideaName.value.trim() || "ناشناس");
+  const memberNid = currentMember ? currentMember.national_id : null;
+
   const { error } = await db.from("ideas").insert([{
-    name: ideaName.value.trim() || "ناشناس",
+    name: name,
     category: ideaCat.value,
-    content: ideaText.value.trim()
+    content: ideaText.value.trim(),
+    member_nid: memberNid
   }]);
   if (error) { alert("خطا: " + error.message); }
-  else { alert("ایده شما ثبت شد ✅"); e.target.reset(); render(); }
+  else {
+    alert("ایده شما ثبت شد ✅");
+    e.target.reset();
+    if (currentMember) {
+      document.getElementById("ideaUserName").textContent = currentMember.name;
+      document.getElementById("ideaUserNotice").style.display = "block";
+    }
+    render();
+    if (currentMember) loadMyIdeas();
+  }
 });
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
@@ -814,6 +886,110 @@ document.getElementById("aboutForm").addEventListener("submit", async (e) => {
   msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
   loadAbout();
 });
+
+// ============ پنل اعضا ============
+document.getElementById("memberLoginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("memberLoginMsg");
+  const nid = document.getElementById("mLoginNid").value.trim();
+  const ph = document.getElementById("mLoginPhone").value.trim();
+
+  if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
+
+  msg.textContent = "در حال بررسی..."; msg.style.color = "#555";
+
+  const { data, error } = await db.rpc("member_login", { p_nid: nid, p_phone: ph });
+  if (error || !data || !data.length) {
+    msg.textContent = "❌ کد ملی یا شماره تماس اشتباه است";
+    msg.style.color = "red";
+    return;
+  }
+
+  currentMember = data[0];
+  document.getElementById("memberLoginBox").style.display = "none";
+  document.getElementById("memberPanelBox").style.display = "block";
+  document.getElementById("mName").textContent = currentMember.name;
+  document.getElementById("mNid").textContent = currentMember.national_id;
+  document.getElementById("mBirth").textContent = currentMember.birth_date || "-";
+  document.getElementById("mPhone").textContent = currentMember.phone;
+  document.getElementById("avatarLetter").textContent = (currentMember.name || "?").charAt(0);
+
+  // نمایش به کاربر در فرم ایده
+  document.getElementById("ideaUserName").textContent = currentMember.name;
+  document.getElementById("ideaUserNotice").style.display = "block";
+  document.getElementById("ideaName").value = currentMember.name;
+  document.getElementById("ideaName").style.display = "none";
+
+  loadMyIdeas();
+});
+
+document.getElementById("memberLogoutBtn").addEventListener("click", () => {
+  currentMember = null;
+  document.getElementById("memberLoginBox").style.display = "block";
+  document.getElementById("memberPanelBox").style.display = "none";
+  document.getElementById("mLoginNid").value = "";
+  document.getElementById("mLoginPhone").value = "";
+  document.getElementById("memberLoginMsg").textContent = "";
+  document.getElementById("ideaUserNotice").style.display = "none";
+  document.getElementById("ideaName").style.display = "block";
+  document.getElementById("ideaName").value = "";
+});
+
+function toggleEditPhone() {
+  const box = document.getElementById("editPhoneBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+  if (box.style.display === "block" && currentMember) {
+    document.getElementById("newPhone").value = currentMember.phone;
+  }
+}
+
+document.getElementById("editPhoneForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("editPhoneMsg");
+  const newPhone = document.getElementById("newPhone").value.trim();
+  if (!currentMember) return;
+
+  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
+
+  const { error } = await db.rpc("member_update_profile", {
+    p_nid: currentMember.national_id,
+    p_phone: currentMember.phone,
+    new_phone: newPhone
+  });
+
+  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
+  msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
+  currentMember.phone = newPhone;
+  document.getElementById("mPhone").textContent = newPhone;
+  setTimeout(() => { document.getElementById("editPhoneBox").style.display = "none"; msg.textContent = ""; }, 800);
+});
+
+async function loadMyIdeas() {
+  const box = document.getElementById("myIdeas");
+  if (!currentMember) return;
+  box.innerHTML = "<p style='color:#888'>در حال بارگذاری...</p>";
+
+  const { data, error } = await db.rpc("member_get_ideas", {
+    p_nid: currentMember.national_id,
+    p_phone: currentMember.phone
+  });
+
+  if (error) {
+    box.innerHTML = `<p style="color:red">خطا: ${esc(error.message)}</p>`;
+    return;
+  }
+  if (!data || !data.length) {
+    box.innerHTML = "<p style='color:#888'>هنوز ایده‌ای ثبت نکرده‌اید.</p>";
+    return;
+  }
+  box.innerHTML = data.map(i => `
+    <div class="myidea">
+      <strong style="color:#084c47">${esc(i.category || "سایر")}</strong>
+      <div class="content">${esc(i.content || "")}</div>
+      <span class="status">${esc(i.status || "ثبت شد")}</span>
+    </div>
+  `).join("");
+}
 
 document.getElementById("editModal").addEventListener("click", (e) => {
   if (e.target.id === "editModal") closeEdit();
