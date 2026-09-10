@@ -119,10 +119,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم
 </footer>
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ====== تنظیمات Supabase ======
 const SUPABASE_URL = "https://xbycuiqwljfttrhwjaka.supabase.co";
 const SUPABASE_KEY = "sb_publishable_ZhO2Xpu_OJiMIW-ZEFuP5A_L79329vK";
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -130,26 +128,10 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
-// ====== رندر ======
 async function render() {
-  // آمار اعضا
-  const { count: memberCount } = await db
-    .from("members")
-    .select("*", { count: "exact", head: true });
-
-  // اعضا
-  const { data: membersData } = await db
-    .from("members")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(50);
-
-  // ایده‌ها
-  const { data: ideasData } = await db
-    .from("ideas")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(50);
+  const { count: memberCount } = await db.from("members").select("*", { count: "exact", head: true });
+  const { data: membersData } = await db.from("members").select("*").order("created_at", { ascending: false }).limit(50);
+  const { data: ideasData } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(50);
 
   const ideas = ideasData || [];
   const done = ideas.filter(i => i.status === "اجرا شد").length;
@@ -158,7 +140,6 @@ async function render() {
   document.getElementById("ideaCount").textContent = fa(ideas.length);
   document.getElementById("doneCount").textContent = fa(done);
 
-  // اعضا
   const membersBox = document.getElementById("members");
   if (membersBox) {
     membersBox.innerHTML = (membersData && membersData.length)
@@ -166,7 +147,6 @@ async function render() {
       : "<p>هنوز عضوی ثبت نشده است.</p>";
   }
 
-  // ایده‌ها
   const ideasBox = document.getElementById("ideas");
   if (ideasBox) {
     ideasBox.innerHTML = ideas.length
@@ -180,7 +160,6 @@ async function render() {
   }
 }
 
-// ====== ثبت‌نام ======
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("registerMsg");
@@ -189,24 +168,13 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
 
   const { error } = await db.from("members").insert([{
-    name,
-    national_id: nid,
-    birth_date: birthDate.value,
-    phone: phone.value.trim()
+    name, national_id: nid, birth_date: birthDate.value, phone: phone.value.trim()
   }]);
 
-  if (error) {
-    msg.textContent = "خطا: " + error.message;
-    msg.style.color = "red";
-  } else {
-    msg.textContent = "ثبت‌نام با موفقیت انجام شد ✅";
-    msg.style.color = "green";
-    e.target.reset();
-    render();
-  }
+  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; }
+  else { msg.textContent = "ثبت‌نام با موفقیت انجام شد ✅"; msg.style.color = "green"; e.target.reset(); render(); }
 });
 
-// ====== ثبت ایده ======
 document.getElementById("ideaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const { error } = await db.from("ideas").insert([{
@@ -214,18 +182,11 @@ document.getElementById("ideaForm").addEventListener("submit", async (e) => {
     category: ideaCat.value,
     content: ideaText.value.trim()
   }]);
-
-  if (error) {
-    alert("خطا: " + error.message);
-  } else {
-    alert("ایده شما ثبت شد ✅");
-    e.target.reset();
-    render();
-  }
+  if (error) { alert("خطا: " + error.message); }
+  else { alert("ایده شما ثبت شد ✅"); e.target.reset(); render(); }
 });
 
-// ====== اجرا ======
 render();
 </script>
 </body>
- </html>
+</html
