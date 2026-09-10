@@ -79,6 +79,20 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .about-content a{color:#0b6b62;font-weight:bold}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
+.member-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.member-actions button{padding:5px 11px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff;transition:transform .15s ease}
+.member-actions button:active{transform:scale(.92)}
+.b-edit{background:#1e6bb8}
+.b-del-m{background:#c94f4f}
+.members-toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.members-toolbar input{flex:1;min-width:160px}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;padding:24px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease both}
+.modal h3{color:#084c47;margin:0 0 16px}
+.modal form{display:grid;gap:11px}
+.modal .close{background:transparent;border:none;color:#888;font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
+.modal-wrap{position:relative}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -180,7 +194,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 
 <section id="admin">
 <div class="title"><h2>🔐 پنل مدیر</h2></div>
-<div class="card" style="max-width:700px;margin:auto">
+<div class="card" style="max-width:800px;margin:auto">
 <div id="loginBox">
 <p>برای دیدن اطلاعات اعضا، رمز مدیر را وارد کنید:</p>
 <form id="loginForm">
@@ -194,6 +208,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin:0">📋 لیست اعضا</h3>
 <button class="btn" id="logoutBtn" style="background:#c94f4f">خروج</button>
 </div>
+
+<div class="members-toolbar">
+<input id="searchInput" placeholder="🔍 جستجو در نام، کد ملی یا تلفن..." oninput="filterMembers()">
+<button class="btn" id="downloadBtn" style="background:#2e8b57">📥 دانلود Excel</button>
+</div>
+
 <div id="members"></div>
 
 <h3 style="margin-top:30px">🌟 ویرایش درباره کانون</h3>
@@ -244,6 +264,23 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </section>
 
+<!-- مودال ویرایش عضو -->
+<div class="modal-bg" id="editModal">
+<div class="modal modal-wrap">
+<button class="close" onclick="closeEdit()">✕</button>
+<h3>✏ ویرایش عضو</h3>
+<form id="editForm">
+<input id="editId" type="hidden">
+<input id="editName" placeholder="نام و نام خانوادگی" required>
+<input id="editNationalId" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
+<input id="editBirthDate" type="date" required>
+<input id="editPhone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
+<button class="btn" type="submit">ذخیره تغییرات</button>
+</form>
+<p id="editMsg"></p>
+</div>
+</div>
+
 <footer>
 کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم
 </footer>
@@ -258,6 +295,7 @@ const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
 let adminPassword = null;
+let allMembers = [];
 
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("open");
@@ -267,7 +305,6 @@ function linkify(text) {
   return esc(text).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g, '<a href="https://$1" target="_blank">$1</a>');
 }
 
-// انیمیشن شمارش آمار
 function animateCount(el, target) {
   const duration = 800;
   const start = performance.now();
@@ -282,7 +319,6 @@ function animateCount(el, target) {
   requestAnimationFrame(tick);
 }
 
-// انیمیشن ظاهر شدن با اسکرول
 function setupReveal() {
   const els = document.querySelectorAll("section, .card, .weekly-card, .gallery-item, .about-content");
   els.forEach(el => el.classList.add("reveal"));
@@ -395,16 +431,74 @@ async function loadMembers() {
     box.innerHTML = `<p style="color:red">خطا: ${esc(error.message)}</p>`;
     return;
   }
-  box.innerHTML = data && data.length
-    ? data.map(m => `
-        <div class="member">
-          <strong>${esc(m.name)}</strong><br>
-          <span>کد ملی: ${esc(m.national_id || "-")}</span><br>
-          <span>تاریخ تولد: ${esc(m.birth_date || "-")}</span><br>
-          <span>تلفن: ${esc(m.phone || "-")}</span><br>
-          <button class="btn" style="background:#c94f4f;margin-top:8px;font-size:12px;padding:6px 12px" onclick="deleteMember(${m.id}, '${esc(m.name)}')">🗑 حذف</button>
-        </div>`).join("")
-    : "<p>هنوز عضوی ثبت نشده.</p>";
+  allMembers = data || [];
+  renderMembers(allMembers);
+}
+
+function renderMembers(list) {
+  const box = document.getElementById("members");
+  if (!list.length) {
+    box.innerHTML = "<p>عضوی پیدا نشد.</p>";
+    return;
+  }
+  box.innerHTML = list.map(m => `
+    <div class="member">
+      <strong>${esc(m.name)}</strong><br>
+      <span>کد ملی: ${esc(m.national_id || "-")}</span><br>
+      <span>تاریخ تولد: ${esc(m.birth_date || "-")}</span><br>
+      <span>تلفن: ${esc(m.phone || "-")}</span>
+      <div class="member-actions">
+        <button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button>
+        <button class="b-del-m" onclick="deleteMember(${m.id}, '${esc(m.name)}')">🗑 حذف</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function filterMembers() {
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  if (!q) { renderMembers(allMembers); return; }
+  const filtered = allMembers.filter(m =>
+    (m.name || "").toLowerCase().includes(q) ||
+    (m.national_id || "").includes(q) ||
+    (m.phone || "").includes(q)
+  );
+  renderMembers(filtered);
+}
+
+function downloadExcel() {
+  if (!allMembers.length) { alert("لیست خالی است"); return; }
+  // BOM برای نمایش صحیح فارسی در Excel
+  let csv = "\uFEFF";
+  csv += "نام و نام خانوادگی,کد ملی,تاریخ تولد,شماره تماس\n";
+  allMembers.forEach(m => {
+    csv += `"${(m.name || "").replace(/"/g, '""')}","${m.national_id || ""}","${m.birth_date || ""}","${m.phone || ""}"\n`;
+  });
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "اعضای-کانون-انوارالرضا.csv";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function openEdit(id) {
+  const m = allMembers.find(x => x.id === id);
+  if (!m) return;
+  document.getElementById("editId").value = m.id;
+  document.getElementById("editName").value = m.name || "";
+  document.getElementById("editNationalId").value = m.national_id || "";
+  document.getElementById("editBirthDate").value = m.birth_date || "";
+  document.getElementById("editPhone").value = m.phone || "";
+  document.getElementById("editMsg").textContent = "";
+  document.getElementById("editModal").classList.add("open");
+}
+
+function closeEdit() {
+  document.getElementById("editModal").classList.remove("open");
 }
 
 async function loadAdminIdeas() {
@@ -522,6 +616,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
   adminPassword = null;
+  allMembers = [];
+  document.getElementById("searchInput").value = "";
   document.getElementById("loginBox").style.display = "block";
   document.getElementById("panelBox").style.display = "none";
   document.getElementById("adminPass").value = "";
@@ -529,6 +625,35 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
   loadGallery();
   loadWeekly();
   loadAbout();
+});
+
+document.getElementById("downloadBtn").addEventListener("click", downloadExcel);
+
+document.getElementById("editForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("editMsg");
+  const id = document.getElementById("editId").value;
+  const name = document.getElementById("editName").value.trim();
+  const nid = document.getElementById("editNationalId").value.trim();
+  const bd = document.getElementById("editBirthDate").value;
+  const ph = document.getElementById("editPhone").value.trim();
+
+  if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
+
+  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
+
+  const { error } = await db.rpc("admin_update_member", {
+    admin_pass: adminPassword,
+    member_id: parseInt(id),
+    p_name: name,
+    p_national_id: nid,
+    p_birth_date: bd,
+    p_phone: ph
+  });
+
+  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
+  msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
+  setTimeout(() => { closeEdit(); loadMembers(); }, 500);
 });
 
 document.getElementById("uploadForm").addEventListener("submit", async (e) => {
@@ -611,6 +736,11 @@ document.getElementById("aboutForm").addEventListener("submit", async (e) => {
 
   msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
   loadAbout();
+});
+
+// بستن مودال با کلیک بیرون
+document.getElementById("editModal").addEventListener("click", (e) => {
+  if (e.target.id === "editModal") closeEdit();
 });
 
 render();
