@@ -97,10 +97,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .profile-avatar{width:64px;height:64px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold}
 .profile-info h3{margin:0 0 4px;color:#084c47;font-size:18px}
 .profile-info p{margin:2px 0;font-size:13px;color:#555}
-.myidea{padding:12px 14px;border-radius:10px;background:#f2faf8;margin:8px 0;font-size:13px;border-right:4px solid #0b6b62;position:relative}
+.myidea{padding:12px 14px;border-radius:10px;background:#f2faf8;margin:8px 0;font-size:13px;border-right:4px solid #0b6b62}
 .myidea .content{margin:6px 0;line-height:1.7}
-.myidea .del-idea{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;transition:transform .15s ease}
-.myidea .del-idea:active{transform:scale(.92)}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -180,9 +178,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="title"><h2>👤 پنل اعضا</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
 <div id="memberLoginBox">
-<p>برای ورود به پنل شخصی، کد ملی و شماره تماس خود را وارد کنید:</p>
+<p>برای ورود به پنل شخصی، شماره تماس خود را وارد کنید:</p>
 <form id="memberLoginForm">
-<input id="mLoginNid" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
 <input id="mLoginPhone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
 <button class="btn" type="submit">ورود به پنل</button>
 </form>
@@ -709,7 +706,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
 
   if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; }
   else {
-    msg.textContent = "✅ ثبت‌نام شد! حالا می‌توانید با کد ملی و شماره تماس وارد پنل شخصی شوید.";
+    msg.textContent = "✅ ثبت‌نام شد! حالا با شماره تماس وارد پنل اعضا شوید.";
     msg.style.color = "green";
     e.target.reset();
     render();
@@ -887,20 +884,19 @@ document.getElementById("aboutForm").addEventListener("submit", async (e) => {
   loadAbout();
 });
 
-// ============ پنل اعضا ============
+// ============ پنل اعضا (فقط با تلفن) ============
 document.getElementById("memberLoginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("memberLoginMsg");
-  const nid = document.getElementById("mLoginNid").value.trim();
   const ph = document.getElementById("mLoginPhone").value.trim();
 
-  if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
+  if (!ph) { msg.textContent = "شماره تماس را وارد کنید."; msg.style.color = "red"; return; }
 
   msg.textContent = "در حال بررسی..."; msg.style.color = "#555";
 
-  const { data, error } = await db.rpc("member_login", { p_nid: nid, p_phone: ph });
+  const { data, error } = await db.rpc("member_login_by_phone", { p_phone: ph });
   if (error || !data || !data.length) {
-    msg.textContent = "❌ کد ملی یا شماره تماس اشتباه است";
+    msg.textContent = "❌ این شماره در کانون ثبت نشده است";
     msg.style.color = "red";
     return;
   }
@@ -914,7 +910,6 @@ document.getElementById("memberLoginForm").addEventListener("submit", async (e) 
   document.getElementById("mPhone").textContent = currentMember.phone;
   document.getElementById("avatarLetter").textContent = (currentMember.name || "?").charAt(0);
 
-  // نمایش به کاربر در فرم ایده
   document.getElementById("ideaUserName").textContent = currentMember.name;
   document.getElementById("ideaUserNotice").style.display = "block";
   document.getElementById("ideaName").value = currentMember.name;
@@ -927,7 +922,6 @@ document.getElementById("memberLogoutBtn").addEventListener("click", () => {
   currentMember = null;
   document.getElementById("memberLoginBox").style.display = "block";
   document.getElementById("memberPanelBox").style.display = "none";
-  document.getElementById("mLoginNid").value = "";
   document.getElementById("mLoginPhone").value = "";
   document.getElementById("memberLoginMsg").textContent = "";
   document.getElementById("ideaUserNotice").style.display = "none";
@@ -969,8 +963,7 @@ async function loadMyIdeas() {
   if (!currentMember) return;
   box.innerHTML = "<p style='color:#888'>در حال بارگذاری...</p>";
 
-  const { data, error } = await db.rpc("member_get_ideas", {
-    p_nid: currentMember.national_id,
+  const { data, error } = await db.rpc("member_get_ideas_by_phone", {
     p_phone: currentMember.phone
   });
 
