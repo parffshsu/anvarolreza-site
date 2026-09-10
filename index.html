@@ -8,9 +8,14 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Tahoma,sans-serif;background:#f7fafc;color:#222}
 header{background:linear-gradient(135deg,#084c47,#0b6b62);color:#fff;padding:14px 0}
-nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;max-width:1100px;margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;max-width:1100px;margin:auto;position:relative}
 nav a{color:#fff;text-decoration:none;margin:0 8px;font-size:14px}
 .logo{font-weight:bold;font-size:16px}
+.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer}
+.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:180px}
+.menu a{display:block;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:14px;margin:0}
+.menu a:hover{background:#0b6b62}
+.menu.open{display:block}
 .hero{padding:60px 7%;background:linear-gradient(135deg,#e6f5f3,#fff);text-align:center}
 h1{font-size:38px;color:#084c47;margin:12px 0}
 section{padding:50px 7%;max-width:1100px;margin:auto}
@@ -49,11 +54,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <header>
 <nav>
 <div class="logo">انوارالرضا(ع)</div>
-<div>
-<a href="#home">صفحه اصلی</a>
-<a href="#register">ثبت‌نام</a>
-<a href="#think">اتاق فکر</a>
-<a href="#admin">مدیریت</a>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<div class="menu" id="menu">
+<a href="#home" onclick="toggleMenu()">صفحه اصلی</a>
+<a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
+<a href="#think" onclick="toggleMenu()">اتاق فکر</a>
+<a href="#admin" onclick="toggleMenu()">مدیریت</a>
 </div>
 </nav>
 </header>
@@ -154,6 +160,10 @@ const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
 let adminPassword = null;
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("open");
+}
 
 async function render() {
   const { data: memberCount } = await db.rpc("get_member_count");
@@ -309,4 +319,4 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
 render();
 </script>
 </body>
-  </html>
+</html>
