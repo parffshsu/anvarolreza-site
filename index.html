@@ -29,7 +29,7 @@ button{cursor:pointer}
 .stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:100px}
 .stat b{display:block;font-size:24px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
-.member{padding:8px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
+.member{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
 #ideas{display:grid;gap:10px}
 .idea{padding:10px 14px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:11px;margin-top:6px}
@@ -108,10 +108,23 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 
 <section id="admin">
-<div class="title"><h2>🔐 اعضای ثبت‌شده</h2></div>
-<div class="card">
-<h3>اعضای ثبت‌شده</h3>
+<div class="title"><h2>🔐 پنل مدیر</h2></div>
+<div class="card" style="max-width:600px;margin:auto">
+<div id="loginBox">
+<p>برای دیدن اطلاعات اعضا، رمز مدیر را وارد کنید:</p>
+<form id="loginForm">
+<input id="adminPass" type="password" placeholder="رمز مدیر" required>
+<button class="btn" type="submit">ورود</button>
+</form>
+<p id="loginMsg"></p>
+</div>
+<div id="panelBox" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+<h3 style="margin:0">📋 لیست اعضا</h3>
+<button class="btn" id="logoutBtn" style="background:#c94f4f">خروج</button>
+</div>
 <div id="members"></div>
+</div>
 </div>
 </section>
 
@@ -128,9 +141,10 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
+let adminPassword = null;
+
 async function render() {
   const { count: memberCount } = await db.from("members").select("*", { count: "exact", head: true });
-  const { data: membersData } = await db.from("members").select("*").order("created_at", { ascending: false }).limit(50);
   const { data: ideasData } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(50);
 
   const ideas = ideasData || [];
@@ -139,13 +153,6 @@ async function render() {
   document.getElementById("memberCount").textContent = fa(memberCount || 0);
   document.getElementById("ideaCount").textContent = fa(ideas.length);
   document.getElementById("doneCount").textContent = fa(done);
-
-  const membersBox = document.getElementById("members");
-  if (membersBox) {
-    membersBox.innerHTML = (membersData && membersData.length)
-      ? membersData.map(m => `<div class="member">${esc(m.name)} — ${esc(m.phone || "")}</div>`).join("")
-      : "<p>هنوز عضوی ثبت نشده است.</p>";
-  }
 
   const ideasBox = document.getElementById("ideas");
   if (ideasBox) {
@@ -158,8 +165,30 @@ async function render() {
           </div>`).join("")
       : "<p>هنوز ایده‌ای ثبت نشده.</p>";
   }
+
+  if (adminPassword) await loadMembers();
 }
 
+async function loadMembers() {
+  const box = document.getElementById("members");
+  box.innerHTML = "<p>در حال بارگذاری...</p>";
+  const { data, error } = await db.rpc("admin_get_members", { admin_pass: adminPassword });
+  if (error) {
+    box.innerHTML = `<p style="color:red">خطا: ${esc(error.message)}</p>`;
+    return;
+  }
+  box.innerHTML = data && data.length
+    ? data.map(m => `
+        <div class="member">
+          <strong>${esc(m.name)}</strong><br>
+          <span>کد ملی: ${esc(m.national_id || "-")}</span><br>
+          <span>تاریخ تولد: ${esc(m.birth_date || "-")}</span><br>
+          <span>تلفن: ${esc(m.phone || "-")}</span>
+        </div>`).join("")
+    : "<p>هنوز عضوی ثبت نشده.</p>";
+}
+
+// ثبت‌نام
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("registerMsg");
@@ -175,6 +204,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   else { msg.textContent = "ثبت‌نام با موفقیت انجام شد ✅"; msg.style.color = "green"; e.target.reset(); render(); }
 });
 
+// ثبت ایده
 document.getElementById("ideaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const { error } = await db.from("ideas").insert([{
@@ -186,7 +216,35 @@ document.getElementById("ideaForm").addEventListener("submit", async (e) => {
   else { alert("ایده شما ثبت شد ✅"); e.target.reset(); render(); }
 });
 
+// ورود مدیر
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const pass = document.getElementById("adminPass").value.trim();
+  const msg = document.getElementById("loginMsg");
+  msg.textContent = "در حال بررسی..."; msg.style.color = "#555";
+
+  const { data, error } = await db.rpc("admin_get_members", { admin_pass: pass });
+  if (error) {
+    msg.textContent = "❌ رمز اشتباه است";
+    msg.style.color = "red";
+    return;
+  }
+  adminPassword = pass;
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("panelBox").style.display = "block";
+  loadMembers();
+});
+
+// خروج
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  adminPassword = null;
+  document.getElementById("loginBox").style.display = "block";
+  document.getElementById("panelBox").style.display = "none";
+  document.getElementById("adminPass").value = "";
+  document.getElementById("loginMsg").textContent = "";
+});
+
 render();
 </script>
 </body>
-</html
+                                  </html>
