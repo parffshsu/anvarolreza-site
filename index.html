@@ -229,4 +229,3 @@ render();
 </script>
 </body>
  </html>
-drop policy if exists "read members" on members; create or replace function admin_get_members(admin_pass text) returns table(id bigint, name text, national_id text, birth_date text, phone text, created_at timestamp) language plpgsql security definer as $$ begin if admin_pass <> 'anvar1403_change_me' then raise exception 'رمز اشتباه است'; end if; return query select m.id, m.name, m.national_id, m.birth_date, m.phone, m.created_at from members m order by m.created_at desc; end; $$; grant execute on function admin_get_members(text) to anon;
