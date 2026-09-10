@@ -86,6 +86,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .member-actions button:active{transform:scale(.92)}
 .b-edit{background:#1e6bb8}
 .b-del-m{background:#c94f4f}
+.date-picker{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-bg.open{display:flex}
 .modal{background:#fff;border-radius:14px;padding:24px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease both;position:relative}
@@ -148,7 +149,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <form id="registerForm">
 <input id="fullName" placeholder="نام و نام خانوادگی" required>
 <input id="nationalId" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
-<input id="birthDate" type="date" required>
+<div class="date-picker">
+<select id="birthDay" required>
+<option value="">روز</option>
+</select>
+<select id="birthMonth" required>
+<option value="">ماه</option>
+</select>
+<select id="birthYear" required>
+<option value="">سال</option>
+</select>
+</div>
 <input id="phone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
 <button class="btn" type="submit">ثبت عضویت</button>
 </form>
@@ -271,7 +282,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <input id="editId" type="hidden">
 <input id="editName" placeholder="نام و نام خانوادگی" required>
 <input id="editNationalId" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
-<input id="editBirthDate" type="date" required>
+<div class="date-picker">
+<select id="editBirthDay" required>
+<option value="">روز</option>
+</select>
+<select id="editBirthMonth" required>
+<option value="">ماه</option>
+</select>
+<select id="editBirthYear" required>
+<option value="">سال</option>
+</select>
+</div>
 <input id="editPhone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
 <button class="btn" type="submit">ذخیره تغییرات</button>
 </form>
@@ -294,6 +315,62 @@ const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;"
 
 let adminPassword = null;
 let allMembers = [];
+
+const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
+
+// ساخت گزینه‌های روز، ماه، سال
+function fillDateSelects(dayId, monthId, yearId) {
+  const dayEl = document.getElementById(dayId);
+  const monthEl = document.getElementById(monthId);
+  const yearEl = document.getElementById(yearId);
+  if (dayEl && dayEl.options.length <= 1) {
+    for (let i = 1; i <= 31; i++) {
+      const o = document.createElement("option");
+      o.value = String(i).padStart(2, "0");
+      o.textContent = fa(i);
+      dayEl.appendChild(o);
+    }
+  }
+  if (monthEl && monthEl.options.length <= 1) {
+    PERSIAN_MONTHS.forEach((name, idx) => {
+      const o = document.createElement("option");
+      o.value = String(idx + 1).padStart(2, "0");
+      o.textContent = name;
+      monthEl.appendChild(o);
+    });
+  }
+  if (yearEl && yearEl.options.length <= 1) {
+    for (let y = 1405; y >= 1360; y--) {
+      const o = document.createElement("option");
+      o.value = String(y);
+      o.textContent = fa(y);
+      yearEl.appendChild(o);
+    }
+  }
+}
+fillDateSelects("birthDay", "birthMonth", "birthYear");
+fillDateSelects("editBirthDay", "editBirthMonth", "editBirthYear");
+
+function getPersianDate(dayId, monthId, yearId) {
+  const d = document.getElementById(dayId).value;
+  const m = document.getElementById(monthId).value;
+  const y = document.getElementById(yearId).value;
+  if (!d || !m || !y) return "";
+  return `${y}/${m}/${d}`;
+}
+
+function setPersianDate(dayId, monthId, yearId, val) {
+  const parts = (val || "").split("/");
+  if (parts.length === 3) {
+    document.getElementById(yearId).value = parts[0];
+    document.getElementById(monthId).value = parts[1];
+    document.getElementById(dayId).value = parts[2];
+  } else {
+    document.getElementById(yearId).value = "";
+    document.getElementById(monthId).value = "";
+    document.getElementById(dayId).value = "";
+  }
+}
 
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("open");
@@ -488,7 +565,7 @@ function openEdit(id) {
   document.getElementById("editId").value = m.id;
   document.getElementById("editName").value = m.name || "";
   document.getElementById("editNationalId").value = m.national_id || "";
-  document.getElementById("editBirthDate").value = m.birth_date || "";
+  setPersianDate("editBirthDay", "editBirthMonth", "editBirthYear", m.birth_date || "");
   document.getElementById("editPhone").value = m.phone || "";
   document.getElementById("editMsg").textContent = "";
   document.getElementById("editModal").classList.add("open");
@@ -569,9 +646,11 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   const name = fullName.value.trim();
   const nid = nationalId.value.trim();
   if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
+  const bd = getPersianDate("birthDay", "birthMonth", "birthYear");
+  if (!bd) { msg.textContent = "تاریخ تولد را کامل انتخاب کنید."; msg.style.color = "red"; return; }
 
   const { error } = await db.from("members").insert([{
-    name, national_id: nid, birth_date: birthDate.value, phone: phone.value.trim()
+    name, national_id: nid, birth_date: bd, phone: phone.value.trim()
   }]);
 
   if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; }
@@ -632,10 +711,11 @@ document.getElementById("editForm").addEventListener("submit", async (e) => {
   const id = document.getElementById("editId").value;
   const name = document.getElementById("editName").value.trim();
   const nid = document.getElementById("editNationalId").value.trim();
-  const bd = document.getElementById("editBirthDate").value;
+  const bd = getPersianDate("editBirthDay", "editBirthMonth", "editBirthYear");
   const ph = document.getElementById("editPhone").value.trim();
 
   if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
+  if (!bd) { msg.textContent = "تاریخ تولد را کامل انتخاب کنید."; msg.style.color = "red"; return; }
 
   msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
 
