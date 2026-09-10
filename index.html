@@ -183,9 +183,19 @@ async function loadMembers() {
           <strong>${esc(m.name)}</strong><br>
           <span>کد ملی: ${esc(m.national_id || "-")}</span><br>
           <span>تاریخ تولد: ${esc(m.birth_date || "-")}</span><br>
-          <span>تلفن: ${esc(m.phone || "-")}</span>
+          <span>تلفن: ${esc(m.phone || "-")}</span><br>
+          <button class="btn" style="background:#c94f4f;margin-top:8px;font-size:12px;padding:6px 12px" onclick="deleteMember(${m.id}, '${esc(m.name)}')">🗑 حذف</button>
         </div>`).join("")
     : "<p>هنوز عضوی ثبت نشده.</p>";
+}
+
+async function deleteMember(id, name) {
+  if (!confirm(`آیا از حذف «${name}» مطمئن هستید؟`)) return;
+  const { error } = await db.rpc("admin_delete_member", { admin_pass: adminPassword, member_id: id });
+  if (error) { alert("خطا: " + error.message); return; }
+  alert("عضو حذف شد ✅");
+  loadMembers();
+  render();
 }
 
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
@@ -243,4 +253,4 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
 render();
 </script>
 </body>
-</html>
+  </html>
