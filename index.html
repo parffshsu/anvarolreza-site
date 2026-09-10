@@ -47,6 +47,11 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .b-run{background:#1e6bb8}
 .b-done{background:#7a3fa0}
 .b-del{background:#c94f4f}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative}
+.gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
+.gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center}
+.gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -59,6 +64,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <a href="#home" onclick="toggleMenu()">صفحه اصلی</a>
 <a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
 <a href="#think" onclick="toggleMenu()">اتاق فکر</a>
+<a href="#gallery" onclick="toggleMenu()">گالری</a>
 <a href="#admin" onclick="toggleMenu()">مدیریت</a>
 </div>
 </nav>
@@ -122,6 +128,15 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </section>
 
+<section id="gallery">
+<div class="title"><h2>🖼 گالری تصاویر کانون</h2>
+<p>لحظه‌های ماندگار کانون انوارالرضا(ع)</p>
+</div>
+<div class="card">
+<div id="galleryGrid" class="gallery-grid"></div>
+</div>
+</section>
+
 <section id="admin">
 <div class="title"><h2>🔐 پنل مدیر</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
@@ -142,6 +157,16 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 
 <h3 style="margin-top:30px">💡 مدیریت ایده‌ها</h3>
 <div id="adminIdeas"></div>
+
+<h3 style="margin-top:30px">🖼 آپلود عکس جدید</h3>
+<div class="card" style="background:#f7fafc">
+<form id="uploadForm">
+<input type="file" id="galleryFile" accept="image/*" required>
+<input id="galleryCaption" placeholder="توضیح عکس (اختیاری)">
+<button class="btn" type="submit">آپلود به گالری</button>
+</form>
+<p id="uploadMsg"></p>
+</div>
 </div>
 </div>
 </section>
@@ -188,10 +213,29 @@ async function render() {
       : "<p>هنوز ایده‌ای ثبت نشده.</p>";
   }
 
+  await loadGallery();
+
   if (adminPassword) {
     await loadMembers();
     await loadAdminIdeas();
   }
+}
+
+async function loadGallery() {
+  const box = document.getElementById("galleryGrid");
+  if (!box) return;
+  const { data } = await db.from("gallery").select("*").order("created_at", { ascending: false });
+  if (!data || !data.length) {
+    box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز عکسی اضافه نشده.</p>";
+    return;
+  }
+  box.innerHTML = data.map(g => `
+    <div class="gallery-item">
+      <img src="${esc(g.url)}" alt="${esc(g.caption || "")}" loading="lazy">
+      ${g.caption ? `<div class="cap">${esc(g.caption)}</div>` : ""}
+      ${adminPassword ? `<button class="del-btn" onclick="deleteGalleryImg(${g.id})">✕</button>` : ""}
+    </div>
+  `).join("");
 }
 
 async function loadMembers() {
@@ -263,6 +307,14 @@ async function deleteMember(id, name) {
   render();
 }
 
+async function deleteGalleryImg(id) {
+  if (!confirm("آیا از حذف این عکس مطمئن هستید؟")) return;
+  const { error } = await db.rpc("admin_delete_gallery", { admin_pass: adminPassword, item_id: id });
+  if (error) { alert("خطا: " + error.message); return; }
+  alert("عکس حذف شد ✅");
+  loadGallery();
+}
+
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("registerMsg");
@@ -306,6 +358,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   document.getElementById("panelBox").style.display = "block";
   loadMembers();
   loadAdminIdeas();
+  loadGallery();
 });
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -314,9 +367,41 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
   document.getElementById("panelBox").style.display = "none";
   document.getElementById("adminPass").value = "";
   document.getElementById("loginMsg").textContent = "";
+  loadGallery();
+});
+
+document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("uploadMsg");
+  const file = document.getElementById("galleryFile").files[0];
+  const caption = document.getElementById("galleryCaption").value.trim();
+
+  if (!file) { msg.textContent = "عکسی انتخاب نشده"; msg.style.color = "red"; return; }
+  if (file.size > 5 * 1024 * 1024) { msg.textContent = "حجم عکس باید کمتر از ۵ مگابایت باشد"; msg.style.color = "red"; return; }
+
+  msg.textContent = "در حال آپلود..."; msg.style.color = "#555";
+
+  const fileName = Date.now() + "_" + file.name.replace(/[^a-zA-Z0-9._-]/g, "");
+  const { error: upErr } = await db.storage.from("gallery").upload(fileName, file);
+  if (upErr) { msg.textContent = "خطا در آپلود: " + upErr.message; msg.style.color = "red"; return; }
+
+  const { data: urlData } = db.storage.from("gallery").getPublicUrl(fileName);
+  const publicUrl = urlData.publicUrl;
+
+  const { error: dbErr } = await db.rpc("admin_add_gallery", {
+    admin_pass: adminPassword,
+    p_filename: fileName,
+    p_url: publicUrl,
+    p_caption: caption
+  });
+  if (dbErr) { msg.textContent = "خطا در ذخیره: " + dbErr.message; msg.style.color = "red"; return; }
+
+  msg.textContent = "عکس با موفقیت اضافه شد ✅"; msg.style.color = "green";
+  e.target.reset();
+  loadGallery();
 });
 
 render();
 </script>
 </body>
-  </html>
+</html>
