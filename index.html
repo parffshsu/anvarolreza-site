@@ -52,6 +52,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
 .gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center}
 .gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1}
+.weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
+.weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:10px}
+.weekly-card h4{margin:8px 0;color:#084c47;font-size:17px}
+.weekly-card .info{font-size:13px;color:#555;margin:6px 0}
+.weekly-card .info b{color:#0b6b62}
+.weekly-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
+.weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -62,6 +70,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 <div class="menu" id="menu">
 <a href="#home" onclick="toggleMenu()">صفحه اصلی</a>
+<a href="#weekly" onclick="toggleMenu()">برنامه هفتگی</a>
 <a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
 <a href="#think" onclick="toggleMenu()">اتاق فکر</a>
 <a href="#gallery" onclick="toggleMenu()">گالری</a>
@@ -85,6 +94,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="stat"><b id="doneCount">۰</b>ایده اجراشده</div>
 </div>
 </div>
+</section>
+
+<section id="weekly">
+<div class="title"><h2>📅 برنامه هفتگی کانون</h2>
+<p>برنامه‌های ثابت هفتگی انوارالرضا(ع)</p>
+</div>
+<div class="weekly-grid" id="weeklyGrid"></div>
 </section>
 
 <section id="register">
@@ -158,6 +174,28 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin-top:30px">💡 مدیریت ایده‌ها</h3>
 <div id="adminIdeas"></div>
 
+<h3 style="margin-top:30px">📅 افزودن برنامه هفتگی</h3>
+<div class="card" style="background:#f7fafc">
+<form id="weeklyForm">
+<select id="wDay" required>
+<option value="">روز هفته...</option>
+<option value="شنبه">شنبه</option>
+<option value="یکشنبه">یکشنبه</option>
+<option value="دوشنبه">دوشنبه</option>
+<option value="سه‌شنبه">سه‌شنبه</option>
+<option value="چهارشنبه">چهارشنبه</option>
+<option value="پنجشنبه">پنجشنبه</option>
+<option value="جمعه">جمعه</option>
+</select>
+<input id="wTitle" placeholder="عنوان برنامه (مثلاً: هیئت هفتگی)" required>
+<input id="wTime" placeholder="ساعت (مثلاً: ۱۹:۰۰)">
+<input id="wPlace" placeholder="مکان (مثلاً: مسجد جامع)">
+<textarea id="wDesc" placeholder="توضیحات (اختیاری)"></textarea>
+<button class="btn" type="submit">افزودن به برنامه</button>
+</form>
+<p id="weeklyMsg"></p>
+</div>
+
 <h3 style="margin-top:30px">🖼 آپلود عکس جدید</h3>
 <div class="card" style="background:#f7fafc">
 <form id="uploadForm">
@@ -213,12 +251,33 @@ async function render() {
       : "<p>هنوز ایده‌ای ثبت نشده.</p>";
   }
 
+  await loadWeekly();
   await loadGallery();
 
   if (adminPassword) {
     await loadMembers();
     await loadAdminIdeas();
   }
+}
+
+async function loadWeekly() {
+  const box = document.getElementById("weeklyGrid");
+  if (!box) return;
+  const { data } = await db.from("weekly").select("*").order("created_at", { ascending: true });
+  if (!data || !data.length) {
+    box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز برنامه‌ای اضافه نشده.</p>";
+    return;
+  }
+  box.innerHTML = data.map(w => `
+    <div class="weekly-card">
+      <span class="day">${esc(w.day)}</span>
+      <h4>${esc(w.title)}</h4>
+      ${w.p_time ? `<div class="info">🕐 ساعت: <b>${esc(w.p_time)}</b></div>` : ""}
+      ${w.place ? `<div class="info">📍 مکان: <b>${esc(w.place)}</b></div>` : ""}
+      ${w.description ? `<div class="desc">${esc(w.description)}</div>` : ""}
+      ${adminPassword ? `<button class="del-btn" onclick="deleteWeekly(${w.id})">✕</button>` : ""}
+    </div>
+  `).join("");
 }
 
 async function loadGallery() {
@@ -315,6 +374,14 @@ async function deleteGalleryImg(id) {
   loadGallery();
 }
 
+async function deleteWeekly(id) {
+  if (!confirm("آیا از حذف این برنامه مطمئن هستید؟")) return;
+  const { error } = await db.rpc("admin_delete_weekly", { admin_pass: adminPassword, item_id: id });
+  if (error) { alert("خطا: " + error.message); return; }
+  alert("برنامه حذف شد ✅");
+  loadWeekly();
+}
+
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("registerMsg");
@@ -359,6 +426,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   loadMembers();
   loadAdminIdeas();
   loadGallery();
+  loadWeekly();
 });
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -368,6 +436,7 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
   document.getElementById("adminPass").value = "";
   document.getElementById("loginMsg").textContent = "";
   loadGallery();
+  loadWeekly();
 });
 
 document.getElementById("uploadForm").addEventListener("submit", async (e) => {
@@ -401,7 +470,36 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   loadGallery();
 });
 
+document.getElementById("weeklyForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("weeklyMsg");
+  const day = document.getElementById("wDay").value;
+  const title = document.getElementById("wTitle").value.trim();
+  const time = document.getElementById("wTime").value.trim();
+  const place = document.getElementById("wPlace").value.trim();
+  const desc = document.getElementById("wDesc").value.trim();
+
+  if (!day || !title) { msg.textContent = "روز و عنوان الزامی است"; msg.style.color = "red"; return; }
+
+  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
+
+  const { error } = await db.rpc("admin_add_weekly", {
+    admin_pass: adminPassword,
+    p_day: day,
+    p_title: title,
+    p_time: time,
+    p_place: place,
+    p_description: desc
+  });
+
+  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
+
+  msg.textContent = "برنامه اضافه شد ✅"; msg.style.color = "green";
+  e.target.reset();
+  loadWeekly();
+});
+
 render();
 </script>
 </body>
-  </html>
+  </html>   
