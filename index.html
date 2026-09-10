@@ -144,7 +144,7 @@ const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;"
 let adminPassword = null;
 
 async function render() {
-  const { count: memberCount } = await db.from("members").select("*", { count: "exact", head: true });
+  const { data: memberCount } = await db.rpc("get_member_count");
   const { data: ideasData } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(50);
 
   const ideas = ideasData || [];
@@ -188,7 +188,6 @@ async function loadMembers() {
     : "<p>هنوز عضوی ثبت نشده.</p>";
 }
 
-// ثبت‌نام
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("registerMsg");
@@ -204,7 +203,6 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   else { msg.textContent = "ثبت‌نام با موفقیت انجام شد ✅"; msg.style.color = "green"; e.target.reset(); render(); }
 });
 
-// ثبت ایده
 document.getElementById("ideaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const { error } = await db.from("ideas").insert([{
@@ -216,7 +214,6 @@ document.getElementById("ideaForm").addEventListener("submit", async (e) => {
   else { alert("ایده شما ثبت شد ✅"); e.target.reset(); render(); }
 });
 
-// ورود مدیر
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const pass = document.getElementById("adminPass").value.trim();
@@ -235,7 +232,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   loadMembers();
 });
 
-// خروج
 document.getElementById("logoutBtn").addEventListener("click", () => {
   adminPassword = null;
   document.getElementById("loginBox").style.display = "block";
@@ -247,4 +243,4 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
 render();
 </script>
 </body>
-                                  </html>
+</html>
