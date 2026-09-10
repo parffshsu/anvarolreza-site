@@ -12,57 +12,73 @@ header{background:linear-gradient(135deg,#084c47,#0b6b62);color:#fff;padding:14p
 nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;max-width:1100px;margin:auto;position:relative}
 nav a{color:#fff;text-decoration:none;margin:0 8px;font-size:14px}
 .logo{font-weight:bold;font-size:16px}
-.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer}
-.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:180px}
-.menu a{display:block;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:14px;margin:0}
+.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer;transition:transform .2s ease}
+.menu-btn:active{transform:scale(.92)}
+.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:180px;opacity:0;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease}
+.menu.open{display:block;opacity:1;transform:translateY(0)}
+.menu a{display:block;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:14px;margin:0;transition:background .2s ease}
 .menu a:hover{background:#0b6b62}
-.menu.open{display:block}
 .hero{padding:60px 7%;background:linear-gradient(135deg,#e6f5f3,#fff);text-align:center}
-h1{font-size:38px;color:#084c47;margin:12px 0}
+h1{font-size:38px;color:#084c47;margin:12px 0;animation:fadeUp .8s ease both}
+.hero p{animation:fadeUp .8s .15s ease both}
+.hero .btn{animation:fadeUp .8s .3s ease both}
+.hero .card{animation:fadeUp .8s .45s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 section{padding:50px 7%;max-width:1100px;margin:auto}
 .title{text-align:center;margin-bottom:30px}
 .title h2{color:#084c47}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0}
+.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0;transition:box-shadow .3s ease,transform .3s ease}
+.card:hover{box-shadow:0 10px 28px rgba(0,0,0,.1)}
 form{display:grid;gap:11px}
 input,select,textarea,button{padding:11px;border-radius:10px;border:1px solid #d6e2e0;font-family:inherit;font-size:14px}
 textarea{min-height:90px;resize:vertical}
 button{cursor:pointer}
-.btn{display:inline-block;background:#0b6b62;color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;border:none;cursor:pointer}
+.btn{display:inline-block;background:#0b6b62;color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease,background .2s ease}
+.btn:hover{background:#095a52}
+.btn:active{transform:scale(.96)}
 .notice{padding:12px;border-radius:10px;background:#fff7e6;color:#7a5b00;font-size:13px}
 .badge{display:inline-block;padding:5px 12px;border-radius:20px;background:#d9efeb;color:#084c47;font-size:13px;font-weight:bold}
 .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 .stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:100px}
 .stat b{display:block;font-size:24px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
-.member{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
+.member{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px;animation:fadeUp .4s ease both}
 #ideas{display:grid;gap:10px}
-.idea{padding:10px 14px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
+.idea{padding:10px 14px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px;animation:fadeUp .4s ease both}
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:11px;margin-top:6px}
-.admin-idea{padding:14px;border-radius:10px;background:#f2faf8;margin:10px 0;font-size:13px;border-right:4px solid #0b6b62}
+.admin-idea{padding:14px;border-radius:10px;background:#f2faf8;margin:10px 0;font-size:13px;border-right:4px solid #0b6b62;animation:fadeUp .4s ease both}
 .admin-idea .content{margin:8px 0;line-height:1.7}
 .admin-idea .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.admin-idea .actions button{padding:6px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff}
+.admin-idea .actions button{padding:6px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff;transition:transform .15s ease,opacity .2s ease}
+.admin-idea .actions button:active{transform:scale(.92)}
 .b-review{background:#c48b1f}
 .b-approve{background:#2e8b57}
 .b-run{background:#1e6bb8}
 .b-done{background:#7a3fa0}
 .b-del{background:#c94f4f}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative}
-.gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
-.gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center}
-.gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1}
+.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;animation:fadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease}
+.gallery-item:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s ease}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center;position:relative;z-index:1;background:#fff}
+.gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;transition:transform .15s ease;z-index:2}
+.gallery-item .del-btn:active{transform:scale(.85)}
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
+.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:fadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease}
+.weekly-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.1)}
 .weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:10px}
 .weekly-card h4{margin:8px 0;color:#084c47;font-size:17px}
 .weekly-card .info{font-size:13px;color:#555;margin:6px 0}
 .weekly-card .info b{color:#0b6b62}
 .weekly-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
-.weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
+.weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1;transition:transform .15s ease}
+.weekly-card .del-btn:active{transform:scale(.85)}
 .about-content{background:#fff;border-radius:14px;padding:30px;box-shadow:0 6px 20px rgba(0,0,0,.06);line-height:2;font-size:15px;white-space:pre-line;color:#333}
 .about-content a{color:#0b6b62;font-weight:bold}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -251,6 +267,36 @@ function linkify(text) {
   return esc(text).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g, '<a href="https://$1" target="_blank">$1</a>');
 }
 
+// انیمیشن شمارش آمار
+function animateCount(el, target) {
+  const duration = 800;
+  const start = performance.now();
+  const from = 0;
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const val = Math.floor(from + (target - from) * (1 - Math.pow(1 - p, 3)));
+    el.textContent = fa(val);
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = fa(target);
+  }
+  requestAnimationFrame(tick);
+}
+
+// انیمیشن ظاهر شدن با اسکرول
+function setupReveal() {
+  const els = document.querySelectorAll("section, .card, .weekly-card, .gallery-item, .about-content");
+  els.forEach(el => el.classList.add("reveal"));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+}
+
 async function render() {
   const { data: memberCount } = await db.rpc("get_member_count");
   const { data: ideasData } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(50);
@@ -258,9 +304,9 @@ async function render() {
   const ideas = ideasData || [];
   const done = ideas.filter(i => i.status === "اجرا شد").length;
 
-  document.getElementById("memberCount").textContent = fa(memberCount || 0);
-  document.getElementById("ideaCount").textContent = fa(ideas.length);
-  document.getElementById("doneCount").textContent = fa(done);
+  animateCount(document.getElementById("memberCount"), memberCount || 0);
+  animateCount(document.getElementById("ideaCount"), ideas.length);
+  animateCount(document.getElementById("doneCount"), done);
 
   const ideasBox = document.getElementById("ideas");
   if (ideasBox) {
@@ -320,6 +366,7 @@ async function loadWeekly() {
       ${adminPassword ? `<button class="del-btn" onclick="deleteWeekly(${w.id})">✕</button>` : ""}
     </div>
   `).join("");
+  setupReveal();
 }
 
 async function loadGallery() {
@@ -337,6 +384,7 @@ async function loadGallery() {
       ${adminPassword ? `<button class="del-btn" onclick="deleteGalleryImg(${g.id})">✕</button>` : ""}
     </div>
   `).join("");
+  setupReveal();
 }
 
 async function loadMembers() {
@@ -566,6 +614,7 @@ document.getElementById("aboutForm").addEventListener("submit", async (e) => {
 });
 
 render();
+setupReveal();
 </script>
 </body>
   </html>
