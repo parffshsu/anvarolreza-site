@@ -152,7 +152,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .group-item .del-g{background:#c94f4f}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.06);position:relative;animation:fadeUp .5s ease both}
-.video-card video{width:100%;height:200px;object-fit:cover;display:block;background:#000}
+.video-card video{width:100%;height:220px;object-fit:contain;display:block;background:#000}
 .video-card .v-info{padding:14px}
 .video-card h4{margin:0 0 6px;color:#084c47;font-size:15px}
 .video-card .v-desc{font-size:12px;color:#777;line-height:1.6}
@@ -179,6 +179,10 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
 .reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
 .reg-list .reg-item:last-child{border-bottom:none}
+.upload-progress{width:100%;height:6px;background:#e0e0e0;border-radius:3px;margin-top:8px;overflow:hidden;display:none}
+.upload-progress.show{display:block}
+.upload-progress .bar{height:100%;background:#0b6b62;width:0;transition:width .3s ease;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.lightbox .lb-nav{width:40px;height:40px;font-size:22px}.lightbox .lb-prev{left:8px}.lightbox .lb-next{right:8px}}
 </style>
 </head>
@@ -407,13 +411,15 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p id="classMsg"></p>
 </div>
 
-<h3 style="margin-top:30px">🎥 افزودن ویدیو</h3>
+<h3 style="margin-top:30px">🎥 آپلود ویدیو</h3>
 <div class="card" style="background:#f7fafc">
 <form id="videoForm">
 <input id="vTitle" placeholder="عنوان ویدیو" required>
-<input id="vUrl" placeholder="لینک ویدیو (MP4 یا لینک مستقیم)" required>
 <textarea id="vDesc" placeholder="توضیحات (اختیاری)"></textarea>
-<button class="btn" type="submit">افزودن ویدیو</button>
+<input type="file" id="vFile" accept="video/*" required>
+<p style="font-size:12px;color:#888;margin:0">⚠️ حجم ویدیو باید کمتر از ۵۰ مگابایت باشد</p>
+<div class="upload-progress" id="vProgress"><div class="bar"></div></div>
+<button class="btn" type="submit">آپلود ویدیو</button>
 </form>
 <p id="videoMsg"></p>
 </div>
@@ -902,12 +908,26 @@ document.getElementById("classForm").addEventListener("submit",async e=>{
   m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadClasses();
 });
 document.getElementById("videoForm").addEventListener("submit",async e=>{
-  e.preventDefault();const m=document.getElementById("videoMsg"),t=document.getElementById("vTitle").value.trim(),u=document.getElementById("vUrl").value.trim();
-  if(!t||!u){m.textContent="عنوان و لینک الزامی است";m.style.color="red";return;}
-  m.textContent="ذخیره...";m.style.color="#555";
-  const {error}=await db.rpc("admin_add_video",{admin_pass:adminPassword,p_title:t,p_url:u,p_thumb:"",p_desc:document.getElementById("vDesc").value.trim()});
-  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
-  m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadVideos();
+  e.preventDefault();
+  const m=document.getElementById("videoMsg");
+  const t=document.getElementById("vTitle").value.trim();
+  const d=document.getElementById("vDesc").value.trim();
+  const f=document.getElementById("vFile").files[0];
+  const prog=document.getElementById("vProgress");
+  if(!t){m.textContent="عنوان الزامی است";m.style.color="red";return;}
+  if(!f){m.textContent="ویدیویی انتخاب نشده";m.style.color="red";return;}
+  if(f.size>50*1024*1024){m.textContent="حجم ویدیو باید کمتر از ۵۰ مگابایت باشد";m.style.color="red";return;}
+  m.textContent="در حال آپلود... ممکنه چند دقیقه طول بکشه";m.style.color="#555";
+  prog.classList.add("show");
+  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const {error:ue}=await db.storage.from("videos").upload(fn,f);
+  prog.classList.remove("show");
+  if(ue){m.textContent="خطا آپلود: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("videos").getPublicUrl(fn);
+  const {error:de}=await db.rpc("admin_add_video",{admin_pass:adminPassword,p_title:t,p_url:ud.publicUrl,p_thumb:"",p_desc:d});
+  if(de){m.textContent="خطا ذخیره: "+de.message;m.style.color="red";return;}
+  m.textContent="ویدیو با موفقیت آپلود شد ✅";m.style.color="green";
+  e.target.reset();loadVideos();
 });
 document.getElementById("bookForm").addEventListener("submit",async e=>{
   e.preventDefault();const m=document.getElementById("bookMsg"),t=document.getElementById("bTitle").value.trim(),f=document.getElementById("bFile").files[0];
