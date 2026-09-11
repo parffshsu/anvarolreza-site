@@ -174,6 +174,10 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .att-absent{background:#c94f4f}
 .att-late{background:#c48b1f}
 .att-active{box-shadow:0 0 0 3px rgba(11,107,98,.3);transform:scale(1.05)}
+.report-stat{background:#fff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06);border-top:4px solid #0b6b62}
+.report-stat .ri{font-size:24px}
+.report-stat .rv{font-size:22px;font-weight:bold;color:#084c47;margin:6px 0}
+.report-stat .rk{font-size:12px;color:#666}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -336,6 +340,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="btn" id="downloadBtn" style="background:#2e8b57">📥 Excel</button>
 </div>
 <div id="members"></div>
+</div>
+
+<div id="sectionReports" class="admin-section" data-panels="main,ertebat">
+<h3 style="margin-top:30px">📊 گزارش‌گیری</h3>
+<div id="reportsStats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px"></div>
+<h4 style="color:#084c47;margin-top:20px">📋 آمار حضور اعضا</h4>
+<div id="reportsAttendance"></div>
 </div>
 
 <div id="sectionContact" class="admin-section" data-panels="main,ertebat">
@@ -590,7 +601,6 @@ let adminPassword = null, currentPanel = null, allMembers = [], currentMember = 
 
 const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "resane777", roshd: "roshd666" };
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
-
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
 function fillDateSelects(d,m,y){
@@ -603,7 +613,6 @@ function fillDateSelects(d,m,y){
 
 function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=document.getElementById(m).value,yy=document.getElementById(y).value;if(!dd||!mm||!yy)return "";return `${yy}/${mm}/${dd}`;}
 function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
-
 function toggleMenu(){document.getElementById("menu").classList.toggle("open");}
 function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank">$1</a>');}
 function animateCount(el,t){const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
@@ -615,7 +624,6 @@ function selectPanel(p){
   const hints = { main:"رمز مدیر اصلی را وارد کنید", ertebat:"رمز واحد ارتباطات را وارد کنید", resane:"رمز واحد رسانه را وارد کنید", roshd:"رمز واحد رشد را وارد کنید" };
   document.getElementById("panelHint").textContent = hints[p];
 }
-
 function showSectionsForPanel(p){
   document.querySelectorAll(".admin-section").forEach(s=>{
     const allowed = (s.dataset.panels||"").split(",");
@@ -636,7 +644,7 @@ async function render(){
   if(ib) ib.innerHTML = ideas.length ? ideas.slice(0,10).map(i=>`<div class="idea"><strong>${esc(i.name||"ناشناس")}</strong><p>${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("") : "<p>هنوز ایده‌ای ثبت نشده.</p>";
   await loadNews(); await loadEvents(); await loadPolls(); await loadAbout();
   await loadWeekly(); await loadGallery(); await loadVideos(); await loadLibrary(); await loadClasses();
-  if(adminPassword){await loadMembers();await loadAdminIdeas();await loadGroups();await loadSessions();await loadSentMessages();await loadBirthdays();}
+  if(adminPassword){await loadMembers();await loadAdminIdeas();await loadGroups();await loadSessions();await loadSentMessages();await loadBirthdays();await loadReports();}
 }
 
 async function loadNews(){
@@ -821,6 +829,33 @@ async function loadBirthdays(){
 }
 function updateBirthdays(){loadBirthdays();}
 
+async function loadReports(){
+  const s = document.getElementById("reportsStats");
+  const a = document.getElementById("reportsAttendance");
+  if(!s) return;
+  s.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>بارگذاری...</p>";
+  a.innerHTML = "";
+  const {data: stats, error} = await db.rpc("admin_report_summary", {admin_pass: adminPassword});
+  if(error){s.innerHTML = "<p style='color:red'>خطا: "+esc(error.message)+"</p>";return;}
+  const items = [
+    {k:"اعضا", v: stats.members, i:"👥"},
+    {k:"پیام‌ها", v: stats.messages, i:"📬"},
+    {k:"جلسات", v: stats.sessions, i:"📅"},
+    {k:"حضور", v: stats.present, i:"✅"},
+    {k:"ایده‌ها", v: stats.ideas, i:"💡"},
+    {k:"کلاس‌ها", v: stats.classes, i:"🎓"}
+  ];
+  s.innerHTML = items.map(x => "<div class='report-stat'><div class='ri'>"+x.i+"</div><div class='rv'>"+fa(x.v)+"</div><div class='rk'>"+x.k+"</div></div>").join("");
+  const {data: atts, error: e2} = await db.rpc("admin_report_attendance", {admin_pass: adminPassword});
+  if(e2){a.innerHTML = "<p style='color:red'>خطا: "+esc(e2.message)+"</p>";return;}
+  if(!atts || !atts.length){a.innerHTML = "<p style='color:#888'>داده‌ای نیست.</p>";return;}
+  const maxP = Math.max(...atts.map(x => x.present_count), 1);
+  a.innerHTML = atts.map(x => {
+    const pct = Math.round((x.present_count / maxP) * 100);
+    return "<div style='background:#fff;border-radius:10px;padding:12px;margin:8px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)'><div style='display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;flex-wrap:wrap;gap:6px'><b>"+esc(x.member_name)+"</b><span style='color:#0b6b62'>✅ "+fa(x.present_count)+" | ❌ "+fa(x.absent_count)+" | ⏰ "+fa(x.late_count)+"</span></div><div style='background:#eee;border-radius:6px;height:8px;overflow:hidden'><div style='background:linear-gradient(90deg,#0b6b62,#2e8b57);height:100%;width:"+pct+"%'></div></div></div>";
+  }).join("");
+}
+
 async function loadSessions(){
   const b=document.getElementById("sessionsList");if(!b)return;
   const {data:ses}=await db.from("sessions").select("*").order("created_at",{ascending:false});
@@ -895,7 +930,7 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
   document.getElementById("loginBox").style.display="none";
   document.getElementById("panelBox").style.display="block";
   showSectionsForPanel(currentPanel);
-  loadMembers();loadAdminIdeas();loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadGroups();loadVideos();loadLibrary();loadClasses();loadSessions();loadSentMessages();loadBirthdays();
+  loadMembers();loadAdminIdeas();loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadGroups();loadVideos();loadLibrary();loadClasses();loadSessions();loadSentMessages();loadBirthdays();loadReports();
 });
 document.getElementById("logoutBtn").addEventListener("click",()=>{
   adminPassword=null;allMembers=[];currentPanel=null;
@@ -1041,7 +1076,7 @@ document.getElementById("sessionForm").addEventListener("submit",async e=>{
   m.textContent="ذخیره...";m.style.color="#555";
   const {error}=await db.rpc("admin_add_session",{admin_pass:adminPassword,p_title:t,p_date:d,p_desc:document.getElementById("sesDesc").value.trim()});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
-  m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();
+  m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
 });
 document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   e.preventDefault();const m=document.getElementById("memberLoginMsg"),ph=document.getElementById("mLoginPhone").value.trim();
