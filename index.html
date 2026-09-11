@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>کانون فرهنگی دینی انوارالرضا(ع)</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:#f7fafc;color:#222}
@@ -58,13 +61,29 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .b-done{background:#7a3fa0}
 .b-del{background:#c94f4f}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;animation:fadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease}
+.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;animation:fadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease;cursor:pointer}
 .gallery-item:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s ease}
 .gallery-item:hover img{transform:scale(1.05)}
 .gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center;position:relative;z-index:1;background:#fff}
 .gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;transition:transform .15s ease;z-index:2}
 .gallery-item .del-btn:active{transform:scale(.85)}
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column;animation:fadeIn .3s ease}
+.lightbox.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.lightbox img{max-width:95vw;max-height:78vh;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.6);user-select:none;touch-action:pan-y;transition:transform .3s ease}
+.lightbox .lb-caption{color:#fff;font-size:14px;margin-top:14px;text-align:center;padding:0 20px;max-width:600px}
+.lightbox .lb-counter{color:#bbb;font-size:13px;margin-top:6px}
+.lightbox .lb-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.lightbox .lb-close:hover{background:rgba(255,255,255,.3)}
+.lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:background .2s ease}
+.lightbox .lb-nav:hover{background:rgba(255,255,255,.3)}
+.lightbox .lb-prev{left:20px}
+.lightbox .lb-next{right:20px}
+.lightbox .lb-dots{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;justify-content:center}
+.lightbox .lb-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .2s ease}
+.lightbox .lb-dot.active{background:#fff;width:28px;border-radius:5px}
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:fadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease}
 .weekly-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.1)}
@@ -125,7 +144,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
 .poll-option .result{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:12px;color:#084c47;font-weight:bold}
 .poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
-@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
+@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.lightbox .lb-nav{width:40px;height:40px;font-size:22px}.lightbox .lb-prev{left:8px}.lightbox .lb-next{right:8px}}
 </style>
 </head>
 <body>
@@ -287,7 +306,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 
 <section id="gallery">
 <div class="title"><h2>🖼 گالری تصاویر کانون</h2>
-<p>لحظه‌های ماندگار کانون انوارالرضا(ع)</p>
+<p>روی هر عکس بزنید تا بزرگ شود • برای ورق زدن بکشید</p>
 </div>
 <div class="card">
 <div id="galleryGrid" class="gallery-grid"></div>
@@ -427,6 +446,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </div>
 
+<!-- Lightbox گالری -->
+<div class="lightbox" id="lightbox">
+<button class="lb-close" onclick="closeLightbox()">✕</button>
+<button class="lb-nav lb-prev" onclick="lbPrev()">‹</button>
+<button class="lb-nav lb-next" onclick="lbNext()">›</button>
+<img id="lbImg" src="" alt="">
+<div class="lb-caption" id="lbCaption"></div>
+<div class="lb-counter" id="lbCounter"></div>
+<div class="lb-dots" id="lbDots"></div>
+</div>
+
 <footer>
 کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم
 </footer>
@@ -445,6 +475,8 @@ let allMembers = [];
 let currentMember = null;
 let allPolls = [];
 let allVotes = [];
+let galleryImages = [];
+let lbIndex = 0;
 
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
@@ -755,20 +787,22 @@ async function deleteWeekly(id) {
   loadWeekly();
 }
 
-// ============ گالری ============
+// ============ گالری با لایت‌باکس ============
 async function loadGallery() {
   const box = document.getElementById("galleryGrid");
   if (!box) return;
   const { data } = await db.from("gallery").select("*").order("created_at", { ascending: false });
   if (!data || !data.length) {
+    galleryImages = [];
     box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز عکسی اضافه نشده.</p>";
     return;
   }
-  box.innerHTML = data.map(g => `
-    <div class="gallery-item">
+  galleryImages = data;
+  box.innerHTML = data.map((g, idx) => `
+    <div class="gallery-item" onclick="openLightbox(${idx})">
       <img src="${esc(g.url)}" alt="${esc(g.caption || "")}" loading="lazy">
       ${g.caption ? `<div class="cap">${esc(g.caption)}</div>` : ""}
-      ${adminPassword ? `<button class="del-btn" onclick="deleteGalleryImg(${g.id})">✕</button>` : ""}
+      ${adminPassword ? `<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button>` : ""}
     </div>
   `).join("");
   setupReveal();
@@ -781,6 +815,77 @@ async function deleteGalleryImg(id) {
   alert("عکس حذف شد ✅");
   loadGallery();
 }
+
+// ============ Lightbox ============
+function openLightbox(idx) {
+  if (!galleryImages.length) return;
+  lbIndex = idx;
+  updateLightbox();
+  document.getElementById("lightbox").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function updateLightbox() {
+  const img = galleryImages[lbIndex];
+  if (!img) return;
+  document.getElementById("lbImg").src = img.url;
+  document.getElementById("lbCaption").textContent = img.caption || "";
+  document.getElementById("lbCounter").textContent = `${fa(lbIndex + 1)} از ${fa(galleryImages.length)}`;
+  const dots = document.getElementById("lbDots");
+  if (galleryImages.length > 1 && galleryImages.length <= 15) {
+    dots.innerHTML = galleryImages.map((_, i) => 
+      `<span class="lb-dot ${i === lbIndex ? 'active' : ''}" onclick="lbGoTo(${i})"></span>`
+    ).join("");
+  } else {
+    dots.innerHTML = "";
+  }
+}
+
+function lbNext() {
+  if (!galleryImages.length) return;
+  lbIndex = (lbIndex + 1) % galleryImages.length;
+  updateLightbox();
+}
+
+function lbPrev() {
+  if (!galleryImages.length) return;
+  lbIndex = (lbIndex - 1 + galleryImages.length) % galleryImages.length;
+  updateLightbox();
+}
+
+function lbGoTo(i) {
+  lbIndex = i;
+  updateLightbox();
+}
+
+// سوایپ با انگشت
+let touchStartX = 0;
+let touchEndX = 0;
+const lbEl = document.getElementById("lightbox");
+lbEl.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+lbEl.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) lbNext();
+    else lbPrev();
+  }
+}, { passive: true });
+
+// کیبورد
+document.addEventListener("keydown", (e) => {
+  if (!document.getElementById("lightbox").classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") lbNext();
+  if (e.key === "ArrowRight") lbPrev();
+});
 
 // ============ اعضا ============
 async function loadMembers() {
@@ -1053,7 +1158,6 @@ document.getElementById("aboutForm").addEventListener("submit", async (e) => {
   loadAbout();
 });
 
-// ============ فرم‌های جدید ============
 document.getElementById("newsForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("newsMsg");
@@ -1102,7 +1206,6 @@ document.getElementById("pollForm").addEventListener("submit", async (e) => {
   loadPolls();
 });
 
-// ============ پنل اعضا ============
 document.getElementById("memberLoginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const msg = document.getElementById("memberLoginMsg");
