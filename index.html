@@ -17,7 +17,7 @@ nav a{color:#fff;text-decoration:none;margin:0 8px;font-size:14px}
 .logo{font-weight:bold;font-size:16px}
 .menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer;transition:transform .2s ease}
 .menu-btn:active{transform:scale(.92)}
-.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:200px;opacity:0;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease}
+.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:220px;max-height:75vh;overflow-y:auto;opacity:0;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease}
 .menu.open{display:block;opacity:1;transform:translateY(0)}
 .menu a{display:block;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:14px;margin:0;transition:background .2s ease}
 .menu a:hover{background:#0b6b62}
@@ -150,6 +150,35 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .group-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#fff;border-radius:8px;margin:4px 0;font-size:13px;border:1px solid #d6e2e0}
 .group-item button{background:#0b6b62;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-right:4px}
 .group-item .del-g{background:#c94f4f}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.06);position:relative;animation:fadeUp .5s ease both}
+.video-card video{width:100%;height:200px;object-fit:cover;display:block;background:#000}
+.video-card .v-info{padding:14px}
+.video-card h4{margin:0 0 6px;color:#084c47;font-size:15px}
+.video-card .v-desc{font-size:12px;color:#777;line-height:1.6}
+.video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
+.library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.book-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;animation:fadeUp .5s ease both;border-top:4px solid #2e8b57;text-align:center}
+.book-card .book-icon{font-size:42px;margin-bottom:8px}
+.book-card h4{margin:6px 0;color:#084c47;font-size:15px}
+.book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:11px;padding:2px 10px;border-radius:10px;margin-bottom:8px}
+.book-card .b-desc{font-size:12px;color:#777;line-height:1.6;margin:8px 0}
+.book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-size:13px;margin-top:6px}
+.book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:12px;line-height:1}
+.class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.class-card{background:linear-gradient(135deg,#fff,#f2faf8);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);position:relative;animation:fadeUp .5s ease both;border-right:5px solid #7a3fa0}
+.class-card h4{margin:0 0 10px;color:#084c47;font-size:17px}
+.class-card .c-info{font-size:13px;color:#555;margin:5px 0}
+.class-card .c-info b{color:#0b6b62}
+.class-card .c-desc{font-size:12px;color:#777;line-height:1.7;margin:10px 0}
+.class-card .c-reg{background:#7a3fa0;color:#fff;border:none;padding:10px 18px;border-radius:10px;font-size:13px;cursor:pointer;width:100%;transition:transform .15s ease}
+.class-card .c-reg:active{transform:scale(.97)}
+.class-card .c-reg.done{background:#888;cursor:default}
+.class-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
+.class-card .c-count{position:absolute;top:12px;left:50px;background:#7a3fa0;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
+.reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
+.reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
+.reg-list .reg-item:last-child{border-bottom:none}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.lightbox .lb-nav{width:40px;height:40px;font-size:22px}.lightbox .lb-prev{left:8px}.lightbox .lb-next{right:8px}}
 </style>
 </head>
@@ -165,6 +194,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <a href="#polls" onclick="toggleMenu()">📊 نظرسنجی</a>
 <a href="#about" onclick="toggleMenu()">درباره کانون</a>
 <a href="#weekly" onclick="toggleMenu()">برنامه هفتگی</a>
+<a href="#classes" onclick="toggleMenu()">🎓 کلاس‌ها</a>
+<a href="#videos" onclick="toggleMenu()">🎥 ویدیو</a>
+<a href="#library" onclick="toggleMenu()">📚 کتابخانه</a>
 <a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
 <a href="#member" onclick="toggleMenu()">پنل اعضا</a>
 <a href="#think" onclick="toggleMenu()">اتاق فکر</a>
@@ -192,23 +224,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 
 <section id="news">
-<div class="title"><h2>📢 اخبار و اطلاعیه‌ها</h2>
-<p>آخرین خبرها و اطلاعیه‌های کانون</p>
-</div>
+<div class="title"><h2>📢 اخبار و اطلاعیه‌ها</h2><p>آخرین خبرها و اطلاعیه‌های کانون</p></div>
 <div class="news-grid" id="newsGrid"></div>
 </section>
 
 <section id="events">
-<div class="title"><h2>📅 رویدادهای پیش‌رو</h2>
-<p>اردوها، مراسم و برنامه‌های خاص کانون</p>
-</div>
+<div class="title"><h2>📅 رویدادهای پیش‌رو</h2><p>اردوها، مراسم و برنامه‌های خاص کانون</p></div>
 <div class="events-grid" id="eventsGrid"></div>
 </section>
 
 <section id="polls">
-<div class="title"><h2>📊 نظرسنجی‌ها</h2>
-<p>نظر شما برای ما مهمه</p>
-</div>
+<div class="title"><h2>📊 نظرسنجی‌ها</h2><p>نظر شما برای ما مهمه</p></div>
 <div id="pollsBox"></div>
 </section>
 
@@ -218,10 +244,23 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 
 <section id="weekly">
-<div class="title"><h2>📅 برنامه هفتگی کانون</h2>
-<p>برنامه‌های ثابت هفتگی انوارالرضا(ع)</p>
-</div>
+<div class="title"><h2>📅 برنامه هفتگی کانون</h2><p>برنامه‌های ثابت هفتگی انوارالرضا(ع)</p></div>
 <div class="weekly-grid" id="weeklyGrid"></div>
+</section>
+
+<section id="classes">
+<div class="title"><h2>🎓 کلاس‌ها و دوره‌ها</h2><p>برای ثبت‌نام، از پنل اعضا وارد شوید</p></div>
+<div class="class-grid" id="classesGrid"></div>
+</section>
+
+<section id="videos">
+<div class="title"><h2>🎥 گالری ویدیو</h2><p>ویدیوهای کانون</p></div>
+<div class="video-grid" id="videosGrid"></div>
+</section>
+
+<section id="library">
+<div class="title"><h2>📚 کتابخانه کانون</h2><p>کتاب‌ها، جزوات و فایل‌های آموزشی</p></div>
+<div class="library-grid" id="libraryGrid"></div>
 </section>
 
 <section id="register">
@@ -275,6 +314,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </form>
 <p id="editPhoneMsg"></p>
 </div>
+<h3 style="color:#084c47;margin-top:20px">🎓 کلاس‌های من</h3>
+<div id="myClasses"><p style="color:#888">هنوز در کلاسی ثبت‌نام نکرده‌اید.</p></div>
 <h3 style="color:#084c47;margin-top:20px">💡 ایده‌های من</h3>
 <div id="myIdeas"><p style="color:#888">هنوز ایده‌ای ثبت نکرده‌اید.</p></div>
 </div>
@@ -282,9 +323,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 
 <section id="think">
-<div class="title"><h2>💡 اتاق فکر انوارالرضا</h2>
-<p>اگر مسئول هیئت بودی، چه چیزی را تغییر می‌دادی؟</p>
-</div>
+<div class="title"><h2>💡 اتاق فکر انوارالرضا</h2><p>اگر مسئول هیئت بودی، چه چیزی را تغییر می‌دادی؟</p></div>
 <div class="grid">
 <div class="card">
 <h3>ثبت ایده</h3>
@@ -311,12 +350,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 
 <section id="gallery">
-<div class="title"><h2>🖼 گالری تصاویر کانون</h2>
-<p>روی هر عکس بزنید تا بزرگ شود • برای ورق زدن بکشید</p>
-</div>
-<div class="card">
-<div id="galleryGrid" class="gallery-grid"></div>
-</div>
+<div class="title"><h2>🖼 گالری تصاویر کانون</h2><p>روی هر عکس بزنید تا بزرگ شود • برای ورق زدن بکشید</p></div>
+<div class="card"><div id="galleryGrid" class="gallery-grid"></div></div>
 </section>
 
 <section id="admin">
@@ -336,47 +371,78 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="btn" id="logoutBtn" style="background:#c94f4f">خروج</button>
 </div>
 <div class="members-toolbar">
-<input id="searchInput" placeholder="🔍 جستجو در نام، کد ملی یا تلفن..." oninput="filterMembers()">
+<input id="searchInput" placeholder="🔍 جستجو..." oninput="filterMembers()">
 <button class="btn" id="downloadBtn" style="background:#2e8b57">📥 دانلود Excel</button>
 </div>
 <div id="members"></div>
 
-<h3 style="margin-top:30px">📢 ارتباط با اعضا (پیامک / اعلان)</h3>
+<h3 style="margin-top:30px">📢 ارتباط با اعضا</h3>
 <div class="card" style="background:#f7fafc">
-<p style="font-size:13px;color:#555">اعضا رو انتخاب کن، متن پیام رو بنویس، شماره‌ها رو کپی کن و به پنل پیامک بفرست.</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
 <button type="button" class="btn" onclick="selectAllMembers()" style="background:#1e6bb8;font-size:12px;padding:6px 12px">✅ انتخاب همه</button>
 <button type="button" class="btn" onclick="deselectAllMembers()" style="background:#888;font-size:12px;padding:6px 12px">✖ لغو</button>
 </div>
 <div id="memberSelector" style="max-height:250px;overflow-y:auto;background:#fff;border-radius:10px;padding:10px;border:1px solid #d6e2e0"></div>
-<p style="font-size:12px;color:#0b6b62;margin:8px 0">تعداد انتخاب‌شده: <b id="selectedCount">۰</b> نفر</p>
-
+<p style="font-size:12px;color:#0b6b62;margin:8px 0">تعداد: <b id="selectedCount">۰</b> نفر</p>
 <input id="msgText" placeholder="متن پیام..." style="margin-bottom:10px">
-<textarea id="msgLong" placeholder="متن بلند پیام (اختیاری)" style="min-height:80px;margin-bottom:10px"></textarea>
-
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
 <button type="button" class="btn" onclick="copyNumbers()" style="background:#2e8b57;font-size:13px">📋 کپی شماره‌ها</button>
-<button type="button" class="btn" onclick="copyWithMessage()" style="background:#1e6bb8;font-size:13px">📋 کپی شماره + متن</button>
-<button type="button" class="btn" onclick="openWhatsApp()" style="background:#25D366;font-size:13px">💬 واتساپ</button>
-<button type="button" class="btn" onclick="openTelegram()" style="background:#0088cc;font-size:13px">✈️ تلگرام</button>
+<button type="button" class="btn" onclick="saveGroup()" style="background:#1e6bb8;font-size:13px">💾 ذخیره گروه</button>
 </div>
+<input id="groupName" placeholder="اسم گروه" style="margin-top:10px">
 <p id="msgStatus" style="font-size:12px"></p>
-
-<h4 style="margin-top:14px;color:#084c47;font-size:14px">💾 گروه‌های ذخیره‌شده</h4>
-<div style="display:flex;gap:8px;margin-bottom:10px">
-<input id="groupName" placeholder="اسم گروه (مثلاً: اردوی مشهد)" style="flex:1">
-<button type="button" class="btn" onclick="saveGroup()" style="font-size:12px;padding:8px 14px">💾 ذخیره</button>
-</div>
-<div id="groupsList"></div>
+<div id="groupsList" style="margin-top:10px"></div>
 </div>
 
-<h3 style="margin-top:30px">📢 افزودن خبر / اطلاعیه</h3>
+<h3 style="margin-top:30px">🎓 افزودن کلاس</h3>
+<div class="card" style="background:#f7fafc">
+<form id="classForm">
+<input id="cTitle" placeholder="عنوان کلاس" required>
+<input id="cTeacher" placeholder="استاد (اختیاری)">
+<input id="cSchedule" placeholder="زمان (مثلاً: شنبه‌ها ۱۷:۰۰)">
+<input id="cCap" type="number" placeholder="ظرفیت (اختیاری)">
+<textarea id="cDesc" placeholder="توضیحات (اختیاری)"></textarea>
+<button class="btn" type="submit">افزودن کلاس</button>
+</form>
+<p id="classMsg"></p>
+</div>
+
+<h3 style="margin-top:30px">🎥 افزودن ویدیو</h3>
+<div class="card" style="background:#f7fafc">
+<form id="videoForm">
+<input id="vTitle" placeholder="عنوان ویدیو" required>
+<input id="vUrl" placeholder="لینک ویدیو (MP4 یا لینک مستقیم)" required>
+<textarea id="vDesc" placeholder="توضیحات (اختیاری)"></textarea>
+<button class="btn" type="submit">افزودن ویدیو</button>
+</form>
+<p id="videoMsg"></p>
+</div>
+
+<h3 style="margin-top:30px">📚 افزودن کتاب / جزوه</h3>
+<div class="card" style="background:#f7fafc">
+<form id="bookForm">
+<input id="bTitle" placeholder="عنوان کتاب" required>
+<select id="bCat">
+<option value="قرآن">قرآن</option>
+<option value="احکام">احکام</option>
+<option value="تقویتی درسی">تقویتی درسی</option>
+<option value="رسانه">رسانه</option>
+<option value="عمومی">عمومی</option>
+</select>
+<textarea id="bDesc" placeholder="توضیحات (اختیاری)"></textarea>
+<input type="file" id="bFile" accept=".pdf,.doc,.docx,.zip,.ppt,.pptx" required>
+<button class="btn" type="submit">آپلود کتاب</button>
+</form>
+<p id="bookMsg"></p>
+</div>
+
+<h3 style="margin-top:30px">📢 افزودن خبر</h3>
 <div class="card" style="background:#f7fafc">
 <form id="newsForm">
 <input id="nTitle" placeholder="عنوان خبر" required>
 <textarea id="nContent" placeholder="متن خبر..." required></textarea>
 <label style="display:flex;align-items:center;gap:8px;font-size:14px">
-<input type="checkbox" id="nPinned" style="width:auto"> 📌 سنجاق کن (بالا بمونه)
+<input type="checkbox" id="nPinned" style="width:auto"> 📌 سنجاق کن
 </label>
 <button class="btn" type="submit">افزودن خبر</button>
 </form>
@@ -386,14 +452,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin-top:30px">📅 افزودن رویداد</h3>
 <div class="card" style="background:#f7fafc">
 <form id="eventForm">
-<input id="eTitle" placeholder="عنوان رویداد (مثلاً: اردوی مشهد)" required>
-<textarea id="eDesc" placeholder="توضیحات (اختیاری)"></textarea>
+<input id="eTitle" placeholder="عنوان رویداد" required>
+<textarea id="eDesc" placeholder="توضیحات"></textarea>
 <div class="date-picker">
 <select id="eDay" required><option value="">روز</option></select>
 <select id="eMonth" required><option value="">ماه</option></select>
 <select id="eYear" required><option value="">سال</option></select>
 </div>
-<input id="ePlace" placeholder="مکان (اختیاری)">
+<input id="ePlace" placeholder="مکان">
 <button class="btn" type="submit">افزودن رویداد</button>
 </form>
 <p id="eventMsg"></p>
@@ -402,7 +468,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin-top:30px">📊 ساخت نظرسنجی</h3>
 <div class="card" style="background:#f7fafc">
 <form id="pollForm">
-<input id="pQuestion" placeholder="سؤال نظرسنجی" required>
+<input id="pQuestion" placeholder="سؤال" required>
 <div id="pollOptionsBox">
 <input class="poll-opt" placeholder="گزینه ۱" required>
 <input class="poll-opt" placeholder="گزینه ۲" required>
@@ -416,9 +482,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin-top:30px">🌟 ویرایش درباره کانون</h3>
 <div class="card" style="background:#f7fafc">
 <form id="aboutForm">
-<input id="aboutTitleInput" placeholder="عنوان (مثلاً: درباره کانون انوارالرضا)" required>
-<textarea id="aboutContentInput" style="min-height:200px" placeholder="متن درباره کانون..." required></textarea>
-<button class="btn" type="submit">ذخیره تغییرات</button>
+<input id="aboutTitleInput" placeholder="عنوان" required>
+<textarea id="aboutContentInput" style="min-height:150px" placeholder="متن..." required></textarea>
+<button class="btn" type="submit">ذخیره</button>
 </form>
 <p id="aboutMsg"></p>
 </div>
@@ -430,7 +496,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="card" style="background:#f7fafc">
 <form id="weeklyForm">
 <select id="wDay" required>
-<option value="">روز هفته...</option>
+<option value="">روز...</option>
 <option value="شنبه">شنبه</option>
 <option value="یکشنبه">یکشنبه</option>
 <option value="دوشنبه">دوشنبه</option>
@@ -439,11 +505,11 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <option value="پنجشنبه">پنجشنبه</option>
 <option value="جمعه">جمعه</option>
 </select>
-<input id="wTitle" placeholder="عنوان برنامه (مثلاً: هیئت هفتگی)" required>
-<input id="wTime" placeholder="ساعت (مثلاً: ۱۹:۰۰)">
-<input id="wPlace" placeholder="مکان (مثلاً: مسجد جامع)">
-<textarea id="wDesc" placeholder="توضیحات (اختیاری)"></textarea>
-<button class="btn" type="submit">افزودن به برنامه</button>
+<input id="wTitle" placeholder="عنوان" required>
+<input id="wTime" placeholder="ساعت">
+<input id="wPlace" placeholder="مکان">
+<textarea id="wDesc" placeholder="توضیحات"></textarea>
+<button class="btn" type="submit">افزودن</button>
 </form>
 <p id="weeklyMsg"></p>
 </div>
@@ -452,8 +518,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="card" style="background:#f7fafc">
 <form id="uploadForm">
 <input type="file" id="galleryFile" accept="image/*" required>
-<input id="galleryCaption" placeholder="توضیح عکس (اختیاری)">
-<button class="btn" type="submit">آپلود به گالری</button>
+<input id="galleryCaption" placeholder="توضیح">
+<button class="btn" type="submit">آپلود</button>
 </form>
 <p id="uploadMsg"></p>
 </div>
@@ -468,14 +534,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <form id="editForm">
 <input id="editId" type="hidden">
 <input id="editName" placeholder="نام و نام خانوادگی" required>
-<input id="editNationalId" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
+<input id="editNationalId" inputmode="numeric" placeholder="کد ملی" required>
 <div class="date-picker">
 <select id="editBirthDay" required><option value="">روز</option></select>
 <select id="editBirthMonth" required><option value="">ماه</option></select>
 <select id="editBirthYear" required><option value="">سال</option></select>
 </div>
-<input id="editPhone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
-<button class="btn" type="submit">ذخیره تغییرات</button>
+<input id="editPhone" type="tel" placeholder="شماره" required>
+<button class="btn" type="submit">ذخیره</button>
 </form>
 <p id="editMsg"></p>
 </div>
@@ -491,987 +557,424 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="lb-dots" id="lbDots"></div>
 </div>
 
-<footer>
-کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم
-</footer>
+<footer>کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://xbycuiqwljfttrhwjaka.supabase.co";
 const SUPABASE_KEY = "sb_publishable_ZhO2Xpu_OJiMIW-ZEFuP5A_L79329vK";
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
 const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
-let adminPassword = null;
-let allMembers = [];
-let currentMember = null;
-let allPolls = [];
-let allVotes = [];
-let galleryImages = [];
-let lbIndex = 0;
+let adminPassword = null, allMembers = [], currentMember = null, allPolls = [], allVotes = [], galleryImages = [], lbIndex = 0, allClasses = [], allClassRegs = [];
 
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-function fillDateSelects(dayId, monthId, yearId) {
-  const dayEl = document.getElementById(dayId);
-  const monthEl = document.getElementById(monthId);
-  const yearEl = document.getElementById(yearId);
-  if (dayEl && dayEl.options.length <= 1) {
-    for (let i = 1; i <= 31; i++) {
-      const o = document.createElement("option");
-      o.value = String(i).padStart(2, "0");
-      o.textContent = fa(i);
-      dayEl.appendChild(o);
-    }
-  }
-  if (monthEl && monthEl.options.length <= 1) {
-    PERSIAN_MONTHS.forEach((name, idx) => {
-      const o = document.createElement("option");
-      o.value = String(idx + 1).padStart(2, "0");
-      o.textContent = name;
-      monthEl.appendChild(o);
-    });
-  }
-  if (yearEl && yearEl.options.length <= 1) {
-    for (let y = 1405; y >= 1360; y--) {
-      const o = document.createElement("option");
-      o.value = String(y);
-      o.textContent = fa(y);
-      yearEl.appendChild(o);
-    }
-  }
+function fillDateSelects(d,m,y){
+  const de=document.getElementById(d),me=document.getElementById(m),ye=document.getElementById(y);
+  if(de&&de.options.length<=1) for(let i=1;i<=31;i++){const o=document.createElement("option");o.value=String(i).padStart(2,"0");o.textContent=fa(i);de.appendChild(o);}
+  if(me&&me.options.length<=1) PERSIAN_MONTHS.forEach((n,i)=>{const o=document.createElement("option");o.value=String(i+1).padStart(2,"0");o.textContent=n;me.appendChild(o);});
+  if(ye&&ye.options.length<=1) for(let y2=1405;y2>=1360;y2--){const o=document.createElement("option");o.value=String(y2);o.textContent=fa(y2);ye.appendChild(o);}
 }
-fillDateSelects("birthDay", "birthMonth", "birthYear");
-fillDateSelects("editBirthDay", "editBirthMonth", "editBirthYear");
-fillDateSelects("eDay", "eMonth", "eYear");
+fillDateSelects("birthDay","birthMonth","birthYear");
+fillDateSelects("editBirthDay","editBirthMonth","editBirthYear");
+fillDateSelects("eDay","eMonth","eYear");
 
-function getPersianDate(dayId, monthId, yearId) {
-  const d = document.getElementById(dayId).value;
-  const m = document.getElementById(monthId).value;
-  const y = document.getElementById(yearId).value;
-  if (!d || !m || !y) return "";
-  return `${y}/${m}/${d}`;
-}
+function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=document.getElementById(m).value,yy=document.getElementById(y).value;if(!dd||!mm||!yy)return "";return `${yy}/${mm}/${dd}`;}
+function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
 
-function setPersianDate(dayId, monthId, yearId, val) {
-  const parts = (val || "").split("/");
-  if (parts.length === 3) {
-    document.getElementById(yearId).value = parts[0];
-    document.getElementById(monthId).value = parts[1];
-    document.getElementById(dayId).value = parts[2];
-  } else {
-    document.getElementById(yearId).value = "";
-    document.getElementById(monthId).value = "";
-    document.getElementById(dayId).value = "";
-  }
-}
+function toggleMenu(){document.getElementById("menu").classList.toggle("open");}
+function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank">$1</a>');}
+function animateCount(el,t){const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
+function setupReveal(){const els=document.querySelectorAll("section, .card, .weekly-card, .gallery-item, .about-content, .news-card, .event-card, .poll-card, .video-card, .book-card, .class-card");els.forEach(el=>el.classList.add("reveal"));const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target);}});},{threshold:0.1});els.forEach(el=>io.observe(el));}
 
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("open");
-}
-
-function linkify(text) {
-  return esc(text).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g, '<a href="https://$1" target="_blank">$1</a>');
-}
-
-function animateCount(el, target) {
-  const duration = 800;
-  const start = performance.now();
-  function tick(now) {
-    const p = Math.min((now - start) / duration, 1);
-    const val = Math.floor(0 + (target - 0) * (1 - Math.pow(1 - p, 3)));
-    el.textContent = fa(val);
-    if (p < 1) requestAnimationFrame(tick);
-    else el.textContent = fa(target);
-  }
-  requestAnimationFrame(tick);
-}
-
-function setupReveal() {
-  const els = document.querySelectorAll("section, .card, .weekly-card, .gallery-item, .about-content, .news-card, .event-card, .poll-card");
-  els.forEach(el => el.classList.add("reveal"));
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("show");
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(el => io.observe(el));
-}
-
-async function render() {
-  const { data: memberCount } = await db.rpc("get_member_count");
-  const { data: ideasData } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(50);
-
+async function render(){
+  const { data: mc } = await db.rpc("get_member_count");
+  const { data: ideasData } = await db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50);
   const ideas = ideasData || [];
-  const done = ideas.filter(i => i.status === "اجرا شد").length;
-
-  animateCount(document.getElementById("memberCount"), memberCount || 0);
+  const done = ideas.filter(i=>i.status==="اجرا شد").length;
+  animateCount(document.getElementById("memberCount"), mc||0);
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
-
-  const ideasBox = document.getElementById("ideas");
-  if (ideasBox) {
-    ideasBox.innerHTML = ideas.length
-      ? ideas.slice(0, 10).map(i => `
-          <div class="idea">
-            <strong>${esc(i.name || "ناشناس")}</strong>
-            <p>${esc(i.content || "")}</p>
-            <span class="status">${esc(i.status || "ثبت شد")}</span>
-          </div>`).join("")
-      : "<p>هنوز ایده‌ای ثبت نشده.</p>";
-  }
-
-  await loadNews();
-  await loadEvents();
-  await loadPolls();
-  await loadAbout();
-  await loadWeekly();
-  await loadGallery();
-
-  if (adminPassword) {
-    await loadMembers();
-    await loadAdminIdeas();
-  }
+  const ib = document.getElementById("ideas");
+  if(ib) ib.innerHTML = ideas.length ? ideas.slice(0,10).map(i=>`<div class="idea"><strong>${esc(i.name||"ناشناس")}</strong><p>${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("") : "<p>هنوز ایده‌ای ثبت نشده.</p>";
+  await loadNews(); await loadEvents(); await loadPolls(); await loadAbout();
+  await loadWeekly(); await loadGallery(); await loadVideos(); await loadLibrary(); await loadClasses();
+  if(adminPassword){await loadMembers();await loadAdminIdeas();}
 }
 
-// ============ اخبار ============
-async function loadNews() {
-  const box = document.getElementById("newsGrid");
-  if (!box) return;
-  const { data } = await db.from("news").select("*").order("is_pinned", { ascending: false }).order("created_at", { ascending: false });
-  if (!data || !data.length) {
-    box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز خبری ثبت نشده.</p>";
-    return;
-  }
-  box.innerHTML = data.map(n => {
-    const d = new Date(n.created_at);
-    const dt = d.toLocaleDateString("fa-IR");
-    return `
-    <div class="news-card ${n.is_pinned ? "pinned" : ""}">
-      ${n.is_pinned ? '<span class="pin-badge">📌 سنجاق‌شده</span>' : ""}
-      ${adminPassword ? `<button class="del-btn" onclick="deleteNews(${n.id})" style="${n.is_pinned ? 'top:36px' : ''}">✕</button>` : ""}
-      <h4>${esc(n.title)}</h4>
-      <div class="content">${esc(n.content)}</div>
-      <div class="date">🗓 ${dt}</div>
-    </div>`;
+async function loadNews(){
+  const b=document.getElementById("newsGrid");if(!b)return;
+  const {data}=await db.from("news").select("*").order("is_pinned",{ascending:false}).order("created_at",{ascending:false});
+  if(!data||!data.length){b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز خبری ثبت نشده.</p>";return;}
+  b.innerHTML=data.map(n=>{const dt=new Date(n.created_at).toLocaleDateString("fa-IR");return `<div class="news-card ${n.is_pinned?"pinned":""}">${n.is_pinned?'<span class="pin-badge">📌</span>':""}${adminPassword?`<button class="del-btn" onclick="deleteNews(${n.id})" style="${n.is_pinned?'top:36px':''}">✕</button>`:""}<h4>${esc(n.title)}</h4><div class="content">${esc(n.content)}</div><div class="date">🗓 ${dt}</div></div>`;}).join("");
+  setupReveal();
+}
+async function deleteNews(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_news",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadNews();}
+
+async function loadEvents(){
+  const b=document.getElementById("eventsGrid");if(!b)return;
+  const {data}=await db.from("events").select("*").order("event_date",{ascending:true});
+  if(!data||!data.length){b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز رویدادی ثبت نشده.</p>";return;}
+  b.innerHTML=data.map(e=>`<div class="event-card"><span class="date-badge">📅 ${esc(e.event_date)}</span>${adminPassword?`<button class="del-btn" onclick="deleteEvent(${e.id})">✕</button>`:""}<h4>${esc(e.title)}</h4>${e.place?`<div class="info">📍 ${esc(e.place)}</div>`:""}${e.description?`<div class="desc">${esc(e.description)}</div>`:""}</div>`).join("");
+  setupReveal();
+}
+async function deleteEvent(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_event",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadEvents();}
+
+async function loadPolls(){
+  const b=document.getElementById("pollsBox");if(!b)return;
+  const {data:polls}=await db.from("polls").select("*").order("created_at",{ascending:false});
+  const {data:votes}=await db.from("poll_votes").select("*");
+  allPolls=polls||[];allVotes=votes||[];
+  if(!allPolls.length){b.innerHTML="<p style='text-align:center;color:#888'>هنوز نظرسنجی‌ای ساخته نشده.</p>";return;}
+  const myPhone=currentMember?currentMember.phone:null;
+  b.innerHTML=allPolls.map(p=>{
+    const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;
+    const myVote=myPhone?pv.find(v=>v.voter_phone===myPhone):null;
+    const opts=p.options||[];
+    return `<div class="poll-card">${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}<h4>${esc(p.question)}</h4><div class="sub">👥 ${fa(total)} رأی</div>${opts.map((o,i)=>{const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})"><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;}).join("")}${!myPhone?`<p style="font-size:12px;color:#c48b1f;margin-top:10px">⚠ برای رأی دادن، اول از پنل اعضا وارد شوید</p>`:""}</div>`;
   }).join("");
   setupReveal();
 }
+async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.phone});if(error){alert("خطا: "+error.message);return;}alert("رأی ثبت شد ✅");loadPolls();}
+async function deletePoll(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_poll",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadPolls();}
+function addPollOption(){const b=document.getElementById("pollOptionsBox"),c=b.querySelectorAll("input").length;if(c>=8){alert("حداکثر ۸ گزینه");return;}const i=document.createElement("input");i.className="poll-opt";i.placeholder=`گزینه ${c+1}`;b.appendChild(i);}
 
-async function deleteNews(id) {
-  if (!confirm("آیا از حذف این خبر مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_news", { admin_pass: adminPassword, item_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("خبر حذف شد ✅");
-  loadNews();
+async function loadAbout(){
+  const b=document.getElementById("aboutBox"),t=document.getElementById("aboutTitle");if(!b)return;
+  const {data}=await db.from("about").select("*").limit(1);
+  if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>هنوز متنی نوشته نشده.</p>";return;}
+  const a=data[0];if(a.title)t.textContent="🌟 "+a.title;
+  b.innerHTML=linkify(a.content||"");
+  if(adminPassword){document.getElementById("aboutTitleInput").value=a.title||"";document.getElementById("aboutContentInput").value=a.content||"";}
 }
 
-// ============ رویدادها ============
-async function loadEvents() {
-  const box = document.getElementById("eventsGrid");
-  if (!box) return;
-  const { data } = await db.from("events").select("*").order("event_date", { ascending: true });
-  if (!data || !data.length) {
-    box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز رویدادی ثبت نشده.</p>";
-    return;
-  }
-  box.innerHTML = data.map(e => `
-    <div class="event-card">
-      <span class="date-badge">📅 ${esc(e.event_date)}</span>
-      ${adminPassword ? `<button class="del-btn" onclick="deleteEvent(${e.id})">✕</button>` : ""}
-      <h4>${esc(e.title)}</h4>
-      ${e.place ? `<div class="info">📍 مکان: <b>${esc(e.place)}</b></div>` : ""}
-      ${e.description ? `<div class="desc">${esc(e.description)}</div>` : ""}
-    </div>
-  `).join("");
+async function loadWeekly(){
+  const b=document.getElementById("weeklyGrid");if(!b)return;
+  const {data}=await db.from("weekly").select("*").order("created_at",{ascending:true});
+  if(!data||!data.length){b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز برنامه‌ای اضافه نشده.</p>";return;}
+  b.innerHTML=data.map(w=>`<div class="weekly-card"><span class="day">${esc(w.day)}</span><h4>${esc(w.title)}</h4>${w.p_time?`<div class="info">🕐 ${esc(w.p_time)}</div>`:""}${w.place?`<div class="info">📍 ${esc(w.place)}</div>`:""}${w.description?`<div class="desc">${esc(w.description)}</div>`:""}${adminPassword?`<button class="del-btn" onclick="deleteWeekly(${w.id})">✕</button>`:""}</div>`).join("");
   setupReveal();
 }
+async function deleteWeekly(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_weekly",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadWeekly();}
 
-async function deleteEvent(id) {
-  if (!confirm("آیا از حذف این رویداد مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_event", { admin_pass: adminPassword, item_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("رویداد حذف شد ✅");
-  loadEvents();
+async function loadGallery(){
+  const b=document.getElementById("galleryGrid");if(!b)return;
+  const {data}=await db.from("gallery").select("*").order("created_at",{ascending:false});
+  if(!data||!data.length){galleryImages=[];b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز عکسی اضافه نشده.</p>";return;}
+  galleryImages=data;
+  b.innerHTML=data.map((g,i)=>`<div class="gallery-item" onclick="openLightbox(${i})"><img src="${esc(g.url)}" loading="lazy">${g.caption?`<div class="cap">${esc(g.caption)}</div>`:""}${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button>`:""}</div>`).join("");
+  setupReveal();
 }
+async function deleteGalleryImg(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_gallery",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGallery();}
 
-// ============ نظرسنجی ============
-async function loadPolls() {
-  const box = document.getElementById("pollsBox");
-  if (!box) return;
-  const { data: polls } = await db.from("polls").select("*").order("created_at", { ascending: false });
-  const { data: votes } = await db.from("poll_votes").select("*");
-  allPolls = polls || [];
-  allVotes = votes || [];
+function openLightbox(i){if(!galleryImages.length)return;lbIndex=i;updateLightbox();document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
+function closeLightbox(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}
+function updateLightbox(){const im=galleryImages[lbIndex];if(!im)return;document.getElementById("lbImg").src=im.url;document.getElementById("lbCaption").textContent=im.caption||"";document.getElementById("lbCounter").textContent=`${fa(lbIndex+1)} از ${fa(galleryImages.length)}`;const d=document.getElementById("lbDots");if(galleryImages.length>1&&galleryImages.length<=15){d.innerHTML=galleryImages.map((_,i)=>`<span class="lb-dot ${i===lbIndex?'active':''}" onclick="lbGoTo(${i})"></span>`).join("");}else{d.innerHTML="";}}
+function lbNext(){if(!galleryImages.length)return;lbIndex=(lbIndex+1)%galleryImages.length;updateLightbox();}
+function lbPrev(){if(!galleryImages.length)return;lbIndex=(lbIndex-1+galleryImages.length)%galleryImages.length;updateLightbox();}
+function lbGoTo(i){lbIndex=i;updateLightbox();}
+let tsX=0,teX=0;const lbEl=document.getElementById("lightbox");
+lbEl.addEventListener("touchstart",e=>{tsX=e.changedTouches[0].screenX;},{passive:true});
+lbEl.addEventListener("touchend",e=>{teX=e.changedTouches[0].screenX;const d=tsX-teX;if(Math.abs(d)>50){if(d>0)lbNext();else lbPrev();}},{passive:true});
+document.addEventListener("keydown",e=>{if(!document.getElementById("lightbox").classList.contains("open"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")lbNext();if(e.key==="ArrowRight")lbPrev();});
 
-  if (!allPolls.length) {
-    box.innerHTML = "<p style='text-align:center;color:#888'>هنوز نظرسنجی‌ای ساخته نشده.</p>";
-    return;
-  }
+// ============ ویدیو ============
+async function loadVideos(){
+  const b=document.getElementById("videosGrid");if(!b)return;
+  const {data}=await db.from("videos").select("*").order("created_at",{ascending:false});
+  if(!data||!data.length){b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز ویدیویی اضافه نشده.</p>";return;}
+  b.innerHTML=data.map(v=>`<div class="video-card">${adminPassword?`<button class="del-btn" onclick="deleteVideo(${v.id})">✕</button>`:""}<video controls preload="metadata" src="${esc(v.video_url)}"></video><div class="v-info"><h4>${esc(v.title)}</h4>${v.description?`<div class="v-desc">${esc(v.description)}</div>`:""}</div></div>`).join("");
+  setupReveal();
+}
+async function deleteVideo(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadVideos();}
 
-  const myPhone = currentMember ? currentMember.phone : null;
+// ============ کتابخانه ============
+async function loadLibrary(){
+  const b=document.getElementById("libraryGrid");if(!b)return;
+  const {data}=await db.from("library").select("*").order("created_at",{ascending:false});
+  if(!data||!data.length){b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز کتابی اضافه نشده.</p>";return;}
+  b.innerHTML=data.map(bk=>`<div class="book-card">${adminPassword?`<button class="del-btn" onclick="deleteBook(${bk.id})">✕</button>`:""}<div class="book-icon">📖</div><h4>${esc(bk.title)}</h4>${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}<a href="${esc(bk.file_url)}" target="_blank" download class="b-download">📥 دانلود</a></div>`).join("");
+  setupReveal();
+}
+async function deleteBook(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadLibrary();}
 
-  box.innerHTML = allPolls.map(p => {
-    const pv = allVotes.filter(v => v.poll_id === p.id);
-    const total = pv.length;
-    const myVote = myPhone ? pv.find(v => v.voter_phone === myPhone) : null;
-    const opts = p.options || [];
-    return `
-      <div class="poll-card">
-        ${adminPassword ? `<button class="del-btn" onclick="deletePoll(${p.id})">🗑 حذف</button>` : ""}
-        <h4>${esc(p.question)}</h4>
-        <div class="sub">👥 ${fa(total)} رأی</div>
-        ${opts.map((opt, idx) => {
-          const count = pv.filter(v => v.option_index === idx).length;
-          const pct = total ? Math.round((count / total) * 100) : 0;
-          const voted = myVote && myVote.option_index === idx;
-          return `
-            <div class="poll-option">
-              <button class="${voted ? 'voted' : ''}" onclick="votePoll(${p.id}, ${idx})">
-                <div class="bar" style="width:${pct}%"></div>
-                ${esc(opt)}
-                ${total ? `<span class="result">${pct}٪ (${fa(count)})</span>` : ""}
-              </button>
-            </div>`;
-        }).join("")}
-        ${!myPhone && !myVote ? '<p style="font-size:12px;color:#c48b1f;margin-top:10px">⚠ برای رأی دادن، اول از پنل اعضا وارد شوید</p>' : ""}
-      </div>
-    `;
+// ============ کلاس‌ها ============
+async function loadClasses(){
+  const b=document.getElementById("classesGrid");if(!b)return;
+  const {data:cls}=await db.from("classes").select("*").order("created_at",{ascending:false});
+  const {data:regs}=await db.from("class_regs").select("*");
+  allClasses=cls||[];allClassRegs=regs||[];
+  if(!allClasses.length){b.innerHTML="<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز کلاسی اضافه نشده.</p>";return;}
+  const myPhone=currentMember?currentMember.phone:null;
+  b.innerHTML=allClasses.map(c=>{
+    const rc=allClassRegs.filter(r=>r.class_id===c.id).length;
+    const isReg=myPhone&&allClassRegs.some(r=>r.class_id===c.id&&r.member_phone===myPhone);
+    const full=c.capacity&&rc>=c.capacity;
+    return `<div class="class-card">${adminPassword?`<button class="del-btn" onclick="deleteClass(${c.id})">✕</button>`:""}${adminPassword?`<span class="c-count">${fa(rc)}${c.capacity?"/"+fa(c.capacity):""} نفر</span>`:""}<h4>🎓 ${esc(c.title)}</h4>${c.teacher?`<div class="c-info">👨‍🏫 استاد: <b>${esc(c.teacher)}</b></div>`:""}${c.schedule?`<div class="c-info">🕐 ${esc(c.schedule)}</div>`:""}${c.description?`<div class="c-desc">${esc(c.description)}</div>`:""}${isReg?`<button class="c-reg done">✅ ثبت‌نام شده‌اید</button>`:full?`<button class="c-reg done">ظرفیت تکمیل</button>`:`<button class="c-reg" onclick="registerClass(${c.id})">ثبت‌نام در کلاس</button>`}${adminPassword?`<div class="reg-list" id="regList${c.id}"><button class="btn" style="font-size:11px;padding:4px 10px;background:#1e6bb8" onclick="showRegs(${c.id})">نمایش لیست ثبت‌نام‌شده‌ها</button></div>`:""}</div>`;
   }).join("");
   setupReveal();
 }
-
-async function votePoll(pollId, idx) {
-  if (!currentMember) { alert("اول از پنل اعضا وارد شوید"); return; }
-  const { error } = await db.rpc("vote_poll", { p_poll_id: pollId, p_option: idx, p_phone: currentMember.phone });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("رأی شما ثبت شد ✅");
-  loadPolls();
+async function registerClass(id){
+  if(!currentMember){alert("اول از پنل اعضا وارد شوید");return;}
+  const {error}=await db.rpc("register_class",{p_class_id:id,p_phone:currentMember.phone,p_name:currentMember.name});
+  if(error){alert("خطا: "+error.message);return;}
+  alert("ثبت‌نام شد ✅");
+  loadClasses();
+  loadMyClasses();
+}
+async function deleteClass(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_class",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadClasses();}
+async function showRegs(cid){
+  const {data,error}=await db.rpc("admin_get_class_regs",{admin_pass:adminPassword,p_class_id:cid});
+  if(error){alert("خطا: "+error.message);return;}
+  const box=document.getElementById("regList"+cid);
+  if(!data||!data.length){box.innerHTML="<p style='color:#888'>هنوز کسی ثبت‌نام نکرده.</p>";return;}
+  box.innerHTML=`<b style="color:#084c47">لیست ثبت‌نام‌شده‌ها:</b>`+data.map(r=>`<div class="reg-item">${esc(r.member_name)} — ${esc(r.member_phone)}</div>`).join("")+`<button class="btn" style="font-size:11px;padding:4px 10px;margin-top:6px;background:#888" onclick="loadClasses()">بستن</button>`;
 }
 
-async function deletePoll(id) {
-  if (!confirm("آیا از حذف این نظرسنجی مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_poll", { admin_pass: adminPassword, item_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("نظرسنجی حذف شد ✅");
-  loadPolls();
+async function loadMyClasses(){
+  const b=document.getElementById("myClasses");if(!b||!currentMember)return;
+  const {data:regs}=await db.from("class_regs").select("*").eq("member_phone",currentMember.phone);
+  if(!regs||!regs.length){b.innerHTML="<p style='color:#888'>هنوز در کلاسی ثبت‌نام نکرده‌اید.</p>";return;}
+  const {data:cls}=await db.from("classes").select("*");
+  const myCls=(cls||[]).filter(c=>regs.some(r=>r.class_id===c.id));
+  b.innerHTML=myCls.map(c=>`<div class="myidea"><strong style="color:#084c47">🎓 ${esc(c.title)}</strong>${c.teacher?`<div style="font-size:12px;color:#777;margin-top:4px">استاد: ${esc(c.teacher)}</div>`:""}${c.schedule?`<div style="font-size:12px;color:#777">${esc(c.schedule)}</div>`:""}</div>`).join("");
 }
-
-function addPollOption() {
-  const box = document.getElementById("pollOptionsBox");
-  const count = box.querySelectorAll("input").length;
-  if (count >= 8) { alert("حداکثر ۸ گزینه"); return; }
-  const inp = document.createElement("input");
-  inp.className = "poll-opt";
-  inp.placeholder = `گزینه ${count + 1}`;
-  box.appendChild(inp);
-}
-
-// ============ درباره ============
-async function loadAbout() {
-  const box = document.getElementById("aboutBox");
-  const titleEl = document.getElementById("aboutTitle");
-  if (!box) return;
-  const { data } = await db.from("about").select("*").limit(1);
-  if (!data || !data.length) {
-    box.innerHTML = "<p style='text-align:center;color:#888'>هنوز متنی برای درباره کانون نوشته نشده.</p>";
-    return;
-  }
-  const a = data[0];
-  if (a.title) titleEl.textContent = "🌟 " + a.title;
-  box.innerHTML = linkify(a.content || "");
-  if (adminPassword) {
-    document.getElementById("aboutTitleInput").value = a.title || "";
-    document.getElementById("aboutContentInput").value = a.content || "";
-  }
-}
-
-// ============ برنامه هفتگی ============
-async function loadWeekly() {
-  const box = document.getElementById("weeklyGrid");
-  if (!box) return;
-  const { data } = await db.from("weekly").select("*").order("created_at", { ascending: true });
-  if (!data || !data.length) {
-    box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز برنامه‌ای اضافه نشده.</p>";
-    return;
-  }
-  box.innerHTML = data.map(w => `
-    <div class="weekly-card">
-      <span class="day">${esc(w.day)}</span>
-      <h4>${esc(w.title)}</h4>
-      ${w.p_time ? `<div class="info">🕐 ساعت: <b>${esc(w.p_time)}</b></div>` : ""}
-      ${w.place ? `<div class="info">📍 مکان: <b>${esc(w.place)}</b></div>` : ""}
-      ${w.description ? `<div class="desc">${esc(w.description)}</div>` : ""}
-      ${adminPassword ? `<button class="del-btn" onclick="deleteWeekly(${w.id})">✕</button>` : ""}
-    </div>
-  `).join("");
-  setupReveal();
-}
-
-async function deleteWeekly(id) {
-  if (!confirm("آیا از حذف این برنامه مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_weekly", { admin_pass: adminPassword, item_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("برنامه حذف شد ✅");
-  loadWeekly();
-}
-
-// ============ گالری ============
-async function loadGallery() {
-  const box = document.getElementById("galleryGrid");
-  if (!box) return;
-  const { data } = await db.from("gallery").select("*").order("created_at", { ascending: false });
-  if (!data || !data.length) {
-    galleryImages = [];
-    box.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#888'>هنوز عکسی اضافه نشده.</p>";
-    return;
-  }
-  galleryImages = data;
-  box.innerHTML = data.map((g, idx) => `
-    <div class="gallery-item" onclick="openLightbox(${idx})">
-      <img src="${esc(g.url)}" alt="${esc(g.caption || "")}" loading="lazy">
-      ${g.caption ? `<div class="cap">${esc(g.caption)}</div>` : ""}
-      ${adminPassword ? `<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button>` : ""}
-    </div>
-  `).join("");
-  setupReveal();
-}
-
-async function deleteGalleryImg(id) {
-  if (!confirm("آیا از حذف این عکس مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_gallery", { admin_pass: adminPassword, item_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("عکس حذف شد ✅");
-  loadGallery();
-}
-
-// ============ Lightbox ============
-function openLightbox(idx) {
-  if (!galleryImages.length) return;
-  lbIndex = idx;
-  updateLightbox();
-  document.getElementById("lightbox").classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  document.getElementById("lightbox").classList.remove("open");
-  document.body.style.overflow = "";
-}
-
-function updateLightbox() {
-  const img = galleryImages[lbIndex];
-  if (!img) return;
-  document.getElementById("lbImg").src = img.url;
-  document.getElementById("lbCaption").textContent = img.caption || "";
-  document.getElementById("lbCounter").textContent = `${fa(lbIndex + 1)} از ${fa(galleryImages.length)}`;
-  const dots = document.getElementById("lbDots");
-  if (galleryImages.length > 1 && galleryImages.length <= 15) {
-    dots.innerHTML = galleryImages.map((_, i) => 
-      `<span class="lb-dot ${i === lbIndex ? 'active' : ''}" onclick="lbGoTo(${i})"></span>`
-    ).join("");
-  } else {
-    dots.innerHTML = "";
-  }
-}
-
-function lbNext() {
-  if (!galleryImages.length) return;
-  lbIndex = (lbIndex + 1) % galleryImages.length;
-  updateLightbox();
-}
-
-function lbPrev() {
-  if (!galleryImages.length) return;
-  lbIndex = (lbIndex - 1 + galleryImages.length) % galleryImages.length;
-  updateLightbox();
-}
-
-function lbGoTo(i) {
-  lbIndex = i;
-  updateLightbox();
-}
-
-let touchStartX = 0;
-let touchEndX = 0;
-const lbEl = document.getElementById("lightbox");
-lbEl.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-lbEl.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) lbNext();
-    else lbPrev();
-  }
-}, { passive: true });
-
-document.addEventListener("keydown", (e) => {
-  if (!document.getElementById("lightbox").classList.contains("open")) return;
-  if (e.key === "Escape") closeLightbox();
-  if (e.key === "ArrowLeft") lbNext();
-  if (e.key === "ArrowRight") lbPrev();
-});
 
 // ============ اعضا ============
-async function loadMembers() {
-  const box = document.getElementById("members");
-  box.innerHTML = "<p>در حال بارگذاری...</p>";
-  const { data, error } = await db.rpc("admin_get_members", { admin_pass: adminPassword });
-  if (error) { box.innerHTML = `<p style="color:red">خطا: ${esc(error.message)}</p>`; return; }
-  allMembers = data || [];
-  renderMembers(allMembers);
-  renderMemberSelector();
+async function loadMembers(){
+  const b=document.getElementById("members");b.innerHTML="<p>بارگذاری...</p>";
+  const {data,error}=await db.rpc("admin_get_members",{admin_pass:adminPassword});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  allMembers=data||[];
+  renderMembers(allMembers);renderMemberSelector();
 }
-
-function renderMembers(list) {
-  const box = document.getElementById("members");
-  if (!list.length) { box.innerHTML = "<p>عضوی پیدا نشد.</p>"; return; }
-  box.innerHTML = list.map(m => `
-    <div class="member">
-      <strong>${esc(m.name)}</strong><br>
-      <span>کد ملی: ${esc(m.national_id || "-")}</span><br>
-      <span>تاریخ تولد: ${esc(m.birth_date || "-")}</span><br>
-      <span>تلفن: ${esc(m.phone || "-")}</span>
-      <div class="member-actions">
-        <button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button>
-        <button class="b-del-m" onclick="deleteMember(${m.id}, '${esc(m.name)}')">🗑 حذف</button>
-      </div>
-    </div>
-  `).join("");
-}
-
-function filterMembers() {
-  const q = document.getElementById("searchInput").value.trim().toLowerCase();
-  if (!q) { renderMembers(allMembers); return; }
-  const f = allMembers.filter(m =>
-    (m.name || "").toLowerCase().includes(q) ||
-    (m.national_id || "").includes(q) ||
-    (m.phone || "").includes(q)
-  );
-  renderMembers(f);
-}
-
-function downloadExcel() {
-  if (!allMembers.length) { alert("لیست خالی است"); return; }
-  let csv = "\uFEFF";
-  csv += "نام و نام خانوادگی,کد ملی,تاریخ تولد,شماره تماس\n";
-  allMembers.forEach(m => {
-    csv += `"${(m.name || "").replace(/"/g, '""')}","${m.national_id || ""}","${m.birth_date || ""}","${m.phone || ""}"\n`;
-  });
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "اعضای-کانون-انوارالرضا.csv";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function openEdit(id) {
-  const m = allMembers.find(x => x.id === id);
-  if (!m) return;
-  document.getElementById("editId").value = m.id;
-  document.getElementById("editName").value = m.name || "";
-  document.getElementById("editNationalId").value = m.national_id || "";
-  setPersianDate("editBirthDay", "editBirthMonth", "editBirthYear", m.birth_date || "");
-  document.getElementById("editPhone").value = m.phone || "";
-  document.getElementById("editMsg").textContent = "";
-  document.getElementById("editModal").classList.add("open");
-}
-
-function closeEdit() {
-  document.getElementById("editModal").classList.remove("open");
-}
-
-async function deleteMember(id, name) {
-  if (!confirm(`آیا از حذف «${name}» مطمئن هستید؟`)) return;
-  const { error } = await db.rpc("admin_delete_member", { admin_pass: adminPassword, member_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("عضو حذف شد ✅");
-  loadMembers();
-  render();
-}
+function renderMembers(l){const b=document.getElementById("members");if(!l.length){b.innerHTML="<p>عضوی پیدا نشد.</p>";return;}b.innerHTML=l.map(m=>`<div class="member"><strong>${esc(m.name)}</strong><br><span>کد ملی: ${esc(m.national_id||"-")}</span><br><span>تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span>تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div>`).join("");}
+function filterMembers(){const q=document.getElementById("searchInput").value.trim().toLowerCase();if(!q){renderMembers(allMembers);return;}renderMembers(allMembers.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.national_id||"").includes(q)||(m.phone||"").includes(q)));}
+function downloadExcel(){if(!allMembers.length){alert("خالی");return;}let c="\uFEFF";c+="نام,کد ملی,تاریخ تولد,تلفن\n";allMembers.forEach(m=>{c+=`"${(m.name||"").replace(/"/g,'""')}","${m.national_id||""}","${m.birth_date||""}","${m.phone||""}"\n`;});const b=new Blob([c],{type:"text/csv;charset=utf-8;"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="اعضای-کانون-انوارالرضا.csv";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
+function openEdit(id){const m=allMembers.find(x=>x.id===id);if(!m)return;document.getElementById("editId").value=m.id;document.getElementById("editName").value=m.name||"";document.getElementById("editNationalId").value=m.national_id||"";setPersianDate("editBirthDay","editBirthMonth","editBirthYear",m.birth_date||"");document.getElementById("editPhone").value=m.phone||"";document.getElementById("editMsg").textContent="";document.getElementById("editModal").classList.add("open");}
+function closeEdit(){document.getElementById("editModal").classList.remove("open");}
+async function deleteMember(id,name){if(!confirm(`حذف «${name}»؟`))return;const {error}=await db.rpc("admin_delete_member",{admin_pass:adminPassword,member_id:id});if(error){alert("خطا: "+error.message);return;}alert("حذف شد ✅");loadMembers();render();}
 
 // ============ ایده‌ها ============
-async function loadAdminIdeas() {
-  const box = document.getElementById("adminIdeas");
-  box.innerHTML = "<p>در حال بارگذاری...</p>";
-  const { data } = await db.from("ideas").select("*").order("created_at", { ascending: false }).limit(100);
-  if (!data || !data.length) { box.innerHTML = "<p>هنوز ایده‌ای ثبت نشده.</p>"; return; }
-  box.innerHTML = data.map(i => `
-    <div class="admin-idea">
-      <strong>${esc(i.name || "ناشناس")}</strong> <span style="color:#888">— ${esc(i.category || "سایر")}</span>
-      <div class="content">${esc(i.content || "")}</div>
-      <span class="status">${esc(i.status || "ثبت شد")}</span>
-      <div class="actions">
-        <button class="b-review" onclick="updateIdea(${i.id}, 'در حال بررسی')">🔎 بررسی</button>
-        <button class="b-approve" onclick="updateIdea(${i.id}, 'تأیید شد')">✅ تأیید</button>
-        <button class="b-run" onclick="updateIdea(${i.id}, 'در حال اجرا')">🚀 اجرا</button>
-        <button class="b-done" onclick="updateIdea(${i.id}, 'اجرا شد')">🏆 پایان</button>
-        <button class="b-del" onclick="deleteIdea(${i.id})">🗑 حذف</button>
-      </div>
-    </div>
-  `).join("");
+async function loadAdminIdeas(){
+  const b=document.getElementById("adminIdeas");b.innerHTML="<p>بارگذاری...</p>";
+  const {data}=await db.from("ideas").select("*").order("created_at",{ascending:false}).limit(100);
+  if(!data||!data.length){b.innerHTML="<p>هنوز ایده‌ای ثبت نشده.</p>";return;}
+  b.innerHTML=data.map(i=>`<div class="admin-idea"><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:#888">— ${esc(i.category||"سایر")}</span><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span><div class="actions"><button class="b-review" onclick="updateIdea(${i.id},'در حال بررسی')">🔎 بررسی</button><button class="b-approve" onclick="updateIdea(${i.id},'تأیید شد')">✅ تأیید</button><button class="b-run" onclick="updateIdea(${i.id},'در حال اجرا')">🚀 اجرا</button><button class="b-done" onclick="updateIdea(${i.id},'اجرا شد')">🏆 پایان</button><button class="b-del" onclick="deleteIdea(${i.id})">🗑 حذف</button></div></div>`).join("");
 }
-
-async function updateIdea(id, newStatus) {
-  const { error } = await db.rpc("admin_update_idea_status", { admin_pass: adminPassword, idea_id: id, new_status: newStatus });
-  if (error) { alert("خطا: " + error.message); return; }
-  await loadAdminIdeas();
-  render();
-}
-
-async function deleteIdea(id) {
-  if (!confirm("آیا از حذف این ایده مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_idea", { admin_pass: adminPassword, idea_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  alert("ایده حذف شد ✅");
-  await loadAdminIdeas();
-  render();
-}
+async function updateIdea(id,ns){const {error}=await db.rpc("admin_update_idea_status",{admin_pass:adminPassword,idea_id:id,new_status:ns});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
+async function deleteIdea(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_idea",{admin_pass:adminPassword,idea_id:id});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
 
 // ============ ارتباط با اعضا ============
-function renderMemberSelector() {
-  const box = document.getElementById("memberSelector");
-  if (!box) return;
-  if (!allMembers.length) { box.innerHTML = "<p style='color:#888;font-size:13px'>لیستی موجود نیست</p>"; return; }
-  box.innerHTML = allMembers.map(m => `
-    <label class="member-check" data-id="${m.id}">
-      <input type="checkbox" class="member-cb" value="${m.id}" onchange="updateSelectedCount()">
-      <span>${esc(m.name)} — ${esc(m.phone || "بدون شماره")}</span>
-    </label>`).join("");
-  updateSelectedCount();
-}
-
-function updateSelectedCount() {
-  const cbs = document.querySelectorAll(".member-cb:checked");
-  document.getElementById("selectedCount").textContent = fa(cbs.length);
-  document.querySelectorAll(".member-check").forEach(el => {
-    const cb = el.querySelector("input");
-    el.classList.toggle("checked", cb.checked);
-  });
-}
-
-function selectAllMembers() {
-  document.querySelectorAll(".member-cb").forEach(cb => cb.checked = true);
-  updateSelectedCount();
-}
-
-function deselectAllMembers() {
-  document.querySelectorAll(".member-cb").forEach(cb => cb.checked = false);
-  updateSelectedCount();
-}
-
-function getSelectedMembers() {
-  const cbs = document.querySelectorAll(".member-cb:checked");
-  const ids = Array.from(cbs).map(cb => parseInt(cb.value));
-  return allMembers.filter(m => ids.includes(m.id));
-}
-
-function getMessageText() {
-  return document.getElementById("msgLong").value.trim() || document.getElementById("msgText").value.trim() || "";
-}
-
-function showMsgStatus(text, color) {
-  const el = document.getElementById("msgStatus");
-  el.textContent = text; el.style.color = color;
-}
-
-function copyNumbers() {
-  const members = getSelectedMembers();
-  if (!members.length) { showMsgStatus("هیچ عضوی انتخاب نشده", "red"); return; }
-  const phones = members.map(m => m.phone).filter(p => p);
-  if (!phones.length) { showMsgStatus("شماره‌ای موجود نیست", "red"); return; }
-  const text = phones.join(",");
-  navigator.clipboard.writeText(text).then(() => {
-    showMsgStatus(`✅ ${fa(phones.length)} شماره کپی شد`, "green");
-  }).catch(() => {
-    const ta = document.createElement("textarea");
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand("copy"); document.body.removeChild(ta);
-    showMsgStatus(`✅ ${fa(phones.length)} شماره کپی شد`, "green");
-  });
-}
-
-function copyWithMessage() {
-  const members = getSelectedMembers();
-  if (!members.length) { showMsgStatus("هیچ عضوی انتخاب نشده", "red"); return; }
-  const phones = members.map(m => m.phone).filter(p => p);
-  const msg = getMessageText();
-  const text = `شماره‌ها:\n${phones.join("\n")}\n\nمتن پیام:\n${msg}`;
-  navigator.clipboard.writeText(text).then(() => {
-    showMsgStatus(`✅ ${fa(phones.length)} شماره + متن کپی شد`, "green");
-  }).catch(() => {
-    const ta = document.createElement("textarea");
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand("copy"); document.body.removeChild(ta);
-    showMsgStatus(`✅ کپی شد`, "green");
-  });
-}
-
-function openWhatsApp() {
-  const members = getSelectedMembers();
-  const msg = getMessageText();
-  if (!members.length) { showMsgStatus("هیچ عضوی انتخاب نشده", "red"); return; }
-  const first = members.find(m => m.phone);
-  if (!first) { showMsgStatus("شماره‌ای موجود نیست", "red"); return; }
-  const phone = first.phone.replace(/^0/, "98").replace(/[^0-9]/g, "");
-  const url = `https://wa.me/${phone}${msg ? "?text=" + encodeURIComponent(msg) : ""}`;
-  window.open(url, "_blank");
-  showMsgStatus(`واتساپ برای ${first.name} باز شد. برای بقیه، شماره‌ها رو کپی کن.`, "#555");
-}
-
-function openTelegram() {
-  const members = getSelectedMembers();
-  if (!members.length) { showMsgStatus("هیچ عضوی انتخاب نشده", "red"); return; }
-  window.open("https://t.me/", "_blank");
-  showMsgStatus("تلگرام باز شد. شماره‌ها رو کپی کن.", "#555");
-}
-
-async function saveGroup() {
-  const name = document.getElementById("groupName").value.trim();
-  const ids = Array.from(document.querySelectorAll(".member-cb:checked")).map(cb => parseInt(cb.value));
-  if (!name) { showMsgStatus("اسم گروه را وارد کن", "red"); return; }
-  if (!ids.length) { showMsgStatus("هیچ عضوی انتخاب نشده", "red"); return; }
-  const { error } = await db.rpc("admin_add_group", { admin_pass: adminPassword, p_name: name, p_member_ids: ids });
-  if (error) { showMsgStatus("خطا: " + error.message, "red"); return; }
-  showMsgStatus("✅ گروه ذخیره شد", "green");
-  document.getElementById("groupName").value = "";
-  loadGroups();
-}
-
-async function loadGroups() {
-  const box = document.getElementById("groupsList");
-  if (!box) return;
-  const { data } = await db.from("contact_groups").select("*").order("created_at", { ascending: false });
-  if (!data || !data.length) { box.innerHTML = "<p style='font-size:12px;color:#888'>هنوز گروهی ذخیره نشده.</p>"; return; }
-  box.innerHTML = data.map(g => {
-    const count = Array.isArray(g.member_ids) ? g.member_ids.length : 0;
-    return `
-      <div class="group-item">
-        <span><b>${esc(g.name)}</b> <span style="color:#888">(${fa(count)} نفر)</span></span>
-        <span>
-          <button onclick="loadGroup(${g.id})">انتخاب</button>
-          <button class="del-g" onclick="deleteGroup(${g.id})">🗑</button>
-        </span>
-      </div>`;
-  }).join("");
-}
-
-async function loadGroup(id) {
-  const { data } = await db.from("contact_groups").select("*").eq("id", id).single();
-  if (!data) return;
-  const ids = data.member_ids || [];
-  document.querySelectorAll(".member-cb").forEach(cb => {
-    cb.checked = ids.includes(parseInt(cb.value));
-  });
-  updateSelectedCount();
-  showMsgStatus(`✅ گروه «${data.name}» انتخاب شد`, "green");
-}
-
-async function deleteGroup(id) {
-  if (!confirm("آیا از حذف این گروه مطمئن هستید؟")) return;
-  const { error } = await db.rpc("admin_delete_group", { admin_pass: adminPassword, item_id: id });
-  if (error) { alert("خطا: " + error.message); return; }
-  loadGroups();
-}
+function renderMemberSelector(){const b=document.getElementById("memberSelector");if(!b)return;if(!allMembers.length){b.innerHTML="<p style='color:#888;font-size:13px'>لیستی موجود نیست</p>";return;}b.innerHTML=allMembers.map(m=>`<label class="member-check" data-id="${m.id}"><input type="checkbox" class="member-cb" value="${m.id}" onchange="updateSelectedCount()"><span>${esc(m.name)} — ${esc(m.phone||"بدون شماره")}</span></label>`).join("");updateSelectedCount();}
+function updateSelectedCount(){const c=document.querySelectorAll(".member-cb:checked");document.getElementById("selectedCount").textContent=fa(c.length);document.querySelectorAll(".member-check").forEach(el=>el.classList.toggle("checked",el.querySelector("input").checked));}
+function selectAllMembers(){document.querySelectorAll(".member-cb").forEach(cb=>cb.checked=true);updateSelectedCount();}
+function deselectAllMembers(){document.querySelectorAll(".member-cb").forEach(cb=>cb.checked=false);updateSelectedCount();}
+function getSelectedMembers(){const ids=Array.from(document.querySelectorAll(".member-cb:checked")).map(cb=>parseInt(cb.value));return allMembers.filter(m=>ids.includes(m.id));}
+function showMsgStatus(t,c){const e=document.getElementById("msgStatus");e.textContent=t;e.style.color=c;}
+function copyNumbers(){const ms=getSelectedMembers();if(!ms.length){showMsgStatus("عضوی انتخاب نشده","red");return;}const ph=ms.map(m=>m.phone).filter(p=>p);if(!ph.length){showMsgStatus("شماره‌ای نیست","red");return;}const t=ph.join(",");navigator.clipboard.writeText(t).then(()=>{showMsgStatus(`✅ ${fa(ph.length)} شماره کپی شد`,"green");}).catch(()=>{const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);showMsgStatus(`✅ ${fa(ph.length)} شماره کپی شد`,"green");});}
+async function saveGroup(){const n=document.getElementById("groupName").value.trim();const ids=Array.from(document.querySelectorAll(".member-cb:checked")).map(cb=>parseInt(cb.value));if(!n){showMsgStatus("اسم گروه را وارد کن","red");return;}if(!ids.length){showMsgStatus("عضوی انتخاب نشده","red");return;}const {error}=await db.rpc("admin_add_group",{admin_pass:adminPassword,p_name:n,p_member_ids:ids});if(error){showMsgStatus("خطا: "+error.message,"red");return;}showMsgStatus("✅ ذخیره شد","green");document.getElementById("groupName").value="";loadGroups();}
+async function loadGroups(){const b=document.getElementById("groupsList");if(!b)return;const {data}=await db.from("contact_groups").select("*").order("created_at",{ascending:false});if(!data||!data.length){b.innerHTML="<p style='font-size:12px;color:#888'>گروهی ذخیره نشده.</p>";return;}b.innerHTML=data.map(g=>{const c=Array.isArray(g.member_ids)?g.member_ids.length:0;return `<div class="group-item"><span><b>${esc(g.name)}</b> (${fa(c)} نفر)</span><span><button onclick="loadGroup(${g.id})">انتخاب</button><button class="del-g" onclick="deleteGroup(${g.id})">🗑</button></span></div>`;}).join("");}
+async function loadGroup(id){const {data}=await db.from("contact_groups").select("*").eq("id",id).single();if(!data)return;const ids=data.member_ids||[];document.querySelectorAll(".member-cb").forEach(cb=>{cb.checked=ids.includes(parseInt(cb.value));});updateSelectedCount();showMsgStatus(`✅ گروه «${data.name}» انتخاب شد`,"green");}
+async function deleteGroup(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_group",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGroups();}
 
 // ============ فرم‌ها ============
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("registerMsg");
-  const name = fullName.value.trim();
-  const nid = nationalId.value.trim();
-  if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
-  const bd = getPersianDate("birthDay", "birthMonth", "birthYear");
-  if (!bd) { msg.textContent = "تاریخ تولد را کامل انتخاب کنید."; msg.style.color = "red"; return; }
-
-  const { error } = await db.from("members").insert([{
-    name, national_id: nid, birth_date: bd, phone: phone.value.trim()
-  }]);
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; }
-  else {
-    msg.textContent = "✅ ثبت‌نام شد! حالا با شماره تماس وارد پنل اعضا شوید.";
-    msg.style.color = "green";
-    e.target.reset();
-    render();
-  }
+document.getElementById("registerForm").addEventListener("submit",async e=>{
+  e.preventDefault();const msg=document.getElementById("registerMsg");
+  const n=fullName.value.trim(),ni=nationalId.value.trim();
+  if(!/^\d{10}$/.test(ni)){msg.textContent="کد ملی باید ۱۰ رقم باشد.";msg.style.color="red";return;}
+  const bd=getPersianDate("birthDay","birthMonth","birthYear");
+  if(!bd){msg.textContent="تاریخ تولد را کامل انتخاب کنید.";msg.style.color="red";return;}
+  const {error}=await db.from("members").insert([{name:n,national_id:ni,birth_date:bd,phone:phone.value.trim()}]);
+  if(error){msg.textContent="خطا: "+error.message;msg.style.color="red";}
+  else{msg.textContent="✅ ثبت‌نام شد! حالا با شماره تماس وارد پنل اعضا شوید.";msg.style.color="green";e.target.reset();render();}
 });
-
-document.getElementById("ideaForm").addEventListener("submit", async (e) => {
+document.getElementById("ideaForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const name = currentMember ? currentMember.name : (ideaName.value.trim() || "ناشناس");
-  const memberNid = currentMember ? currentMember.national_id : null;
-  const { error } = await db.from("ideas").insert([{
-    name, category: ideaCat.value, content: ideaText.value.trim(), member_nid: memberNid
-  }]);
-  if (error) { alert("خطا: " + error.message); }
-  else {
-    alert("ایده شما ثبت شد ✅");
-    e.target.reset();
-    if (currentMember) {
-      document.getElementById("ideaUserName").textContent = currentMember.name;
-      document.getElementById("ideaUserNotice").style.display = "block";
-    }
-    render();
-    if (currentMember) loadMyIdeas();
-  }
+  const n=currentMember?currentMember.name:(ideaName.value.trim()||"ناشناس");
+  const mn=currentMember?currentMember.national_id:null;
+  const {error}=await db.from("ideas").insert([{name:n,category:ideaCat.value,content:ideaText.value.trim(),member_nid:mn}]);
+  if(error){alert("خطا: "+error.message);}
+  else{alert("ایده ثبت شد ✅");e.target.reset();if(currentMember){document.getElementById("ideaUserName").textContent=currentMember.name;document.getElementById("ideaUserNotice").style.display="block";}render();if(currentMember)loadMyIdeas();}
 });
-
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const pass = document.getElementById("adminPass").value.trim();
-  const msg = document.getElementById("loginMsg");
-  msg.textContent = "در حال بررسی..."; msg.style.color = "#555";
-  const { data, error } = await db.rpc("admin_get_members", { admin_pass: pass });
-  if (error) { msg.textContent = "❌ رمز اشتباه است"; msg.style.color = "red"; return; }
-  adminPassword = pass;
-  document.getElementById("loginBox").style.display = "none";
-  document.getElementById("panelBox").style.display = "block";
-  loadMembers();
-  loadAdminIdeas();
-  loadGallery();
-  loadWeekly();
-  loadAbout();
-  loadNews();
-  loadEvents();
-  loadPolls();
-  loadGroups();
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();const p=document.getElementById("adminPass").value.trim(),m=document.getElementById("loginMsg");
+  m.textContent="بررسی...";m.style.color="#555";
+  const {data,error}=await db.rpc("admin_get_members",{admin_pass:p});
+  if(error){m.textContent="❌ رمز اشتباه";m.style.color="red";return;}
+  adminPassword=p;
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("panelBox").style.display="block";
+  loadMembers();loadAdminIdeas();loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadGroups();loadVideos();loadLibrary();loadClasses();
 });
-
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  adminPassword = null;
-  allMembers = [];
-  document.getElementById("searchInput").value = "";
-  document.getElementById("loginBox").style.display = "block";
-  document.getElementById("panelBox").style.display = "none";
-  document.getElementById("adminPass").value = "";
-  document.getElementById("loginMsg").textContent = "";
-  document.getElementById("memberSelector").innerHTML = "";
-  document.getElementById("groupsList").innerHTML = "";
-  loadGallery();
-  loadWeekly();
-  loadAbout();
-  loadNews();
-  loadEvents();
-  loadPolls();
+document.getElementById("logoutBtn").addEventListener("click",()=>{
+  adminPassword=null;allMembers=[];
+  document.getElementById("searchInput").value="";
+  document.getElementById("loginBox").style.display="block";
+  document.getElementById("panelBox").style.display="none";
+  document.getElementById("adminPass").value="";
+  document.getElementById("loginMsg").textContent="";
+  document.getElementById("memberSelector").innerHTML="";
+  document.getElementById("groupsList").innerHTML="";
+  loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadVideos();loadLibrary();loadClasses();
 });
-
-document.getElementById("downloadBtn").addEventListener("click", downloadExcel);
-
-document.getElementById("editForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("editMsg");
-  const id = document.getElementById("editId").value;
-  const name = document.getElementById("editName").value.trim();
-  const nid = document.getElementById("editNationalId").value.trim();
-  const bd = getPersianDate("editBirthDay", "editBirthMonth", "editBirthYear");
-  const ph = document.getElementById("editPhone").value.trim();
-  if (!/^\d{10}$/.test(nid)) { msg.textContent = "کد ملی باید ۱۰ رقم باشد."; msg.style.color = "red"; return; }
-  if (!bd) { msg.textContent = "تاریخ تولد را کامل انتخاب کنید."; msg.style.color = "red"; return; }
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("admin_update_member", {
-    admin_pass: adminPassword, member_id: parseInt(id), p_name: name, p_national_id: nid, p_birth_date: bd, p_phone: ph
-  });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
-  setTimeout(() => { closeEdit(); loadMembers(); }, 500);
+document.getElementById("downloadBtn").addEventListener("click",downloadExcel);
+document.getElementById("editForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("editMsg");
+  const id=document.getElementById("editId").value,n=document.getElementById("editName").value.trim(),ni=document.getElementById("editNationalId").value.trim();
+  const bd=getPersianDate("editBirthDay","editBirthMonth","editBirthYear"),ph=document.getElementById("editPhone").value.trim();
+  if(!/^\d{10}$/.test(ni)){m.textContent="کد ملی باید ۱۰ رقم باشد.";m.style.color="red";return;}
+  if(!bd){m.textContent="تاریخ تولد را کامل انتخاب کنید.";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_update_member",{admin_pass:adminPassword,member_id:parseInt(id),p_name:n,p_national_id:ni,p_birth_date:bd,p_phone:ph});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="ذخیره شد ✅";m.style.color="green";
+  setTimeout(()=>{closeEdit();loadMembers();},500);
 });
-
-document.getElementById("uploadForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("uploadMsg");
-  const file = document.getElementById("galleryFile").files[0];
-  const caption = document.getElementById("galleryCaption").value.trim();
-  if (!file) { msg.textContent = "عکسی انتخاب نشده"; msg.style.color = "red"; return; }
-  if (file.size > 5 * 1024 * 1024) { msg.textContent = "حجم عکس باید کمتر از ۵ مگابایت باشد"; msg.style.color = "red"; return; }
-  msg.textContent = "در حال آپلود..."; msg.style.color = "#555";
-  const fileName = Date.now() + "_" + file.name.replace(/[^a-zA-Z0-9._-]/g, "");
-  const { error: upErr } = await db.storage.from("gallery").upload(fileName, file);
-  if (upErr) { msg.textContent = "خطا در آپلود: " + upErr.message; msg.style.color = "red"; return; }
-  const { data: urlData } = db.storage.from("gallery").getPublicUrl(fileName);
-  const { error: dbErr } = await db.rpc("admin_add_gallery", {
-    admin_pass: adminPassword, p_filename: fileName, p_url: urlData.publicUrl, p_caption: caption
-  });
-  if (dbErr) { msg.textContent = "خطا در ذخیره: " + dbErr.message; msg.style.color = "red"; return; }
-  msg.textContent = "عکس با موفقیت اضافه شد ✅"; msg.style.color = "green";
-  e.target.reset();
-  loadGallery();
+document.getElementById("uploadForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("uploadMsg"),f=document.getElementById("galleryFile").files[0],c=document.getElementById("galleryCaption").value.trim();
+  if(!f){m.textContent="عکسی انتخاب نشده";m.style.color="red";return;}
+  if(f.size>5*1024*1024){m.textContent="حجم باید کمتر از ۵ مگابایت باشد";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const {error:ue}=await db.storage.from("gallery").upload(fn,f);
+  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("gallery").getPublicUrl(fn);
+  const {error:de}=await db.rpc("admin_add_gallery",{admin_pass:adminPassword,p_filename:fn,p_url:ud.publicUrl,p_caption:c});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";
+  e.target.reset();loadGallery();
 });
-
-document.getElementById("weeklyForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("weeklyMsg");
-  const day = document.getElementById("wDay").value;
-  const title = document.getElementById("wTitle").value.trim();
-  const time = document.getElementById("wTime").value.trim();
-  const place = document.getElementById("wPlace").value.trim();
-  const desc = document.getElementById("wDesc").value.trim();
-  if (!day || !title) { msg.textContent = "روز و عنوان الزامی است"; msg.style.color = "red"; return; }
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("admin_add_weekly", {
-    admin_pass: adminPassword, p_day: day, p_title: title, p_time: time, p_place: place, p_description: desc
-  });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "برنامه اضافه شد ✅"; msg.style.color = "green";
-  e.target.reset();
-  loadWeekly();
+document.getElementById("weeklyForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("weeklyMsg");
+  const d=document.getElementById("wDay").value,t=document.getElementById("wTitle").value.trim();
+  if(!d||!t){m.textContent="روز و عنوان الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_weekly",{admin_pass:adminPassword,p_day:d,p_title:t,p_time:document.getElementById("wTime").value.trim(),p_place:document.getElementById("wPlace").value.trim(),p_description:document.getElementById("wDesc").value.trim()});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";
+  e.target.reset();loadWeekly();
 });
-
-document.getElementById("aboutForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("aboutMsg");
-  const title = document.getElementById("aboutTitleInput").value.trim();
-  const content = document.getElementById("aboutContentInput").value.trim();
-  if (!title || !content) { msg.textContent = "عنوان و متن الزامی است"; msg.style.color = "red"; return; }
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("admin_update_about", { admin_pass: adminPassword, p_title: title, p_content: content });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
-  loadAbout();
+document.getElementById("aboutForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("aboutMsg"),t=document.getElementById("aboutTitleInput").value.trim(),c=document.getElementById("aboutContentInput").value.trim();
+  if(!t||!c){m.textContent="عنوان و متن الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_update_about",{admin_pass:adminPassword,p_title:t,p_content:c});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="ذخیره شد ✅";m.style.color="green";loadAbout();
 });
-
-document.getElementById("newsForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("newsMsg");
-  const t = document.getElementById("nTitle").value.trim();
-  const c = document.getElementById("nContent").value.trim();
-  const p = document.getElementById("nPinned").checked;
-  if (!t || !c) { msg.textContent = "عنوان و متن الزامی است"; msg.style.color = "red"; return; }
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("admin_add_news", { admin_pass: adminPassword, p_title: t, p_content: c, p_pinned: p });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "خبر اضافه شد ✅"; msg.style.color = "green";
-  e.target.reset();
-  loadNews();
+document.getElementById("newsForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("newsMsg"),t=document.getElementById("nTitle").value.trim(),c=document.getElementById("nContent").value.trim(),p=document.getElementById("nPinned").checked;
+  if(!t||!c){m.textContent="عنوان و متن الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_news",{admin_pass:adminPassword,p_title:t,p_content:c,p_pinned:p});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadNews();
 });
-
-document.getElementById("eventForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("eventMsg");
-  const t = document.getElementById("eTitle").value.trim();
-  const d = document.getElementById("eDesc").value.trim();
-  const dt = getPersianDate("eDay", "eMonth", "eYear");
-  const pl = document.getElementById("ePlace").value.trim();
-  if (!t || !dt) { msg.textContent = "عنوان و تاریخ الزامی است"; msg.style.color = "red"; return; }
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("admin_add_event", {
-    admin_pass: adminPassword, p_title: t, p_description: d, p_date: dt, p_place: pl
-  });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "رویداد اضافه شد ✅"; msg.style.color = "green";
-  e.target.reset();
-  loadEvents();
+document.getElementById("eventForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("eventMsg"),t=document.getElementById("eTitle").value.trim(),d=getPersianDate("eDay","eMonth","eYear");
+  if(!t||!d){m.textContent="عنوان و تاریخ الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_event",{admin_pass:adminPassword,p_title:t,p_description:document.getElementById("eDesc").value.trim(),p_date:d,p_place:document.getElementById("ePlace").value.trim()});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadEvents();
 });
-
-document.getElementById("pollForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("pollMsg");
-  const q = document.getElementById("pQuestion").value.trim();
-  const opts = Array.from(document.querySelectorAll(".poll-opt")).map(i => i.value.trim()).filter(v => v);
-  if (!q || opts.length < 2) { msg.textContent = "سؤال و حداقل ۲ گزینه الزامی است"; msg.style.color = "red"; return; }
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("admin_add_poll", { admin_pass: adminPassword, p_question: q, p_options: opts });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "نظرسنجی ساخته شد ✅"; msg.style.color = "green";
-  e.target.reset();
-  document.getElementById("pollOptionsBox").innerHTML = '<input class="poll-opt" placeholder="گزینه ۱" required><input class="poll-opt" placeholder="گزینه ۲" required>';
+document.getElementById("pollForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("pollMsg"),q=document.getElementById("pQuestion").value.trim();
+  const o=Array.from(document.querySelectorAll(".poll-opt")).map(i=>i.value.trim()).filter(v=>v);
+  if(!q||o.length<2){m.textContent="سؤال و حداقل ۲ گزینه الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_poll",{admin_pass:adminPassword,p_question:q,p_options:o});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="ساخته شد ✅";m.style.color="green";e.target.reset();
+  document.getElementById("pollOptionsBox").innerHTML='<input class="poll-opt" placeholder="گزینه ۱" required><input class="poll-opt" placeholder="گزینه ۲" required>';
   loadPolls();
 });
-
-document.getElementById("memberLoginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("memberLoginMsg");
-  const ph = document.getElementById("mLoginPhone").value.trim();
-  if (!ph) { msg.textContent = "شماره تماس را وارد کنید."; msg.style.color = "red"; return; }
-  msg.textContent = "در حال بررسی..."; msg.style.color = "#555";
-  const { data, error } = await db.rpc("member_login_by_phone", { p_phone: ph });
-  if (error || !data || !data.length) {
-    msg.textContent = "❌ این شماره در کانون ثبت نشده است";
-    msg.style.color = "red";
-    return;
-  }
-  currentMember = data[0];
-  document.getElementById("memberLoginBox").style.display = "none";
-  document.getElementById("memberPanelBox").style.display = "block";
-  document.getElementById("mName").textContent = currentMember.name;
-  document.getElementById("mNid").textContent = currentMember.national_id;
-  document.getElementById("mBirth").textContent = currentMember.birth_date || "-";
-  document.getElementById("mPhone").textContent = currentMember.phone;
-  document.getElementById("avatarLetter").textContent = (currentMember.name || "?").charAt(0);
-  document.getElementById("ideaUserName").textContent = currentMember.name;
-  document.getElementById("ideaUserNotice").style.display = "block";
-  document.getElementById("ideaName").value = currentMember.name;
-  document.getElementById("ideaName").style.display = "none";
-  loadMyIdeas();
+document.getElementById("classForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("classMsg"),t=document.getElementById("cTitle").value.trim();
+  if(!t){m.textContent="عنوان الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const cap=parseInt(document.getElementById("cCap").value)||null;
+  const {error}=await db.rpc("admin_add_class",{admin_pass:adminPassword,p_title:t,p_desc:document.getElementById("cDesc").value.trim(),p_teacher:document.getElementById("cTeacher").value.trim(),p_schedule:document.getElementById("cSchedule").value.trim(),p_cap:cap});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadClasses();
+});
+document.getElementById("videoForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("videoMsg"),t=document.getElementById("vTitle").value.trim(),u=document.getElementById("vUrl").value.trim();
+  if(!t||!u){m.textContent="عنوان و لینک الزامی است";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_video",{admin_pass:adminPassword,p_title:t,p_url:u,p_thumb:"",p_desc:document.getElementById("vDesc").value.trim()});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadVideos();
+});
+document.getElementById("bookForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("bookMsg"),t=document.getElementById("bTitle").value.trim(),f=document.getElementById("bFile").files[0];
+  if(!t||!f){m.textContent="عنوان و فایل الزامی است";m.style.color="red";return;}
+  if(f.size>20*1024*1024){m.textContent="حجم فایل باید کمتر از ۲۰ مگابایت باشد";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const {error:ue}=await db.storage.from("library").upload(fn,f);
+  if(ue){m.textContent="خطا آپلود: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("library").getPublicUrl(fn);
+  const ext=f.name.split(".").pop();
+  const {error:de}=await db.rpc("admin_add_book",{admin_pass:adminPassword,p_title:t,p_desc:document.getElementById("bDesc").value.trim(),p_url:ud.publicUrl,p_type:ext,p_cat:document.getElementById("bCat").value});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  m.textContent="اضافه شد ✅";m.style.color="green";e.target.reset();loadLibrary();
+});
+document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("memberLoginMsg"),ph=document.getElementById("mLoginPhone").value.trim();
+  if(!ph){m.textContent="شماره را وارد کنید.";m.style.color="red";return;}
+  m.textContent="بررسی...";m.style.color="#555";
+  const {data,error}=await db.rpc("member_login_by_phone",{p_phone:ph});
+  if(error||!data||!data.length){m.textContent="❌ این شماره ثبت نشده";m.style.color="red";return;}
+  currentMember=data[0];
+  document.getElementById("memberLoginBox").style.display="none";
+  document.getElementById("memberPanelBox").style.display="block";
+  document.getElementById("mName").textContent=currentMember.name;
+  document.getElementById("mNid").textContent=currentMember.national_id;
+  document.getElementById("mBirth").textContent=currentMember.birth_date||"-";
+  document.getElementById("mPhone").textContent=currentMember.phone;
+  document.getElementById("avatarLetter").textContent=(currentMember.name||"?").charAt(0);
+  document.getElementById("ideaUserName").textContent=currentMember.name;
+  document.getElementById("ideaUserNotice").style.display="block";
+  document.getElementById("ideaName").value=currentMember.name;
+  document.getElementById("ideaName").style.display="none";
+  loadMyIdeas();loadPolls();loadMyClasses();loadClasses();
+});
+document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
+  currentMember=null;
+  document.getElementById("memberLoginBox").style.display="block";
+  document.getElementById("memberPanelBox").style.display="none";
+  document.getElementById("mLoginPhone").value="";
+  document.getElementById("memberLoginMsg").textContent="";
+  document.getElementById("ideaUserNotice").style.display="none";
+  document.getElementById("ideaName").style.display="block";
+  document.getElementById("ideaName").value="";
+  loadPolls();loadClasses();
+});
+function toggleEditPhone(){const b=document.getElementById("editPhoneBox");b.style.display=b.style.display==="none"?"block":"none";if(b.style.display==="block"&&currentMember)document.getElementById("newPhone").value=currentMember.phone;}
+document.getElementById("editPhoneForm").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("editPhoneMsg"),np=document.getElementById("newPhone").value.trim();
+  if(!currentMember)return;
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("member_update_profile",{p_nid:currentMember.national_id,p_phone:currentMember.phone,new_phone:np});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="ذخیره شد ✅";m.style.color="green";
+  currentMember.phone=np;document.getElementById("mPhone").textContent=np;
+  setTimeout(()=>{document.getElementById("editPhoneBox").style.display="none";m.textContent="";},800);
   loadPolls();
 });
-
-document.getElementById("memberLogoutBtn").addEventListener("click", () => {
-  currentMember = null;
-  document.getElementById("memberLoginBox").style.display = "block";
-  document.getElementById("memberPanelBox").style.display = "none";
-  document.getElementById("mLoginPhone").value = "";
-  document.getElementById("memberLoginMsg").textContent = "";
-  document.getElementById("ideaUserNotice").style.display = "none";
-  document.getElementById("ideaName").style.display = "block";
-  document.getElementById("ideaName").value = "";
-  loadPolls();
-});
-
-function toggleEditPhone() {
-  const box = document.getElementById("editPhoneBox");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-  if (box.style.display === "block" && currentMember) {
-    document.getElementById("newPhone").value = currentMember.phone;
-  }
+async function loadMyIdeas(){
+  const b=document.getElementById("myIdeas");if(!currentMember)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.rpc("member_get_ideas_by_phone",{p_phone:currentMember.phone});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888'>هنوز ایده‌ای ثبت نکرده‌اید.</p>";return;}
+  b.innerHTML=data.map(i=>`<div class="myidea"><strong style="color:#084c47">${esc(i.category||"سایر")}</strong><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
 }
-
-document.getElementById("editPhoneForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("editPhoneMsg");
-  const newPhone = document.getElementById("newPhone").value.trim();
-  if (!currentMember) return;
-  msg.textContent = "در حال ذخیره..."; msg.style.color = "#555";
-  const { error } = await db.rpc("member_update_profile", {
-    p_nid: currentMember.national_id, p_phone: currentMember.phone, new_phone: newPhone
-  });
-  if (error) { msg.textContent = "خطا: " + error.message; msg.style.color = "red"; return; }
-  msg.textContent = "ذخیره شد ✅"; msg.style.color = "green";
-  currentMember.phone = newPhone;
-  document.getElementById("mPhone").textContent = newPhone;
-  setTimeout(() => { document.getElementById("editPhoneBox").style.display = "none"; msg.textContent = ""; }, 800);
-  loadPolls();
-});
-
-async function loadMyIdeas() {
-  const box = document.getElementById("myIdeas");
-  if (!currentMember) return;
-  box.innerHTML = "<p style='color:#888'>در حال بارگذاری...</p>";
-  const { data, error } = await db.rpc("member_get_ideas_by_phone", { p_phone: currentMember.phone });
-  if (error) { box.innerHTML = `<p style="color:red">خطا: ${esc(error.message)}</p>`; return; }
-  if (!data || !data.length) { box.innerHTML = "<p style='color:#888'>هنوز ایده‌ای ثبت نکرده‌اید.</p>"; return; }
-  box.innerHTML = data.map(i => `
-    <div class="myidea">
-      <strong style="color:#084c47">${esc(i.category || "سایر")}</strong>
-      <div class="content">${esc(i.content || "")}</div>
-      <span class="status">${esc(i.status || "ثبت شد")}</span>
-    </div>
-  `).join("");
-}
-
-document.getElementById("editModal").addEventListener("click", (e) => {
-  if (e.target.id === "editModal") closeEdit();
-});
+document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 
 render();
 setupReveal();
