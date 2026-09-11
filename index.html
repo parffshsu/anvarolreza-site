@@ -174,9 +174,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .att-absent{background:#c94f4f}
 .att-late{background:#c48b1f}
 .att-active{box-shadow:0 0 0 3px rgba(11,107,98,.3);transform:scale(1.05)}
-.upload-progress{width:100%;height:6px;background:#e0e0e0;border-radius:3px;margin-top:8px;overflow:hidden;display:none}
-.upload-progress.show{display:block}
-.upload-progress .bar{height:100%;background:#0b6b62;width:0}
 @media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -187,7 +184,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 <div class="menu" id="menu">
 <a href="#home" onclick="toggleMenu()">صفحه اصلی</a>
-<a href="#news" onclick="toggleMenu()">📢 اخبار و اطلاعیه</a>
+<a href="#news" onclick="toggleMenu()">📢 اخبار</a>
 <a href="#events" onclick="toggleMenu()">📅 رویدادها</a>
 <a href="#polls" onclick="toggleMenu()">📊 نظرسنجی</a>
 <a href="#about" onclick="toggleMenu()">درباره کانون</a>
@@ -221,7 +218,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </section>
 
-<section id="news"><div class="title"><h2>📢 اخبار و اطلاعیه‌ها</h2><p>آخرین خبرها</p></div><div class="news-grid" id="newsGrid"></div></section>
+<section id="news"><div class="title"><h2>📢 اخبار و اطلاعیه‌ها</h2></div><div class="news-grid" id="newsGrid"></div></section>
 <section id="events"><div class="title"><h2>📅 رویدادهای پیش‌رو</h2></div><div class="events-grid" id="eventsGrid"></div></section>
 <section id="polls"><div class="title"><h2>📊 نظرسنجی‌ها</h2></div><div id="pollsBox"></div></section>
 <section id="about"><div class="title"><h2 id="aboutTitle">🌟 درباره کانون</h2></div><div id="aboutBox" class="about-content"></div></section>
@@ -284,9 +281,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="color:#084c47;margin-top:20px">📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
 <div id="myMessages"><p style="color:#888">پیامی ندارید.</p></div>
 <h3 style="color:#084c47;margin-top:20px">🎓 کلاس‌های من</h3>
-<div id="myClasses"><p style="color:#888">در کلاسی ثبت‌نام نکرده‌اید.</p></div>
+<div id="myClasses"><p style="color:#888">در کلاسی نیستید.</p></div>
 <h3 style="color:#084c47;margin-top:20px">💡 ایده‌های من</h3>
-<div id="myIdeas"><p style="color:#888">ایده‌ای ثبت نکرده‌اید.</p></div>
+<div id="myIdeas"><p style="color:#888">ایده‌ای نیست.</p></div>
 </div>
 </div>
 </section>
@@ -345,7 +342,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin-top:30px">📢 ارتباط با اعضا</h3>
 <div class="card" style="background:#f7fafc">
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-<button type="button" class="btn" onclick="selectAllMembers()" style="background:#1e6bb8;font-size:12px;padding:6px 12px">✅ انتخاب همه</button>
+<button type="button" class="btn" onclick="selectAllMembers()" style="background:#1e6bb8;font-size:12px;padding:6px 12px">✅ همه</button>
 <button type="button" class="btn" onclick="deselectAllMembers()" style="background:#888;font-size:12px;padding:6px 12px">✖ لغو</button>
 </div>
 <div id="memberSelector" style="max-height:250px;overflow-y:auto;background:#fff;border-radius:10px;padding:10px;border:1px solid #d6e2e0"></div>
@@ -353,7 +350,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <input id="msgText" placeholder="متن پیام..." style="margin-bottom:10px">
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <button type="button" class="btn" onclick="copyNumbers()" style="background:#2e8b57;font-size:13px">📋 کپی شماره‌ها</button>
-<button type="button" class="btn" onclick="saveGroup()" style="background:#1e6bb8;font-size:13px">💾 ذخیره گروه</button>
+<button type="button" class="btn" onclick="saveGroup()" style="background:#1e6bb8;font-size:13px">💾 گروه</button>
 </div>
 <input id="groupName" placeholder="اسم گروه" style="margin-top:10px">
 <p id="msgStatus" style="font-size:12px"></p>
@@ -369,9 +366,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <option value="all">📢 همه اعضا</option>
 <option value="one">👤 یک عضو خاص</option>
 </select>
-<input id="sendToPhone" placeholder="شماره عضو (اگر یک نفر)" style="display:none;margin-bottom:8px">
-<input id="msgTitle" placeholder="عنوان پیام" required>
-<textarea id="msgBody" placeholder="متن پیام..." required></textarea>
+<input id="sendToPhone" placeholder="شماره" style="display:none;margin-bottom:8px">
+<input id="msgTitle" placeholder="عنوان" required>
+<textarea id="msgBody" placeholder="متن..." required></textarea>
 <button class="btn" type="submit">📤 ارسال</button>
 </form>
 <p id="sendMsgStatus"></p>
@@ -389,13 +386,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3 style="margin-top:30px">📊 حضور و غیاب</h3>
 <div class="card" style="background:#f7fafc">
 <form id="sessionForm">
-<input id="sesTitle" placeholder="عنوان جلسه (مثلاً: هیئت چهارشنبه)" required>
+<input id="sesTitle" placeholder="عنوان جلسه" required>
 <div class="date-picker">
 <select id="sesDay" required><option value="">روز</option></select>
 <select id="sesMonth" required><option value="">ماه</option></select>
 <select id="sesYear" required><option value="">سال</option></select>
 </div>
-<textarea id="sesDesc" placeholder="توضیحات (اختیاری)"></textarea>
+<textarea id="sesDesc" placeholder="توضیحات"></textarea>
 <button class="btn" type="submit">ساخت جلسه</button>
 </form>
 <p id="sessionMsg"></p>
@@ -615,7 +612,7 @@ function setupReveal(){const els=document.querySelectorAll("section, .card, .wee
 function selectPanel(p){
   currentPanel = p;
   document.querySelectorAll(".login-tab").forEach(t=>t.classList.toggle("active",t.dataset.panel===p));
-  const hints = { main:"رمز مدیر اصلی را وارد کنید (anvar1403)", ertebat:"رمز واحد ارتباطات (ertebat888)", resane:"رمز واحد رسانه (resane777)", roshd:"رمز واحد رشد (roshd666)" };
+  const hints = { main:"رمز مدیر اصلی را وارد کنید", ertebat:"رمز واحد ارتباطات را وارد کنید", resane:"رمز واحد رسانه را وارد کنید", roshd:"رمز واحد رشد را وارد کنید" };
   document.getElementById("panelHint").textContent = hints[p];
 }
 
@@ -786,7 +783,6 @@ async function loadGroups(){const b=document.getElementById("groupsList");if(!b)
 async function loadGroup(id){const {data}=await db.from("contact_groups").select("*").eq("id",id).single();if(!data)return;const ids=data.member_ids||[];document.querySelectorAll(".member-cb").forEach(cb=>{cb.checked=ids.includes(parseInt(cb.value));});updateSelectedCount();showMsgStatus(`✅ «${data.name}» انتخاب شد`,"green");}
 async function deleteGroup(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_group",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGroups();}
 
-// پیام‌ها
 async function loadSentMessages(){
   const b=document.getElementById("sentMessagesList");if(!b)return;
   const {data}=await db.from("messages").select("*").order("created_at",{ascending:false}).limit(50);
@@ -798,39 +794,33 @@ async function deleteSentMessage(id){if(!confirm("حذف شود؟"))return;const
 async function loadBirthdays(){
   const b=document.getElementById("birthdaysBox");if(!b)return;
   if(!allMembers.length){b.innerHTML="<p style='color:#888'>عضوی نیست.</p>";return;}
-  // تاریخ امروز (شمسی تقریبی)
   const now = new Date();
   const g2j = (gy,gm,gd)=>{const g_d_m=[0,31,59,90,120,151,181,212,243,273,304,334];let jy=gy<=1600?621:979;const gy2=gy<=1600?gy-621:gy-1600;const days=(gy2*365)+Math.floor((gy2+3)/4)+g_d_m[gm-1]+gd-(gm>2?1:0);jy+=33*Math.floor(days/12053);let d=days%12053;jy+=4*Math.floor(d/1461);d%=1461;if(d>365){jy+=Math.floor((d-1)/365);d=(d-1)%365;}const jm=d<186?1+Math.floor(d/31):7+Math.floor((d-186)/30);const jd=1+(d<186?d%31:(d-186)%30);return{jy,jm,jd};};
   const today = g2j(now.getFullYear(),now.getMonth()+1,now.getDate());
-  const weekAhead = today.jd + 7;
   const bdMembers = [];
   allMembers.forEach(m=>{
     if(!m.birth_date) return;
     const p = m.birth_date.split("/");
     if(p.length !== 3) return;
     const bm = parseInt(p[1]), bd = parseInt(p[2]);
-    // اگر تولد این ماه یا ۷ روز آینده
-    let daysUntil = 0;
     if(bm === today.jm) {
-      daysUntil = bd - today.jd;
+      const daysUntil = bd - today.jd;
       if(daysUntil >= 0 && daysUntil <= 7) bdMembers.push({m, daysUntil});
     } else {
-      // ماه بعد
       const nextMonth = today.jm === 12 ? 1 : today.jm + 1;
       if(bm === nextMonth) {
         const daysLeftThisMonth = (today.jm <= 6 ? 31 : 30) - today.jd;
-        daysUntil = daysLeftThisMonth + bd;
+        const daysUntil = daysLeftThisMonth + bd;
         if(daysUntil <= 7) bdMembers.push({m, daysUntil});
       }
     }
   });
   if(!bdMembers.length){b.innerHTML="<p style='color:#888'>تولدی در هفته پیش‌رو نیست.</p>";return;}
   bdMembers.sort((a,b)=>a.daysUntil-b.daysUntil);
-  b.innerHTML=bdMembers.map(x=>`<div class="birthday-card">🎂 <b>${esc(x.m.name)}</b> — ${x.daysUntil === 0 ? "🎉 امروز!" : fa(x.daysUntil)+" روز دیگه"} (${esc(x.m.birth_date)}) <br><span style="font-size:12px;color:#777">📱 ${esc(x.m.phone||"-")}</span></div>`).join("");
+  b.innerHTML=bdMembers.map(x=>`<div class="birthday-card">🎂 <b>${esc(x.m.name)}</b> — ${x.daysUntil === 0 ? "🎉 امروز!" : fa(x.daysUntil)+" روز دیگه"} (${esc(x.m.birth_date)})<br><span style="font-size:12px;color:#777">📱 ${esc(x.m.phone||"-")}</span></div>`).join("");
 }
 function updateBirthdays(){loadBirthdays();}
 
-// حضور و غیاب
 async function loadSessions(){
   const b=document.getElementById("sessionsList");if(!b)return;
   const {data:ses}=await db.from("sessions").select("*").order("created_at",{ascending:false});
@@ -867,7 +857,7 @@ async function openAttendance(sid, title){
       <span class="att-name">${esc(m.name)}</span>
       <button class="att-btn att-present ${st==='present'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','present')">حاضر</button>
       <button class="att-btn att-absent ${st==='absent'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','absent')">غایب</button>
-      <button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">با تأخیر</button>
+      <button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">تأخیر</button>
     </div>`;
   }).join("");
   document.getElementById("attendanceModal").classList.add("open");
@@ -879,7 +869,6 @@ async function setAtt(phone, name, status){
   openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
 }
 
-// فرم‌ها
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();const msg=document.getElementById("registerMsg");
   const n=fullName.value.trim(),ni=nationalId.value.trim();
@@ -927,7 +916,7 @@ document.getElementById("editForm").addEventListener("submit",async e=>{
   m.textContent="ذخیره...";m.style.color="#555";
   const {error}=await db.rpc("admin_update_member",{admin_pass:adminPassword,member_id:parseInt(id),p_name:n,p_national_id:ni,p_birth_date:bd,p_phone:ph});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
-  m.textContent="ذخیره شد ✅";m.style.color="green";
+  m.textContent="✅";m.style.color="green";
   setTimeout(()=>{closeEdit();loadMembers();},500);
 });
 document.getElementById("uploadForm").addEventListener("submit",async e=>{
