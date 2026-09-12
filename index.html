@@ -642,7 +642,6 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-// ====== ذخیره خودکار پنل اعضا ======
 function saveMemberLocal(m) { try { if(m) localStorage.setItem("memberSaved", JSON.stringify(m)); } catch(e){} }
 function clearMemberLocal() { try { localStorage.removeItem("memberSaved"); } catch(e){} }
 function loadMemberLocal() { try { const s = localStorage.getItem("memberSaved"); return s ? JSON.parse(s) : null; } catch(e){ return null; } }
@@ -1161,10 +1160,10 @@ document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   if(error||!data||!data.length){m.textContent="❌ این شماره ثبت نشده";m.style.color="red";return;}
   currentMember=data[0];
   saveMemberLocal(currentMember);
-  renderMemberPanel();
+  await renderMemberPanel();
 });
 
-function renderMemberPanel(){
+async function renderMemberPanel(){
   document.getElementById("memberLoginBox").style.display="none";
   document.getElementById("memberPanelBox").style.display="block";
   document.getElementById("mName").textContent=currentMember.name||"-";
@@ -1176,7 +1175,6 @@ function renderMemberPanel(){
   document.getElementById("ideaUserNotice").style.display="block";
   document.getElementById("ideaName").value=currentMember.name||"";
   document.getElementById("ideaName").style.display="none";
-  // کارت
   document.getElementById("cardName").textContent=currentMember.name||"-";
   document.getElementById("cardCode").textContent=currentMember.member_code||"در انتظار...";
   if(currentMember.created_at){document.getElementById("cardDate").textContent=new Date(currentMember.created_at).toLocaleDateString("fa-IR");}
@@ -1185,7 +1183,7 @@ function renderMemberPanel(){
   document.getElementById("epName").value=currentMember.name||"";
   setPersianDate("epDay","epMonth","epYear",currentMember.birth_date||"");
   document.getElementById("epPhone").value=currentMember.phone||"";
-  loadMyIdeas();loadPolls();loadMyClasses();loadClasses();loadMyMessages();loadMyAttendance();loadMyVotes();
+  await loadMyIdeas();await loadPolls();await loadMyClasses();await loadClasses();await loadMyMessages();await loadMyAttendance();await loadMyVotes();
 }
 
 document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
@@ -1288,7 +1286,7 @@ async function loadMyVotes(){
 document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
 
-// ====== ورود خودکار عضو ======
+// ============ ورود خودکار عضو ============
 async function autoLoginMember(){
   const saved=loadMemberLocal();
   if(!saved||!saved.phone)return;
@@ -1296,12 +1294,16 @@ async function autoLoginMember(){
   if(error||!data||!data.length){clearMemberLocal();return;}
   currentMember=data[0];
   saveMemberLocal(currentMember);
-  renderMemberPanel();
+  await renderMemberPanel();
 }
 
-selectPanel("main");
-render();
-setTimeout(autoLoginMember, 500);
+// ============ اجرای اولیه ============
+(async () => {
+  selectPanel("main");
+  await autoLoginMember();
+  await render();
+  if(adminPassword){ /* nothing */ }
+})();
 </script>
 </body>
-                                                             </html>
+  </html>
