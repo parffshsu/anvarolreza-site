@@ -30,8 +30,7 @@ section{padding:50px 7%;max-width:1100px;margin:auto}
 .title{text-align:center;margin-bottom:30px}
 .title h2{color:#084c47}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0;transition:box-shadow .3s ease,transform .3s ease}
-.card:hover{box-shadow:0 10px 28px rgba(0,0,0,.1)}
+.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0}
 form{display:grid;gap:11px}
 input,select,textarea,button{padding:11px;border-radius:10px;border:1px solid #d6e2e0;font-family:inherit;font-size:14px}
 textarea{min-height:90px;resize:vertical}
@@ -45,33 +44,30 @@ button{cursor:pointer}
 .stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:100px}
 .stat b{display:block;font-size:24px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
-.member{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px;animation:fadeUp .4s ease both}
+.member{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
 #ideas{display:grid;gap:10px}
-.idea{padding:10px 14px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px;animation:fadeUp .4s ease both}
+.idea{padding:10px 14px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:11px;margin-top:6px}
-.admin-idea{padding:14px;border-radius:10px;background:#f2faf8;margin:10px 0;font-size:13px;border-right:4px solid #0b6b62;animation:fadeUp .4s ease both}
+.admin-idea{padding:14px;border-radius:10px;background:#f2faf8;margin:10px 0;font-size:13px;border-right:4px solid #0b6b62}
 .admin-idea .content{margin:8px 0;line-height:1.7}
 .admin-idea .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.admin-idea .actions button{padding:6px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff;transition:transform .15s ease,opacity .2s ease}
-.admin-idea .actions button:active{transform:scale(.92)}
+.admin-idea .actions button{padding:6px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff}
 .b-review{background:#c48b1f}.b-approve{background:#2e8b57}.b-run{background:#1e6bb8}.b-done{background:#7a3fa0}.b-del{background:#c94f4f}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;animation:fadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease;cursor:pointer}
-.gallery-item:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s ease}
-.gallery-item:hover img{transform:scale(1.05)}
-.gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center;position:relative;z-index:1;background:#fff}
+.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
+.gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center;background:#fff}
 .gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column}
 .lightbox.open{display:flex}
 .lightbox img{max-width:95vw;max-height:78vh;border-radius:10px;user-select:none;touch-action:pan-y}
-.lightbox .lb-caption{color:#fff;font-size:14px;margin-top:14px;text-align:center;padding:0 20px;max-width:600px}
+.lightbox .lb-caption{color:#fff;font-size:14px;margin-top:14px;text-align:center;padding:0 20px}
 .lightbox .lb-counter{color:#bbb;font-size:13px;margin-top:6px}
 .lightbox .lb-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer}
 .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer}
 .lightbox .lb-prev{left:20px}.lightbox .lb-next{right:20px}
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:fadeUp .5s ease both}
+.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
 .weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:10px}
 .weekly-card h4{margin:8px 0;color:#084c47;font-size:17px}
 .weekly-card .info{font-size:13px;color:#555;margin:6px 0}
@@ -79,8 +75,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
 .about-content{background:#fff;border-radius:14px;padding:30px;box-shadow:0 6px 20px rgba(0,0,0,.06);line-height:2;font-size:15px;white-space:pre-line;color:#333}
 .about-content a{color:#0b6b62;font-weight:bold}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.show{opacity:1;transform:translateY(0)}
 .members-toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
 .members-toolbar input{flex:1;min-width:160px}
 .member-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
@@ -93,7 +87,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .modal h3{color:#084c47;margin:0 0 16px}
 .modal .close{background:transparent;border:none;color:#888;font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
 .profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:12px;margin-bottom:16px}
-.profile-avatar{width:64px;height:64px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold}
+.profile-avatar{width:64px;height:64px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;overflow:hidden}
+.profile-avatar img{width:100%;height:100%;object-fit:cover}
 .profile-info h3{margin:0 0 4px;color:#084c47;font-size:18px}
 .profile-info p{margin:2px 0;font-size:13px;color:#555}
 .myidea{padding:12px 14px;border-radius:10px;background:#f2faf8;margin:8px 0;font-size:13px;border-right:4px solid #0b6b62}
@@ -119,7 +114,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .poll-option{margin:8px 0;position:relative}
 .poll-option button{width:100%;text-align:right;background:#f2faf8;border:2px solid #d9efeb;border-radius:10px;padding:11px 16px;font-size:14px;cursor:pointer;color:#084c47;font-weight:bold;position:relative;overflow:hidden;z-index:1}
 .poll-option button.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
-.poll-option .bar{position:absolute;top:0;right:0;height:100%;background:linear-gradient(90deg,#d9efeb,#b8e0d9);border-radius:8px;z-index:-1;transition:width .6s ease}
+.poll-option .bar{position:absolute;top:0;right:0;height:100%;background:linear-gradient(90deg,#d9efeb,#b8e0d9);border-radius:8px;z-index:-1}
 .poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
 .poll-option .result{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:12px;color:#084c47;font-weight:bold}
 .poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
@@ -127,6 +122,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .member-check:hover{background:#f2faf8}
 .member-check input{width:auto}
 .member-check.checked{background:#e6f5f3}
+.member-check .mc-av{width:32px;height:32px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;overflow:hidden;flex-shrink:0}
+.member-check .mc-av img{width:100%;height:100%;object-fit:cover}
 .group-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#fff;border-radius:8px;margin:4px 0;font-size:13px;border:1px solid #d6e2e0}
 .group-item button{background:#0b6b62;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-right:4px}
 .group-item .del-g{background:#c94f4f}
@@ -178,7 +175,24 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .report-stat .ri{font-size:24px}
 .report-stat .rv{font-size:22px;font-weight:bold;color:#084c47;margin:6px 0}
 .report-stat .rk{font-size:12px;color:#666}
-@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
+/* کارت عضویت */
+.membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:22px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:20px}
+.membership-card::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
+.membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:80px;opacity:.08;transform:rotate(-15deg)}
+.membership-card .mc-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:12px;margin-bottom:14px;position:relative;z-index:1}
+.membership-card .mc-brand{font-size:15px;font-weight:bold}
+.membership-card .mc-shield{font-size:24px}
+.membership-card .mc-body{display:flex;gap:16px;align-items:center;position:relative;z-index:1}
+.membership-card .mc-photo{width:80px;height:80px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:bold;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.3)}
+.membership-card .mc-photo img{width:100%;height:100%;object-fit:cover}
+.membership-card .mc-details{flex:1;min-width:0}
+.membership-card .mc-name{font-size:18px;font-weight:bold;margin-bottom:6px}
+.membership-card .mc-row{font-size:12px;margin:3px 0;opacity:.9}
+.membership-card .mc-row b{font-weight:bold;color:#fff}
+.membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:13px;letter-spacing:1px;margin-top:4px;border:1px solid rgba(255,255,255,.2)}
+.membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);font-size:11px;opacity:.85;position:relative;z-index:1}
+.membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:11px}
+@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.membership-card .mc-photo{width:64px;height:64px;font-size:24px}.membership-card .mc-name{font-size:16px}}
 </style>
 </head>
 <body>
@@ -262,32 +276,68 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p id="memberLoginMsg"></p>
 </div>
 <div id="memberPanelBox" style="display:none">
-<div class="profile-header">
-<div class="profile-avatar" id="avatarLetter">?</div>
-<div class="profile-info">
-<h3 id="mName">-</h3>
-<p>کد ملی: <span id="mNid">-</span></p>
-<p>تاریخ تولد: <span id="mBirth">-</span></p>
-<p>تلفن: <span id="mPhone">-</span></p>
+
+<div class="membership-card" id="membershipCard">
+<div class="mc-top">
+<div class="mc-brand">🕌 کانون انوارالرضا(ع)</div>
+<div class="mc-shield">💚</div>
+</div>
+<div class="mc-body">
+<div class="mc-photo" id="cardPhoto">?</div>
+<div class="mc-details">
+<div class="mc-name" id="cardName">-</div>
+<div class="mc-row">کد عضویت: <span class="mc-code" id="cardCode">-</span></div>
+<div class="mc-row">تاریخ عضویت: <b id="cardDate">-</b></div>
 </div>
 </div>
+<div class="mc-bottom">
+<span>از دل تا حرم 💚</span>
+<span class="mc-status">✅ فعال</span>
+</div>
+</div>
+
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+<label class="btn" style="background:#1e6bb8;cursor:pointer;text-align:center">
+📷 عکس پروفایل
+<input type="file" id="avatarFile" accept="image/*" style="display:none" onchange="uploadAvatar()">
+</label>
+<button class="btn" onclick="toggleEditProfile()" style="background:#7a3fa0">✏️ ویرایش پروفایل</button>
 <button class="btn" id="memberLogoutBtn" style="background:#c94f4f">🚪 خروج</button>
-<button class="btn" onclick="toggleEditPhone()" style="background:#1e6bb8">✏ ویرایش تلفن</button>
 </div>
-<div id="editPhoneBox" style="display:none;margin-bottom:16px">
-<form id="editPhoneForm">
-<input id="newPhone" type="tel" placeholder="شماره جدید" required>
-<button class="btn" type="submit">ذخیره</button>
+<p id="avatarMsg" style="font-size:12px;text-align:center"></p>
+
+<div id="editProfileBox" style="display:none;margin-bottom:16px">
+<div class="card" style="background:#f7fafc">
+<h4 style="margin:0 0 10px;color:#084c47">✏️ ویرایش پروفایل</h4>
+<form id="editProfileForm">
+<input id="epName" placeholder="نام و نام خانوادگی" required>
+<div class="date-picker">
+<select id="epDay" required><option value="">روز</option></select>
+<select id="epMonth" required><option value="">ماه</option></select>
+<select id="epYear" required><option value="">سال</option></select>
+</div>
+<input id="epPhone" type="tel" placeholder="شماره تماس" required>
+<button class="btn" type="submit">ذخیره تغییرات</button>
 </form>
-<p id="editPhoneMsg"></p>
+<p id="editProfileMsg"></p>
 </div>
+</div>
+
 <h3 style="color:#084c47;margin-top:20px">📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
 <div id="myMessages"><p style="color:#888">پیامی ندارید.</p></div>
+
+<h3 style="color:#084c47;margin-top:20px">📊 تاریخچه حضور من</h3>
+<div id="myAttendance"><p style="color:#888">در جلسه‌ای حاضر نبوده‌اید.</p></div>
+
+<h3 style="color:#084c47;margin-top:20px">🗳 تاریخچه رأی‌های من</h3>
+<div id="myVotes"><p style="color:#888">هنوز رأی نداده‌اید.</p></div>
+
 <h3 style="color:#084c47;margin-top:20px">🎓 کلاس‌های من</h3>
 <div id="myClasses"><p style="color:#888">در کلاسی نیستید.</p></div>
+
 <h3 style="color:#084c47;margin-top:20px">💡 ایده‌های من</h3>
 <div id="myIdeas"><p style="color:#888">ایده‌ای نیست.</p></div>
+
 </div>
 </div>
 </section>
@@ -609,7 +659,7 @@ function fillDateSelects(d,m,y){
   if(me&&me.options.length<=1) PERSIAN_MONTHS.forEach((n,i)=>{const o=document.createElement("option");o.value=String(i+1).padStart(2,"0");o.textContent=n;me.appendChild(o);});
   if(ye&&ye.options.length<=1) for(let y2=1405;y2>=1360;y2--){const o=document.createElement("option");o.value=String(y2);o.textContent=fa(y2);ye.appendChild(o);}
 }
-["birthDay|birthMonth|birthYear","editBirthDay|editBirthMonth|editBirthYear","eDay|eMonth|eYear","sesDay|sesMonth|sesYear"].forEach(s=>{const [d,m,y]=s.split("|");fillDateSelects(d,m,y);});
+["birthDay|birthMonth|birthYear","editBirthDay|editBirthMonth|editBirthYear","eDay|eMonth|eYear","sesDay|sesMonth|sesYear","epDay|epMonth|epYear"].forEach(s=>{const [d,m,y]=s.split("|");fillDateSelects(d,m,y);});
 
 function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=document.getElementById(m).value,yy=document.getElementById(y).value;if(!dd||!mm||!yy)return "";return `${yy}/${mm}/${dd}`;}
 function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
@@ -630,6 +680,11 @@ function showSectionsForPanel(p){
     s.style.display = allowed.includes(p) ? "block" : "none";
   });
   document.getElementById("panelTitle").textContent = PANEL_NAMES[p];
+}
+function avatarHtml(m, size){
+  const s = size || 40;
+  if(m.avatar_url) return `<div style="width:${s}px;height:${s}px;border-radius:50%;overflow:hidden;flex-shrink:0"><img src="${esc(m.avatar_url)}" style="width:100%;height:100%;object-fit:cover"></div>`;
+  return `<div style="width:${s}px;height:${s}px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:${Math.floor(s/2.5)}px;font-weight:bold;flex-shrink:0">${esc((m.name||"?")[0])}</div>`;
 }
 
 async function render(){
@@ -652,7 +707,6 @@ async function loadNews(){
   const {data}=await db.from("news").select("*").order("is_pinned",{ascending:false}).order("created_at",{ascending:false});
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>هنوز خبری ثبت نشده.</p>";return;}
   b.innerHTML=data.map(n=>{const dt=new Date(n.created_at).toLocaleDateString("fa-IR");return `<div class="news-card ${n.is_pinned?"pinned":""}">${n.is_pinned?'<span class="pin-badge">📌</span>':""}${adminPassword?`<button class="del-btn" onclick="deleteNews(${n.id})" style="${n.is_pinned?'top:36px':''}">✕</button>`:""}<h4>${esc(n.title)}</h4><div class="content">${esc(n.content)}</div><div class="date">🗓 ${dt}</div></div>`;}).join("");
-  setupReveal();
 }
 async function deleteNews(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_news",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadNews();}
 
@@ -661,7 +715,6 @@ async function loadEvents(){
   const {data}=await db.from("events").select("*").order("event_date",{ascending:true});
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>رویدادی نیست.</p>";return;}
   b.innerHTML=data.map(e=>`<div class="event-card"><span class="date-badge">📅 ${esc(e.event_date)}</span>${adminPassword?`<button class="del-btn" onclick="deleteEvent(${e.id})">✕</button>`:""}<h4>${esc(e.title)}</h4>${e.place?`<div class="info">📍 ${esc(e.place)}</div>`:""}${e.description?`<div class="desc">${esc(e.description)}</div>`:""}</div>`).join("");
-  setupReveal();
 }
 async function deleteEvent(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_event",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadEvents();}
 
@@ -673,9 +726,8 @@ async function loadPolls(){
   if(!allPolls.length){b.innerHTML="<p style='text-align:center;color:#888'>نظرسنجی‌ای نیست.</p>";return;}
   const myPhone=currentMember?currentMember.phone:null;
   b.innerHTML=allPolls.map(p=>{const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;const myVote=myPhone?pv.find(v=>v.voter_phone===myPhone):null;const opts=p.options||[];return `<div class="poll-card">${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}<h4>${esc(p.question)}</h4><div class="sub">👥 ${fa(total)} رأی</div>${opts.map((o,i)=>{const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})"><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;}).join("")}</div>`;}).join("");
-  setupReveal();
 }
-async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.phone});if(error){alert("خطا: "+error.message);return;}alert("ثبت شد ✅");loadPolls();}
+async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.phone});if(error){alert("خطا: "+error.message);return;}alert("ثبت شد ✅");loadPolls();loadMyVotes();}
 async function deletePoll(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_poll",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadPolls();}
 function addPollOption(){const b=document.getElementById("pollOptionsBox"),c=b.querySelectorAll("input").length;if(c>=8){alert("حداکثر ۸");return;}const i=document.createElement("input");i.className="poll-opt";i.placeholder=`گزینه ${c+1}`;b.appendChild(i);}
 
@@ -693,7 +745,6 @@ async function loadWeekly(){
   const {data}=await db.from("weekly").select("*").order("created_at",{ascending:true});
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>برنامه‌ای نیست.</p>";return;}
   b.innerHTML=data.map(w=>`<div class="weekly-card"><span class="day">${esc(w.day)}</span><h4>${esc(w.title)}</h4>${w.p_time?`<div class="info">🕐 ${esc(w.p_time)}</div>`:""}${w.place?`<div class="info">📍 ${esc(w.place)}</div>`:""}${w.description?`<div class="desc">${esc(w.description)}</div>`:""}${adminPassword?`<button class="del-btn" onclick="deleteWeekly(${w.id})">✕</button>`:""}</div>`).join("");
-  setupReveal();
 }
 async function deleteWeekly(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_weekly",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadWeekly();}
 
@@ -703,7 +754,6 @@ async function loadGallery(){
   if(!data||!data.length){galleryImages=[];b.innerHTML="<p style='text-align:center;color:#888'>عکسی نیست.</p>";return;}
   galleryImages=data;
   b.innerHTML=data.map((g,i)=>`<div class="gallery-item" onclick="openLightbox(${i})"><img src="${esc(g.url)}" loading="lazy">${g.caption?`<div class="cap">${esc(g.caption)}</div>`:""}${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button>`:""}</div>`).join("");
-  setupReveal();
 }
 async function deleteGalleryImg(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_gallery",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGallery();}
 function openLightbox(i){if(!galleryImages.length)return;lbIndex=i;updateLightbox();document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
@@ -720,7 +770,6 @@ async function loadVideos(){
   const {data}=await db.from("videos").select("*").order("created_at",{ascending:false});
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>ویدیویی نیست.</p>";return;}
   b.innerHTML=data.map(v=>`<div class="video-card">${adminPassword?`<button class="del-btn" onclick="deleteVideo(${v.id})">✕</button>`:""}<video controls preload="metadata" src="${esc(v.video_url)}"></video><div class="v-info"><h4>${esc(v.title)}</h4>${v.description?`<div class="v-desc">${esc(v.description)}</div>`:""}</div></div>`).join("");
-  setupReveal();
 }
 async function deleteVideo(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadVideos();}
 
@@ -729,7 +778,6 @@ async function loadLibrary(){
   const {data}=await db.from("library").select("*").order("created_at",{ascending:false});
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>کتابی نیست.</p>";return;}
   b.innerHTML=data.map(bk=>`<div class="book-card">${adminPassword?`<button class="del-btn" onclick="deleteBook(${bk.id})">✕</button>`:""}<div class="book-icon">📖</div><h4>${esc(bk.title)}</h4>${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}<a href="${esc(bk.file_url)}" target="_blank" download class="b-download">📥 دانلود</a></div>`).join("");
-  setupReveal();
 }
 async function deleteBook(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadLibrary();}
 
@@ -741,7 +789,6 @@ async function loadClasses(){
   if(!allClasses.length){b.innerHTML="<p style='text-align:center;color:#888'>کلاسی نیست.</p>";return;}
   const myPhone=currentMember?currentMember.phone:null;
   b.innerHTML=allClasses.map(c=>{const rc=allClassRegs.filter(r=>r.class_id===c.id).length;const isReg=myPhone&&allClassRegs.some(r=>r.class_id===c.id&&r.member_phone===myPhone);const full=c.capacity&&rc>=c.capacity;return `<div class="class-card">${adminPassword?`<button class="del-btn" onclick="deleteClass(${c.id})">✕</button>`:""}${adminPassword?`<span class="c-count">${fa(rc)}${c.capacity?"/"+fa(c.capacity):""} نفر</span>`:""}<h4>🎓 ${esc(c.title)}</h4>${c.teacher?`<div class="c-info">👨‍🏫 ${esc(c.teacher)}</div>`:""}${c.schedule?`<div class="c-info">🕐 ${esc(c.schedule)}</div>`:""}${c.description?`<div class="c-desc">${esc(c.description)}</div>`:""}${isReg?`<button class="c-reg done">✅ ثبت‌نام شده</button>`:full?`<button class="c-reg done">ظرفیت تکمیل</button>`:`<button class="c-reg" onclick="registerClass(${c.id})">ثبت‌نام</button>`}${adminPassword?`<div class="reg-list" id="regList${c.id}"><button class="btn" style="font-size:11px;padding:4px 10px;background:#1e6bb8" onclick="showRegs(${c.id})">لیست ثبت‌نام</button></div>`:""}</div>`;}).join("");
-  setupReveal();
 }
 async function registerClass(id){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("register_class",{p_class_id:id,p_phone:currentMember.phone,p_name:currentMember.name});if(error){alert("خطا: "+error.message);return;}alert("ثبت‌نام شد ✅");loadClasses();loadMyClasses();}
 async function deleteClass(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_class",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadClasses();}
@@ -763,9 +810,13 @@ async function loadMembers(){
   allMembers=data||[];
   renderMembers(allMembers);renderMemberSelector();updateBirthdays();
 }
-function renderMembers(l){const b=document.getElementById("members");if(!l.length){b.innerHTML="<p>عضوی نیست.</p>";return;}b.innerHTML=l.map(m=>`<div class="member"><strong>${esc(m.name)}</strong><br><span>کد ملی: ${esc(m.national_id||"-")}</span><br><span>تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span>تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div>`).join("");}
-function filterMembers(){const q=document.getElementById("searchInput").value.trim().toLowerCase();if(!q){renderMembers(allMembers);return;}renderMembers(allMembers.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.national_id||"").includes(q)||(m.phone||"").includes(q)));}
-function downloadExcel(){if(!allMembers.length){alert("خالی");return;}let c="\uFEFF";c+="نام,کد ملی,تاریخ تولد,تلفن\n";allMembers.forEach(m=>{c+=`"${(m.name||"").replace(/"/g,'""')}","${m.national_id||""}","${m.birth_date||""}","${m.phone||""}"\n`;});const b=new Blob([c],{type:"text/csv;charset=utf-8;"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="اعضا.csv";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
+function renderMembers(l){
+  const b=document.getElementById("members");
+  if(!l.length){b.innerHTML="<p>عضوی نیست.</p>";return;}
+  b.innerHTML=l.map(m=>`<div class="member" style="display:flex;gap:10px;align-items:flex-start">${avatarHtml(m,44)}<div style="flex:1;min-width:0"><strong>${esc(m.name)}</strong> ${m.member_code?`<span style="background:#d9efeb;color:#084c47;font-size:10px;padding:2px 8px;border-radius:8px;font-family:monospace">${esc(m.member_code)}</span>`:""}<br><span>کد ملی: ${esc(m.national_id||"-")}</span><br><span>تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span>تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div></div>`).join("");
+}
+function filterMembers(){const q=document.getElementById("searchInput").value.trim().toLowerCase();if(!q){renderMembers(allMembers);return;}renderMembers(allMembers.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.national_id||"").includes(q)||(m.phone||"").includes(q)||(m.member_code||"").toLowerCase().includes(q)));}
+function downloadExcel(){if(!allMembers.length){alert("خالی");return;}let c="\uFEFF";c+="نام,کد عضویت,کد ملی,تاریخ تولد,تلفن\n";allMembers.forEach(m=>{c+=`"${(m.name||"").replace(/"/g,'""')}","${m.member_code||""}","${m.national_id||""}","${m.birth_date||""}","${m.phone||""}"\n`;});const b=new Blob([c],{type:"text/csv;charset=utf-8;"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="اعضا.csv";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
 function openEdit(id){const m=allMembers.find(x=>x.id===id);if(!m)return;document.getElementById("editId").value=m.id;document.getElementById("editName").value=m.name||"";document.getElementById("editNationalId").value=m.national_id||"";setPersianDate("editBirthDay","editBirthMonth","editBirthYear",m.birth_date||"");document.getElementById("editPhone").value=m.phone||"";document.getElementById("editMsg").textContent="";document.getElementById("editModal").classList.add("open");}
 function closeEdit(){document.getElementById("editModal").classList.remove("open");}
 async function deleteMember(id,name){if(!confirm(`حذف «${name}»؟`))return;const {error}=await db.rpc("admin_delete_member",{admin_pass:adminPassword,member_id:id});if(error){alert("خطا: "+error.message);return;}alert("حذف شد ✅");loadMembers();render();}
@@ -779,7 +830,12 @@ async function loadAdminIdeas(){
 async function updateIdea(id,ns){const {error}=await db.rpc("admin_update_idea_status",{admin_pass:adminPassword,idea_id:id,new_status:ns});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
 async function deleteIdea(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_idea",{admin_pass:adminPassword,idea_id:id});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
 
-function renderMemberSelector(){const b=document.getElementById("memberSelector");if(!b)return;if(!allMembers.length){b.innerHTML="<p style='color:#888;font-size:13px'>لیستی نیست</p>";return;}b.innerHTML=allMembers.map(m=>`<label class="member-check" data-id="${m.id}"><input type="checkbox" class="member-cb" value="${m.id}" onchange="updateSelectedCount()"><span>${esc(m.name)} — ${esc(m.phone||"بدون شماره")}</span></label>`).join("");updateSelectedCount();}
+function renderMemberSelector(){
+  const b=document.getElementById("memberSelector");if(!b)return;
+  if(!allMembers.length){b.innerHTML="<p style='color:#888;font-size:13px'>لیستی نیست</p>";return;}
+  b.innerHTML=allMembers.map(m=>`<label class="member-check" data-id="${m.id}"><input type="checkbox" class="member-cb" value="${m.id}" onchange="updateSelectedCount()">${avatarHtml(m,32)}<span>${esc(m.name)} — ${esc(m.phone||"بدون شماره")}</span></label>`).join("");
+  updateSelectedCount();
+}
 function updateSelectedCount(){const c=document.querySelectorAll(".member-cb:checked");document.getElementById("selectedCount").textContent=fa(c.length);document.querySelectorAll(".member-check").forEach(el=>el.classList.toggle("checked",el.querySelector("input").checked));}
 function selectAllMembers(){document.querySelectorAll(".member-cb").forEach(cb=>cb.checked=true);updateSelectedCount();}
 function deselectAllMembers(){document.querySelectorAll(".member-cb").forEach(cb=>cb.checked=false);updateSelectedCount();}
@@ -811,17 +867,8 @@ async function loadBirthdays(){
     const p = m.birth_date.split("/");
     if(p.length !== 3) return;
     const bm = parseInt(p[1]), bd = parseInt(p[2]);
-    if(bm === today.jm) {
-      const daysUntil = bd - today.jd;
-      if(daysUntil >= 0 && daysUntil <= 7) bdMembers.push({m, daysUntil});
-    } else {
-      const nextMonth = today.jm === 12 ? 1 : today.jm + 1;
-      if(bm === nextMonth) {
-        const daysLeftThisMonth = (today.jm <= 6 ? 31 : 30) - today.jd;
-        const daysUntil = daysLeftThisMonth + bd;
-        if(daysUntil <= 7) bdMembers.push({m, daysUntil});
-      }
-    }
+    if(bm === today.jm) {const daysUntil = bd - today.jd;if(daysUntil >= 0 && daysUntil <= 7) bdMembers.push({m, daysUntil});}
+    else {const nextMonth = today.jm === 12 ? 1 : today.jm + 1;if(bm === nextMonth) {const daysLeftThisMonth = (today.jm <= 6 ? 31 : 30) - today.jd;const daysUntil = daysLeftThisMonth + bd;if(daysUntil <= 7) bdMembers.push({m, daysUntil});}}
   });
   if(!bdMembers.length){b.innerHTML="<p style='color:#888'>تولدی در هفته پیش‌رو نیست.</p>";return;}
   bdMembers.sort((a,b)=>a.daysUntil-b.daysUntil);
@@ -876,7 +923,7 @@ async function loadSessions(){
     </div>`;
   }).join("");
 }
-async function deleteSession(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_session",{admin_pass:adminPassword,s_id:id});if(error){alert("خطا: "+error.message);return;}loadSessions();}
+async function deleteSession(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_session",{admin_pass:adminPassword,s_id:id});if(error){alert("خطا: "+error.message);return;}loadSessions();loadReports();}
 
 async function openAttendance(sid, title){
   currentSessionId = sid;
@@ -1096,7 +1143,17 @@ document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   document.getElementById("ideaUserNotice").style.display="block";
   document.getElementById("ideaName").value=currentMember.name;
   document.getElementById("ideaName").style.display="none";
-  loadMyIdeas();loadPolls();loadMyClasses();loadClasses();loadMyMessages();
+  // کارت عضویت
+  document.getElementById("cardName").textContent=currentMember.name;
+  document.getElementById("cardCode").textContent=currentMember.member_code||"-";
+  if(currentMember.created_at){document.getElementById("cardDate").textContent=new Date(currentMember.created_at).toLocaleDateString("fa-IR");}
+  const cp=document.getElementById("cardPhoto");
+  if(currentMember.avatar_url){cp.innerHTML=`<img src="${esc(currentMember.avatar_url)}">`;}else{cp.textContent=(currentMember.name||"?").charAt(0);}
+  // پروفایل edit form
+  document.getElementById("epName").value=currentMember.name||"";
+  setPersianDate("epDay","epMonth","epYear",currentMember.birth_date||"");
+  document.getElementById("epPhone").value=currentMember.phone||"";
+  loadMyIdeas();loadPolls();loadMyClasses();loadClasses();loadMyMessages();loadMyAttendance();loadMyVotes();
 });
 document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
   currentMember=null;
@@ -1104,23 +1161,54 @@ document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
   document.getElementById("memberPanelBox").style.display="none";
   document.getElementById("mLoginPhone").value="";
   document.getElementById("memberLoginMsg").textContent="";
+  document.getElementById("editProfileBox").style.display="none";
   document.getElementById("ideaUserNotice").style.display="none";
   document.getElementById("ideaName").style.display="block";
   document.getElementById("ideaName").value="";
   loadPolls();loadClasses();
 });
-function toggleEditPhone(){const b=document.getElementById("editPhoneBox");b.style.display=b.style.display==="none"?"block":"none";if(b.style.display==="block"&&currentMember)document.getElementById("newPhone").value=currentMember.phone;}
-document.getElementById("editPhoneForm").addEventListener("submit",async e=>{
-  e.preventDefault();const m=document.getElementById("editPhoneMsg"),np=document.getElementById("newPhone").value.trim();
+
+async function uploadAvatar(){
   if(!currentMember)return;
+  const f=document.getElementById("avatarFile").files[0];
+  const m=document.getElementById("avatarMsg");
+  if(!f){m.textContent="عکسی نیست";m.style.color="red";return;}
+  if(f.size>3*1024*1024){m.textContent="حجم کمتر از ۳ مگابایت";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn="av_"+currentMember.national_id+"_"+Date.now()+"."+f.name.split(".").pop();
+  const {error:ue}=await db.storage.from("avatars").upload(fn,f,{upsert:true});
+  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("avatars").getPublicUrl(fn);
+  const {error:de}=await db.rpc("member_update_avatar",{p_phone:currentMember.phone,new_url:ud.publicUrl});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  currentMember.avatar_url=ud.publicUrl;
+  document.getElementById("cardPhoto").innerHTML=`<img src="${esc(ud.publicUrl)}">`;
+  m.textContent="✅ عکس پروفایل ذخیره شد";m.style.color="green";
+  document.getElementById("avatarFile").value="";
+}
+
+function toggleEditProfile(){
+  const b=document.getElementById("editProfileBox");
+  b.style.display = b.style.display === "none" ? "block" : "none";
+}
+
+document.getElementById("editProfileForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("editProfileMsg");
+  if(!currentMember)return;
+  const n=document.getElementById("epName").value.trim();
+  const bd=getPersianDate("epDay","epMonth","epYear");
+  const ph=document.getElementById("epPhone").value.trim();
+  if(!n||!bd||!ph){m.textContent="همه فیلدها الزامی";m.style.color="red";return;}
   m.textContent="ذخیره...";m.style.color="#555";
-  const {error}=await db.rpc("member_update_profile",{p_nid:currentMember.national_id,p_phone:currentMember.phone,new_phone:np});
+  const {error}=await db.rpc("member_full_update",{p_phone:currentMember.phone,new_name:n,new_birth:bd,new_phone:ph});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
-  m.textContent="✅";m.style.color="green";
-  currentMember.phone=np;document.getElementById("mPhone").textContent=np;
-  setTimeout(()=>{document.getElementById("editPhoneBox").style.display="none";m.textContent="";},800);
-  loadPolls();
+  currentMember.name=n;currentMember.birth_date=bd;currentMember.phone=ph;
+  document.getElementById("cardName").textContent=n;
+  m.textContent="✅ ذخیره شد";m.style.color="green";
+  setTimeout(()=>{document.getElementById("editProfileBox").style.display="none";m.textContent="";},1000);
 });
+
 async function loadMyIdeas(){
   const b=document.getElementById("myIdeas");if(!currentMember)return;
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
@@ -1129,6 +1217,7 @@ async function loadMyIdeas(){
   if(!data||!data.length){b.innerHTML="<p style='color:#888'>ایده‌ای نیست.</p>";return;}
   b.innerHTML=data.map(i=>`<div class="myidea"><strong style="color:#084c47">${esc(i.category||"سایر")}</strong><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
 }
+
 async function loadMyMessages(){
   const b=document.getElementById("myMessages");if(!currentMember||!b)return;
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
@@ -1140,6 +1229,26 @@ async function loadMyMessages(){
   if(unread>0){ub.textContent=fa(unread);ub.style.display="inline-block";}else{ub.style.display="none";}
   b.innerHTML=data.map(m=>`<div class="msg-card ${!m.is_read?'unread':''}"><h5>${esc(m.title||"بدون عنوان")}</h5><div class="m-content">${esc(m.content||"")}</div><div class="m-date">🗓 ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div></div>`).join("");
 }
+
+async function loadMyAttendance(){
+  const b=document.getElementById("myAttendance");if(!currentMember||!b)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.rpc("member_get_my_attendance",{p_phone:currentMember.phone});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888'>در جلسه‌ای حاضر نبوده‌اید.</p>";return;}
+  const icon={present:"✅",absent:"❌",late:"⏰"};
+  b.innerHTML=data.map(a=>`<div class="myidea" style="border-right-color:${a.status==='present'?'#2e8b57':a.status==='absent'?'#c94f4f':'#c48b1f'}"><strong style="color:#084c47">${icon[a.status]||'؟'} ${esc(a.session_title)}</strong><div style="font-size:12px;color:#777;margin-top:4px">📅 ${esc(a.session_date)}</div></div>`).join("");
+}
+
+async function loadMyVotes(){
+  const b=document.getElementById("myVotes");if(!currentMember||!b)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.rpc("member_get_my_votes",{p_phone:currentMember.phone});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888'>هنوز رأی نداده‌اید.</p>";return;}
+  b.innerHTML=data.map(v=>`<div class="myidea" style="border-right-color:#1e6bb8"><strong style="color:#084c47">🗳 ${esc(v.question)}</strong><div style="font-size:13px;color:#0b6b62;margin-top:4px">رأی شما: <b>${esc(v.voted_option||'-')}</b></div></div>`).join("");
+}
+
 document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
 
@@ -1148,4 +1257,4 @@ render();
 setupReveal();
 </script>
 </body>
-  </html>
+                                                                                                                     </html>
