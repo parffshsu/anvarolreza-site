@@ -201,7 +201,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="online-badge" id="onlineBadge" title="کاربران آنلاین">
 <span class="online-dot"></span>
 <span class="online-eye">👁</span>
-<span id="onlineCount">۰</span>
+<span id="onlineCount">۱</span>
 <span class="online-label">آنلاین</span>
 </div>
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
@@ -695,7 +695,7 @@ function avatarHtml(m, size){
   return `<div style="width:${s}px;height:${s}px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:${Math.floor(s/2.5)}px;font-weight:bold;flex-shrink:0">${esc((m.name||"?")[0])}</div>`;
 }
 
-// ============ شمارنده کاربران آنلاین ============
+// ============ شمارنده کاربران آنلاین (نسخه سریع) ============
 let onlineChannel = null;
 let onlineTimer = null;
 
@@ -711,6 +711,10 @@ function setupOnlineCounter(){
   
   const getName = () => (currentMember && currentMember.name) ? currentMember.name : "مهمان";
   
+  // ✅ نشون دادن ۱ به صورت پیش‌فرض (فوری)
+  const el = document.getElementById("onlineCount");
+  if (el) el.textContent = fa(1);
+  
   onlineChannel = db.channel("online-users", {
     config: { presence: { key: userId } }
   });
@@ -719,26 +723,37 @@ function setupOnlineCounter(){
     if (!onlineChannel) return;
     const state = onlineChannel.presenceState();
     const count = Object.keys(state).length;
-    const el = document.getElementById("onlineCount");
-    if (el) el.textContent = fa(count);
+    const e = document.getElementById("onlineCount");
+    if (e) e.textContent = fa(Math.max(count, 1));
   };
   
+  // ✅ سریع‌تر: بدون منتظر موندن
   onlineChannel
     .on("presence", { event: "sync" }, updateCount)
     .on("presence", { event: "join" }, updateCount)
-    .on("presence", { event: "leave" }, updateCount)
-    .subscribe(async (status) => {
-      if (status === "SUBSCRIBED") {
-        await onlineChannel.track({ user_id: userId, name: getName(), joined_at: new Date().toISOString() });
-        updateCount();
-      }
-    });
+    .on("presence", { event: "leave" }, updateCount);
   
+  onlineChannel.subscribe(async (status) => {
+    if (status === "SUBSCRIBED") {
+      await onlineChannel.track({
+        user_id: userId,
+        name: getName(),
+        joined_at: new Date().toISOString()
+      });
+      updateCount();
+    }
+  });
+  
+  // هر ۱۵ ثانیه به‌روزرسانی
   onlineTimer = setInterval(() => {
     if (onlineChannel) {
-      onlineChannel.track({ user_id: userId, name: getName(), joined_at: new Date().toISOString() });
+      onlineChannel.track({
+        user_id: userId,
+        name: getName(),
+        joined_at: new Date().toISOString()
+      });
     }
-  }, 30000);
+  }, 15000);
   
   window.addEventListener("beforeunload", () => {
     if (onlineChannel) onlineChannel.untrack();
@@ -1379,10 +1394,10 @@ async function autoLoginMember(){
 // ============ اجرای اولیه ============
 (async () => {
   selectPanel("main");
+  setupOnlineCounter();  // ✅ فوری اجرا شه
   await autoLoginMember();
   await render();
-  setTimeout(setupOnlineCounter, 1000);
 })();
 </script>
 </body>
-  </html>
+                                                      </html>
