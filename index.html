@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>کانون فرهنگی دینی انوارالرضا(ع)</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:#f7fafc;color:#222;overflow-x:hidden}
@@ -50,8 +49,6 @@ button:active{transform:scale(.96)}
 .stat:hover{transform:translateY(-3px)}
 .stat b{display:block;font-size:22px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
-
-/* میانبرها */
 .shortcuts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:20px 0}
 .shortcut{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:22px 12px;border-radius:16px;color:#fff;cursor:pointer;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;text-align:center}
 .shortcut::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);pointer-events:none}
@@ -60,7 +57,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .shortcut .sc-icon{font-size:36px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2));animation:iconFloat 3s ease-in-out infinite}
 @keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .shortcut .sc-label{font-size:13px;font-weight:bold;line-height:1.4}
-
 .sc-pink{background:linear-gradient(135deg,#ff6b9d,#c44569)}
 .sc-purple{background:linear-gradient(135deg,#a55eea,#6c5ce7)}
 .sc-blue{background:linear-gradient(135deg,#4a90e2,#2c5fa8)}
@@ -69,12 +65,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-teal{background:linear-gradient(135deg,#00b8a9,#008075)}
 .sc-indigo{background:linear-gradient(135deg,#5f27cd,#341f97)}
 .sc-gray{background:linear-gradient(135deg,#778ca3,#4b6584)}
-
-/* دکمه بازگشت */
 .back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#084c47;padding:10px 18px;border-radius:10px;border:2px solid #d9efeb;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .back-btn:hover{background:#e6f5f3;transform:translateX(-3px)}
-
-/* گالری */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
 .gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;cursor:pointer;transition:transform .3s,box-shadow .3s;animation:cardIn .5s ease}
 .gallery-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
@@ -85,17 +77,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .gallery-info .g-cap{font-size:12px;color:#333;line-height:1.6;word-wrap:break-word}
 .gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
 .gallery-item .edit-btn{position:absolute;top:8px;right:8px;background:#1e6bb8;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
-
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column}
 .lightbox.open{display:flex}
 .lightbox img{max-width:95vw;max-height:70vh;border-radius:10px}
 .lightbox .lb-caption{color:#fff;font-size:14px;margin-top:14px;text-align:center;padding:0 20px;max-width:600px}
-.lightbox .lb-date{color:#aaa;font-size:12px;margin-top:6px}
 .lightbox .lb-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer}
 .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer}
 .lightbox .lb-prev{left:20px}.lightbox .lb-next{right:20px}
-
-/* کلاس/کتاب/ویدیو */
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:cardIn .5s ease;transition:transform .3s}
 .weekly-card:hover{transform:translateY(-3px)}
@@ -104,7 +92,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .weekly-card .info{font-size:12px;color:#555;margin:5px 0}
 .weekly-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
 .weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-
 .class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .class-card{background:linear-gradient(135deg,#fff,#f2faf8);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;border-right:5px solid #7a3fa0;animation:cardIn .5s ease;transition:transform .3s}
 .class-card:hover{transform:translateY(-3px)}
@@ -117,7 +104,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .class-card .c-count{position:absolute;top:12px;left:46px;background:#7a3fa0;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
 .reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
 .reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
-
 .library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .book-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center;animation:cardIn .5s ease}
 .book-card .book-icon{font-size:40px;margin-bottom:6px}
@@ -126,7 +112,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .book-card .b-desc{font-size:11px;color:#777;line-height:1.5;margin:6px 0}
 .book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;margin-top:6px}
 .book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;animation:cardIn .5s ease}
 .video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
@@ -134,7 +119,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .video-card h4{margin:0 0 6px;color:#084c47;font-size:14px}
 .video-card .v-desc{font-size:11px;color:#777;line-height:1.5}
 .video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1;z-index:2}
-
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .news-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:cardIn .5s ease}
 .news-card.pinned{border-right-color:#c48b1f;background:linear-gradient(135deg,#fffaf0,#fff)}
@@ -143,7 +127,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .news-card .content{font-size:12px;line-height:1.8;color:#444;white-space:pre-line}
 .news-card .date{font-size:11px;color:#888;margin-top:10px}
 .news-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
-
 .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .event-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-top:4px solid #1e6bb8;position:relative;animation:cardIn .5s ease}
 .event-card .date-badge{display:inline-block;background:#1e6bb8;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
@@ -151,7 +134,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .event-card .info{font-size:12px;color:#555;margin:5px 0}
 .event-card .desc{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
 .event-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-
 .poll-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);margin:12px 0;animation:cardIn .5s ease}
 .poll-card h4{margin:0 0 6px;color:#084c47;font-size:15px}
 .poll-card .sub{font-size:11px;color:#888;margin-bottom:12px}
@@ -162,7 +144,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
 .poll-option .result{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:11px;color:#084c47;font-weight:bold}
 .poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
-
 .member{padding:10px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:12px}
 .idea{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:12px}
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:10px;margin-top:6px}
@@ -171,20 +152,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .admin-idea .actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 .admin-idea .actions button{padding:5px 10px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit}
 .b-review{background:#c48b1f}.b-approve{background:#2e8b57}.b-run{background:#1e6bb8}.b-done{background:#7a3fa0}.b-del{background:#c94f4f}
-
 .members-toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
 .members-toolbar input{flex:1;min-width:150px}
 .member-actions{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
 .member-actions button{padding:5px 10px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit}
 .b-edit{background:#1e6bb8}.b-del-m{background:#c94f4f}
-
 .date-picker{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-bg.open{display:flex}
 .modal{background:#fff;border-radius:14px;padding:22px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:cardIn .3s ease}
 .modal h3{color:#084c47;margin:0 0 14px;font-size:16px}
 .modal .close{background:transparent;border:none;color:#888;font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
-
 .profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:12px;margin-bottom:14px}
 .profile-avatar{width:60px;height:60px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;overflow:hidden}
 .profile-avatar img{width:100%;height:100%;object-fit:cover}
@@ -192,11 +170,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .profile-info p{margin:2px 0;font-size:12px;color:#555}
 .myidea{padding:10px 12px;border-radius:10px;background:#f2faf8;margin:6px 0;font-size:12px;border-right:4px solid #0b6b62}
 .myidea .content{margin:5px 0;line-height:1.6}
-
 .login-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;justify-content:center}
 .login-tab{padding:7px 12px;background:#f2faf8;border:2px solid #d6e2e0;border-radius:10px;font-size:12px;cursor:pointer;color:#084c47;font-weight:bold;font-family:inherit;transition:all .2s}
 .login-tab.active{background:#0b6b62;color:#fff;border-color:#0b6b62}
-
 .msg-card{background:#fff;border-radius:12px;padding:12px;margin:6px 0;box-shadow:0 3px 10px rgba(0,0,0,.06);border-right:4px solid #1e6bb8;font-size:12px;position:relative}
 .msg-card.unread{background:linear-gradient(135deg,#e6f5f3,#fff);border-right-color:#c48b1f}
 .msg-card h5{margin:0 0 5px;color:#084c47;font-size:13px}
@@ -216,7 +192,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .report-stat .ri{font-size:22px}
 .report-stat .rv{font-size:20px;font-weight:bold;color:#084c47;margin:5px 0}
 .report-stat .rk{font-size:11px;color:#666}
-
 .membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:20px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:18px}
 .membership-card::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
 .membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:70px;opacity:.08;transform:rotate(-15deg)}
@@ -232,7 +207,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:12px;letter-spacing:1px;margin-top:3px;border:1px solid rgba(255,255,255,.2)}
 .membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.2);font-size:10px;opacity:.85;position:relative;z-index:1}
 .membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:10px}
-
+.contact-section{background:linear-gradient(135deg,#084c47,#0b6b62);border-radius:18px;padding:28px 22px;color:#fff;text-align:center;margin:30px 0;box-shadow:0 12px 32px rgba(8,76,71,.3)}
+.contact-section h3{margin:0 0 8px;font-size:18px}
+.contact-section p{margin:0 0 18px;font-size:13px;opacity:.9}
+.contact-links{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto}
+.contact-link{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px 18px;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;transition:all .3s}
+.contact-link:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.contact-link .cl-icon{font-size:22px}
 @media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}.shortcuts{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -250,7 +231,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 </div>
 <div class="menu" id="menu">
-<a href="#" id="menuRegister" onclick="showPage('page-register');toggleMenu()">📝 ثبت‌نام</a>
 <a href="#" onclick="showPage('page-member');toggleMenu()">👤 پنل اعضا</a>
 <a href="#" onclick="showPage('page-about');toggleMenu()">🌟 درباره کانون</a>
 </div>
@@ -265,21 +245,32 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p>سامانه ارتباط با اعضا، ثبت‌نام و اتاق فکر کانون</p>
 </div>
 
-<section>
-<div class="card" style="background:linear-gradient(135deg,#e6f5f3,#fff)">
-<h3 style="margin:0 0 14px;color:#084c47">📊 آمار کانون</h3>
-<div class="stats">
-<div class="stat"><b id="memberCount">۰</b>عضو</div>
-<div class="stat"><b id="ideaCount">۰</b>ایده</div>
-<div class="stat"><b id="doneCount">۰</b>اجرا</div>
-</div>
-</div>
-</section>
-
 <!-- گالری تصاویر -->
 <section>
 <div class="title"><h2>🖼 گالری تصاویر کانون</h2></div>
 <div class="card"><div id="galleryGrid" class="gallery-grid"></div></div>
+</section>
+
+<!-- فرم ثبت‌نام (فقط اگه کاربر عضو نباشه) -->
+<section id="registerSection">
+<div class="title"><h2>📝 ثبت‌نام در کانون</h2></div>
+<div class="card" style="max-width:700px;margin:auto">
+<div class="notice">اطلاعات شما امن ذخیره می‌شود. پس از ثبت‌نام، با کد ملی + رمز وارد پنل اعضا شوید.</div>
+<form id="registerForm">
+<input id="fullName" placeholder="نام و نام خانوادگی" required>
+<input id="nationalId" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
+<div class="date-picker">
+<select id="birthDay" required><option value="">روز</option></select>
+<select id="birthMonth" required><option value="">ماه</option></select>
+<select id="birthYear" required><option value="">سال</option></select>
+</div>
+<input id="phone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
+<input id="regPassword" type="password" placeholder="رمز عبور (حداقل ۴ کاراکتر)" required minlength="4">
+<input id="regPassword2" type="password" placeholder="تکرار رمز عبور" required minlength="4">
+<button class="btn" type="submit">ثبت عضویت</button>
+</form>
+<p id="registerMsg"></p>
+</div>
 </section>
 
 <!-- میانبرها -->
@@ -318,6 +309,24 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <span class="sc-icon">🔐</span>
 <span class="sc-label">مدیریت</span>
 </a>
+</div>
+</section>
+
+<!-- ارتباط با ما -->
+<section>
+<div class="contact-section">
+<h3>📞 ارتباط با ما</h3>
+<p>ما را در شبکه‌های اجتماعی دنبال کنید</p>
+<div class="contact-links">
+<a href="https://www.instagram.com/anvar_reza_8?igsi=dmk4Y3JjMm4zOW1y" target="_blank" class="contact-link">
+<span class="cl-icon">📸</span>
+<span>اینستاگرام کانون</span>
+</a>
+<a href="https://ble.ir/join/EmGzcz1VAK" target="_blank" class="contact-link">
+<span class="cl-icon">💬</span>
+<span>کانال بله انوارالرضا(ع)</span>
+</a>
+</div>
 </div>
 </section>
 </div>
@@ -398,30 +407,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="events-grid" id="eventsGrid"></div>
 </section>
 </div>
-
-<!-- صفحه ثبت‌نام -->
-<div class="page" id="page-register">
-<section>
-<button class="back-btn" onclick="goHome()">← بازگشت</button>
-<div class="title"><h2>📝 فرم عضویت</h2></div>
-<div class="card" style="max-width:700px;margin:auto">
-<div class="notice">اطلاعات شما امن ذخیره می‌شود.</div>
-<form id="registerForm">
-<input id="fullName" placeholder="نام و نام خانوادگی" required>
-<input id="nationalId" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
-<div class="date-picker">
-<select id="birthDay" required><option value="">روز</option></select>
-<select id="birthMonth" required><option value="">ماه</option></select>
-<select id="birthYear" required><option value="">سال</option></select>
-</div>
-<input id="phone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
-<button class="btn" type="submit">ثبت عضویت</button>
-</form>
-<p id="registerMsg"></p>
-</div>
-</section>
-</div>
-
 <!-- صفحه پنل اعضا -->
 <div class="page" id="page-member">
 <section>
@@ -429,9 +414,10 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="title"><h2>👤 پنل اعضا</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
 <div id="memberLoginBox">
-<p>شماره تماس خود را وارد کنید:</p>
+<p>ورود با کد ملی و رمز عبور:</p>
 <form id="memberLoginForm">
-<input id="mLoginPhone" type="tel" inputmode="tel" placeholder="شماره تماس" required>
+<input id="mLoginNid" inputmode="numeric" placeholder="کد ملی (۱۰ رقم)" required>
+<input id="mLoginPass" type="password" placeholder="رمز عبور" required>
 <button class="btn" type="submit">ورود</button>
 </form>
 <p id="memberLoginMsg"></p>
@@ -461,11 +447,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <input type="file" id="avatarFile" accept="image/*" style="display:none" onchange="uploadAvatar()">
 </label>
 <button class="btn" onclick="toggleEditProfile()" style="background:#7a3fa0;font-size:13px">✏️ ویرایش</button>
+<button class="btn" onclick="toggleChangePassword()" style="background:#c48b1f;font-size:13px">🔑 تغییر رمز</button>
 <button class="btn" id="memberLogoutBtn" style="background:#c94f4f;font-size:13px">🚪 خروج</button>
 </div>
 <p id="avatarMsg" style="font-size:12px;text-align:center"></p>
+
 <div id="editProfileBox" style="display:none;margin-bottom:14px">
 <div class="card" style="background:#f7fafc">
+<h4 style="margin:0 0 10px;color:#084c47;font-size:14px">✏️ ویرایش پروفایل</h4>
 <form id="editProfileForm">
 <input id="epName" placeholder="نام و نام خانوادگی" required>
 <div class="date-picker">
@@ -479,6 +468,20 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p id="editProfileMsg"></p>
 </div>
 </div>
+
+<div id="changePasswordBox" style="display:none;margin-bottom:14px">
+<div class="card" style="background:#f7fafc">
+<h4 style="margin:0 0 10px;color:#084c47;font-size:14px">🔑 تغییر رمز عبور</h4>
+<form id="changePasswordForm">
+<input id="cpOld" type="password" placeholder="رمز فعلی" required>
+<input id="cpNew" type="password" placeholder="رمز جدید (حداقل ۴ کاراکتر)" required minlength="4">
+<input id="cpNew2" type="password" placeholder="تکرار رمز جدید" required minlength="4">
+<button class="btn" type="submit">تغییر رمز</button>
+</form>
+<p id="changePasswordMsg"></p>
+</div>
+</div>
+
 <h3 style="color:#084c47;margin-top:16px;font-size:15px">📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
 <div id="myMessages"><p style="color:#888;font-size:13px">پیامی ندارید.</p></div>
 <h3 style="color:#084c47;margin-top:16px;font-size:15px">📊 تاریخچه حضور من</h3>
@@ -527,6 +530,15 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
 <button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
+</div>
+
+<div id="statsCard" class="card" style="background:linear-gradient(135deg,#e6f5f3,#fff);margin-bottom:14px">
+<h3 style="margin:0 0 14px;color:#084c47;font-size:15px">📊 آمار کانون</h3>
+<div class="stats">
+<div class="stat"><b id="memberCount">۰</b>عضو</div>
+<div class="stat"><b id="ideaCount">۰</b>ایده</div>
+<div class="stat"><b id="doneCount">۰</b>اجرا</div>
+</div>
 </div>
 
 <div id="sectionMembers" class="admin-section" data-panels="main,ertebat">
@@ -796,7 +808,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="lb-nav lb-next" onclick="lbNext()">›</button>
 <img id="lbImg" src="" alt="">
 <div class="lb-caption" id="lbCaption"></div>
-<div class="lb-date" id="lbDate"></div>
 </div>
 
 <footer>کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم</footer>
@@ -815,6 +826,14 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
+// ====== هش رمز عبور (SHA-256) ======
+async function hashPassword(pw) {
+  const enc = new TextEncoder();
+  const data = enc.encode("anvar_" + pw + "_reza");
+  const buf = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,"0")).join("");
+}
+
 function saveMemberLocal(m) { try { if(m) localStorage.setItem("memberSaved", JSON.stringify(m)); } catch(e){} }
 function clearMemberLocal() { try { localStorage.removeItem("memberSaved"); } catch(e){} }
 function loadMemberLocal() { try { const s = localStorage.getItem("memberSaved"); return s ? JSON.parse(s) : null; } catch(e){ return null; } }
@@ -831,9 +850,9 @@ function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=docu
 function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
 function toggleMenu(){document.getElementById("menu").classList.toggle("open");}
 function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank" style="color:#0b6b62;font-weight:bold">$1</a>');}
-function animateCount(el,t){const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
+function animateCount(el,t){if(!el)return;const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
 
-// ====== ناوبری بین صفحات ======
+// ====== ناوبری ======
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   const p=document.getElementById(id);
@@ -908,10 +927,10 @@ async function loadPolls(){
   const {data:votes}=await db.from("poll_votes").select("*");
   allPolls=polls||[];allVotes=votes||[];
   if(!allPolls.length){b.innerHTML="<p style='text-align:center;color:#888;font-size:13px'>نظرسنجی‌ای نیست.</p>";return;}
-  const myPhone=currentMember?currentMember.phone:null;
-  b.innerHTML=allPolls.map(p=>{const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;const myVote=myPhone?pv.find(v=>v.voter_phone===myPhone):null;const opts=p.options||[];return `<div class="poll-card">${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}<h4>${esc(p.question)}</h4><div class="sub">👥 ${fa(total)} رأی</div>${opts.map((o,i)=>{const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})"><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;}).join("")}</div>`;}).join("");
+  const myNid=currentMember?currentMember.national_id:null;
+  b.innerHTML=allPolls.map(p=>{const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;const myVote=myNid?pv.find(v=>v.voter_phone===myNid):null;const opts=p.options||[];return `<div class="poll-card">${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}<h4>${esc(p.question)}</h4><div class="sub">👥 ${fa(total)} رأی</div>${opts.map((o,i)=>{const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})"><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;}).join("")}</div>`;}).join("");
 }
-async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.phone});if(error){alert("خطا: "+error.message);return;}alert("ثبت شد ✅");loadPolls();loadMyVotes();}
+async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.national_id});if(error){alert("خطا: "+error.message);return;}alert("ثبت شد ✅");loadPolls();loadMyVotes();}
 async function deletePoll(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_poll",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadPolls();}
 function addPollOption(){const b=document.getElementById("pollOptionsBox"),c=b.querySelectorAll("input").length;if(c>=8){alert("حداکثر ۸");return;}const i=document.createElement("input");i.className="poll-opt";i.placeholder=`گزینه ${c+1}`;b.appendChild(i);}
 
@@ -942,7 +961,7 @@ async function loadGallery(){
 async function deleteGalleryImg(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_gallery",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGallery();}
 function openLightbox(i){if(!galleryImages.length)return;lbIndex=i;updateLightbox();document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
 function closeLightbox(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}
-function updateLightbox(){const im=galleryImages[lbIndex];if(!im)return;document.getElementById("lbImg").src=im.url;document.getElementById("lbCaption").textContent=im.caption||"";document.getElementById("lbDate").textContent=im.photo_date?"📅 "+im.photo_date:"";}
+function updateLightbox(){const im=galleryImages[lbIndex];if(!im)return;document.getElementById("lbImg").src=im.url;document.getElementById("lbCaption").textContent=im.caption||"";}
 function lbNext(){if(!galleryImages.length)return;lbIndex=(lbIndex+1)%galleryImages.length;updateLightbox();}
 function lbPrev(){if(!galleryImages.length)return;lbIndex=(lbIndex-1+galleryImages.length)%galleryImages.length;updateLightbox();}
 let tsX=0;const lbEl=document.getElementById("lightbox");
@@ -993,16 +1012,16 @@ async function loadClasses(){
   const {data:regs}=await db.from("class_regs").select("*");
   allClasses=cls||[];allClassRegs=regs||[];
   if(!allClasses.length){b.innerHTML="<p style='text-align:center;color:#888'>کلاسی نیست.</p>";return;}
-  const myPhone=currentMember?currentMember.phone:null;
-  b.innerHTML=allClasses.map(c=>{const rc=allClassRegs.filter(r=>r.class_id===c.id).length;const isReg=myPhone&&allClassRegs.some(r=>r.class_id===c.id&&r.member_phone===myPhone);const full=c.capacity&&rc>=c.capacity;return `<div class="class-card">${adminPassword?`<button class="del-btn" onclick="deleteClass(${c.id})">✕</button>`:""}${adminPassword?`<span class="c-count">${fa(rc)}${c.capacity?"/"+fa(c.capacity):""} نفر</span>`:""}<h4>🎓 ${esc(c.title)}</h4>${c.teacher?`<div class="c-info">👨‍🏫 ${esc(c.teacher)}</div>`:""}${c.schedule?`<div class="c-info">🕐 ${esc(c.schedule)}</div>`:""}${c.description?`<div class="c-desc">${esc(c.description)}</div>`:""}${isReg?`<button class="c-reg done">✅ ثبت‌نام شده</button>`:full?`<button class="c-reg done">ظرفیت تکمیل</button>`:`<button class="c-reg" onclick="registerClass(${c.id})">ثبت‌نام</button>`}${adminPassword?`<div class="reg-list" id="regList${c.id}"><button class="btn" style="font-size:11px;padding:4px 10px;background:#1e6bb8" onclick="showRegs(${c.id})">لیست ثبت‌نام</button></div>`:""}</div>`;}).join("");
+  const myNid=currentMember?currentMember.national_id:null;
+  b.innerHTML=allClasses.map(c=>{const rc=allClassRegs.filter(r=>r.class_id===c.id).length;const isReg=myNid&&allClassRegs.some(r=>r.class_id===c.id&&r.member_phone===myNid);const full=c.capacity&&rc>=c.capacity;return `<div class="class-card">${adminPassword?`<button class="del-btn" onclick="deleteClass(${c.id})">✕</button>`:""}${adminPassword?`<span class="c-count">${fa(rc)}${c.capacity?"/"+fa(c.capacity):""} نفر</span>`:""}<h4>🎓 ${esc(c.title)}</h4>${c.teacher?`<div class="c-info">👨‍🏫 ${esc(c.teacher)}</div>`:""}${c.schedule?`<div class="c-info">🕐 ${esc(c.schedule)}</div>`:""}${c.description?`<div class="c-desc">${esc(c.description)}</div>`:""}${isReg?`<button class="c-reg done">✅ ثبت‌نام شده</button>`:full?`<button class="c-reg done">ظرفیت تکمیل</button>`:`<button class="c-reg" onclick="registerClass(${c.id})">ثبت‌نام</button>`}${adminPassword?`<div class="reg-list" id="regList${c.id}"><button class="btn" style="font-size:11px;padding:4px 10px;background:#1e6bb8" onclick="showRegs(${c.id})">لیست ثبت‌نام</button></div>`:""}</div>`;}).join("");
 }
-async function registerClass(id){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("register_class",{p_class_id:id,p_phone:currentMember.phone,p_name:currentMember.name});if(error){alert("خطا: "+error.message);return;}alert("ثبت‌نام شد ✅");loadClasses();loadMyClasses();}
+async function registerClass(id){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("register_class",{p_class_id:id,p_phone:currentMember.national_id,p_name:currentMember.name});if(error){alert("خطا: "+error.message);return;}alert("ثبت‌نام شد ✅");loadClasses();loadMyClasses();}
 async function deleteClass(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_class",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadClasses();}
 async function showRegs(cid){const {data,error}=await db.rpc("admin_get_class_regs",{admin_pass:adminPassword,p_class_id:cid});if(error){alert("خطا: "+error.message);return;}const box=document.getElementById("regList"+cid);if(!data||!data.length){box.innerHTML="<p style='color:#888'>کسی ثبت‌نام نکرده.</p>";return;}box.innerHTML=`<b>ثبت‌نام‌شده‌ها:</b>`+data.map(r=>`<div class="reg-item">${esc(r.member_name)} — ${esc(r.member_phone)}</div>`).join("");}
 
 async function loadMyClasses(){
   const b=document.getElementById("myClasses");if(!b||!currentMember)return;
-  const {data:regs}=await db.from("class_regs").select("*").eq("member_phone",currentMember.phone);
+  const {data:regs}=await db.from("class_regs").select("*").eq("member_phone",currentMember.national_id);
   if(!regs||!regs.length){b.innerHTML="<p style='color:#888;font-size:12px'>در کلاسی نیستید.</p>";return;}
   const {data:cls}=await db.from("classes").select("*");
   const myCls=(cls||[]).filter(c=>regs.some(r=>r.class_id===c.id));
@@ -1147,17 +1166,23 @@ async function setAtt(phone, name, status){
   openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
 }
 
-// ====== فرم‌ها ======
+// ====== فرم ثبت‌نام ======
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=document.getElementById("registerMsg");
   const n=fullName.value.trim(),ni=nationalId.value.trim();
+  const pw=document.getElementById("regPassword").value;
+  const pw2=document.getElementById("regPassword2").value;
   if(!/^\d{10}$/.test(ni)){msg.textContent="کد ملی ۱۰ رقم باشد.";msg.style.color="red";return;}
+  if(pw.length<4){msg.textContent="رمز عبور حداقل ۴ کاراکتر";msg.style.color="red";return;}
+  if(pw!==pw2){msg.textContent="رمز و تکرار رمز یکسان نیستند";msg.style.color="red";return;}
   const bd=getPersianDate("birthDay","birthMonth","birthYear");
   if(!bd){msg.textContent="تاریخ تولد کامل شود.";msg.style.color="red";return;}
-  const {error}=await db.from("members").insert([{name:n,national_id:ni,birth_date:bd,phone:phone.value.trim()}]);
+  msg.textContent="در حال ثبت...";msg.style.color="#555";
+  const ph=await hashPassword(pw);
+  const {error}=await db.from("members").insert([{name:n,national_id:ni,birth_date:bd,phone:phone.value.trim(),password_hash:ph}]);
   if(error){msg.textContent="خطا: "+error.message;msg.style.color="red";}
-  else{msg.textContent="✅ ثبت شد! حالا با شماره تماس وارد پنل اعضا شوید.";msg.style.color="green";e.target.reset();render();}
+  else{msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید.";msg.style.color="green";e.target.reset();render();updateRegisterVisibility();}
 });
 
 document.getElementById("ideaForm").addEventListener("submit",async e=>{
@@ -1355,18 +1380,19 @@ document.getElementById("sessionForm").addEventListener("submit",async e=>{
   m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
 });
 
-// ====== پنل اعضا ======
+// ====== پنل اعضا (ورود با کد ملی + رمز) ======
 document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const m=document.getElementById("memberLoginMsg"),ph=document.getElementById("mLoginPhone").value.trim();
-  if(!ph){m.textContent="شماره";m.style.color="red";return;}
+  const m=document.getElementById("memberLoginMsg"),nid=document.getElementById("mLoginNid").value.trim(),pw=document.getElementById("mLoginPass").value;
+  if(!/^\d{10}$/.test(nid)){m.textContent="کد ملی ۱۰ رقم";m.style.color="red";return;}
+  if(!pw){m.textContent="رمز عبور را وارد کن";m.style.color="red";return;}
   m.textContent="بررسی...";m.style.color="#555";
-  const {data,error}=await db.rpc("member_login_by_phone",{p_phone:ph});
-  if(error||!data||!data.length){m.textContent="❌ این شماره ثبت نشده";m.style.color="red";return;}
+  const ph=await hashPassword(pw);
+  const {data,error}=await db.rpc("member_login",{p_nid:nid,p_hash:ph});
+  if(error||!data||!data.length){m.textContent="❌ کد ملی یا رمز اشتباه";m.style.color="red";return;}
   currentMember=data[0];
   saveMemberLocal(currentMember);
   await renderMemberPanel();
-  updateMenuRegistration();
   if(onlineChannel) onlineChannel.track({ user_id: localStorage.getItem("onlineUserId"), name: currentMember.name||"مهمان", joined_at: new Date().toISOString() });
 });
 
@@ -1402,9 +1428,11 @@ document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
   clearMemberLocal();
   document.getElementById("memberLoginBox").style.display="block";
   document.getElementById("memberPanelBox").style.display="none";
-  document.getElementById("mLoginPhone").value="";
+  document.getElementById("mLoginNid").value="";
+  document.getElementById("mLoginPass").value="";
   document.getElementById("memberLoginMsg").textContent="";
   document.getElementById("editProfileBox").style.display="none";
+  document.getElementById("changePasswordBox").style.display="none";
   document.getElementById("ideaUserNotice").style.display="none";
   document.getElementById("ideaName").style.display="block";
   document.getElementById("ideaName").value="";
@@ -1432,6 +1460,7 @@ async function uploadAvatar(){
 }
 
 function toggleEditProfile(){const b=document.getElementById("editProfileBox");b.style.display = b.style.display === "none" ? "block" : "none";}
+function toggleChangePassword(){const b=document.getElementById("changePasswordBox");b.style.display = b.style.display === "none" ? "block" : "none";}
 
 document.getElementById("editProfileForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -1449,6 +1478,25 @@ document.getElementById("editProfileForm").addEventListener("submit",async e=>{
   document.getElementById("cardName").textContent=n;
   m.textContent="✅ ذخیره شد";m.style.color="green";
   setTimeout(()=>{document.getElementById("editProfileBox").style.display="none";m.textContent="";},1000);
+});
+
+document.getElementById("changePasswordForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("changePasswordMsg");
+  if(!currentMember)return;
+  const oldPw=document.getElementById("cpOld").value;
+  const newPw=document.getElementById("cpNew").value;
+  const newPw2=document.getElementById("cpNew2").value;
+  if(newPw.length<4){m.textContent="رمز جدید حداقل ۴ کاراکتر";m.style.color="red";return;}
+  if(newPw!==newPw2){m.textContent="رمز و تکرار یکسان نیستند";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const oldH=await hashPassword(oldPw);
+  const newH=await hashPassword(newPw);
+  const {error}=await db.rpc("member_change_password",{p_nid:currentMember.national_id,old_hash:oldH,new_hash:newH});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅ رمز تغییر کرد";m.style.color="green";
+  document.getElementById("cpOld").value="";document.getElementById("cpNew").value="";document.getElementById("cpNew2").value="";
+  setTimeout(()=>{document.getElementById("changePasswordBox").style.display="none";m.textContent="";},1500);
 });
 
 async function loadMyIdeas(){
@@ -1494,32 +1542,34 @@ async function loadMyVotes(){
 document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
 
-// ====== پنهان کردن ثبت‌نام ======
-function updateMenuRegistration(){
-  const el = document.getElementById("menuRegister");
-  if (!el) return;
+// ====== نمایش / پنهان کردن فرم ثبت‌نام ======
+function updateRegisterVisibility(){
+  const sec = document.getElementById("registerSection");
+  if(!sec) return;
   const saved = loadMemberLocal();
-  if (saved && saved.phone) el.style.display = "none";
-  else el.style.display = "block";
+  if (saved && saved.national_id) sec.style.display = "none";
+  else sec.style.display = "block";
 }
 
 // ====== ورود خودکار ======
 async function autoLoginMember(){
   const saved=loadMemberLocal();
-  if(!saved||!saved.phone){updateMenuRegistration();return;}
-  const {data,error}=await db.rpc("member_login_by_phone",{p_phone:saved.phone});
-  if(error||!data||!data.length){clearMemberLocal();updateMenuRegistration();return;}
+  if(!saved||!saved.national_id){updateRegisterVisibility();return;}
+  // اعتبارسنجی: با هش رمز تازه نمی‌تونیم تست کنیم، پس فقط اطلاعات ذخیره‌شده رو نمایش می‌دیم
+  // برای اطمینان، یه درخواست به سرور می‌زنیم و اسم رو می‌گیریم
+  const {data,error}=await db.from("members").select("id,name,national_id,birth_date,phone,avatar_url,member_code,created_at").eq("national_id",saved.national_id).limit(1);
+  if(error||!data||!data.length){clearMemberLocal();updateRegisterVisibility();return;}
   currentMember=data[0];
   saveMemberLocal(currentMember);
   await renderMemberPanel();
-  updateMenuRegistration();
+  updateRegisterVisibility();
 }
 
 // ====== اجرای اولیه ======
 (async () => {
   selectPanel("main");
   setupOnlineCounter();
-  updateMenuRegistration();
+  updateRegisterVisibility();
   await autoLoginMember();
   await render();
 })();
