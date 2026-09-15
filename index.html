@@ -6,199 +6,242 @@
 <title>کانون فرهنگی دینی انوارالرضا(ع)</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:#f7fafc;color:#222}
-header{background:linear-gradient(135deg,#084c47,#0b6b62);color:#fff;padding:14px 0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:#f7fafc;color:#222;overflow-x:hidden}
+header{background:linear-gradient(135deg,#084c47,#0b6b62);color:#fff;padding:14px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;max-width:1100px;margin:auto;position:relative}
-.logo{font-weight:bold;font-size:16px}
+.logo{font-weight:bold;font-size:16px;cursor:pointer}
 .nav-right{display:flex;align-items:center;gap:10px}
 .online-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:20px;font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.25)}
-.online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;box-shadow:0 0 0 0 rgba(46,204,113,.7);animation:pulse-dot 2s infinite}
+.online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;animation:pulse-dot 2s infinite}
 .online-eye{font-size:14px;animation:pulse-eye 2s infinite}
 .online-badge #onlineCount{font-weight:bold;font-size:14px;color:#7ef5d4}
 .online-label{font-size:11px;opacity:.85}
 @keyframes pulse-dot{0%{box-shadow:0 0 0 0 rgba(46,204,113,.7)}70%{box-shadow:0 0 0 8px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
 @keyframes pulse-eye{0%,100%{opacity:1}50%{opacity:.5}}
-.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer}
-.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:220px;max-height:75vh;overflow-y:auto}
+.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer;transition:transform .2s}
+.menu-btn:active{transform:scale(.9)}
+.menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:220px;max-height:75vh;overflow-y:auto;animation:menuIn .25s ease}
 .menu.open{display:block}
-.menu a{display:block;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:14px;margin:0}
+@keyframes menuIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.menu a{display:block;color:#fff;text-decoration:none;padding:12px 16px;border-radius:8px;font-size:14px;transition:background .2s}
 .menu a:hover{background:#0b6b62}
-.hero{padding:60px 7%;background:linear-gradient(135deg,#e6f5f3,#fff);text-align:center}
-h1{font-size:38px;color:#084c47;margin:12px 0}
-section{padding:50px 7%;max-width:1100px;margin:auto}
-.title{text-align:center;margin-bottom:30px}
-.title h2{color:#084c47}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0}
+section{padding:40px 7%;max-width:1100px;margin:auto;animation:pageIn .4s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.page{display:none}
+.page.active{display:block}
+.hero{padding:40px 7% 30px;background:linear-gradient(135deg,#e6f5f3,#fff);text-align:center}
+h1{font-size:34px;color:#084c47;margin:12px 0}
+.title{text-align:center;margin-bottom:24px}
+.title h2{color:#084c47;font-size:24px}
+.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0;animation:cardIn .5s ease}
+@keyframes cardIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 form{display:grid;gap:11px}
 input,select,textarea,button{padding:11px;border-radius:10px;border:1px solid #d6e2e0;font-family:inherit;font-size:14px}
 textarea{min-height:90px;resize:vertical}
-button{cursor:pointer}
-.btn{display:inline-block;background:#0b6b62;color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;border:none;cursor:pointer}
+button{cursor:pointer;transition:transform .15s}
+button:active{transform:scale(.96)}
+.btn{display:inline-block;background:#0b6b62;color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;font-size:14px}
 .notice{padding:12px;border-radius:10px;background:#fff7e6;color:#7a5b00;font-size:13px}
 .badge{display:inline-block;padding:5px 12px;border-radius:20px;background:#d9efeb;color:#084c47;font-size:13px;font-weight:bold}
 .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:100px}
-.stat b{display:block;font-size:24px;color:#084c47}
+.stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:90px;transition:transform .3s}
+.stat:hover{transform:translateY(-3px)}
+.stat b{display:block;font-size:22px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
-.member{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
-#ideas{display:grid;gap:10px}
-.idea{padding:10px 14px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:13px}
-.status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:11px;margin-top:6px}
-.admin-idea{padding:14px;border-radius:10px;background:#f2faf8;margin:10px 0;font-size:13px;border-right:4px solid #0b6b62}
-.admin-idea .content{margin:8px 0;line-height:1.7}
-.admin-idea .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.admin-idea .actions button{padding:6px 12px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff}
-.b-review{background:#c48b1f}.b-approve{background:#2e8b57}.b-run{background:#1e6bb8}.b-done{background:#7a3fa0}.b-del{background:#c94f4f}
+
+/* میانبرها */
+.shortcuts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:20px 0}
+.shortcut{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:22px 12px;border-radius:16px;color:#fff;cursor:pointer;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;text-align:center}
+.shortcut::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);pointer-events:none}
+.shortcut:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.shortcut:active{transform:scale(.97)}
+.shortcut .sc-icon{font-size:36px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2));animation:iconFloat 3s ease-in-out infinite}
+@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.shortcut .sc-label{font-size:13px;font-weight:bold;line-height:1.4}
+
+.sc-pink{background:linear-gradient(135deg,#ff6b9d,#c44569)}
+.sc-purple{background:linear-gradient(135deg,#a55eea,#6c5ce7)}
+.sc-blue{background:linear-gradient(135deg,#4a90e2,#2c5fa8)}
+.sc-green{background:linear-gradient(135deg,#26de81,#20bf6b)}
+.sc-red{background:linear-gradient(135deg,#eb3b5a,#b71540)}
+.sc-teal{background:linear-gradient(135deg,#00b8a9,#008075)}
+.sc-indigo{background:linear-gradient(135deg,#5f27cd,#341f97)}
+.sc-gray{background:linear-gradient(135deg,#778ca3,#4b6584)}
+
+/* دکمه بازگشت */
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#084c47;padding:10px 18px;border-radius:10px;border:2px solid #d9efeb;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.back-btn:hover{background:#e6f5f3;transform:translateX(-3px)}
+
+/* گالری */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;cursor:pointer}
-.gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
-.gallery-item .cap{padding:8px 10px;font-size:12px;color:#555;text-align:center;background:#fff}
+.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;cursor:pointer;transition:transform .3s,box-shadow .3s;animation:cardIn .5s ease}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-info{padding:10px 12px;background:#fff;text-align:right}
+.gallery-info .g-date{font-size:11px;color:#888;margin-bottom:4px}
+.gallery-info .g-cap{font-size:12px;color:#333;line-height:1.6;word-wrap:break-word}
 .gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
+.gallery-item .edit-btn{position:absolute;top:8px;right:8px;background:#1e6bb8;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
+
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column}
 .lightbox.open{display:flex}
-.lightbox img{max-width:95vw;max-height:78vh;border-radius:10px}
-.lightbox .lb-caption{color:#fff;font-size:14px;margin-top:14px;text-align:center;padding:0 20px}
-.lightbox .lb-counter{color:#bbb;font-size:13px;margin-top:6px}
+.lightbox img{max-width:95vw;max-height:70vh;border-radius:10px}
+.lightbox .lb-caption{color:#fff;font-size:14px;margin-top:14px;text-align:center;padding:0 20px;max-width:600px}
+.lightbox .lb-date{color:#aaa;font-size:12px;margin-top:6px}
 .lightbox .lb-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer}
 .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer}
 .lightbox .lb-prev{left:20px}.lightbox .lb-next{right:20px}
+
+/* کلاس/کتاب/ویدیو */
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
-.weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:10px}
-.weekly-card h4{margin:8px 0;color:#084c47;font-size:17px}
-.weekly-card .info{font-size:13px;color:#555;margin:6px 0}
+.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:cardIn .5s ease;transition:transform .3s}
+.weekly-card:hover{transform:translateY(-3px)}
+.weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
+.weekly-card h4{margin:6px 0;color:#084c47;font-size:16px}
+.weekly-card .info{font-size:12px;color:#555;margin:5px 0}
 .weekly-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
-.weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
-.about-content{background:#fff;border-radius:14px;padding:30px;box-shadow:0 6px 20px rgba(0,0,0,.06);line-height:2;font-size:15px;white-space:pre-line;color:#333}
-.about-content a{color:#0b6b62;font-weight:bold}
+.weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
+
+.class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.class-card{background:linear-gradient(135deg,#fff,#f2faf8);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;border-right:5px solid #7a3fa0;animation:cardIn .5s ease;transition:transform .3s}
+.class-card:hover{transform:translateY(-3px)}
+.class-card h4{margin:0 0 8px;color:#084c47;font-size:16px}
+.class-card .c-info{font-size:12px;color:#555;margin:4px 0}
+.class-card .c-desc{font-size:12px;color:#777;line-height:1.6;margin:8px 0}
+.class-card .c-reg{background:#7a3fa0;color:#fff;border:none;padding:10px 16px;border-radius:10px;font-size:13px;cursor:pointer;width:100%;font-family:inherit}
+.class-card .c-reg.done{background:#888;cursor:default}
+.class-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
+.class-card .c-count{position:absolute;top:12px;left:46px;background:#7a3fa0;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
+.reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
+.reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
+
+.library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.book-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center;animation:cardIn .5s ease}
+.book-card .book-icon{font-size:40px;margin-bottom:6px}
+.book-card h4{margin:6px 0;color:#084c47;font-size:14px}
+.book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:10px;padding:2px 10px;border-radius:10px;margin-bottom:6px}
+.book-card .b-desc{font-size:11px;color:#777;line-height:1.5;margin:6px 0}
+.book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;margin-top:6px}
+.book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;animation:cardIn .5s ease}
+.video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
+.video-card .v-info{padding:12px}
+.video-card h4{margin:0 0 6px;color:#084c47;font-size:14px}
+.video-card .v-desc{font-size:11px;color:#777;line-height:1.5}
+.video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1;z-index:2}
+
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.news-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:cardIn .5s ease}
+.news-card.pinned{border-right-color:#c48b1f;background:linear-gradient(135deg,#fffaf0,#fff)}
+.news-card .pin-badge{position:absolute;top:10px;left:10px;background:#c48b1f;color:#fff;font-size:10px;padding:3px 10px;border-radius:12px}
+.news-card h4{margin:6px 0 10px;color:#084c47;font-size:15px}
+.news-card .content{font-size:12px;line-height:1.8;color:#444;white-space:pre-line}
+.news-card .date{font-size:11px;color:#888;margin-top:10px}
+.news-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
+
+.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.event-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-top:4px solid #1e6bb8;position:relative;animation:cardIn .5s ease}
+.event-card .date-badge{display:inline-block;background:#1e6bb8;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
+.event-card h4{margin:6px 0;color:#084c47;font-size:15px}
+.event-card .info{font-size:12px;color:#555;margin:5px 0}
+.event-card .desc{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
+.event-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
+
+.poll-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);margin:12px 0;animation:cardIn .5s ease}
+.poll-card h4{margin:0 0 6px;color:#084c47;font-size:15px}
+.poll-card .sub{font-size:11px;color:#888;margin-bottom:12px}
+.poll-option{margin:6px 0;position:relative}
+.poll-option button{width:100%;text-align:right;background:#f2faf8;border:2px solid #d9efeb;border-radius:10px;padding:10px 14px;font-size:13px;cursor:pointer;color:#084c47;font-weight:bold;position:relative;overflow:hidden;z-index:1;font-family:inherit}
+.poll-option button.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
+.poll-option .bar{position:absolute;top:0;right:0;height:100%;background:linear-gradient(90deg,#d9efeb,#b8e0d9);border-radius:8px;z-index:-1;transition:width .6s ease}
+.poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
+.poll-option .result{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:11px;color:#084c47;font-weight:bold}
+.poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
+
+.member{padding:10px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:12px}
+.idea{padding:10px 12px;border-radius:8px;background:#f2faf8;margin:4px 0;font-size:12px}
+.status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:10px;margin-top:6px}
+.admin-idea{padding:12px;border-radius:10px;background:#f2faf8;margin:8px 0;font-size:12px;border-right:4px solid #0b6b62}
+.admin-idea .content{margin:6px 0;line-height:1.6}
+.admin-idea .actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.admin-idea .actions button{padding:5px 10px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit}
+.b-review{background:#c48b1f}.b-approve{background:#2e8b57}.b-run{background:#1e6bb8}.b-done{background:#7a3fa0}.b-del{background:#c94f4f}
+
 .members-toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
-.members-toolbar input{flex:1;min-width:160px}
-.member-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.member-actions button{padding:5px 11px;font-size:12px;border-radius:8px;border:none;cursor:pointer;color:#fff}
+.members-toolbar input{flex:1;min-width:150px}
+.member-actions{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.member-actions button{padding:5px 10px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit}
 .b-edit{background:#1e6bb8}.b-del-m{background:#c94f4f}
+
 .date-picker{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:14px;padding:24px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.modal h3{color:#084c47;margin:0 0 16px}
+.modal{background:#fff;border-radius:14px;padding:22px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:cardIn .3s ease}
+.modal h3{color:#084c47;margin:0 0 14px;font-size:16px}
 .modal .close{background:transparent;border:none;color:#888;font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
-.profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:12px;margin-bottom:16px}
-.profile-avatar{width:64px;height:64px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;overflow:hidden}
+
+.profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:12px;margin-bottom:14px}
+.profile-avatar{width:60px;height:60px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;overflow:hidden}
 .profile-avatar img{width:100%;height:100%;object-fit:cover}
-.profile-info h3{margin:0 0 4px;color:#084c47;font-size:18px}
-.profile-info p{margin:2px 0;font-size:13px;color:#555}
-.myidea{padding:12px 14px;border-radius:10px;background:#f2faf8;margin:8px 0;font-size:13px;border-right:4px solid #0b6b62}
-.myidea .content{margin:6px 0;line-height:1.7}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.news-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
-.news-card.pinned{border-right-color:#c48b1f;background:linear-gradient(135deg,#fffaf0,#fff)}
-.news-card .pin-badge{position:absolute;top:10px;left:10px;background:#c48b1f;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
-.news-card h4{margin:6px 0 10px;color:#084c47;font-size:16px}
-.news-card .content{font-size:13px;line-height:1.9;color:#444;white-space:pre-line}
-.news-card .date{font-size:11px;color:#888;margin-top:10px}
-.news-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.event-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-top:4px solid #1e6bb8;position:relative}
-.event-card .date-badge{display:inline-block;background:#1e6bb8;color:#fff;padding:4px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:10px}
-.event-card h4{margin:8px 0;color:#084c47;font-size:17px}
-.event-card .info{font-size:13px;color:#555;margin:6px 0}
-.event-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
-.event-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
-.poll-card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:14px 0}
-.poll-card h4{margin:0 0 6px;color:#084c47}
-.poll-card .sub{font-size:12px;color:#888;margin-bottom:14px}
-.poll-option{margin:8px 0;position:relative}
-.poll-option button{width:100%;text-align:right;background:#f2faf8;border:2px solid #d9efeb;border-radius:10px;padding:11px 16px;font-size:14px;cursor:pointer;color:#084c47;font-weight:bold;position:relative;overflow:hidden;z-index:1}
-.poll-option button.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
-.poll-option .bar{position:absolute;top:0;right:0;height:100%;background:linear-gradient(90deg,#d9efeb,#b8e0d9);border-radius:8px;z-index:-1}
-.poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
-.poll-option .result{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:12px;color:#084c47;font-weight:bold}
-.poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
-.member-check{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;font-size:13px;cursor:pointer}
-.member-check input{width:auto}
-.member-check.checked{background:#e6f5f3}
-.member-check .mc-av{width:32px;height:32px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;overflow:hidden;flex-shrink:0}
-.member-check .mc-av img{width:100%;height:100%;object-fit:cover}
-.group-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#fff;border-radius:8px;margin:4px 0;font-size:13px;border:1px solid #d6e2e0}
-.group-item button{background:#0b6b62;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-right:4px}
-.group-item .del-g{background:#c94f4f}
-.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.06);position:relative}
-.video-card video{width:100%;height:220px;object-fit:contain;display:block;background:#000}
-.video-card .v-info{padding:14px}
-.video-card h4{margin:0 0 6px;color:#084c47;font-size:15px}
-.video-card .v-desc{font-size:12px;color:#777;line-height:1.6}
-.video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
-.library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.book-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center}
-.book-card .book-icon{font-size:42px;margin-bottom:8px}
-.book-card h4{margin:6px 0;color:#084c47;font-size:15px}
-.book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:11px;padding:2px 10px;border-radius:10px;margin-bottom:8px}
-.book-card .b-desc{font-size:12px;color:#777;line-height:1.6;margin:8px 0}
-.book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-size:13px;margin-top:6px}
-.book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:12px;line-height:1}
-.class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.class-card{background:linear-gradient(135deg,#fff,#f2faf8);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);position:relative;border-right:5px solid #7a3fa0}
-.class-card h4{margin:0 0 10px;color:#084c47;font-size:17px}
-.class-card .c-info{font-size:13px;color:#555;margin:5px 0}
-.class-card .c-desc{font-size:12px;color:#777;line-height:1.7;margin:10px 0}
-.class-card .c-reg{background:#7a3fa0;color:#fff;border:none;padding:10px 18px;border-radius:10px;font-size:13px;cursor:pointer;width:100%}
-.class-card .c-reg.done{background:#888;cursor:default}
-.class-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1}
-.class-card .c-count{position:absolute;top:12px;left:50px;background:#7a3fa0;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
-.reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
-.reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
-.login-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;justify-content:center}
-.login-tab{padding:8px 14px;background:#f2faf8;border:2px solid #d6e2e0;border-radius:10px;font-size:13px;cursor:pointer;color:#084c47;font-weight:bold}
+.profile-info h3{margin:0 0 4px;color:#084c47;font-size:16px}
+.profile-info p{margin:2px 0;font-size:12px;color:#555}
+.myidea{padding:10px 12px;border-radius:10px;background:#f2faf8;margin:6px 0;font-size:12px;border-right:4px solid #0b6b62}
+.myidea .content{margin:5px 0;line-height:1.6}
+
+.login-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;justify-content:center}
+.login-tab{padding:7px 12px;background:#f2faf8;border:2px solid #d6e2e0;border-radius:10px;font-size:12px;cursor:pointer;color:#084c47;font-weight:bold;font-family:inherit;transition:all .2s}
 .login-tab.active{background:#0b6b62;color:#fff;border-color:#0b6b62}
-.msg-card{background:#fff;border-radius:12px;padding:14px;margin:8px 0;box-shadow:0 4px 12px rgba(0,0,0,.06);border-right:4px solid #1e6bb8;font-size:13px;position:relative}
+
+.msg-card{background:#fff;border-radius:12px;padding:12px;margin:6px 0;box-shadow:0 3px 10px rgba(0,0,0,.06);border-right:4px solid #1e6bb8;font-size:12px;position:relative}
 .msg-card.unread{background:linear-gradient(135deg,#e6f5f3,#fff);border-right-color:#c48b1f}
-.msg-card h5{margin:0 0 6px;color:#084c47;font-size:14px}
-.msg-card .m-content{color:#444;line-height:1.7}
-.msg-card .m-date{font-size:11px;color:#888;margin-top:8px}
-.msg-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.unread-badge{display:inline-block;background:#c94f4f;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;margin-right:6px}
-.birthday-card{background:linear-gradient(135deg,#fff7e6,#fff);border-radius:12px;padding:12px;margin:6px 0;font-size:13px;border-right:4px solid #c48b1f}
-.attendance-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid #eee;font-size:13px;flex-wrap:wrap}
-.attendance-row .att-name{flex:1;min-width:120px}
-.att-btn{padding:4px 12px;border:none;border-radius:6px;font-size:12px;cursor:pointer;color:#fff;font-weight:bold}
+.msg-card h5{margin:0 0 5px;color:#084c47;font-size:13px}
+.msg-card .m-content{color:#444;line-height:1.6}
+.msg-card .m-date{font-size:10px;color:#888;margin-top:6px}
+.msg-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
+.unread-badge{display:inline-block;background:#c94f4f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;margin-right:6px}
+.birthday-card{background:linear-gradient(135deg,#fff7e6,#fff);border-radius:12px;padding:12px;margin:6px 0;font-size:12px;border-right:4px solid #c48b1f}
+.attendance-row{display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid #eee;font-size:12px;flex-wrap:wrap}
+.attendance-row .att-name{flex:1;min-width:100px}
+.att-btn{padding:4px 10px;border:none;border-radius:6px;font-size:11px;cursor:pointer;color:#fff;font-weight:bold;font-family:inherit}
 .att-present{background:#2e8b57}
 .att-absent{background:#c94f4f}
 .att-late{background:#c48b1f}
 .att-active{box-shadow:0 0 0 3px rgba(11,107,98,.3);transform:scale(1.05)}
-.report-stat{background:#fff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06);border-top:4px solid #0b6b62}
-.report-stat .ri{font-size:24px}
-.report-stat .rv{font-size:22px;font-weight:bold;color:#084c47;margin:6px 0}
-.report-stat .rk{font-size:12px;color:#666}
-.membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:22px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:20px}
+.report-stat{background:#fff;border-radius:12px;padding:12px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06);border-top:4px solid #0b6b62}
+.report-stat .ri{font-size:22px}
+.report-stat .rv{font-size:20px;font-weight:bold;color:#084c47;margin:5px 0}
+.report-stat .rk{font-size:11px;color:#666}
+
+.membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:20px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:18px}
 .membership-card::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
-.membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:80px;opacity:.08;transform:rotate(-15deg)}
-.membership-card .mc-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:12px;margin-bottom:14px;position:relative;z-index:1}
-.membership-card .mc-brand{font-size:15px;font-weight:bold}
-.membership-card .mc-shield{font-size:24px}
-.membership-card .mc-body{display:flex;gap:16px;align-items:center;position:relative;z-index:1}
-.membership-card .mc-photo{width:80px;height:80px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:bold;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.3)}
+.membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:70px;opacity:.08;transform:rotate(-15deg)}
+.membership-card .mc-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:10px;margin-bottom:12px;position:relative;z-index:1}
+.membership-card .mc-brand{font-size:14px;font-weight:bold}
+.membership-card .mc-shield{font-size:22px}
+.membership-card .mc-body{display:flex;gap:14px;align-items:center;position:relative;z-index:1}
+.membership-card .mc-photo{width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.3)}
 .membership-card .mc-photo img{width:100%;height:100%;object-fit:cover}
 .membership-card .mc-details{flex:1;min-width:0}
-.membership-card .mc-name{font-size:18px;font-weight:bold;margin-bottom:6px}
-.membership-card .mc-row{font-size:12px;margin:3px 0;opacity:.9}
-.membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:13px;letter-spacing:1px;margin-top:4px;border:1px solid rgba(255,255,255,.2)}
-.membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);font-size:11px;opacity:.85;position:relative;z-index:1}
-.membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:11px}
-@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.membership-card .mc-photo{width:64px;height:64px;font-size:24px}.online-label{display:none}}
+.membership-card .mc-name{font-size:16px;font-weight:bold;margin-bottom:5px}
+.membership-card .mc-row{font-size:11px;margin:3px 0;opacity:.9}
+.membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:12px;letter-spacing:1px;margin-top:3px;border:1px solid rgba(255,255,255,.2)}
+.membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.2);font-size:10px;opacity:.85;position:relative;z-index:1}
+.membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:10px}
+
+@media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}.shortcuts{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <header>
 <nav>
-<div class="logo">انوارالرضا(ع)</div>
+<div class="logo" onclick="goHome()">انوارالرضا(ع)</div>
 <div class="nav-right">
-<div class="online-badge" id="onlineBadge" title="کاربران آنلاین">
+<div class="online-badge" title="کاربران آنلاین">
 <span class="online-dot"></span>
 <span class="online-eye">👁</span>
 <span id="onlineCount">۱</span>
@@ -207,51 +250,159 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 </div>
 <div class="menu" id="menu">
-<a href="#home" onclick="toggleMenu()">صفحه اصلی</a>
-<a href="#news" onclick="toggleMenu()">📢 اخبار</a>
-<a href="#events" onclick="toggleMenu()">📅 رویدادها</a>
-<a href="#polls" onclick="toggleMenu()">📊 نظرسنجی</a>
-<a href="#about" onclick="toggleMenu()">درباره کانون</a>
-<a href="#weekly" onclick="toggleMenu()">برنامه هفتگی</a>
-<a href="#classes" onclick="toggleMenu()">🎓 کلاس‌ها</a>
-<a href="#videos" onclick="toggleMenu()">🎥 ویدیو</a>
-<a href="#library" onclick="toggleMenu()">📚 کتابخانه</a>
-<a href="#register" onclick="toggleMenu()">ثبت‌نام</a>
-<a href="#member" onclick="toggleMenu()">پنل اعضا</a>
-<a href="#think" onclick="toggleMenu()">اتاق فکر</a>
-<a href="#gallery" onclick="toggleMenu()">گالری</a>
-<a href="#admin" onclick="toggleMenu()">مدیریت</a>
+<a href="#" id="menuRegister" onclick="showPage('page-register');toggleMenu()">📝 ثبت‌نام</a>
+<a href="#" onclick="showPage('page-member');toggleMenu()">👤 پنل اعضا</a>
+<a href="#" onclick="showPage('page-about');toggleMenu()">🌟 درباره کانون</a>
 </div>
 </nav>
 </header>
 
-<section class="hero" id="home">
-<div>
+<!-- صفحه اصلی -->
+<div class="page active" id="page-home">
+<div class="hero">
 <span class="badge">کانون فرهنگی دینی انوارالرضا(ع)</span>
 <h1>از دل تا حرم 💚</h1>
 <p>سامانه ارتباط با اعضا، ثبت‌نام و اتاق فکر کانون</p>
-<a class="btn" href="#register">ثبت‌نام عضو</a>
 </div>
-<div class="card">
-<h3>آمار اعضا</h3>
+
+<section>
+<div class="card" style="background:linear-gradient(135deg,#e6f5f3,#fff)">
+<h3 style="margin:0 0 14px;color:#084c47">📊 آمار کانون</h3>
 <div class="stats">
-<div class="stat"><b id="memberCount">۰</b>عضو ثبت‌نام‌شده</div>
-<div class="stat"><b id="ideaCount">۰</b>ایده ثبت‌شده</div>
-<div class="stat"><b id="doneCount">۰</b>ایده اجراشده</div>
+<div class="stat"><b id="memberCount">۰</b>عضو</div>
+<div class="stat"><b id="ideaCount">۰</b>ایده</div>
+<div class="stat"><b id="doneCount">۰</b>اجرا</div>
 </div>
 </div>
 </section>
 
-<section id="news"><div class="title"><h2>📢 اخبار و اطلاعیه‌ها</h2></div><div class="news-grid" id="newsGrid"></div></section>
-<section id="events"><div class="title"><h2>📅 رویدادهای پیش‌رو</h2></div><div class="events-grid" id="eventsGrid"></div></section>
-<section id="polls"><div class="title"><h2>📊 نظرسنجی‌ها</h2></div><div id="pollsBox"></div></section>
-<section id="about"><div class="title"><h2 id="aboutTitle">🌟 درباره کانون</h2></div><div id="aboutBox" class="about-content"></div></section>
-<section id="weekly"><div class="title"><h2>📅 برنامه هفتگی</h2></div><div class="weekly-grid" id="weeklyGrid"></div></section>
-<section id="classes"><div class="title"><h2>🎓 کلاس‌ها و دوره‌ها</h2></div><div class="class-grid" id="classesGrid"></div></section>
-<section id="videos"><div class="title"><h2>🎥 گالری ویدیو</h2></div><div class="video-grid" id="videosGrid"></div></section>
-<section id="library"><div class="title"><h2>📚 کتابخانه</h2></div><div class="library-grid" id="libraryGrid"></div></section>
+<!-- گالری تصاویر -->
+<section>
+<div class="title"><h2>🖼 گالری تصاویر کانون</h2></div>
+<div class="card"><div id="galleryGrid" class="gallery-grid"></div></div>
+</section>
 
-<section id="register">
+<!-- میانبرها -->
+<section>
+<div class="title"><h2>🎯 دسترسی سریع</h2></div>
+<div class="shortcuts">
+<a class="shortcut sc-pink" onclick="showPage('page-news')">
+<span class="sc-icon">📢</span>
+<span class="sc-label">اخبار و اطلاعیه</span>
+</a>
+<a class="shortcut sc-purple" onclick="showPage('page-think')">
+<span class="sc-icon">💡</span>
+<span class="sc-label">نظرسنجی و اتاق فکر</span>
+</a>
+<a class="shortcut sc-blue" onclick="showPage('page-classes')">
+<span class="sc-icon">🎓</span>
+<span class="sc-label">کلاس‌ها</span>
+</a>
+<a class="shortcut sc-green" onclick="showPage('page-library')">
+<span class="sc-icon">📚</span>
+<span class="sc-label">کتابخانه</span>
+</a>
+<a class="shortcut sc-red" onclick="showPage('page-videos')">
+<span class="sc-icon">🎥</span>
+<span class="sc-label">ویدیوها</span>
+</a>
+<a class="shortcut sc-teal" onclick="showPage('page-weekly')">
+<span class="sc-icon">📅</span>
+<span class="sc-label">رویدادهای ثابت</span>
+</a>
+<a class="shortcut sc-indigo" onclick="showPage('page-events')">
+<span class="sc-icon">🗓</span>
+<span class="sc-label">رویدادهای پیش‌رو</span>
+</a>
+<a class="shortcut sc-gray" onclick="showPage('page-admin')">
+<span class="sc-icon">🔐</span>
+<span class="sc-label">مدیریت</span>
+</a>
+</div>
+</section>
+</div>
+
+<!-- صفحه اخبار -->
+<div class="page" id="page-news">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>📢 اخبار و اطلاعیه‌ها</h2></div>
+<div class="news-grid" id="newsGrid"></div>
+</section>
+</div>
+
+<!-- صفحه نظرسنجی و اتاق فکر -->
+<div class="page" id="page-think">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>📊 نظرسنجی‌ها</h2></div>
+<div id="pollsBox"></div>
+<div class="title" style="margin-top:30px"><h2>💡 اتاق فکر</h2></div>
+<div class="grid">
+<div class="card">
+<h3>ثبت ایده</h3>
+<div id="ideaUserNotice" style="display:none;padding:10px;background:#e6f5f3;border-radius:8px;font-size:13px;color:#084c47;margin-bottom:10px">✅ وارد شده‌اید: <b id="ideaUserName"></b></div>
+<form id="ideaForm">
+<input id="ideaName" placeholder="نام (اختیاری)">
+<select id="ideaCat"><option value="برنامه‌ها">برنامه‌ها</option><option value="محتوا">محتوا</option><option value="جذب مخاطب">جذب مخاطب</option><option value="سایر">سایر</option></select>
+<textarea id="ideaText" placeholder="ایده..." required></textarea>
+<button class="btn" type="submit">ثبت ایده</button>
+</form>
+</div>
+<div class="card"><h3>ایده‌های اخیر</h3><div id="ideas"></div></div>
+</div>
+</section>
+</div>
+
+<!-- صفحه کلاس‌ها -->
+<div class="page" id="page-classes">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>🎓 کلاس‌ها و دوره‌ها</h2></div>
+<div class="class-grid" id="classesGrid"></div>
+</section>
+</div>
+
+<!-- صفحه کتابخانه -->
+<div class="page" id="page-library">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>📚 کتابخانه</h2></div>
+<div class="library-grid" id="libraryGrid"></div>
+</section>
+</div>
+
+<!-- صفحه ویدیوها -->
+<div class="page" id="page-videos">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>🎥 گالری ویدیو</h2></div>
+<div class="video-grid" id="videosGrid"></div>
+</section>
+</div>
+
+<!-- صفحه رویدادهای ثابت -->
+<div class="page" id="page-weekly">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>📅 رویدادهای ثابت هفتگی</h2></div>
+<div class="weekly-grid" id="weeklyGrid"></div>
+</section>
+</div>
+
+<!-- صفحه رویدادهای پیش‌رو -->
+<div class="page" id="page-events">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>🗓 رویدادهای پیش‌رو</h2></div>
+<div class="events-grid" id="eventsGrid"></div>
+</section>
+</div>
+
+<!-- صفحه ثبت‌نام -->
+<div class="page" id="page-register">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>📝 فرم عضویت</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
 <div class="notice">اطلاعات شما امن ذخیره می‌شود.</div>
@@ -269,8 +420,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p id="registerMsg"></p>
 </div>
 </section>
+</div>
 
-<section id="member">
+<!-- صفحه پنل اعضا -->
+<div class="page" id="page-member">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>👤 پنل اعضا</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
 <div id="memberLoginBox">
@@ -282,7 +437,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p id="memberLoginMsg"></p>
 </div>
 <div id="memberPanelBox" style="display:none">
-<div class="membership-card" id="membershipCard">
+<div class="membership-card">
 <div class="mc-top">
 <div class="mc-brand">🕌 کانون انوارالرضا(ع)</div>
 <div class="mc-shield">💚</div>
@@ -300,20 +455,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <span class="mc-status">✅ فعال</span>
 </div>
 </div>
-
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
-<label class="btn" style="background:#1e6bb8;cursor:pointer;text-align:center">
+<label class="btn" style="background:#1e6bb8;cursor:pointer;text-align:center;font-size:13px">
 📷 عکس پروفایل
 <input type="file" id="avatarFile" accept="image/*" style="display:none" onchange="uploadAvatar()">
 </label>
-<button class="btn" onclick="toggleEditProfile()" style="background:#7a3fa0">✏️ ویرایش پروفایل</button>
-<button class="btn" id="memberLogoutBtn" style="background:#c94f4f">🚪 خروج</button>
+<button class="btn" onclick="toggleEditProfile()" style="background:#7a3fa0;font-size:13px">✏️ ویرایش</button>
+<button class="btn" id="memberLogoutBtn" style="background:#c94f4f;font-size:13px">🚪 خروج</button>
 </div>
 <p id="avatarMsg" style="font-size:12px;text-align:center"></p>
-
-<div id="editProfileBox" style="display:none;margin-bottom:16px">
+<div id="editProfileBox" style="display:none;margin-bottom:14px">
 <div class="card" style="background:#f7fafc">
-<h4 style="margin:0 0 10px;color:#084c47">✏️ ویرایش پروفایل</h4>
 <form id="editProfileForm">
 <input id="epName" placeholder="نام و نام خانوادگی" required>
 <div class="date-picker">
@@ -322,56 +474,44 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <select id="epYear" required><option value="">سال</option></select>
 </div>
 <input id="epPhone" type="tel" placeholder="شماره تماس" required>
-<button class="btn" type="submit">ذخیره تغییرات</button>
+<button class="btn" type="submit">ذخیره</button>
 </form>
 <p id="editProfileMsg"></p>
 </div>
 </div>
-
-<h3 style="color:#084c47;margin-top:20px">📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
-<div id="myMessages"><p style="color:#888">پیامی ندارید.</p></div>
-
-<h3 style="color:#084c47;margin-top:20px">📊 تاریخچه حضور من</h3>
-<div id="myAttendance"><p style="color:#888">در جلسه‌ای حاضر نبوده‌اید.</p></div>
-
-<h3 style="color:#084c47;margin-top:20px">🗳 تاریخچه رأی‌های من</h3>
-<div id="myVotes"><p style="color:#888">هنوز رأی نداده‌اید.</p></div>
-
-<h3 style="color:#084c47;margin-top:20px">🎓 کلاس‌های من</h3>
-<div id="myClasses"><p style="color:#888">در کلاسی نیستید.</p></div>
-
-<h3 style="color:#084c47;margin-top:20px">💡 ایده‌های من</h3>
-<div id="myIdeas"><p style="color:#888">ایده‌ای نیست.</p></div>
-
+<h3 style="color:#084c47;margin-top:16px;font-size:15px">📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
+<div id="myMessages"><p style="color:#888;font-size:13px">پیامی ندارید.</p></div>
+<h3 style="color:#084c47;margin-top:16px;font-size:15px">📊 تاریخچه حضور من</h3>
+<div id="myAttendance"><p style="color:#888;font-size:13px">در جلسه‌ای نبوده‌اید.</p></div>
+<h3 style="color:#084c47;margin-top:16px;font-size:15px">🗳 تاریخچه رأی‌های من</h3>
+<div id="myVotes"><p style="color:#888;font-size:13px">رأی نداده‌اید.</p></div>
+<h3 style="color:#084c47;margin-top:16px;font-size:15px">🎓 کلاس‌های من</h3>
+<div id="myClasses"><p style="color:#888;font-size:13px">در کلاسی نیستید.</p></div>
+<h3 style="color:#084c47;margin-top:16px;font-size:15px">💡 ایده‌های من</h3>
+<div id="myIdeas"><p style="color:#888;font-size:13px">ایده‌ای نیست.</p></div>
 </div>
 </div>
 </section>
+</div>
 
-<section id="think">
-<div class="title"><h2>💡 اتاق فکر</h2></div>
-<div class="grid">
-<div class="card">
-<h3>ثبت ایده</h3>
-<div id="ideaUserNotice" style="display:none;padding:10px;background:#e6f5f3;border-radius:8px;font-size:13px;color:#084c47;margin-bottom:10px">✅ وارد شده‌اید: <b id="ideaUserName"></b></div>
-<form id="ideaForm">
-<input id="ideaName" placeholder="نام (اختیاری)">
-<select id="ideaCat"><option value="برنامه‌ها">برنامه‌ها</option><option value="محتوا">محتوا</option><option value="جذب مخاطب">جذب مخاطب</option><option value="سایر">سایر</option></select>
-<textarea id="ideaText" placeholder="ایده..." required></textarea>
-<button class="btn" type="submit">ثبت ایده</button>
-</form>
-</div>
-<div class="card"><h3>ایده‌های اخیر</h3><div id="ideas"></div></div>
-</div>
+<!-- صفحه درباره -->
+<div class="page" id="page-about">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2 id="aboutTitle">🌟 درباره کانون</h2></div>
+<div id="aboutBox" class="card" style="line-height:2;font-size:14px;white-space:pre-line"></div>
 </section>
+</div>
 
-<section id="gallery"><div class="title"><h2>🖼 گالری تصاویر</h2></div><div class="card"><div id="galleryGrid" class="gallery-grid"></div></div></section>
-
-<section id="admin">
+<!-- صفحه مدیریت -->
+<div class="page" id="page-admin">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>🔐 ورود به پنل‌های مدیریت</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
 <div id="loginBox">
 <div class="login-tabs">
-<div class="login-tab active" data-panel="main" onclick="selectPanel('main')">🔐 مدیر اصلی</div>
+<div class="login-tab active" data-panel="main" onclick="selectPanel('main')">🔐 مدیر</div>
 <div class="login-tab" data-panel="ertebat" onclick="selectPanel('ertebat')">📞 ارتباطات</div>
 <div class="login-tab" data-panel="resane" onclick="selectPanel('resane')">🎥 رسانه</div>
 <div class="login-tab" data-panel="roshd" onclick="selectPanel('roshd')">🌱 رشد</div>
@@ -385,38 +525,38 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 <div id="panelBox" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-<h3 style="margin:0" id="panelTitle">پنل</h3>
-<button class="btn" id="logoutBtn" style="background:#c94f4f">خروج</button>
+<h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
+<button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
 </div>
 
 <div id="sectionMembers" class="admin-section" data-panels="main,ertebat">
 <div class="members-toolbar">
 <input id="searchInput" placeholder="🔍 جستجو..." oninput="filterMembers()">
-<button class="btn" id="downloadBtn" style="background:#2e8b57">📥 Excel</button>
+<button class="btn" id="downloadBtn" style="background:#2e8b57;font-size:13px">📥 Excel</button>
 </div>
 <div id="members"></div>
 </div>
 
 <div id="sectionReports" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📊 گزارش‌گیری</h3>
-<div id="reportsStats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px"></div>
-<h4 style="color:#084c47;margin-top:20px">📋 آمار حضور اعضا</h4>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📊 گزارش‌گیری</h3>
+<div id="reportsStats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:14px"></div>
+<h4 style="color:#084c47;margin-top:16px;font-size:14px">📋 آمار حضور</h4>
 <div id="reportsAttendance"></div>
 </div>
 
 <div id="sectionContact" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📢 ارتباط با اعضا</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📢 ارتباط با اعضا</h3>
 <div class="card" style="background:#f7fafc">
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
 <button type="button" class="btn" onclick="selectAllMembers()" style="background:#1e6bb8;font-size:12px;padding:6px 12px">✅ همه</button>
 <button type="button" class="btn" onclick="deselectAllMembers()" style="background:#888;font-size:12px;padding:6px 12px">✖ لغو</button>
 </div>
-<div id="memberSelector" style="max-height:250px;overflow-y:auto;background:#fff;border-radius:10px;padding:10px;border:1px solid #d6e2e0"></div>
+<div id="memberSelector" style="max-height:220px;overflow-y:auto;background:#fff;border-radius:10px;padding:10px;border:1px solid #d6e2e0"></div>
 <p style="font-size:12px;color:#0b6b62;margin:8px 0">تعداد: <b id="selectedCount">۰</b></p>
 <input id="msgText" placeholder="متن پیام..." style="margin-bottom:10px">
 <div style="display:flex;gap:8px;flex-wrap:wrap">
-<button type="button" class="btn" onclick="copyNumbers()" style="background:#2e8b57;font-size:13px">📋 کپی شماره‌ها</button>
-<button type="button" class="btn" onclick="saveGroup()" style="background:#1e6bb8;font-size:13px">💾 گروه</button>
+<button type="button" class="btn" onclick="copyNumbers()" style="background:#2e8b57;font-size:12px">📋 کپی شماره‌ها</button>
+<button type="button" class="btn" onclick="saveGroup()" style="background:#1e6bb8;font-size:12px">💾 گروه</button>
 </div>
 <input id="groupName" placeholder="اسم گروه" style="margin-top:10px">
 <p id="msgStatus" style="font-size:12px"></p>
@@ -425,7 +565,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionMessages" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📬 ارسال پیام به اعضا</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📬 ارسال پیام به اعضا</h3>
 <div class="card" style="background:#f7fafc">
 <form id="sendMsgForm">
 <select id="sendTo" required style="margin-bottom:8px">
@@ -439,17 +579,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </form>
 <p id="sendMsgStatus"></p>
 </div>
-<h3 style="margin-top:20px">📋 پیام‌های ارسال‌شده</h3>
+<h4 style="margin-top:16px;font-size:14px;color:#084c47">📋 پیام‌های ارسال‌شده</h4>
 <div id="sentMessagesList"></div>
 </div>
 
 <div id="sectionBirthdays" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">🎂 تولدهای این هفته</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">🎂 تولدهای این هفته</h3>
 <div class="card" style="background:#f7fafc"><div id="birthdaysBox"></div></div>
 </div>
 
 <div id="sectionAttendance" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📊 حضور و غیاب</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📊 حضور و غیاب</h3>
 <div class="card" style="background:#f7fafc">
 <form id="sessionForm">
 <input id="sesTitle" placeholder="عنوان جلسه" required>
@@ -463,12 +603,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </form>
 <p id="sessionMsg"></p>
 </div>
-<h3 style="margin-top:20px">📋 جلسات</h3>
+<h4 style="margin-top:16px;font-size:14px;color:#084c47">📋 جلسات</h4>
 <div id="sessionsList"></div>
 </div>
 
 <div id="sectionEvents" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📅 افزودن رویداد</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">🗓 افزودن رویداد</h3>
 <div class="card" style="background:#f7fafc">
 <form id="eventForm">
 <input id="eTitle" placeholder="عنوان" required>
@@ -486,7 +626,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionWeekly" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📅 افزودن برنامه هفتگی</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📅 افزودن رویداد ثابت</h3>
 <div class="card" style="background:#f7fafc">
 <form id="weeklyForm">
 <select id="wDay" required><option value="">روز...</option><option value="شنبه">شنبه</option><option value="یکشنبه">یکشنبه</option><option value="دوشنبه">دوشنبه</option><option value="سه‌شنبه">سه‌شنبه</option><option value="چهارشنبه">چهارشنبه</option><option value="پنجشنبه">پنجشنبه</option><option value="جمعه">جمعه</option></select>
@@ -501,12 +641,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionNews" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:30px">📢 افزودن خبر</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📢 افزودن خبر</h3>
 <div class="card" style="background:#f7fafc">
 <form id="newsForm">
 <input id="nTitle" placeholder="عنوان" required>
 <textarea id="nContent" placeholder="متن..." required></textarea>
-<label style="display:flex;align-items:center;gap:8px;font-size:14px"><input type="checkbox" id="nPinned" style="width:auto"> 📌 سنجاق</label>
+<label style="display:flex;align-items:center;gap:8px;font-size:13px"><input type="checkbox" id="nPinned" style="width:auto"> 📌 سنجاق</label>
 <button class="btn" type="submit">افزودن</button>
 </form>
 <p id="newsMsg"></p>
@@ -514,13 +654,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionVideos" class="admin-section" data-panels="main,resane">
-<h3 style="margin-top:30px">🎥 آپلود ویدیو</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">🎥 آپلود ویدیو</h3>
 <div class="card" style="background:#f7fafc">
 <form id="videoForm">
 <input id="vTitle" placeholder="عنوان" required>
 <textarea id="vDesc" placeholder="توضیحات"></textarea>
 <input type="file" id="vFile" accept="video/*" required>
-<p style="font-size:12px;color:#888;margin:0">⚠️ حداکثر ۵۰ مگابایت</p>
+<p style="font-size:11px;color:#888;margin:0">⚠️ حداکثر ۵۰ مگابایت</p>
 <button class="btn" type="submit">آپلود</button>
 </form>
 <p id="videoMsg"></p>
@@ -528,11 +668,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionGallery" class="admin-section" data-panels="main,resane">
-<h3 style="margin-top:30px">🖼 آپلود عکس</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">🖼 آپلود عکس</h3>
 <div class="card" style="background:#f7fafc">
 <form id="uploadForm">
 <input type="file" id="galleryFile" accept="image/*" required>
-<input id="galleryCaption" placeholder="توضیح">
+<input id="galleryCaption" placeholder="توضیح عکس">
+<input id="galleryDate" placeholder="تاریخ (مثلاً ۲۱ شهریور ۱۴۰۵)">
 <button class="btn" type="submit">آپلود</button>
 </form>
 <p id="uploadMsg"></p>
@@ -540,11 +681,11 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionAbout" class="admin-section" data-panels="main,resane">
-<h3 style="margin-top:30px">🌟 ویرایش درباره کانون</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">🌟 ویرایش درباره کانون</h3>
 <div class="card" style="background:#f7fafc">
 <form id="aboutForm">
 <input id="aboutTitleInput" placeholder="عنوان" required>
-<textarea id="aboutContentInput" style="min-height:150px" placeholder="متن..." required></textarea>
+<textarea id="aboutContentInput" style="min-height:140px" placeholder="متن..." required></textarea>
 <button class="btn" type="submit">ذخیره</button>
 </form>
 <p id="aboutMsg"></p>
@@ -552,7 +693,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionClasses" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:30px">🎓 افزودن کلاس</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">🎓 افزودن کلاس</h3>
 <div class="card" style="background:#f7fafc">
 <form id="classForm">
 <input id="cTitle" placeholder="عنوان" required>
@@ -567,7 +708,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionLibrary" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:30px">📚 افزودن کتاب/جزوه</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📚 افزودن کتاب/جزوه</h3>
 <div class="card" style="background:#f7fafc">
 <form id="bookForm">
 <input id="bTitle" placeholder="عنوان" required>
@@ -581,12 +722,12 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 
 <div id="sectionIdeas" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:30px">💡 مدیریت ایده‌ها</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">💡 مدیریت ایده‌ها</h3>
 <div id="adminIdeas"></div>
 </div>
 
 <div id="sectionPolls" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:30px">📊 ساخت نظرسنجی</h3>
+<h3 style="margin-top:24px;font-size:15px;color:#084c47">📊 ساخت نظرسنجی</h3>
 <div class="card" style="background:#f7fafc">
 <form id="pollForm">
 <input id="pQuestion" placeholder="سؤال" required>
@@ -604,7 +745,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </div>
 </section>
+</div>
 
+<!-- مودال‌ها -->
 <div class="modal-bg" id="editModal">
 <div class="modal">
 <button class="close" onclick="closeEdit()">✕</button>
@@ -633,13 +776,27 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </div>
 
+<div class="modal-bg" id="galleryEditModal">
+<div class="modal">
+<button class="close" onclick="closeGalleryEdit()">✕</button>
+<h3>✏ ویرایش عکس</h3>
+<form id="galleryEditForm">
+<input id="geId" type="hidden">
+<input id="geCaption" placeholder="توضیح کامل" required>
+<input id="geDate" placeholder="تاریخ (مثلاً ۲۱ شهریور ۱۴۰۵)">
+<button class="btn" type="submit">ذخیره</button>
+</form>
+<p id="geMsg"></p>
+</div>
+</div>
+
 <div class="lightbox" id="lightbox">
 <button class="lb-close" onclick="closeLightbox()">✕</button>
 <button class="lb-nav lb-prev" onclick="lbPrev()">‹</button>
 <button class="lb-nav lb-next" onclick="lbNext()">›</button>
 <img id="lbImg" src="" alt="">
 <div class="lb-caption" id="lbCaption"></div>
-<div class="lb-counter" id="lbCounter"></div>
+<div class="lb-date" id="lbDate"></div>
 </div>
 
 <footer>کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم</footer>
@@ -673,52 +830,28 @@ function fillDateSelects(d,m,y){
 function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=document.getElementById(m).value,yy=document.getElementById(y).value;if(!dd||!mm||!yy)return "";return `${yy}/${mm}/${dd}`;}
 function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
 function toggleMenu(){document.getElementById("menu").classList.toggle("open");}
-function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank">$1</a>');}
+function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank" style="color:#0b6b62;font-weight:bold">$1</a>');}
 function animateCount(el,t){const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
 
-function selectPanel(p){
-  currentPanel = p;
-  document.querySelectorAll(".login-tab").forEach(t=>t.classList.toggle("active",t.dataset.panel===p));
-  const hints = { main:"رمز مدیر اصلی را وارد کنید", ertebat:"رمز واحد ارتباطات را وارد کنید", resane:"رمز واحد رسانه را وارد کنید", roshd:"رمز واحد رشد را وارد کنید" };
-  const h=document.getElementById("panelHint"); if(h) h.textContent = hints[p];
+// ====== ناوبری بین صفحات ======
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  const p=document.getElementById(id);
+  if(p){p.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 }
-function showSectionsForPanel(p){
-  document.querySelectorAll(".admin-section").forEach(s=>{
-    const allowed = (s.dataset.panels||"").split(",");
-    s.style.display = allowed.includes(p) ? "block" : "none";
-  });
-  const t=document.getElementById("panelTitle"); if(t) t.textContent = PANEL_NAMES[p];
-}
-function avatarHtml(m, size){
-  const s = size || 40;
-  if(m.avatar_url) return `<div style="width:${s}px;height:${s}px;border-radius:50%;overflow:hidden;flex-shrink:0"><img src="${esc(m.avatar_url)}" style="width:100%;height:100%;object-fit:cover"></div>`;
-  return `<div style="width:${s}px;height:${s}px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:${Math.floor(s/2.5)}px;font-weight:bold;flex-shrink:0">${esc((m.name||"?")[0])}</div>`;
-}
+function goHome(){showPage("page-home");}
 
-// ============ شمارنده کاربران آنلاین (نسخه سریع) ============
-let onlineChannel = null;
-let onlineTimer = null;
-
+// ====== شمارنده آنلاین ======
+let onlineChannel = null, onlineTimer = null;
 function setupOnlineCounter(){
   if (typeof supabase === "undefined") return;
   if (onlineChannel) return;
-  
   let userId = localStorage.getItem("onlineUserId");
-  if (!userId) {
-    userId = "u_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8);
-    localStorage.setItem("onlineUserId", userId);
-  }
-  
+  if (!userId) { userId = "u_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8); localStorage.setItem("onlineUserId", userId); }
   const getName = () => (currentMember && currentMember.name) ? currentMember.name : "مهمان";
-  
-  // ✅ نشون دادن ۱ به صورت پیش‌فرض (فوری)
   const el = document.getElementById("onlineCount");
   if (el) el.textContent = fa(1);
-  
-  onlineChannel = db.channel("online-users", {
-    config: { presence: { key: userId } }
-  });
-  
+  onlineChannel = db.channel("online-users", { config: { presence: { key: userId } } });
   const updateCount = () => {
     if (!onlineChannel) return;
     const state = onlineChannel.presenceState();
@@ -726,41 +859,18 @@ function setupOnlineCounter(){
     const e = document.getElementById("onlineCount");
     if (e) e.textContent = fa(Math.max(count, 1));
   };
-  
-  // ✅ سریع‌تر: بدون منتظر موندن
-  onlineChannel
-    .on("presence", { event: "sync" }, updateCount)
-    .on("presence", { event: "join" }, updateCount)
-    .on("presence", { event: "leave" }, updateCount);
-  
+  onlineChannel.on("presence", { event: "sync" }, updateCount).on("presence", { event: "join" }, updateCount).on("presence", { event: "leave" }, updateCount);
   onlineChannel.subscribe(async (status) => {
     if (status === "SUBSCRIBED") {
-      await onlineChannel.track({
-        user_id: userId,
-        name: getName(),
-        joined_at: new Date().toISOString()
-      });
+      await onlineChannel.track({ user_id: userId, name: getName(), joined_at: new Date().toISOString() });
       updateCount();
     }
   });
-  
-  // هر ۱۵ ثانیه به‌روزرسانی
-  onlineTimer = setInterval(() => {
-    if (onlineChannel) {
-      onlineChannel.track({
-        user_id: userId,
-        name: getName(),
-        joined_at: new Date().toISOString()
-      });
-    }
-  }, 15000);
-  
-  window.addEventListener("beforeunload", () => {
-    if (onlineChannel) onlineChannel.untrack();
-  });
+  onlineTimer = setInterval(() => { if (onlineChannel) onlineChannel.track({ user_id: userId, name: getName(), joined_at: new Date().toISOString() }); }, 15000);
+  window.addEventListener("beforeunload", () => { if (onlineChannel) onlineChannel.untrack(); });
 }
 
-// ============ توابع عمومی ============
+// ====== رندر ======
 async function render(){
   const { data: mc } = await db.rpc("get_member_count");
   const { data: ideasData } = await db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50);
@@ -770,7 +880,7 @@ async function render(){
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
   const ib = document.getElementById("ideas");
-  if(ib) ib.innerHTML = ideas.length ? ideas.slice(0,10).map(i=>`<div class="idea"><strong>${esc(i.name||"ناشناس")}</strong><p>${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("") : "<p>هنوز ایده‌ای ثبت نشده.</p>";
+  if(ib) ib.innerHTML = ideas.length ? ideas.slice(0,10).map(i=>`<div class="idea"><strong>${esc(i.name||"ناشناس")}</strong><p style="margin:4px 0">${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("") : "<p style='color:#888;font-size:13px'>هنوز ایده‌ای ثبت نشده.</p>";
   await loadNews(); await loadEvents(); await loadPolls(); await loadAbout();
   await loadWeekly(); await loadGallery(); await loadVideos(); await loadLibrary(); await loadClasses();
   if(adminPassword){await loadMembers();await loadAdminIdeas();await loadGroups();await loadSessions();await loadSentMessages();await loadBirthdays();await loadReports();}
@@ -780,7 +890,7 @@ async function loadNews(){
   const b=document.getElementById("newsGrid");if(!b)return;
   const {data}=await db.from("news").select("*").order("is_pinned",{ascending:false}).order("created_at",{ascending:false});
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>هنوز خبری ثبت نشده.</p>";return;}
-  b.innerHTML=data.map(n=>{const dt=new Date(n.created_at).toLocaleDateString("fa-IR");return `<div class="news-card ${n.is_pinned?"pinned":""}">${n.is_pinned?'<span class="pin-badge">📌</span>':""}${adminPassword?`<button class="del-btn" onclick="deleteNews(${n.id})" style="${n.is_pinned?'top:36px':''}">✕</button>`:""}<h4>${esc(n.title)}</h4><div class="content">${esc(n.content)}</div><div class="date">🗓 ${dt}</div></div>`;}).join("");
+  b.innerHTML=data.map(n=>{const dt=new Date(n.created_at).toLocaleDateString("fa-IR");return `<div class="news-card ${n.is_pinned?"pinned":""}">${n.is_pinned?'<span class="pin-badge">📌 سنجاق</span>':""}${adminPassword?`<button class="del-btn" onclick="deleteNews(${n.id})" style="${n.is_pinned?'top:32px':''}">✕</button>`:""}<h4>${esc(n.title)}</h4><div class="content">${esc(n.content)}</div><div class="date">🗓 ${dt}</div></div>`;}).join("");
 }
 async function deleteNews(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_news",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadNews();}
 
@@ -797,7 +907,7 @@ async function loadPolls(){
   const {data:polls}=await db.from("polls").select("*").order("created_at",{ascending:false});
   const {data:votes}=await db.from("poll_votes").select("*");
   allPolls=polls||[];allVotes=votes||[];
-  if(!allPolls.length){b.innerHTML="<p style='text-align:center;color:#888'>نظرسنجی‌ای نیست.</p>";return;}
+  if(!allPolls.length){b.innerHTML="<p style='text-align:center;color:#888;font-size:13px'>نظرسنجی‌ای نیست.</p>";return;}
   const myPhone=currentMember?currentMember.phone:null;
   b.innerHTML=allPolls.map(p=>{const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;const myVote=myPhone?pv.find(v=>v.voter_phone===myPhone):null;const opts=p.options||[];return `<div class="poll-card">${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}<h4>${esc(p.question)}</h4><div class="sub">👥 ${fa(total)} رأی</div>${opts.map((o,i)=>{const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})"><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;}).join("")}</div>`;}).join("");
 }
@@ -825,18 +935,41 @@ async function deleteWeekly(id){if(!confirm("حذف شود؟"))return;const {err
 async function loadGallery(){
   const b=document.getElementById("galleryGrid");if(!b)return;
   const {data}=await db.from("gallery").select("*").order("created_at",{ascending:false});
-  if(!data||!data.length){galleryImages=[];b.innerHTML="<p style='text-align:center;color:#888'>عکسی نیست.</p>";return;}
+  if(!data||!data.length){galleryImages=[];b.innerHTML="<p style='text-align:center;color:#888;font-size:13px'>عکسی نیست.</p>";return;}
   galleryImages=data;
-  b.innerHTML=data.map((g,i)=>`<div class="gallery-item" onclick="openLightbox(${i})"><img src="${esc(g.url)}" loading="lazy">${g.caption?`<div class="cap">${esc(g.caption)}</div>`:""}${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button>`:""}</div>`).join("");
+  b.innerHTML=data.map((g,i)=>`<div class="gallery-item" onclick="openLightbox(${i})"><img src="${esc(g.url)}" loading="lazy">${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button><button class="edit-btn" onclick="event.stopPropagation();openGalleryEdit(${g.id},'${esc((g.caption||'').replace(/'/g,"&#39;"))}','${esc(g.photo_date||'')}')">✏</button>`:""}<div class="gallery-info">${g.photo_date?`<div class="g-date">📅 ${esc(g.photo_date)}</div>`:""}${g.caption?`<div class="g-cap">${esc(g.caption)}</div>`:""}</div></div>`).join("");
 }
 async function deleteGalleryImg(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_gallery",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGallery();}
 function openLightbox(i){if(!galleryImages.length)return;lbIndex=i;updateLightbox();document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden";}
 function closeLightbox(){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}
-function updateLightbox(){const im=galleryImages[lbIndex];if(!im)return;document.getElementById("lbImg").src=im.url;document.getElementById("lbCaption").textContent=im.caption||"";document.getElementById("lbCounter").textContent=`${fa(lbIndex+1)} از ${fa(galleryImages.length)}`;}
+function updateLightbox(){const im=galleryImages[lbIndex];if(!im)return;document.getElementById("lbImg").src=im.url;document.getElementById("lbCaption").textContent=im.caption||"";document.getElementById("lbDate").textContent=im.photo_date?"📅 "+im.photo_date:"";}
 function lbNext(){if(!galleryImages.length)return;lbIndex=(lbIndex+1)%galleryImages.length;updateLightbox();}
 function lbPrev(){if(!galleryImages.length)return;lbIndex=(lbIndex-1+galleryImages.length)%galleryImages.length;updateLightbox();}
 let tsX=0;const lbEl=document.getElementById("lightbox");
 if(lbEl){lbEl.addEventListener("touchstart",e=>{tsX=e.changedTouches[0].screenX;},{passive:true});lbEl.addEventListener("touchend",e=>{const d=tsX-e.changedTouches[0].screenX;if(Math.abs(d)>50){if(d>0)lbNext();else lbPrev();}},{passive:true});}
+
+function openGalleryEdit(id, caption, date){
+  document.getElementById("geId").value=id;
+  document.getElementById("geCaption").value=caption||"";
+  document.getElementById("geDate").value=date||"";
+  document.getElementById("geMsg").textContent="";
+  document.getElementById("galleryEditModal").classList.add("open");
+}
+function closeGalleryEdit(){document.getElementById("galleryEditModal").classList.remove("open");}
+document.getElementById("galleryEditForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("geMsg");
+  const id=document.getElementById("geId").value;
+  const cap=document.getElementById("geCaption").value.trim();
+  const dt=document.getElementById("geDate").value.trim();
+  if(!cap){m.textContent="توضیح الزامی";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_update_gallery",{admin_pass:adminPassword,item_id:parseInt(id),new_caption:cap,new_date:dt});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅ ذخیره شد";m.style.color="green";
+  setTimeout(()=>{closeGalleryEdit();loadGallery();},600);
+});
+document.getElementById("galleryEditModal").addEventListener("click",e=>{if(e.target.id==="galleryEditModal")closeGalleryEdit();});
 
 async function loadVideos(){
   const b=document.getElementById("videosGrid");if(!b)return;
@@ -870,10 +1003,10 @@ async function showRegs(cid){const {data,error}=await db.rpc("admin_get_class_re
 async function loadMyClasses(){
   const b=document.getElementById("myClasses");if(!b||!currentMember)return;
   const {data:regs}=await db.from("class_regs").select("*").eq("member_phone",currentMember.phone);
-  if(!regs||!regs.length){b.innerHTML="<p style='color:#888'>در کلاسی نیستید.</p>";return;}
+  if(!regs||!regs.length){b.innerHTML="<p style='color:#888;font-size:12px'>در کلاسی نیستید.</p>";return;}
   const {data:cls}=await db.from("classes").select("*");
   const myCls=(cls||[]).filter(c=>regs.some(r=>r.class_id===c.id));
-  b.innerHTML=myCls.map(c=>`<div class="myidea"><strong style="color:#084c47">🎓 ${esc(c.title)}</strong>${c.teacher?`<div style="font-size:12px;color:#777">${esc(c.teacher)}</div>`:""}</div>`).join("");
+  b.innerHTML=myCls.map(c=>`<div class="myidea"><strong style="color:#084c47">🎓 ${esc(c.title)}</strong>${c.teacher?`<div style="font-size:11px;color:#777">${esc(c.teacher)}</div>`:""}</div>`).join("");
 }
 
 async function loadMembers(){
@@ -887,7 +1020,7 @@ async function loadMembers(){
 function renderMembers(l){
   const b=document.getElementById("members");if(!b)return;
   if(!l.length){b.innerHTML="<p>عضوی نیست.</p>";return;}
-  b.innerHTML=l.map(m=>`<div class="member" style="display:flex;gap:10px;align-items:flex-start">${avatarHtml(m,44)}<div style="flex:1;min-width:0"><strong>${esc(m.name)}</strong> ${m.member_code?`<span style="background:#d9efeb;color:#084c47;font-size:10px;padding:2px 8px;border-radius:8px;font-family:monospace">${esc(m.member_code)}</span>`:""}<br><span>کد ملی: ${esc(m.national_id||"-")}</span><br><span>تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span>تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div></div>`).join("");
+  b.innerHTML=l.map(m=>`<div class="member" style="display:flex;gap:10px;align-items:flex-start"><div style="width:40px;height:40px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;overflow:hidden;flex-shrink:0;font-size:16px">${m.avatar_url?`<img src="${esc(m.avatar_url)}" style="width:100%;height:100%;object-fit:cover">`:(m.name||"?")[0]}</div><div style="flex:1;min-width:0"><strong>${esc(m.name)}</strong> ${m.member_code?`<span style="background:#d9efeb;color:#084c47;font-size:10px;padding:2px 8px;border-radius:8px;font-family:monospace">${esc(m.member_code)}</span>`:""}<br><span style="font-size:11px;color:#555">کد ملی: ${esc(m.national_id||"-")}</span><br><span style="font-size:11px;color:#555">تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span style="font-size:11px;color:#555">تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div></div>`).join("");
 }
 function filterMembers(){const q=document.getElementById("searchInput").value.trim().toLowerCase();if(!q){renderMembers(allMembers);return;}renderMembers(allMembers.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.national_id||"").includes(q)||(m.phone||"").includes(q)||(m.member_code||"").toLowerCase().includes(q)));}
 function downloadExcel(){if(!allMembers.length){alert("خالی");return;}let c="\uFEFF";c+="نام,کد عضویت,کد ملی,تاریخ تولد,تلفن\n";allMembers.forEach(m=>{c+=`"${(m.name||"").replace(/"/g,'""')}","${m.member_code||""}","${m.national_id||""}","${m.birth_date||""}","${m.phone||""}"\n`;});const b=new Blob([c],{type:"text/csv;charset=utf-8;"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="اعضا.csv";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
@@ -907,25 +1040,25 @@ async function deleteIdea(id){if(!confirm("حذف شود؟"))return;const {error
 
 function renderMemberSelector(){
   const b=document.getElementById("memberSelector");if(!b)return;
-  if(!allMembers.length){b.innerHTML="<p style='color:#888;font-size:13px'>لیستی نیست</p>";return;}
-  b.innerHTML=allMembers.map(m=>`<label class="member-check" data-id="${m.id}"><input type="checkbox" class="member-cb" value="${m.id}" onchange="updateSelectedCount()">${avatarHtml(m,32)}<span>${esc(m.name)} — ${esc(m.phone||"بدون شماره")}</span></label>`).join("");
+  if(!allMembers.length){b.innerHTML="<p style='color:#888;font-size:12px'>لیستی نیست</p>";return;}
+  b.innerHTML=allMembers.map(m=>`<label class="member-check" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;font-size:12px;cursor:pointer"><input type="checkbox" class="member-cb" value="${m.id}" onchange="updateSelectedCount()" style="width:auto"><span>${esc(m.name)} — ${esc(m.phone||"بدون شماره")}</span></label>`).join("");
   updateSelectedCount();
 }
-function updateSelectedCount(){const c=document.querySelectorAll(".member-cb:checked");const s=document.getElementById("selectedCount");if(s)s.textContent=fa(c.length);document.querySelectorAll(".member-check").forEach(el=>el.classList.toggle("checked",el.querySelector("input").checked));}
+function updateSelectedCount(){const c=document.querySelectorAll(".member-cb:checked");const s=document.getElementById("selectedCount");if(s)s.textContent=fa(c.length);}
 function selectAllMembers(){document.querySelectorAll(".member-cb").forEach(cb=>cb.checked=true);updateSelectedCount();}
 function deselectAllMembers(){document.querySelectorAll(".member-cb").forEach(cb=>cb.checked=false);updateSelectedCount();}
 function getSelectedMembers(){const ids=Array.from(document.querySelectorAll(".member-cb:checked")).map(cb=>parseInt(cb.value));return allMembers.filter(m=>ids.includes(m.id));}
 function showMsgStatus(t,c){const e=document.getElementById("msgStatus");if(!e)return;e.textContent=t;e.style.color=c;}
 function copyNumbers(){const ms=getSelectedMembers();if(!ms.length){showMsgStatus("عضوی انتخاب نشده","red");return;}const ph=ms.map(m=>m.phone).filter(p=>p);if(!ph.length){showMsgStatus("شماره‌ای نیست","red");return;}const t=ph.join(",");navigator.clipboard.writeText(t).then(()=>{showMsgStatus(`✅ ${fa(ph.length)} شماره کپی شد`,"green");}).catch(()=>{const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);showMsgStatus("کپی شد","green");});}
 async function saveGroup(){const n=document.getElementById("groupName").value.trim();const ids=Array.from(document.querySelectorAll(".member-cb:checked")).map(cb=>parseInt(cb.value));if(!n){showMsgStatus("اسم گروه را بنویس","red");return;}if(!ids.length){showMsgStatus("کسی انتخاب نشده","red");return;}const {error}=await db.rpc("admin_add_group",{admin_pass:adminPassword,p_name:n,p_member_ids:ids});if(error){showMsgStatus("خطا: "+error.message,"red");return;}showMsgStatus("✅ ذخیره شد","green");document.getElementById("groupName").value="";loadGroups();}
-async function loadGroups(){const b=document.getElementById("groupsList");if(!b)return;const {data}=await db.from("contact_groups").select("*").order("created_at",{ascending:false});if(!data||!data.length){b.innerHTML="<p style='font-size:12px;color:#888'>گروهی نیست.</p>";return;}b.innerHTML=data.map(g=>{const c=Array.isArray(g.member_ids)?g.member_ids.length:0;return `<div class="group-item"><span><b>${esc(g.name)}</b> (${fa(c)})</span><span><button onclick="loadGroup(${g.id})">انتخاب</button><button class="del-g" onclick="deleteGroup(${g.id})">🗑</button></span></div>`;}).join("");}
+async function loadGroups(){const b=document.getElementById("groupsList");if(!b)return;const {data}=await db.from("contact_groups").select("*").order("created_at",{ascending:false});if(!data||!data.length){b.innerHTML="<p style='font-size:11px;color:#888'>گروهی نیست.</p>";return;}b.innerHTML=data.map(g=>{const c=Array.isArray(g.member_ids)?g.member_ids.length:0;return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#fff;border-radius:8px;margin:4px 0;font-size:12px;border:1px solid #d6e2e0"><span><b>${esc(g.name)}</b> (${fa(c)})</span><span><button onclick="loadGroup(${g.id})" style="background:#0b6b62;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;margin-right:4px">انتخاب</button><button onclick="deleteGroup(${g.id})" style="background:#c94f4f;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit">🗑</button></span></div>`;}).join("");}
 async function loadGroup(id){const {data}=await db.from("contact_groups").select("*").eq("id",id).single();if(!data)return;const ids=data.member_ids||[];document.querySelectorAll(".member-cb").forEach(cb=>{cb.checked=ids.includes(parseInt(cb.value));});updateSelectedCount();showMsgStatus(`✅ «${data.name}» انتخاب شد`,"green");}
 async function deleteGroup(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_group",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGroups();}
 
 async function loadSentMessages(){
   const b=document.getElementById("sentMessagesList");if(!b)return;
   const {data}=await db.from("messages").select("*").order("created_at",{ascending:false}).limit(50);
-  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:13px'>پیامی ارسال نشده.</p>";return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>پیامی ارسال نشده.</p>";return;}
   b.innerHTML=data.map(m=>`<div class="msg-card"><button class="del-btn" onclick="deleteSentMessage(${m.id})">✕</button><h5>${esc(m.title||"بدون عنوان")}</h5><div class="m-content">${esc(m.content||"")}</div><div class="m-date">به: ${esc(m.member_phone||"همه")} • ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div></div>`).join("");
 }
 async function deleteSentMessage(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_message",{admin_pass:adminPassword,msg_id:id});if(error){alert("خطا: "+error.message);return;}loadSentMessages();}
@@ -947,7 +1080,7 @@ async function loadBirthdays(){
   });
   if(!bdMembers.length){b.innerHTML="<p style='color:#888'>تولدی در هفته پیش‌رو نیست.</p>";return;}
   bdMembers.sort((a,b)=>a.daysUntil-b.daysUntil);
-  b.innerHTML=bdMembers.map(x=>`<div class="birthday-card">🎂 <b>${esc(x.m.name)}</b> — ${x.daysUntil === 0 ? "🎉 امروز!" : fa(x.daysUntil)+" روز دیگه"} (${esc(x.m.birth_date)})<br><span style="font-size:12px;color:#777">📱 ${esc(x.m.phone||"-")}</span></div>`).join("");
+  b.innerHTML=bdMembers.map(x=>`<div class="birthday-card">🎂 <b>${esc(x.m.name)}</b> — ${x.daysUntil === 0 ? "🎉 امروز!" : fa(x.daysUntil)+" روز دیگه"} (${esc(x.m.birth_date)})<br><span style="font-size:11px;color:#777">📱 ${esc(x.m.phone||"-")}</span></div>`).join("");
 }
 function updateBirthdays(){loadBirthdays();}
 
@@ -975,7 +1108,7 @@ async function loadReports(){
   const maxP = Math.max(...atts.map(x => x.present_count), 1);
   a.innerHTML = atts.map(x => {
     const pct = Math.round((x.present_count / maxP) * 100);
-    return "<div style='background:#fff;border-radius:10px;padding:12px;margin:8px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)'><div style='display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;flex-wrap:wrap;gap:6px'><b>"+esc(x.member_name)+"</b><span style='color:#0b6b62'>✅ "+fa(x.present_count)+" | ❌ "+fa(x.absent_count)+" | ⏰ "+fa(x.late_count)+"</span></div><div style='background:#eee;border-radius:6px;height:8px;overflow:hidden'><div style='background:linear-gradient(90deg,#0b6b62,#2e8b57);height:100%;width:"+pct+"%'></div></div></div>";
+    return "<div style='background:#fff;border-radius:10px;padding:10px;margin:6px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)'><div style='display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;flex-wrap:wrap;gap:5px'><b>"+esc(x.member_name)+"</b><span style='color:#0b6b62'>✅ "+fa(x.present_count)+" | ❌ "+fa(x.absent_count)+" | ⏰ "+fa(x.late_count)+"</span></div><div style='background:#eee;border-radius:6px;height:7px;overflow:hidden'><div style='background:linear-gradient(90deg,#0b6b62,#2e8b57);height:100%;width:"+pct+"%'></div></div></div>";
   }).join("");
 }
 
@@ -988,15 +1121,7 @@ async function loadSessions(){
   b.innerHTML=allSessions.map(s=>{
     const cnt=(att||[]).filter(a=>a.session_id===s.id&&a.status==="present").length;
     const tot=(att||[]).filter(a=>a.session_id===s.id).length;
-    return `<div class="member" style="border-right:4px solid #1e6bb8">
-      <strong>${esc(s.title)}</strong>
-      <div style="font-size:12px;color:#555;margin:4px 0">📅 ${esc(s.session_date)} • حاضران: ${fa(cnt)}/${fa(tot)}</div>
-      ${s.description?`<div style="font-size:12px;color:#777">${esc(s.description)}</div>`:""}
-      <div class="member-actions" style="margin-top:8px">
-        <button class="b-edit" onclick="openAttendance(${s.id},'${esc(s.title)}')">📋 ثبت حضور</button>
-        <button class="b-del-m" onclick="deleteSession(${s.id})">🗑 حذف</button>
-      </div>
-    </div>`;
+    return `<div class="member" style="border-right:4px solid #1e6bb8"><strong>${esc(s.title)}</strong><div style="font-size:11px;color:#555;margin:4px 0">📅 ${esc(s.session_date)} • حاضران: ${fa(cnt)}/${fa(tot)}</div><div class="member-actions"><button class="b-edit" onclick="openAttendance(${s.id},'${esc(s.title)}')">📋 ثبت حضور</button><button class="b-del-m" onclick="deleteSession(${s.id})">🗑 حذف</button></div></div>`;
   }).join("");
 }
 async function deleteSession(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_session",{admin_pass:adminPassword,s_id:id});if(error){alert("خطا: "+error.message);return;}loadSessions();loadReports();}
@@ -1011,12 +1136,7 @@ async function openAttendance(sid, title){
   b.innerHTML = allMembers.map(m=>{
     const rec = atts.find(a=>a.member_phone===m.phone);
     const st = rec ? rec.status : null;
-    return `<div class="attendance-row">
-      <span class="att-name">${esc(m.name)}</span>
-      <button class="att-btn att-present ${st==='present'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','present')">حاضر</button>
-      <button class="att-btn att-absent ${st==='absent'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','absent')">غایب</button>
-      <button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">تأخیر</button>
-    </div>`;
+    return `<div class="attendance-row"><span class="att-name">${esc(m.name)}</span><button class="att-btn att-present ${st==='present'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','present')">حاضر</button><button class="att-btn att-absent ${st==='absent'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','absent')">غایب</button><button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">تأخیر</button></div>`;
   }).join("");
   document.getElementById("attendanceModal").classList.add("open");
 }
@@ -1027,7 +1147,7 @@ async function setAtt(phone, name, status){
   openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
 }
 
-// ============ فرم‌ها ============
+// ====== فرم‌ها ======
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=document.getElementById("registerMsg");
@@ -1089,7 +1209,7 @@ document.getElementById("editForm").addEventListener("submit",async e=>{
 
 document.getElementById("uploadForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const m=document.getElementById("uploadMsg"),f=document.getElementById("galleryFile").files[0],c=document.getElementById("galleryCaption").value.trim();
+  const m=document.getElementById("uploadMsg"),f=document.getElementById("galleryFile").files[0],c=document.getElementById("galleryCaption").value.trim(),dt=document.getElementById("galleryDate").value.trim();
   if(!f){m.textContent="عکسی نیست";m.style.color="red";return;}
   if(f.size>5*1024*1024){m.textContent="کمتر از ۵ مگ";m.style.color="red";return;}
   m.textContent="آپلود...";m.style.color="#555";
@@ -1099,6 +1219,10 @@ document.getElementById("uploadForm").addEventListener("submit",async e=>{
   const {data:ud}=db.storage.from("gallery").getPublicUrl(fn);
   const {error:de}=await db.rpc("admin_add_gallery",{admin_pass:adminPassword,p_filename:fn,p_url:ud.publicUrl,p_caption:c});
   if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  if(dt){
+    const {data:latest}=await db.from("gallery").select("id").eq("url",ud.publicUrl).limit(1).single();
+    if(latest){await db.rpc("admin_update_gallery",{admin_pass:adminPassword,item_id:latest.id,new_caption:c,new_date:dt});}
+  }
   m.textContent="✅";m.style.color="green";e.target.reset();loadGallery();
 });
 
@@ -1219,10 +1343,7 @@ document.getElementById("sendMsgForm").addEventListener("submit",async e=>{
   document.getElementById("sendToPhone").style.display="none";
   loadSentMessages();
 });
-
-document.getElementById("sendTo").addEventListener("change",e=>{
-  document.getElementById("sendToPhone").style.display = e.target.value === "one" ? "block" : "none";
-});
+document.getElementById("sendTo").addEventListener("change",e=>{document.getElementById("sendToPhone").style.display = e.target.value === "one" ? "block" : "none";});
 
 document.getElementById("sessionForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -1234,7 +1355,7 @@ document.getElementById("sessionForm").addEventListener("submit",async e=>{
   m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
 });
 
-// ============ پنل اعضا ============
+// ====== پنل اعضا ======
 document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const m=document.getElementById("memberLoginMsg"),ph=document.getElementById("mLoginPhone").value.trim();
@@ -1245,6 +1366,7 @@ document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   currentMember=data[0];
   saveMemberLocal(currentMember);
   await renderMemberPanel();
+  updateMenuRegistration();
   if(onlineChannel) onlineChannel.track({ user_id: localStorage.getItem("onlineUserId"), name: currentMember.name||"مهمان", joined_at: new Date().toISOString() });
 });
 
@@ -1252,14 +1374,6 @@ async function renderMemberPanel(){
   const el = id => document.getElementById(id);
   if (el("memberLoginBox")) el("memberLoginBox").style.display = "none";
   if (el("memberPanelBox")) el("memberPanelBox").style.display = "block";
-  if (el("mName")) el("mName").textContent = currentMember.name || "-";
-  if (el("mNid")) el("mNid").textContent = currentMember.national_id || "-";
-  if (el("mBirth")) el("mBirth").textContent = currentMember.birth_date || "-";
-  if (el("mPhone")) el("mPhone").textContent = currentMember.phone || "-";
-  if (el("avatarLetter")) el("avatarLetter").textContent = (currentMember.name || "?").charAt(0);
-  if (el("ideaUserName")) el("ideaUserName").textContent = currentMember.name || "";
-  if (el("ideaUserNotice")) el("ideaUserNotice").style.display = "block";
-  if (el("ideaName")) { el("ideaName").value = currentMember.name || ""; el("ideaName").style.display = "none"; }
   if (el("cardName")) el("cardName").textContent = currentMember.name || "-";
   if (el("cardCode")) el("cardCode").textContent = currentMember.member_code || "در انتظار...";
   if (el("cardDate") && currentMember.created_at) el("cardDate").textContent = new Date(currentMember.created_at).toLocaleDateString("fa-IR");
@@ -1268,6 +1382,9 @@ async function renderMemberPanel(){
     if (currentMember.avatar_url) cp.innerHTML = '<img src="' + esc(currentMember.avatar_url) + '">';
     else cp.textContent = (currentMember.name || "?").charAt(0);
   }
+  if (el("ideaUserName")) el("ideaUserName").textContent = currentMember.name || "";
+  if (el("ideaUserNotice")) el("ideaUserNotice").style.display = "block";
+  if (el("ideaName")) { el("ideaName").value = currentMember.name || ""; el("ideaName").style.display = "none"; }
   if (el("epName")) el("epName").value = currentMember.name || "";
   setPersianDate("epDay","epMonth","epYear", currentMember.birth_date || "");
   if (el("epPhone")) el("epPhone").value = currentMember.phone || "";
@@ -1310,14 +1427,11 @@ async function uploadAvatar(){
   currentMember.avatar_url=ud.publicUrl;
   saveMemberLocal(currentMember);
   document.getElementById("cardPhoto").innerHTML=`<img src="${esc(ud.publicUrl)}">`;
-  m.textContent="✅ عکس پروفایل ذخیره شد";m.style.color="green";
+  m.textContent="✅ ذخیره شد";m.style.color="green";
   document.getElementById("avatarFile").value="";
 }
 
-function toggleEditProfile(){
-  const b=document.getElementById("editProfileBox");
-  b.style.display = b.style.display === "none" ? "block" : "none";
-}
+function toggleEditProfile(){const b=document.getElementById("editProfileBox");b.style.display = b.style.display === "none" ? "block" : "none";}
 
 document.getElementById("editProfileForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -1342,7 +1456,7 @@ async function loadMyIdeas(){
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
   const {data,error}=await db.rpc("member_get_ideas_by_phone",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
-  if(!data||!data.length){b.innerHTML="<p style='color:#888'>ایده‌ای نیست.</p>";return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>ایده‌ای نیست.</p>";return;}
   b.innerHTML=data.map(i=>`<div class="myidea"><strong style="color:#084c47">${esc(i.category||"سایر")}</strong><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
 }
 
@@ -1351,7 +1465,7 @@ async function loadMyMessages(){
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
   const {data,error}=await db.rpc("member_get_messages",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
-  if(!data||!data.length){b.innerHTML="<p style='color:#888'>پیامی ندارید.</p>";return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>پیامی ندارید.</p>";return;}
   const unread = data.filter(m=>!m.is_read).length;
   const ub = document.getElementById("unreadCount");
   if(unread>0){ub.textContent=fa(unread);ub.style.display="inline-block";}else{ub.style.display="none";}
@@ -1363,9 +1477,9 @@ async function loadMyAttendance(){
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
   const {data,error}=await db.rpc("member_get_my_attendance",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
-  if(!data||!data.length){b.innerHTML="<p style='color:#888'>در جلسه‌ای حاضر نبوده‌اید.</p>";return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>در جلسه‌ای نبوده‌اید.</p>";return;}
   const icon={present:"✅",absent:"❌",late:"⏰"};
-  b.innerHTML=data.map(a=>`<div class="myidea" style="border-right-color:${a.status==='present'?'#2e8b57':a.status==='absent'?'#c94f4f':'#c48b1f'}"><strong style="color:#084c47">${icon[a.status]||'؟'} ${esc(a.session_title)}</strong><div style="font-size:12px;color:#777;margin-top:4px">📅 ${esc(a.session_date)}</div></div>`).join("");
+  b.innerHTML=data.map(a=>`<div class="myidea" style="border-right-color:${a.status==='present'?'#2e8b57':a.status==='absent'?'#c94f4f':'#c48b1f'}"><strong style="color:#084c47">${icon[a.status]||'؟'} ${esc(a.session_title)}</strong><div style="font-size:11px;color:#777;margin-top:4px">📅 ${esc(a.session_date)}</div></div>`).join("");
 }
 
 async function loadMyVotes(){
@@ -1373,31 +1487,42 @@ async function loadMyVotes(){
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
   const {data,error}=await db.rpc("member_get_my_votes",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
-  if(!data||!data.length){b.innerHTML="<p style='color:#888'>هنوز رأی نداده‌اید.</p>";return;}
-  b.innerHTML=data.map(v=>`<div class="myidea" style="border-right-color:#1e6bb8"><strong style="color:#084c47">🗳 ${esc(v.question)}</strong><div style="font-size:13px;color:#0b6b62;margin-top:4px">رأی شما: <b>${esc(v.voted_option||'-')}</b></div></div>`).join("");
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>رأی نداده‌اید.</p>";return;}
+  b.innerHTML=data.map(v=>`<div class="myidea" style="border-right-color:#1e6bb8"><strong style="color:#084c47">🗳 ${esc(v.question)}</strong><div style="font-size:12px;color:#0b6b62;margin-top:4px">رأی شما: <b>${esc(v.voted_option||'-')}</b></div></div>`).join("");
 }
 
 document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
 
-// ============ ورود خودکار عضو ============
+// ====== پنهان کردن ثبت‌نام ======
+function updateMenuRegistration(){
+  const el = document.getElementById("menuRegister");
+  if (!el) return;
+  const saved = loadMemberLocal();
+  if (saved && saved.phone) el.style.display = "none";
+  else el.style.display = "block";
+}
+
+// ====== ورود خودکار ======
 async function autoLoginMember(){
   const saved=loadMemberLocal();
-  if(!saved||!saved.phone)return;
+  if(!saved||!saved.phone){updateMenuRegistration();return;}
   const {data,error}=await db.rpc("member_login_by_phone",{p_phone:saved.phone});
-  if(error||!data||!data.length){clearMemberLocal();return;}
+  if(error||!data||!data.length){clearMemberLocal();updateMenuRegistration();return;}
   currentMember=data[0];
   saveMemberLocal(currentMember);
   await renderMemberPanel();
+  updateMenuRegistration();
 }
 
-// ============ اجرای اولیه ============
+// ====== اجرای اولیه ======
 (async () => {
   selectPanel("main");
-  setupOnlineCounter();  // ✅ فوری اجرا شه
+  setupOnlineCounter();
+  updateMenuRegistration();
   await autoLoginMember();
   await render();
 })();
 </script>
 </body>
-                                                      </html>
+  </html>
