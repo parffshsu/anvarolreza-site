@@ -19,12 +19,11 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;m
 .online-label{font-size:11px;opacity:.85}
 @keyframes pulse-dot{0%{box-shadow:0 0 0 0 rgba(46,204,113,.7)}70%{box-shadow:0 0 0 8px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
 @keyframes pulse-eye{0%,100%{opacity:1}50%{opacity:.5}}
-.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer;transition:transform .2s}
-.menu-btn:active{transform:scale(.9)}
+.menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer}
 .menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:220px;max-height:75vh;overflow-y:auto;animation:menuIn .25s ease}
 .menu.open{display:block}
 @keyframes menuIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.menu a{display:block;color:#fff;text-decoration:none;padding:12px 16px;border-radius:8px;font-size:14px;transition:background .2s}
+.menu a{display:block;color:#fff;text-decoration:none;padding:12px 16px;border-radius:8px;font-size:14px}
 .menu a:hover{background:#0b6b62}
 section{padding:40px 7%;max-width:1100px;margin:auto;animation:pageIn .4s ease}
 @keyframes pageIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -45,8 +44,7 @@ button:active{transform:scale(.96)}
 .notice{padding:12px;border-radius:10px;background:#fff7e6;color:#7a5b00;font-size:13px}
 .badge{display:inline-block;padding:5px 12px;border-radius:20px;background:#d9efeb;color:#084c47;font-size:13px;font-weight:bold}
 .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:90px;transition:transform .3s}
-.stat:hover{transform:translateY(-3px)}
+.stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:90px}
 .stat b{display:block;font-size:22px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
 .shortcuts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:20px 0}
@@ -65,16 +63,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-teal{background:linear-gradient(135deg,#00b8a9,#008075)}
 .sc-indigo{background:linear-gradient(135deg,#5f27cd,#341f97)}
 .sc-gray{background:linear-gradient(135deg,#778ca3,#4b6584)}
-.back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#084c47;padding:10px 18px;border-radius:10px;border:2px solid #d9efeb;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-.back-btn:hover{background:#e6f5f3;transform:translateX(-3px)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#084c47;padding:10px 18px;border-radius:10px;border:2px solid #d9efeb;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;cursor:pointer;transition:transform .3s,box-shadow .3s;animation:cardIn .5s ease}
-.gallery-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
-.gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s}
-.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);position:relative;cursor:pointer;transition:transform .3s}
+.gallery-item:hover{transform:translateY(-4px)}
+.gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
 .gallery-info{padding:10px 12px;background:#fff;text-align:right}
 .gallery-info .g-date{font-size:11px;color:#888;margin-bottom:4px}
-.gallery-info .g-cap{font-size:12px;color:#333;line-height:1.6;word-wrap:break-word}
+.gallery-info .g-cap{font-size:12px;color:#333;line-height:1.6}
 .gallery-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
 .gallery-item .edit-btn{position:absolute;top:8px;right:8px;background:#1e6bb8;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;line-height:1;z-index:2}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column}
@@ -85,16 +81,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer}
 .lightbox .lb-prev{left:20px}.lightbox .lb-next{right:20px}
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:cardIn .5s ease;transition:transform .3s}
-.weekly-card:hover{transform:translateY(-3px)}
+.weekly-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
 .weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
 .weekly-card h4{margin:6px 0;color:#084c47;font-size:16px}
 .weekly-card .info{font-size:12px;color:#555;margin:5px 0}
 .weekly-card .desc{font-size:12px;color:#777;margin-top:8px;line-height:1.6}
 .weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
 .class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.class-card{background:linear-gradient(135deg,#fff,#f2faf8);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;border-right:5px solid #7a3fa0;animation:cardIn .5s ease;transition:transform .3s}
-.class-card:hover{transform:translateY(-3px)}
+.class-card{background:linear-gradient(135deg,#fff,#f2faf8);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;border-right:5px solid #7a3fa0}
 .class-card h4{margin:0 0 8px;color:#084c47;font-size:16px}
 .class-card .c-info{font-size:12px;color:#555;margin:4px 0}
 .class-card .c-desc{font-size:12px;color:#777;line-height:1.6;margin:8px 0}
@@ -105,7 +99,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
 .reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
 .library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.book-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center;animation:cardIn .5s ease}
+.book-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center}
 .book-card .book-icon{font-size:40px;margin-bottom:6px}
 .book-card h4{margin:6px 0;color:#084c47;font-size:14px}
 .book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:10px;padding:2px 10px;border-radius:10px;margin-bottom:6px}
@@ -113,14 +107,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;margin-top:6px}
 .book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative;animation:cardIn .5s ease}
+.video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative}
 .video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
 .video-card .v-info{padding:12px}
 .video-card h4{margin:0 0 6px;color:#084c47;font-size:14px}
 .video-card .v-desc{font-size:11px;color:#777;line-height:1.5}
 .video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1;z-index:2}
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.news-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative;animation:cardIn .5s ease}
+.news-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-right:5px solid #0b6b62;position:relative}
 .news-card.pinned{border-right-color:#c48b1f;background:linear-gradient(135deg,#fffaf0,#fff)}
 .news-card .pin-badge{position:absolute;top:10px;left:10px;background:#c48b1f;color:#fff;font-size:10px;padding:3px 10px;border-radius:12px}
 .news-card h4{margin:6px 0 10px;color:#084c47;font-size:15px}
@@ -128,13 +122,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .news-card .date{font-size:11px;color:#888;margin-top:10px}
 .news-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
 .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.event-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-top:4px solid #1e6bb8;position:relative;animation:cardIn .5s ease}
+.event-card{background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);border-top:4px solid #1e6bb8;position:relative}
 .event-card .date-badge{display:inline-block;background:#1e6bb8;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
 .event-card h4{margin:6px 0;color:#084c47;font-size:15px}
 .event-card .info{font-size:12px;color:#555;margin:5px 0}
 .event-card .desc{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
 .event-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.poll-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);margin:12px 0;animation:cardIn .5s ease}
+.poll-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);margin:12px 0}
 .poll-card h4{margin:0 0 6px;color:#084c47;font-size:15px}
 .poll-card .sub{font-size:11px;color:#888;margin-bottom:12px}
 .poll-option{margin:6px 0;position:relative}
@@ -160,7 +154,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .date-picker{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:14px;padding:22px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:cardIn .3s ease}
+.modal{background:#fff;border-radius:14px;padding:22px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
 .modal h3{color:#084c47;margin:0 0 14px;font-size:16px}
 .modal .close{background:transparent;border:none;color:#888;font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
 .profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:linear-gradient(135deg,#e6f5f3,#fff);border-radius:12px;margin-bottom:14px}
@@ -173,6 +167,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .login-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;justify-content:center}
 .login-tab{padding:7px 12px;background:#f2faf8;border:2px solid #d6e2e0;border-radius:10px;font-size:12px;cursor:pointer;color:#084c47;font-weight:bold;font-family:inherit;transition:all .2s}
 .login-tab.active{background:#0b6b62;color:#fff;border-color:#0b6b62}
+#panelTabs{margin:0 0 14px 0;padding:10px;background:#f7fafc;border-radius:12px}
 .msg-card{background:#fff;border-radius:12px;padding:12px;margin:6px 0;box-shadow:0 3px 10px rgba(0,0,0,.06);border-right:4px solid #1e6bb8;font-size:12px;position:relative}
 .msg-card.unread{background:linear-gradient(135deg,#e6f5f3,#fff);border-right-color:#c48b1f}
 .msg-card h5{margin:0 0 5px;color:#084c47;font-size:13px}
@@ -222,7 +217,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <nav>
 <div class="logo" onclick="goHome()">انوارالرضا(ع)</div>
 <div class="nav-right">
-<div class="online-badge" title="کاربران آنلاین">
+<div class="online-badge">
 <span class="online-dot"></span>
 <span class="online-eye">👁</span>
 <span id="onlineCount">۱</span>
@@ -245,13 +240,11 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <p>سامانه ارتباط با اعضا، ثبت‌نام و اتاق فکر کانون</p>
 </div>
 
-<!-- گالری تصاویر -->
 <section>
 <div class="title"><h2>🖼 گالری تصاویر کانون</h2></div>
 <div class="card"><div id="galleryGrid" class="gallery-grid"></div></div>
 </section>
 
-<!-- فرم ثبت‌نام (فقط اگه کاربر عضو نباشه) -->
 <section id="registerSection">
 <div class="title"><h2>📝 ثبت‌نام در کانون</h2></div>
 <div class="card" style="max-width:700px;margin:auto">
@@ -273,7 +266,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </section>
 
-<!-- میانبرها -->
 <section>
 <div class="title"><h2>🎯 دسترسی سریع</h2></div>
 <div class="shortcuts">
@@ -312,7 +304,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </section>
 
-<!-- ارتباط با ما -->
 <section>
 <div class="contact-section">
 <h3>📞 ارتباط با ما</h3>
@@ -347,7 +338,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="title"><h2>📊 نظرسنجی‌ها</h2></div>
 <div id="pollsBox"></div>
 <div class="title" style="margin-top:30px"><h2>💡 اتاق فکر</h2></div>
-<div class="grid">
+<div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
 <div class="card">
 <h3>ثبت ایده</h3>
 <div id="ideaUserNotice" style="display:none;padding:10px;background:#e6f5f3;border-radius:8px;font-size:13px;color:#084c47;margin-bottom:10px">✅ وارد شده‌اید: <b id="ideaUserName"></b></div>
@@ -406,8 +397,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="title"><h2>🗓 رویدادهای پیش‌رو</h2></div>
 <div class="events-grid" id="eventsGrid"></div>
 </section>
-</div>
-<!-- صفحه پنل اعضا -->
+  </div>
+  <!-- صفحه پنل اعضا -->
 <div class="page" id="page-member">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -514,7 +505,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="card" style="max-width:700px;margin:auto">
 <div id="loginBox">
 <div class="login-tabs">
-<div class="login-tab active" data-panel="main" onclick="selectPanel('main')">🔐 مدیر</div>
+<div class="login-tab active" data-panel="main" onclick="selectPanel('main')">🔐 مدیر اصلی</div>
 <div class="login-tab" data-panel="ertebat" onclick="selectPanel('ertebat')">📞 ارتباطات</div>
 <div class="login-tab" data-panel="resane" onclick="selectPanel('resane')">🎥 رسانه</div>
 <div class="login-tab" data-panel="roshd" onclick="selectPanel('roshd')">🌱 رشد</div>
@@ -530,6 +521,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
 <button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
+</div>
+
+<!-- ✅ تب‌های داخل پنل -->
+<div class="login-tabs" id="panelTabs">
+<div class="login-tab active" data-panel="main" onclick="switchPanel('main')">🔐 همه</div>
+<div class="login-tab" data-panel="ertebat" onclick="switchPanel('ertebat')">📞 ارتباطات</div>
+<div class="login-tab" data-panel="resane" onclick="switchPanel('resane')">🎥 رسانه</div>
+<div class="login-tab" data-panel="roshd" onclick="switchPanel('roshd')">🌱 رشد</div>
 </div>
 
 <div id="statsCard" class="card" style="background:linear-gradient(135deg,#e6f5f3,#fff);margin-bottom:14px">
@@ -759,7 +758,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- مودال‌ها -->
 <div class="modal-bg" id="editModal">
 <div class="modal">
 <button class="close" onclick="closeEdit()">✕</button>
@@ -826,7 +824,7 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-// ====== هش رمز عبور (SHA-256) ======
+// ====== هش SHA-256 ======
 async function hashPassword(pw) {
   const enc = new TextEncoder();
   const data = enc.encode("anvar_" + pw + "_reza");
@@ -852,13 +850,38 @@ function toggleMenu(){document.getElementById("menu").classList.toggle("open");}
 function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank" style="color:#0b6b62;font-weight:bold">$1</a>');}
 function animateCount(el,t){if(!el)return;const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
 
-// ====== ناوبری ======
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   const p=document.getElementById(id);
   if(p){p.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
 }
 function goHome(){showPage("page-home");}
+
+// ====== تب‌های پنل مدیر (فیکس جدید) ======
+function switchPanel(p){
+  if(!adminPassword) return;
+  if(adminPassword === PANEL_PASSWORDS.main){
+    currentPanel = p;
+    showSectionsForPanel(p);
+    document.querySelectorAll("#panelTabs .login-tab").forEach(t=>t.classList.toggle("active",t.dataset.panel===p));
+  } else {
+    alert("شما فقط به پنل خودتان دسترسی دارید.");
+  }
+}
+
+function selectPanel(p){
+  currentPanel = p;
+  document.querySelectorAll("#loginBox .login-tab").forEach(t=>t.classList.toggle("active",t.dataset.panel===p));
+  const hints = { main:"رمز مدیر اصلی را وارد کنید", ertebat:"رمز واحد ارتباطات را وارد کنید", resane:"رمز واحد رسانه را وارد کنید", roshd:"رمز واحد رشد را وارد کنید" };
+  const h=document.getElementById("panelHint"); if(h) h.textContent = hints[p];
+}
+function showSectionsForPanel(p){
+  document.querySelectorAll(".admin-section").forEach(s=>{
+    const allowed = (s.dataset.panels||"").split(",");
+    s.style.display = allowed.includes(p) ? "block" : "none";
+  });
+  const t=document.getElementById("panelTitle"); if(t) t.textContent = PANEL_NAMES[p];
+}
 
 // ====== شمارنده آنلاین ======
 let onlineChannel = null, onlineTimer = null;
@@ -889,20 +912,48 @@ function setupOnlineCounter(){
   window.addEventListener("beforeunload", () => { if (onlineChannel) onlineChannel.untrack(); });
 }
 
-// ====== رندر ======
+// ====== رندر (فیکس سرعت: Promise.all) ======
 async function render(){
-  const { data: mc } = await db.rpc("get_member_count");
-  const { data: ideasData } = await db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50);
-  const ideas = ideasData || [];
+  const [memberCountRes, ideasRes] = await Promise.all([
+    db.rpc("get_member_count"),
+    db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50)
+  ]);
+
+  // همه با هم (بدون await)
+  Promise.all([
+    loadNews(),
+    loadEvents(),
+    loadPolls(),
+    loadAbout(),
+    loadWeekly(),
+    loadGallery(),
+    loadVideos(),
+    loadLibrary(),
+    loadClasses()
+  ]);
+
+  const mc = memberCountRes.data;
+  const ideas = ideasRes.data || [];
   const done = ideas.filter(i=>i.status==="اجرا شد").length;
+
   animateCount(document.getElementById("memberCount"), mc||0);
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
+
   const ib = document.getElementById("ideas");
   if(ib) ib.innerHTML = ideas.length ? ideas.slice(0,10).map(i=>`<div class="idea"><strong>${esc(i.name||"ناشناس")}</strong><p style="margin:4px 0">${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("") : "<p style='color:#888;font-size:13px'>هنوز ایده‌ای ثبت نشده.</p>";
-  await loadNews(); await loadEvents(); await loadPolls(); await loadAbout();
-  await loadWeekly(); await loadGallery(); await loadVideos(); await loadLibrary(); await loadClasses();
-  if(adminPassword){await loadMembers();await loadAdminIdeas();await loadGroups();await loadSessions();await loadSentMessages();await loadBirthdays();await loadReports();}
+
+  if(adminPassword){
+    Promise.all([
+      loadMembers(),
+      loadAdminIdeas(),
+      loadGroups(),
+      loadSessions(),
+      loadSentMessages(),
+      loadBirthdays(),
+      loadReports()
+    ]);
+  }
 }
 
 async function loadNews(){
@@ -1166,7 +1217,7 @@ async function setAtt(phone, name, status){
   openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
 }
 
-// ====== فرم ثبت‌نام ======
+// ====== فرم‌ها ======
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=document.getElementById("registerMsg");
@@ -1182,7 +1233,15 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
   const ph=await hashPassword(pw);
   const {error}=await db.from("members").insert([{name:n,national_id:ni,birth_date:bd,phone:phone.value.trim(),password_hash:ph}]);
   if(error){msg.textContent="خطا: "+error.message;msg.style.color="red";}
-  else{msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید.";msg.style.color="green";e.target.reset();render();updateRegisterVisibility();}
+  else{
+    msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید.";
+    msg.style.color="green";
+    e.target.reset();
+    // ✅ ذخیره تو localStorage تا فرم پنهان شه
+    localStorage.setItem("memberSaved", JSON.stringify({national_id: ni}));
+    render();
+    updateRegisterVisibility();
+  }
 });
 
 document.getElementById("ideaForm").addEventListener("submit",async e=>{
@@ -1202,8 +1261,28 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
   adminPassword = p;
   document.getElementById("loginBox").style.display="none";
   document.getElementById("panelBox").style.display="block";
-  showSectionsForPanel(currentPanel);
-  loadMembers();loadAdminIdeas();loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadGroups();loadVideos();loadLibrary();loadClasses();loadSessions();loadSentMessages();loadBirthdays();loadReports();
+
+  // ✅ برای مدیر اصلی: همه تب‌ها؛ برای بقیه: فقط تب خودش
+  const tabs = document.getElementById("panelTabs");
+  if(p === PANEL_PASSWORDS.main){
+    tabs.style.display = "flex";
+    switchPanel("main");
+  } else {
+    // تب‌ها پنهان
+    tabs.style.display = "none";
+    // کدوم تب فعال باشه (توسط data-panel)
+    let userPanel = "ertebat";
+    if(p === PANEL_PASSWORDS.resane) userPanel = "resane";
+    else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
+    showSectionsForPanel(userPanel);
+  }
+
+  Promise.all([
+    loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(),
+    loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(),
+    loadLibrary(), loadClasses(), loadSessions(), loadSentMessages(),
+    loadBirthdays(), loadReports()
+  ]);
 });
 
 document.getElementById("logoutBtn").addEventListener("click",()=>{
@@ -1213,6 +1292,7 @@ document.getElementById("logoutBtn").addEventListener("click",()=>{
   document.getElementById("panelBox").style.display="none";
   document.getElementById("adminPass").value="";
   document.getElementById("loginMsg").textContent="";
+  document.getElementById("panelTabs").style.display="none";
   loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadVideos();loadLibrary();loadClasses();
 });
 
@@ -1380,7 +1460,7 @@ document.getElementById("sessionForm").addEventListener("submit",async e=>{
   m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
 });
 
-// ====== پنل اعضا (ورود با کد ملی + رمز) ======
+// ====== پنل اعضا ======
 document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const m=document.getElementById("memberLoginMsg"),nid=document.getElementById("mLoginNid").value.trim(),pw=document.getElementById("mLoginPass").value;
@@ -1555,8 +1635,6 @@ function updateRegisterVisibility(){
 async function autoLoginMember(){
   const saved=loadMemberLocal();
   if(!saved||!saved.national_id){updateRegisterVisibility();return;}
-  // اعتبارسنجی: با هش رمز تازه نمی‌تونیم تست کنیم، پس فقط اطلاعات ذخیره‌شده رو نمایش می‌دیم
-  // برای اطمینان، یه درخواست به سرور می‌زنیم و اسم رو می‌گیریم
   const {data,error}=await db.from("members").select("id,name,national_id,birth_date,phone,avatar_url,member_code,created_at").eq("national_id",saved.national_id).limit(1);
   if(error||!data||!data.length){clearMemberLocal();updateRegisterVisibility();return;}
   currentMember=data[0];
