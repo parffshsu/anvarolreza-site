@@ -232,7 +232,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </nav>
 </header>
 
-<!-- صفحه اصلی -->
 <div class="page active" id="page-home">
 <div class="hero">
 <span class="badge">کانون فرهنگی دینی انوارالرضا(ع)</span>
@@ -269,38 +268,14 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <section>
 <div class="title"><h2>🎯 دسترسی سریع</h2></div>
 <div class="shortcuts">
-<a class="shortcut sc-pink" onclick="showPage('page-news')">
-<span class="sc-icon">📢</span>
-<span class="sc-label">اخبار و اطلاعیه</span>
-</a>
-<a class="shortcut sc-purple" onclick="showPage('page-think')">
-<span class="sc-icon">💡</span>
-<span class="sc-label">نظرسنجی و اتاق فکر</span>
-</a>
-<a class="shortcut sc-blue" onclick="showPage('page-classes')">
-<span class="sc-icon">🎓</span>
-<span class="sc-label">کلاس‌ها</span>
-</a>
-<a class="shortcut sc-green" onclick="showPage('page-library')">
-<span class="sc-icon">📚</span>
-<span class="sc-label">کتابخانه</span>
-</a>
-<a class="shortcut sc-red" onclick="showPage('page-videos')">
-<span class="sc-icon">🎥</span>
-<span class="sc-label">ویدیوها</span>
-</a>
-<a class="shortcut sc-teal" onclick="showPage('page-weekly')">
-<span class="sc-icon">📅</span>
-<span class="sc-label">رویدادهای ثابت</span>
-</a>
-<a class="shortcut sc-indigo" onclick="showPage('page-events')">
-<span class="sc-icon">🗓</span>
-<span class="sc-label">رویدادهای پیش‌رو</span>
-</a>
-<a class="shortcut sc-gray" onclick="showPage('page-admin')">
-<span class="sc-icon">🔐</span>
-<span class="sc-label">مدیریت</span>
-</a>
+<a class="shortcut sc-pink" onclick="showPage('page-news')"><span class="sc-icon">📢</span><span class="sc-label">اخبار و اطلاعیه</span></a>
+<a class="shortcut sc-purple" onclick="showPage('page-think')"><span class="sc-icon">💡</span><span class="sc-label">نظرسنجی و اتاق فکر</span></a>
+<a class="shortcut sc-blue" onclick="showPage('page-classes')"><span class="sc-icon">🎓</span><span class="sc-label">کلاس‌ها</span></a>
+<a class="shortcut sc-green" onclick="showPage('page-library')"><span class="sc-icon">📚</span><span class="sc-label">کتابخانه</span></a>
+<a class="shortcut sc-red" onclick="showPage('page-videos')"><span class="sc-icon">🎥</span><span class="sc-label">ویدیوها</span></a>
+<a class="shortcut sc-teal" onclick="showPage('page-weekly')"><span class="sc-icon">📅</span><span class="sc-label">رویدادهای ثابت</span></a>
+<a class="shortcut sc-indigo" onclick="showPage('page-events')"><span class="sc-icon">🗓</span><span class="sc-label">رویدادهای پیش‌رو</span></a>
+<a class="shortcut sc-gray" onclick="showPage('page-admin')"><span class="sc-icon">🔐</span><span class="sc-label">مدیریت</span></a>
 </div>
 </section>
 
@@ -309,20 +284,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <h3>📞 ارتباط با ما</h3>
 <p>ما را در شبکه‌های اجتماعی دنبال کنید</p>
 <div class="contact-links">
-<a href="https://www.instagram.com/anvar_reza_8?igsi=dmk4Y3JjMm4zOW1y" target="_blank" class="contact-link">
-<span class="cl-icon">📸</span>
-<span>اینستاگرام کانون</span>
-</a>
-<a href="https://ble.ir/join/EmGzcz1VAK" target="_blank" class="contact-link">
-<span class="cl-icon">💬</span>
-<span>کانال بله انوارالرضا(ع)</span>
-</a>
+<a href="https://www.instagram.com/anvar_reza_8?igsi=dmk4Y3JjMm4zOW1y" target="_blank" class="contact-link"><span class="cl-icon">📸</span><span>اینستاگرام کانون</span></a>
+<a href="https://ble.ir/join/EmGzcz1VAK" target="_blank" class="contact-link"><span class="cl-icon">💬</span><span>کانال بله انوارالرضا(ع)</span></a>
 </div>
 </div>
 </section>
 </div>
 
-<!-- صفحه اخبار -->
 <div class="page" id="page-news">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -331,14 +299,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه نظرسنجی و اتاق فکر -->
 <div class="page" id="page-think">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>📊 نظرسنجی‌ها</h2></div>
 <div id="pollsBox"></div>
 <div class="title" style="margin-top:30px"><h2>💡 اتاق فکر</h2></div>
-<div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
 <div class="card">
 <h3>ثبت ایده</h3>
 <div id="ideaUserNotice" style="display:none;padding:10px;background:#e6f5f3;border-radius:8px;font-size:13px;color:#084c47;margin-bottom:10px">✅ وارد شده‌اید: <b id="ideaUserName"></b></div>
@@ -354,7 +321,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه کلاس‌ها -->
 <div class="page" id="page-classes">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -363,7 +329,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه کتابخانه -->
 <div class="page" id="page-library">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -372,7 +337,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه ویدیوها -->
 <div class="page" id="page-videos">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -381,7 +345,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه رویدادهای ثابت -->
 <div class="page" id="page-weekly">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -390,7 +353,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه رویدادهای پیش‌رو -->
 <div class="page" id="page-events">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -398,8 +360,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="events-grid" id="eventsGrid"></div>
 </section>
   </div>
-  <!-- صفحه پنل اعضا -->
-<div class="page" id="page-member">
+  <div class="page" id="page-member">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>👤 پنل اعضا</h2></div>
@@ -488,7 +449,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه درباره -->
 <div class="page" id="page-about">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -497,7 +457,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- صفحه مدیریت -->
 <div class="page" id="page-admin">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -523,7 +482,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
 </div>
 
-<!-- ✅ تب‌های داخل پنل -->
 <div class="login-tabs" id="panelTabs">
 <div class="login-tab active" data-panel="main" onclick="switchPanel('main')">🔐 همه</div>
 <div class="login-tab" data-panel="ertebat" onclick="switchPanel('ertebat')">📞 ارتباطات</div>
@@ -824,7 +782,6 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-// ====== هش SHA-256 ======
 async function hashPassword(pw) {
   const enc = new TextEncoder();
   const data = enc.encode("anvar_" + pw + "_reza");
@@ -857,7 +814,6 @@ function showPage(id){
 }
 function goHome(){showPage("page-home");}
 
-// ====== تب‌های پنل مدیر (فیکس جدید) ======
 function switchPanel(p){
   if(!adminPassword) return;
   if(adminPassword === PANEL_PASSWORDS.main){
@@ -883,7 +839,6 @@ function showSectionsForPanel(p){
   const t=document.getElementById("panelTitle"); if(t) t.textContent = PANEL_NAMES[p];
 }
 
-// ====== شمارنده آنلاین ======
 let onlineChannel = null, onlineTimer = null;
 function setupOnlineCounter(){
   if (typeof supabase === "undefined") return;
@@ -912,24 +867,15 @@ function setupOnlineCounter(){
   window.addEventListener("beforeunload", () => { if (onlineChannel) onlineChannel.untrack(); });
 }
 
-// ====== رندر (فیکس سرعت: Promise.all) ======
 async function render(){
   const [memberCountRes, ideasRes] = await Promise.all([
     db.rpc("get_member_count"),
     db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50)
   ]);
 
-  // همه با هم (بدون await)
   Promise.all([
-    loadNews(),
-    loadEvents(),
-    loadPolls(),
-    loadAbout(),
-    loadWeekly(),
-    loadGallery(),
-    loadVideos(),
-    loadLibrary(),
-    loadClasses()
+    loadNews(), loadEvents(), loadPolls(), loadAbout(),
+    loadWeekly(), loadGallery(), loadVideos(), loadLibrary(), loadClasses()
   ]);
 
   const mc = memberCountRes.data;
@@ -945,13 +891,8 @@ async function render(){
 
   if(adminPassword){
     Promise.all([
-      loadMembers(),
-      loadAdminIdeas(),
-      loadGroups(),
-      loadSessions(),
-      loadSentMessages(),
-      loadBirthdays(),
-      loadReports()
+      loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(),
+      loadSentMessages(), loadBirthdays(), loadReports()
     ]);
   }
 }
@@ -1217,7 +1158,6 @@ async function setAtt(phone, name, status){
   openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
 }
 
-// ====== فرم‌ها ======
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=document.getElementById("registerMsg");
@@ -1237,7 +1177,7 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
     msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید.";
     msg.style.color="green";
     e.target.reset();
-    // ✅ ذخیره تو localStorage تا فرم پنهان شه
+    localStorage.setItem("anvar_registered", "1");
     localStorage.setItem("memberSaved", JSON.stringify({national_id: ni}));
     render();
     updateRegisterVisibility();
@@ -1262,15 +1202,12 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
   document.getElementById("loginBox").style.display="none";
   document.getElementById("panelBox").style.display="block";
 
-  // ✅ برای مدیر اصلی: همه تب‌ها؛ برای بقیه: فقط تب خودش
   const tabs = document.getElementById("panelTabs");
   if(p === PANEL_PASSWORDS.main){
     tabs.style.display = "flex";
     switchPanel("main");
   } else {
-    // تب‌ها پنهان
     tabs.style.display = "none";
-    // کدوم تب فعال باشه (توسط data-panel)
     let userPanel = "ertebat";
     if(p === PANEL_PASSWORDS.resane) userPanel = "resane";
     else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
@@ -1460,7 +1397,6 @@ document.getElementById("sessionForm").addEventListener("submit",async e=>{
   m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
 });
 
-// ====== پنل اعضا ======
 document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const m=document.getElementById("memberLoginMsg"),nid=document.getElementById("mLoginNid").value.trim(),pw=document.getElementById("mLoginPass").value;
@@ -1472,6 +1408,7 @@ document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   if(error||!data||!data.length){m.textContent="❌ کد ملی یا رمز اشتباه";m.style.color="red";return;}
   currentMember=data[0];
   saveMemberLocal(currentMember);
+  localStorage.setItem("anvar_registered", "1");
   await renderMemberPanel();
   if(onlineChannel) onlineChannel.track({ user_id: localStorage.getItem("onlineUserId"), name: currentMember.name||"مهمان", joined_at: new Date().toISOString() });
 });
@@ -1622,28 +1559,31 @@ async function loadMyVotes(){
 document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
 
-// ====== نمایش / پنهان کردن فرم ثبت‌نام ======
 function updateRegisterVisibility(){
   const sec = document.getElementById("registerSection");
   if(!sec) return;
-  const saved = loadMemberLocal();
-  if (saved && saved.national_id) sec.style.display = "none";
+  const registered = localStorage.getItem("anvar_registered") === "1";
+  if (registered) sec.style.display = "none";
   else sec.style.display = "block";
 }
 
-// ====== ورود خودکار ======
 async function autoLoginMember(){
   const saved=loadMemberLocal();
   if(!saved||!saved.national_id){updateRegisterVisibility();return;}
-  const {data,error}=await db.from("members").select("id,name,national_id,birth_date,phone,avatar_url,member_code,created_at").eq("national_id",saved.national_id).limit(1);
-  if(error||!data||!data.length){clearMemberLocal();updateRegisterVisibility();return;}
-  currentMember=data[0];
-  saveMemberLocal(currentMember);
-  await renderMemberPanel();
+  try {
+    const {data,error}=await db.from("members").select("id,name,national_id,birth_date,phone,avatar_url,member_code,created_at").eq("national_id",saved.national_id).limit(1);
+    if(!error && data && data.length){
+      currentMember=data[0];
+      saveMemberLocal(currentMember);
+      localStorage.setItem("anvar_registered", "1");
+      await renderMemberPanel();
+    }
+  } catch(e){
+    // ✅ خطا رو نادیده بگیر، پاک نکن
+  }
   updateRegisterVisibility();
 }
 
-// ====== اجرای اولیه ======
 (async () => {
   selectPanel("main");
   setupOnlineCounter();
@@ -1653,4 +1593,4 @@ async function autoLoginMember(){
 })();
 </script>
 </body>
-  </html>
+                                             </html>
