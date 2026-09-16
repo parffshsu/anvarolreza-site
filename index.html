@@ -48,8 +48,6 @@ button:active{transform:scale(.96)}
 .stat{background:#f2faf8;border-radius:10px;padding:14px 20px;text-align:center;min-width:90px}
 .stat b{display:block;font-size:22px;color:#084c47}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
-
-/* ✅ میانبرها: 3 بالا، 3 پایین */
 .shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
 .shortcut{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 6px;border-radius:14px;color:#fff;cursor:pointer;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;text-align:center;min-height:100px}
 .shortcut::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);pointer-events:none}
@@ -65,8 +63,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-red{background:linear-gradient(135deg,#eb3b5a,#b71540)}
 .sc-orange{background:linear-gradient(135deg,#ffa726,#e65100)}
 .back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#084c47;padding:10px 18px;border-radius:10px;border:2px solid #d9efeb;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-
-/* ✅ گالری افقی با ورق زدن */
 .gallery-wrap{position:relative}
 .gallery-grid{display:flex;gap:14px;overflow-x:auto;padding:8px 4px 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 .gallery-grid::-webkit-scrollbar{height:6px}
@@ -82,7 +78,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .gallery-item .edit-btn{position:absolute;top:8px;right:8px;background:#1e6bb8;color:#fff;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:15px;line-height:1;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 @media(min-width:600px){.gallery-item{flex:0 0 45%}}
 @media(min-width:900px){.gallery-item{flex:0 0 32%}}
-
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column}
 .lightbox.open{display:flex}
 .lightbox img{max-width:95vw;max-height:70vh;border-radius:10px}
@@ -356,7 +351,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </section>
 </div>
 
-<!-- ✅ صفحه رویدادها (ترکیب ثابت + پیش‌رو) -->
 <div class="page" id="page-events">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -683,6 +677,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </div>
 
+<!-- ✅ کتابخانه با لیست حذف -->
 <div id="sectionLibrary" class="admin-section" data-panels="main,roshd">
 <h3 style="margin-top:24px;font-size:15px;color:#084c47">📚 افزودن کتاب/جزوه</h3>
 <div class="card" style="background:#f7fafc">
@@ -695,6 +690,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </form>
 <p id="bookMsg"></p>
 </div>
+<h4 style="margin-top:20px;font-size:14px;color:#084c47">📋 لیست کتاب‌ها (برای حذف)</h4>
+<div id="adminLibraryGrid" class="library-grid"></div>
 </div>
 
 <div id="sectionIdeas" class="admin-section" data-panels="main,roshd">
@@ -898,7 +895,7 @@ async function render(){
   if(adminPassword){
     Promise.all([
       loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(),
-      loadSentMessages(), loadBirthdays(), loadReports()
+      loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary()
     ]);
   }
 }
@@ -1002,7 +999,15 @@ async function loadLibrary(){
   if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:#888'>کتابی نیست.</p>";return;}
   b.innerHTML=data.map(bk=>`<div class="book-card">${adminPassword?`<button class="del-btn" onclick="deleteBook(${bk.id})">✕</button>`:""}<div class="book-icon">📖</div><h4>${esc(bk.title)}</h4>${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}<a href="${esc(bk.file_url)}" target="_blank" download class="b-download">📥 دانلود</a></div>`).join("");
 }
-async function deleteBook(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadLibrary();}
+
+async function loadAdminLibrary(){
+  const b=document.getElementById("adminLibraryGrid");if(!b)return;
+  const {data}=await db.from("library").select("*").order("created_at",{ascending:false});
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>کتابی نیست.</p>";return;}
+  b.innerHTML=data.map(bk=>`<div class="book-card"><button class="del-btn" onclick="deleteBook(${bk.id})">✕</button><div class="book-icon">📖</div><h4>${esc(bk.title)}</h4>${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}<a href="${esc(bk.file_url)}" target="_blank" download class="b-download">📥 دانلود</a></div>`).join("");
+}
+
+async function deleteBook(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadLibrary();loadAdminLibrary();}
 
 async function loadClasses(){
   const b=document.getElementById("classesGrid");if(!b)return;
@@ -1223,8 +1228,8 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
   Promise.all([
     loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(),
     loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(),
-    loadLibrary(), loadClasses(), loadSessions(), loadSentMessages(),
-    loadBirthdays(), loadReports()
+    loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(),
+    loadSentMessages(), loadBirthdays(), loadReports()
   ]);
 });
 
@@ -1367,7 +1372,7 @@ document.getElementById("bookForm").addEventListener("submit",async e=>{
   const ext=f.name.split(".").pop();
   const {error:de}=await db.rpc("admin_add_book",{admin_pass:adminPassword,p_title:t,p_desc:document.getElementById("bDesc").value.trim(),p_url:ud.publicUrl,p_type:ext,p_cat:document.getElementById("bCat").value});
   if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
-  m.textContent="✅";m.style.color="green";e.target.reset();loadLibrary();
+  m.textContent="✅";m.style.color="green";e.target.reset();loadLibrary();loadAdminLibrary();
 });
 
 document.getElementById("sendMsgForm").addEventListener("submit",async e=>{
