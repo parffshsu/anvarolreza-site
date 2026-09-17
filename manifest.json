@@ -1,1 +1,17 @@
-
+{
+  "name": "کانون فرهنگی دینی انوارالرضا(ع)",
+  "short_name": "انوارالرضا",
+  "description": "سامانه ارتباط با اعضا، ثبت‌نام و اتاق فکر کانون انوارالرضا",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7fafc",
+  "theme_color": "#084c47",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
