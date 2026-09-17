@@ -104,13 +104,32 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .reg-list{background:#f7fafc;border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
 .reg-list .reg-item{padding:5px 0;border-bottom:1px dashed #ddd}
 .library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.book-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center}
+.book-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:relative;border-top:4px solid #2e8b57;text-align:center;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.book-card:hover{transform:translateY(-5px);box-shadow:0 10px 24px rgba(0,0,0,.15)}
 .book-card .book-icon{font-size:40px;margin-bottom:6px}
 .book-card h4{margin:6px 0;color:#084c47;font-size:14px}
 .book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:10px;padding:2px 10px;border-radius:10px;margin-bottom:6px}
-.book-card .b-desc{font-size:11px;color:#777;line-height:1.5;margin:6px 0}
-.book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;margin-top:6px}
-.book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
+.book-card .book-cover{width:calc(100% + 32px);height:200px;object-fit:cover;border-radius:12px 12px 0 0;display:block;background:#eee;margin:-16px -16px 8px -16px}
+.book-detail-card{background:#fff;border-radius:16px;padding:22px;box-shadow:0 6px 22px rgba(0,0,0,.08);display:flex;gap:22px;flex-wrap:wrap;margin-top:10px}
+.book-detail-cover{width:190px;height:270px;object-fit:cover;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.18);flex-shrink:0;background:#eee}
+.book-detail-body{flex:1;min-width:240px}
+.book-detail-body h2{margin:0 0 6px;color:#084c47;font-size:22px}
+.book-detail-author{color:#666;font-size:13px;margin:0 0 14px}
+.book-detail-desc{color:#333;line-height:1.9;font-size:14px;margin-bottom:18px;white-space:pre-line}
+.parts-toggle-btn{background:#0b6b62;color:#fff;border:none;padding:12px 24px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:bold;font-family:inherit;transition:background .2s,transform .15s}
+.parts-toggle-btn:hover{background:#084c47;transform:translateY(-2px)}
+.parts-toggle-btn.active{background:#b91c1c}
+.parts-container{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.part-item{background:#f7fafc;border:1px solid #e5e7eb;border-right:4px solid #0b6b62;padding:13px 16px;border-radius:10px;cursor:pointer;transition:background .2s,transform .2s;display:flex;justify-content:space-between;align-items:center}
+.part-item:hover{background:#e6f5f3;transform:translateX(-4px)}
+.part-item .part-title{font-weight:bold;color:#222;font-size:14px}
+.part-item .part-meta{font-size:11px;color:#888}
+.admin-book-item{background:#fff;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 3px 10px rgba(0,0,0,.06);border-right:4px solid #0b6b62;display:flex;gap:12px;align-items:flex-start}
+.admin-book-thumb{width:60px;height:85px;object-fit:cover;border-radius:8px;background:#eee;flex-shrink:0}
+.admin-book-info{flex:1;min-width:0}
+.admin-book-info h5{margin:0 0 4px;color:#084c47;font-size:14px}
+.admin-book-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.admin-book-actions button{padding:5px 10px;border:none;border-radius:6px;font-size:11px;cursor:pointer;color:#fff;font-family:inherit}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .video-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);position:relative}
 .video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
@@ -214,6 +233,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .contact-link{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px 18px;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;transition:all .3s}
 .contact-link:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
 .contact-link .cl-icon{font-size:22px}
+.locked-ideas{background:linear-gradient(135deg,#fff7e6,#fff);border:2px dashed #c48b1f;border-radius:14px;padding:24px;text-align:center;color:#7a5b00;font-size:13px;line-height:1.8}
+.locked-ideas .lock-icon{font-size:38px;display:block;margin-bottom:10px}
 @media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}}
 </style>
 </head>
@@ -310,7 +331,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>📊 نظرسنجی‌ها</h2></div>
 <div id="pollsBox"></div>
-<div class="title" style="margin-top:30px"><h2>💡 اتاق فکر</h2></div>
+<div class="title" style="margin-top:30px"><h2>💡 اتاق فکر</h2><p>ایده‌های شما خصوصی است و فقط خودتان می‌بینید</p></div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
 <div class="card">
 <h3>ثبت ایده</h3>
@@ -322,7 +343,17 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="btn" type="submit">ثبت ایده</button>
 </form>
 </div>
-<div class="card"><h3>ایده‌های اخیر</h3><div id="ideas"></div></div>
+<div class="card">
+<h3>ایده‌های من</h3>
+<div id="ideas">
+<div class="locked-ideas">
+<span class="lock-icon">🔒</span>
+برای مشاهده‌ی ایده‌های خودتان، لطفاً وارد <b>پنل اعضا</b> شوید.
+<br><br>
+<button class="btn" onclick="showPage('page-member')" style="background:#c48b1f">👤 ورود به پنل اعضا</button>
+</div>
+</div>
+</div>
 </div>
 </section>
 </div>
@@ -360,8 +391,9 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <div class="title" style="margin-top:40px"><h2>🗓 رویدادهای پیش‌رو</h2><p>مناسبت‌ها و اردوهای آینده</p></div>
 <div class="events-grid" id="eventsGrid"></div>
 </section>
-  </div>
-  <div class="page" id="page-member">
+</div>
+
+<div class="page" id="page-member">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>👤 پنل اعضا</h2></div>
@@ -476,8 +508,8 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <button class="btn" type="submit">ورود</button>
 </form>
 <p id="loginMsg"></p>
-</div>
-<div id="panelBox" style="display:none">
+  </div>
+  <div id="panelBox" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
 <button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
@@ -677,7 +709,6 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 </div>
 </div>
 
-<!-- ✅ کتابخانه با لیست حذف -->
 <div id="sectionLibrary" class="admin-section" data-panels="main,roshd">
 <h3 style="margin-top:24px;font-size:15px;color:#084c47">📚 افزودن کتاب/جزوه</h3>
 <div class="card" style="background:#f7fafc">
@@ -815,6 +846,10 @@ function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   const p=document.getElementById(id);
   if(p){p.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+  // اگه کاربر لاگین کرده و رفت اتاق فکر، ایده‌هاش رو لود کن
+  if(id === "page-think" && currentMember){
+    loadMyIdeasInThinkPage();
+  }
 }
 function goHome(){showPage("page-home");}
 
@@ -889,8 +924,7 @@ async function render(){
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
 
-  const ib = document.getElementById("ideas");
-  if(ib) ib.innerHTML = ideas.length ? ideas.slice(0,10).map(i=>`<div class="idea"><strong>${esc(i.name||"ناشناس")}</strong><p style="margin:4px 0">${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("") : "<p style='color:#888;font-size:13px'>هنوز ایده‌ای ثبت نشده.</p>";
+  // ⚠️ بخش اتاق فکر عمومی حذف شد — حالا توی showPage مدیریت میشه
 
   if(adminPassword){
     Promise.all([
@@ -898,6 +932,24 @@ async function render(){
       loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary()
     ]);
   }
+}
+
+/* ============ اتاق فکر خصوصی ============ */
+async function loadMyIdeasInThinkPage(){
+  const ib = document.getElementById("ideas");
+  if(!ib) return;
+  if(!currentMember){
+    ib.innerHTML = `<div class="locked-ideas"><span class="lock-icon">🔒</span>برای مشاهده‌ی ایده‌های خودتان، لطفاً وارد <b>پنل اعضا</b> شوید.<br><br><button class="btn" onclick="showPage('page-member')" style="background:#c48b1f">👤 ورود به پنل اعضا</button></div>`;
+    return;
+  }
+  ib.innerHTML = "<p style='color:#888;font-size:12px'>بارگذاری...</p>";
+  const {data, error} = await db.from("ideas").select("*").eq("member_nid", currentMember.national_id).order("created_at",{ascending:false});
+  if(error){ ib.innerHTML = "<p style='color:red;font-size:12px'>خطا: "+esc(error.message)+"</p>"; return; }
+  if(!data || !data.length){
+    ib.innerHTML = "<p style='color:#888;font-size:12px'>هنوز ایده‌ای ثبت نکرده‌اید.</p>";
+    return;
+  }
+  ib.innerHTML = data.map(i=>`<div class="idea"><strong>${esc(i.category||"سایر")}</strong><p style="margin:4px 0">${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
 }
 
 async function loadNews(){
@@ -1055,7 +1107,7 @@ async function loadAdminIdeas(){
   b.innerHTML="<p>بارگذاری...</p>";
   const {data}=await db.from("ideas").select("*").order("created_at",{ascending:false}).limit(100);
   if(!data||!data.length){b.innerHTML="<p>ایده‌ای نیست.</p>";return;}
-  b.innerHTML=data.map(i=>`<div class="admin-idea"><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:#888">— ${esc(i.category||"سایر")}</span><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span><div class="actions"><button class="b-review" onclick="updateIdea(${i.id},'در حال بررسی')">🔎 بررسی</button><button class="b-approve" onclick="updateIdea(${i.id},'تأیید شد')">✅ تأیید</button><button class="b-run" onclick="updateIdea(${i.id},'در حال اجرا')">🚀 اجرا</button><button class="b-done" onclick="updateIdea(${i.id},'اجرا شد')">🏆 پایان</button><button class="b-del" onclick="deleteIdea(${i.id})">🗑</button></div></div>`).join("");
+  b.innerHTML=data.map(i=>`<div class="admin-idea"><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:#888">— ${esc(i.category||"سایر")}</span>${i.member_nid?` <span style="font-size:10px;color:#0b6b62">(${esc(i.member_nid)})</span>`:""}<div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span><div class="actions"><button class="b-review" onclick="updateIdea(${i.id},'در حال بررسی')">🔎 بررسی</button><button class="b-approve" onclick="updateIdea(${i.id},'تأیید شد')">✅ تأیید</button><button class="b-run" onclick="updateIdea(${i.id},'در حال اجرا')">🚀 اجرا</button><button class="b-done" onclick="updateIdea(${i.id},'اجرا شد')">🏆 پایان</button><button class="b-del" onclick="deleteIdea(${i.id})">🗑</button></div></div>`).join("");
 }
 async function updateIdea(id,ns){const {error}=await db.rpc("admin_update_idea_status",{admin_pass:adminPassword,idea_id:id,new_status:ns});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
 async function deleteIdea(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_idea",{admin_pass:adminPassword,idea_id:id});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
@@ -1197,11 +1249,25 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
 
 document.getElementById("ideaForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const n=currentMember?currentMember.name:(ideaName.value.trim()||"ناشناس");
-  const mn=currentMember?currentMember.national_id:null;
+  // ⚠️ حالا فقط اعضای لاگین‌کرده می‌تونن ایده بفرستن
+  if(!currentMember){
+    alert("برای ثبت ایده ابتدا وارد پنل اعضا شوید.");
+    showPage("page-member");
+    return;
+  }
+  const n = currentMember.name;
+  const mn = currentMember.national_id;
   const {error}=await db.from("ideas").insert([{name:n,category:ideaCat.value,content:ideaText.value.trim(),member_nid:mn}]);
   if(error){alert("خطا: "+error.message);}
-  else{alert("ثبت شد ✅");e.target.reset();if(currentMember){document.getElementById("ideaUserName").textContent=currentMember.name;document.getElementById("ideaUserNotice").style.display="block";}render();if(currentMember)loadMyIdeas();}
+  else{
+    alert("✅ ایده‌ی شما ثبت شد (فقط خودتان می‌بینید)");
+    e.target.reset();
+    document.getElementById("ideaUserName").textContent=currentMember.name;
+    document.getElementById("ideaUserNotice").style.display="block";
+    render();
+    loadMyIdeasInThinkPage();
+    loadMyIdeas();
+  }
 });
 
 document.getElementById("loginForm").addEventListener("submit",async e=>{
@@ -1443,6 +1509,7 @@ async function renderMemberPanel(){
   setPersianDate("epDay","epMonth","epYear", currentMember.birth_date || "");
   if (el("epPhone")) el("epPhone").value = currentMember.phone || "";
   await loadMyIdeas();
+  await loadMyIdeasInThinkPage();
   await loadPolls();
   await loadMyClasses();
   await loadClasses();
@@ -1465,6 +1532,7 @@ document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
   document.getElementById("ideaName").style.display="block";
   document.getElementById("ideaName").value="";
   loadPolls();loadClasses();
+  loadMyIdeasInThinkPage();
 });
 
 async function uploadAvatar(){
@@ -1530,7 +1598,7 @@ document.getElementById("changePasswordForm").addEventListener("submit",async e=
 async function loadMyIdeas(){
   const b=document.getElementById("myIdeas");if(!currentMember||!b)return;
   b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
-  const {data,error}=await db.rpc("member_get_ideas_by_phone",{p_phone:currentMember.phone});
+  const {data,error}=await db.from("ideas").select("*").eq("member_nid", currentMember.national_id).order("created_at",{ascending:false});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
   if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>ایده‌ای نیست.</p>";return;}
   b.innerHTML=data.map(i=>`<div class="myidea"><strong style="color:#084c47">${esc(i.category||"سایر")}</strong><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
