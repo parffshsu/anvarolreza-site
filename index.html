@@ -72,8 +72,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-green{background:linear-gradient(135deg,#26de81,#20bf6b)}
 .sc-red{background:linear-gradient(135deg,#eb3b5a,#b71540)}
 .sc-orange{background:linear-gradient(135deg,#ffa726,#e65100)}
-.install-box{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:16px;padding:22px;color:#fff;text-align:center;margin:24px 0;box-shadow:0 10px 28px rgba(8,76,71,.3);position:relative;overflow:hidden;display:none}
-.install-box.show{display:block}
+.install-box{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:16px;padding:22px;color:#fff;text-align:center;margin:24px 0;box-shadow:0 10px 28px rgba(8,76,71,.3);position:relative;overflow:hidden;display:block}
 .install-box::before{content:"";position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);border-radius:50%}
 .install-box h3{margin:0 0 8px;font-size:17px;position:relative;z-index:1}
 .install-box p{margin:0 0 14px;font-size:12px;opacity:.9;position:relative;z-index:1}
@@ -848,13 +847,9 @@ let deferredPrompt = null;
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  const box = document.getElementById("installBox");
-  if (box) box.classList.add("show");
 });
 
 window.addEventListener("appinstalled", () => {
-  const box = document.getElementById("installBox");
-  if (box) box.classList.remove("show");
   deferredPrompt = null;
 });
 
@@ -862,20 +857,22 @@ function installPWA() {
   if (!deferredPrompt) {
     const ua = navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipad|ipod/.test(ua);
+    const isAndroid = /android/.test(ua);
+    const isChrome = /chrome/.test(ua) && !/edg/.test(ua);
     if (isIOS) {
-      alert("📲 روی آیفون:\n\n۱. دکمه‌ی اشتراک‌گذاری (⬆️) پایین سافاری رو بزن\n۲. «Add to Home Screen» یا «افزودن به صفحه اصلی» رو انتخاب کن");
+      alert("📲 افزودن به صفحه اصلی روی آیفون:\n\n۱. دکمه‌ی اشتراک‌گذاری (⬆️) پایین سافاری رو بزن\n۲. «Add to Home Screen» یا «افزودن به صفحه اصلی» رو انتخاب کن");
+    } else if (isAndroid && isChrome) {
+      alert("📲 افزودن به صفحه اصلی روی اندروید:\n\nاز منوی مرورگر (سه نقطه بالا سمت راست) گزینه‌ی «Install app» یا «Add to Home screen» رو بزن");
     } else {
-      alert("📲 برای افزودن:\n\nاز منوی مرورگر (سه نقطه) گزینه‌ی «Install App» یا «افزودن به صفحه اصلی» رو انتخاب کن");
+      alert("📲 برای افزودن:\n\nاز منوی مرورگر گزینه‌ی «Install App» یا «افزودن به صفحه اصلی» رو انتخاب کن");
     }
     return;
   }
   deferredPrompt.prompt();
   deferredPrompt.userChoice.then((choice) => {
     if (choice.outcome === "accepted") {
-      const box = document.getElementById("installBox");
-      if (box) box.classList.remove("show");
+      deferredPrompt = null;
     }
-    deferredPrompt = null;
   });
 }
 
