@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>کانون فرهنگی دینی انوارالرضا(ع)</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#084c47">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="انوارالرضا">
+<meta name="mobile-web-app-capable" content="yes">
+
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:#f7fafc;color:#222;overflow-x:hidden}
@@ -62,6 +72,13 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-green{background:linear-gradient(135deg,#26de81,#20bf6b)}
 .sc-red{background:linear-gradient(135deg,#eb3b5a,#b71540)}
 .sc-orange{background:linear-gradient(135deg,#ffa726,#e65100)}
+.install-box{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:16px;padding:22px;color:#fff;text-align:center;margin:24px 0;box-shadow:0 10px 28px rgba(8,76,71,.3);position:relative;overflow:hidden;display:none}
+.install-box.show{display:block}
+.install-box::before{content:"";position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);border-radius:50%}
+.install-box h3{margin:0 0 8px;font-size:17px;position:relative;z-index:1}
+.install-box p{margin:0 0 14px;font-size:12px;opacity:.9;position:relative;z-index:1}
+.install-box button{background:#fff;color:#084c47;border:none;padding:12px 24px;border-radius:12px;font-weight:bold;font-size:14px;cursor:pointer;font-family:inherit;position:relative;z-index:1;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.install-box button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
 .back-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#084c47;padding:10px 18px;border-radius:10px;border:2px solid #d9efeb;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .gallery-wrap{position:relative}
 .gallery-grid{display:flex;gap:14px;overflow-x:auto;padding:8px 4px 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
@@ -303,6 +320,15 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 <a class="shortcut sc-green" onclick="showPage('page-library')"><span class="sc-icon">📚</span><span class="sc-label">کتابخانه</span></a>
 <a class="shortcut sc-red" onclick="showPage('page-videos')"><span class="sc-icon">🎥</span><span class="sc-label">ویدیوها</span></a>
 <a class="shortcut sc-orange" onclick="showPage('page-events')"><span class="sc-icon">📅</span><span class="sc-label">رویدادها</span></a>
+</div>
+</section>
+
+<!-- 📲 دکمه افزودن به صفحه اصلی -->
+<section>
+<div class="install-box" id="installBox">
+<h3>📲 سایت رو روی صفحه اصلی گوشیت داشته باش!</h3>
+<p>مثل یه اپ واقعی، سریع و تمام‌صفحه</p>
+<button onclick="installPWA()">➕ افزودن به صفحه اصلی</button>
 </div>
 </section>
 
@@ -817,6 +843,51 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
+/* ============ نصب PWA ============ */
+let deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const box = document.getElementById("installBox");
+  if (box) box.classList.add("show");
+});
+
+window.addEventListener("appinstalled", () => {
+  const box = document.getElementById("installBox");
+  if (box) box.classList.remove("show");
+  deferredPrompt = null;
+});
+
+function installPWA() {
+  if (!deferredPrompt) {
+    const ua = navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test(ua);
+    if (isIOS) {
+      alert("📲 روی آیفون:\n\n۱. دکمه‌ی اشتراک‌گذاری (⬆️) پایین سافاری رو بزن\n۲. «Add to Home Screen» یا «افزودن به صفحه اصلی» رو انتخاب کن");
+    } else {
+      alert("📲 برای افزودن:\n\nاز منوی مرورگر (سه نقطه) گزینه‌ی «Install App» یا «افزودن به صفحه اصلی» رو انتخاب کن");
+    }
+    return;
+  }
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then((choice) => {
+    if (choice.outcome === "accepted") {
+      const box = document.getElementById("installBox");
+      if (box) box.classList.remove("show");
+    }
+    deferredPrompt = null;
+  });
+}
+
+/* ============ ثبت Service Worker ============ */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("✅ Service Worker ثبت شد"))
+      .catch(err => console.log("❌ خطای Service Worker:", err));
+  });
+}
+
 async function hashPassword(pw) {
   const enc = new TextEncoder();
   const data = enc.encode("anvar_" + pw + "_reza");
@@ -846,10 +917,7 @@ function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   const p=document.getElementById(id);
   if(p){p.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
-  // اگه کاربر لاگین کرده و رفت اتاق فکر، ایده‌هاش رو لود کن
-  if(id === "page-think" && currentMember){
-    loadMyIdeasInThinkPage();
-  }
+  if(id === "page-think" && currentMember){ loadMyIdeasInThinkPage(); }
 }
 function goHome(){showPage("page-home");}
 
@@ -859,9 +927,7 @@ function switchPanel(p){
     currentPanel = p;
     showSectionsForPanel(p);
     document.querySelectorAll("#panelTabs .login-tab").forEach(t=>t.classList.toggle("active",t.dataset.panel===p));
-  } else {
-    alert("شما فقط به پنل خودتان دسترسی دارید.");
-  }
+  } else { alert("شما فقط به پنل خودتان دسترسی دارید."); }
 }
 function selectPanel(p){
   currentPanel = p;
@@ -910,31 +976,18 @@ async function render(){
     db.rpc("get_member_count"),
     db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50)
   ]);
-
-  Promise.all([
-    loadNews(), loadEvents(), loadPolls(), loadAbout(),
-    loadWeekly(), loadGallery(), loadVideos(), loadLibrary(), loadClasses()
-  ]);
-
+  Promise.all([loadNews(), loadEvents(), loadPolls(), loadAbout(), loadWeekly(), loadGallery(), loadVideos(), loadLibrary(), loadClasses()]);
   const mc = memberCountRes.data;
   const ideas = ideasRes.data || [];
   const done = ideas.filter(i=>i.status==="اجرا شد").length;
-
   animateCount(document.getElementById("memberCount"), mc||0);
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
-
-  // ⚠️ بخش اتاق فکر عمومی حذف شد — حالا توی showPage مدیریت میشه
-
   if(adminPassword){
-    Promise.all([
-      loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(),
-      loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary()
-    ]);
+    Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary()]);
   }
 }
 
-/* ============ اتاق فکر خصوصی ============ */
 async function loadMyIdeasInThinkPage(){
   const ib = document.getElementById("ideas");
   if(!ib) return;
@@ -945,10 +998,7 @@ async function loadMyIdeasInThinkPage(){
   ib.innerHTML = "<p style='color:#888;font-size:12px'>بارگذاری...</p>";
   const {data, error} = await db.from("ideas").select("*").eq("member_nid", currentMember.national_id).order("created_at",{ascending:false});
   if(error){ ib.innerHTML = "<p style='color:red;font-size:12px'>خطا: "+esc(error.message)+"</p>"; return; }
-  if(!data || !data.length){
-    ib.innerHTML = "<p style='color:#888;font-size:12px'>هنوز ایده‌ای ثبت نکرده‌اید.</p>";
-    return;
-  }
+  if(!data || !data.length){ ib.innerHTML = "<p style='color:#888;font-size:12px'>هنوز ایده‌ای ثبت نکرده‌اید.</p>"; return; }
   ib.innerHTML = data.map(i=>`<div class="idea"><strong>${esc(i.category||"سایر")}</strong><p style="margin:4px 0">${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
 }
 
@@ -1249,12 +1299,7 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
 
 document.getElementById("ideaForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  // ⚠️ حالا فقط اعضای لاگین‌کرده می‌تونن ایده بفرستن
-  if(!currentMember){
-    alert("برای ثبت ایده ابتدا وارد پنل اعضا شوید.");
-    showPage("page-member");
-    return;
-  }
+  if(!currentMember){ alert("برای ثبت ایده ابتدا وارد پنل اعضا شوید."); showPage("page-member"); return; }
   const n = currentMember.name;
   const mn = currentMember.national_id;
   const {error}=await db.from("ideas").insert([{name:n,category:ideaCat.value,content:ideaText.value.trim(),member_nid:mn}]);
@@ -1278,25 +1323,16 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
   adminPassword = p;
   document.getElementById("loginBox").style.display="none";
   document.getElementById("panelBox").style.display="block";
-
   const tabs = document.getElementById("panelTabs");
-  if(p === PANEL_PASSWORDS.main){
-    tabs.style.display = "flex";
-    switchPanel("main");
-  } else {
+  if(p === PANEL_PASSWORDS.main){ tabs.style.display = "flex"; switchPanel("main"); }
+  else {
     tabs.style.display = "none";
     let userPanel = "ertebat";
     if(p === PANEL_PASSWORDS.resane) userPanel = "resane";
     else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
     showSectionsForPanel(userPanel);
   }
-
-  Promise.all([
-    loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(),
-    loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(),
-    loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(),
-    loadSentMessages(), loadBirthdays(), loadReports()
-  ]);
+  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports()]);
 });
 
 document.getElementById("logoutBtn").addEventListener("click",()=>{
