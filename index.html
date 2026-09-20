@@ -1223,4 +1223,486 @@ async function loadReports(){
   ];
   s.innerHTML = items.map(x => "<div class='report-stat'><div class='ri'>"+x.i+"</div><div class='rv'>"+fa(x.v)+"</div><div class='rk'>"+x.k+"</div></div>").join("");
   if(!a)return;
-  const {data: atts, error: e2} = await db.rpc
+  const {data: atts, error: e2} = await db.rpc("admin_report_attendance", {admin_pass: adminPassword});
+  if(e2){a.innerHTML = "<p style='color:red'>خطا: "+esc(e2.message)+"</p>";return;}
+  if(!atts || !atts.length){a.innerHTML = "<p style='color:#888'>داده‌ای نیست.</p>";return;}
+  const maxP = Math.max(...atts.map(x => x.present_count), 1);
+  a.innerHTML = atts.map(x => {
+    const pct = Math.round((x.present_count / maxP) * 100);
+    return "<div style='background:#fff;border-radius:10px;padding:10px;margin:6px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)'><div style='display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;flex-wrap:wrap;gap:5px'><b>"+esc(x.member_name)+"</b><span style='color:#0b6b62'>✅ "+fa(x.present_count)+" | ❌ "+fa(x.absent_count)+" | ⏰ "+fa(x.late_count)+"</span></div><div style='background:#eee;border-radius:6px;height:7px;overflow:hidden'><div style='background:linear-gradient(90deg,#0b6b62,#2e8b57);height:100%;width:"+pct+"%'></div></div></div>";
+  }).join("");
+}
+
+async function loadSessions(){
+  const b=document.getElementById("sessionsList");if(!b)return;
+  const {data:ses}=await db.from("sessions").select("*").order("created_at",{ascending:false});
+  const {data:att}=await db.from("attendance").select("*");
+  allSessions = ses || [];
+  if(!allSessions.length){b.innerHTML="<p style='color:#888'>جلسه‌ای نیست.</p>";return;}
+  b.innerHTML=allSessions.map(s=>{
+    const cnt=(att||[]).filter(a=>a.session_id===s.id&&a.status==="present").length;
+    const tot=(att||[]).filter(a=>a.session_id===s.id).length;
+    return `<div class="member" style="border-right:4px solid #1e6bb8"><strong>${esc(s.title)}</strong><div style="font-size:11px;color:#555;margin:4px 0">📅 ${esc(s.session_date)} • حاضران: ${fa(cnt)}/${fa(tot)}</div><div class="member-actions"><button class="b-edit" onclick="openAttendance(${s.id},'${esc(s.title)}')">📋 ثبت حضور</button><button class="b-del-m" onclick="deleteSession(${s.id})">🗑 حذف</button></div></div>`;
+  }).join("");
+}
+async function deleteSession(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_session",{admin_pass:adminPassword,s_id:id});if(error){alert("خطا: "+error.message);return;}loadSessions();loadReports();}
+
+async function openAttendance(sid, title){
+  currentSessionId = sid;
+  document.getElementById("attModalTitle").textContent = "📋 " + title;
+  const {data} = await db.rpc("admin_get_session_attendance",{admin_pass:adminPassword,s_id:sid});
+  const atts = data || [];
+  const b = document.getElementById("attendanceList");
+  if(!allMembers.length){b.innerHTML="<p>عضوی نیست.</p>";return;}
+  b.innerHTML = allMembers.map(m=>{
+    const rec = atts.find(a=>a.member_phone===m.phone);
+    const st = rec ? rec.status : null;
+    return `<div class="attendance-row"><span class="att-name">${esc(m.name)}</span><button class="att-btn att-present ${st==='present'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','present')">حاضر</button><button class="att-btn att-absent ${st==='absent'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','absent')">غایب</button><button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">تأخیر</button></div>`;
+  }).join("");
+  document.getElementById("attendanceModal").classList.add("open");
+}
+function closeAttendance(){document.getElementById("attendanceModal").classList.remove("open");}
+async function setAtt(phone, name, status){
+  const {error}=await db.rpc("admin_save_attendance",{admin_pass:adminPassword,s_id:currentSessionId,p_phone:phone,p_name:name,p_status:status});
+  if(error){alert("خطا: "+error.message);return;}
+  openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
+}
+
+document.getElementById("registerForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const msg=document.getElementById("registerMsg");
+  const n=fullName.value.trim(),ni=nationalId.value.trim();
+  const pw=document.getElementById("regPassword").value;
+  const pw2=document.getElementById("regPassword2").value;
+  if(!/^\d{10}$/.test(ni)){msg.textContent="کد ملی ۱۰ رقم باشد.";msg.style.color="red";return;}
+  if(pw.length<4){msg.textContent="رمز عبور حداقل ۴ کاراکتر";msg.style.color="red";return;}
+  if(pw!==pw2){msg.textContent="رمز و تکرار رمز یکسان نیستند";msg.style.color="red";return;}
+  const bd=getPersianDate("birthDay","birthMonth","birthYear");
+  if(!bd){msg.textContent="تاریخ تولد کامل شود.";msg.style.color="red";return;}
+  msg.textContent="در حال ثبت...";msg.style.color="#555";
+  const ph=await hashPassword(pw);
+  const {error}=await db.from("members").insert([{name:n,national_id:ni,birth_date:bd,phone:phone.value.trim(),password_hash:ph}]);
+  if(error){msg.textContent="خطا: "+error.message;msg.style.color="red";}
+  else{
+    msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید.";
+    msg.style.color="green";
+    e.target.reset();
+    localStorage.setItem("anvar_registered", "1");
+    localStorage.setItem("memberSaved", JSON.stringify({national_id: ni}));
+    render();
+    updateRegisterVisibility();
+  }
+});
+
+document.getElementById("ideaForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!currentMember){ alert("برای ثبت ایده ابتدا وارد پنل اعضا شوید."); showPage("page-member"); return; }
+  const n = currentMember.name;
+  const mn = currentMember.national_id;
+  const {error}=await db.from("ideas").insert([{name:n,category:ideaCat.value,content:ideaText.value.trim(),member_nid:mn}]);
+  if(error){alert("خطا: "+error.message);}
+  else{
+    alert("✅ ایده‌ی شما ثبت شد (فقط خودتان می‌بینید)");
+    e.target.reset();
+    document.getElementById("ideaUserName").textContent=currentMember.name;
+    document.getElementById("ideaUserNotice").style.display="block";
+    render();
+    loadMyIdeasInThinkPage();
+    loadMyIdeas();
+  }
+});
+
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const p=document.getElementById("adminPass").value.trim(),m=document.getElementById("loginMsg");
+  m.textContent="بررسی...";m.style.color="#555";
+  if(PANEL_PASSWORDS[currentPanel] !== p){m.textContent="❌ رمز اشتباه";m.style.color="red";return;}
+  adminPassword = p;
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("panelBox").style.display="block";
+  const tabs = document.getElementById("panelTabs");
+  if(p === PANEL_PASSWORDS.main){ tabs.style.display = "flex"; switchPanel("main"); }
+  else {
+    tabs.style.display = "none";
+    let userPanel = "ertebat";
+    if(p === PANEL_PASSWORDS.resane) userPanel = "resane";
+    else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
+    showSectionsForPanel(userPanel);
+  }
+  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports()]);
+});
+
+document.getElementById("logoutBtn").addEventListener("click",()=>{
+  adminPassword=null;allMembers=[];currentPanel=null;
+  document.getElementById("searchInput").value="";
+  document.getElementById("loginBox").style.display="block";
+  document.getElementById("panelBox").style.display="none";
+  document.getElementById("adminPass").value="";
+  document.getElementById("loginMsg").textContent="";
+  document.getElementById("panelTabs").style.display="none";
+  loadGallery();loadWeekly();loadAbout();loadNews();loadEvents();loadPolls();loadVideos();loadLibrary();loadClasses();
+});
+
+document.getElementById("downloadBtn").addEventListener("click",downloadExcel);
+
+document.getElementById("editForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("editMsg");
+  const id=document.getElementById("editId").value,n=document.getElementById("editName").value.trim(),ni=document.getElementById("editNationalId").value.trim();
+  const bd=getPersianDate("editBirthDay","editBirthMonth","editBirthYear"),ph=document.getElementById("editPhone").value.trim();
+  if(!/^\d{10}$/.test(ni)){m.textContent="کد ملی ۱۰ رقم";m.style.color="red";return;}
+  if(!bd){m.textContent="تاریخ کامل";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_update_member",{admin_pass:adminPassword,member_id:parseInt(id),p_name:n,p_national_id:ni,p_birth_date:bd,p_phone:ph});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";
+  setTimeout(()=>{closeEdit();loadMembers();},500);
+});
+
+document.getElementById("uploadForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("uploadMsg"),f=document.getElementById("galleryFile").files[0],c=document.getElementById("galleryCaption").value.trim(),dt=document.getElementById("galleryDate").value.trim(),srt=getSort("gallerySort");
+  if(!f){m.textContent="عکسی نیست";m.style.color="red";return;}
+  if(f.size>5*1024*1024){m.textContent="کمتر از ۵ مگ";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const {error:ue}=await db.storage.from("gallery").upload(fn,f);
+  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("gallery").getPublicUrl(fn);
+  const {error:de}=await db.rpc("admin_add_gallery",{admin_pass:adminPassword,p_filename:fn,p_url:ud.publicUrl,p_caption:c,p_sort:srt});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  if(dt){
+    const {data:latest}=await db.from("gallery").select("id").eq("url",ud.publicUrl).limit(1).single();
+    if(latest){await db.rpc("admin_update_gallery",{admin_pass:adminPassword,item_id:latest.id,new_caption:c,new_date:dt});}
+  }
+  m.textContent="✅";m.style.color="green";e.target.reset();loadGallery();
+});
+
+document.getElementById("weeklyForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("weeklyMsg"),d=document.getElementById("wDay").value,t=document.getElementById("wTitle").value.trim();
+  if(!d||!t){m.textContent="روز و عنوان";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_weekly",{admin_pass:adminPassword,p_day:d,p_title:t,p_time:document.getElementById("wTime").value.trim(),p_place:document.getElementById("wPlace").value.trim(),p_description:document.getElementById("wDesc").value.trim()});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadWeekly();
+});
+
+document.getElementById("aboutForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("aboutMsg"),t=document.getElementById("aboutTitleInput").value.trim(),c=document.getElementById("aboutContentInput").value.trim();
+  if(!t||!c){m.textContent="عنوان و متن";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_update_about",{admin_pass:adminPassword,p_title:t,p_content:c});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";loadAbout();
+});
+
+document.getElementById("newsForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("newsMsg"),t=document.getElementById("nTitle").value.trim(),c=document.getElementById("nContent").value.trim(),p=document.getElementById("nPinned").checked,srt=getSort("nSort");
+  if(!t||!c){m.textContent="عنوان و متن";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_news",{admin_pass:adminPassword,p_title:t,p_content:c,p_pinned:p,p_sort:srt});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadNews();
+});
+
+document.getElementById("eventForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("eventMsg"),t=document.getElementById("eTitle").value.trim(),d=getPersianDate("eDay","eMonth","eYear");
+  if(!t||!d){m.textContent="عنوان و تاریخ";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_event",{admin_pass:adminPassword,p_title:t,p_description:document.getElementById("eDesc").value.trim(),p_date:d,p_place:document.getElementById("ePlace").value.trim()});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadEvents();
+});
+
+document.getElementById("pollForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("pollMsg"),q=document.getElementById("pQuestion").value.trim();
+  const o=Array.from(document.querySelectorAll(".poll-opt")).map(i=>i.value.trim()).filter(v=>v);
+  if(!q||o.length<2){m.textContent="سؤال + ۲ گزینه";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_poll",{admin_pass:adminPassword,p_question:q,p_options:o});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();
+  document.getElementById("pollOptionsBox").innerHTML='<input class="poll-opt" placeholder="گزینه ۱" required><input class="poll-opt" placeholder="گزینه ۲" required>';
+  loadPolls();
+});
+
+document.getElementById("classForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("classMsg"),t=document.getElementById("cTitle").value.trim();
+  if(!t){m.textContent="عنوان";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const cap=parseInt(document.getElementById("cCap").value)||null;
+  const srt=getSort("cSort");
+  const {error}=await db.rpc("admin_add_class",{admin_pass:adminPassword,p_title:t,p_desc:document.getElementById("cDesc").value.trim(),p_teacher:document.getElementById("cTeacher").value.trim(),p_schedule:document.getElementById("cSchedule").value.trim(),p_cap:cap,p_sort:srt});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadClasses();
+});
+
+document.getElementById("videoForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("videoMsg"),t=document.getElementById("vTitle").value.trim(),d=document.getElementById("vDesc").value.trim(),f=document.getElementById("vFile").files[0],srt=getSort("vSort");
+  if(!t){m.textContent="عنوان";m.style.color="red";return;}
+  if(!f){m.textContent="ویدیویی نیست";m.style.color="red";return;}
+  if(f.size>50*1024*1024){m.textContent="کمتر از ۵۰ مگ";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const {error:ue}=await db.storage.from("videos").upload(fn,f);
+  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("videos").getPublicUrl(fn);
+  const {error:de}=await db.rpc("admin_add_video",{admin_pass:adminPassword,p_title:t,p_url:ud.publicUrl,p_thumb:"",p_desc:d,p_sort:srt});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadVideos();
+});
+
+document.getElementById("bookForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("bookMsg"),t=document.getElementById("bTitle").value.trim(),f=document.getElementById("bFile").files[0],srt=getSort("bSort");
+  if(!t||!f){m.textContent="عنوان و فایل";m.style.color="red";return;}
+  if(f.size>20*1024*1024){m.textContent="کمتر از ۲۰ مگ";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const {error:ue}=await db.storage.from("library").upload(fn,f);
+  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("library").getPublicUrl(fn);
+  const ext=f.name.split(".").pop();
+  const {error:de}=await db.rpc("admin_add_book",{admin_pass:adminPassword,p_title:t,p_desc:document.getElementById("bDesc").value.trim(),p_url:ud.publicUrl,p_type:ext,p_cat:document.getElementById("bCat").value,p_sort:srt});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadLibrary();loadAdminLibrary();
+});
+
+document.getElementById("sendMsgForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("sendMsgStatus"),title=document.getElementById("msgTitle").value.trim(),body=document.getElementById("msgBody").value.trim();
+  const mode=document.getElementById("sendTo").value;
+  if(!title||!body){m.textContent="عنوان و متن";m.style.color="red";return;}
+  m.textContent="ارسال...";m.style.color="#555";
+  if(mode==="one"){
+    const ph=document.getElementById("sendToPhone").value.trim();
+    if(!ph){m.textContent="شماره را وارد کن";m.style.color="red";return;}
+    const {error}=await db.rpc("admin_send_message",{admin_pass:adminPassword,to_phone:ph,p_title:title,p_content:body});
+    if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  } else {
+    const phones=allMembers.map(x=>x.phone).filter(p=>p);
+    if(!phones.length){m.textContent="عضوی نیست";m.style.color="red";return;}
+    const {error}=await db.rpc("admin_send_bulk",{admin_pass:adminPassword,phones:phones,p_title:title,p_content:body});
+    if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  }
+  m.textContent="✅ ارسال شد";m.style.color="green";e.target.reset();
+  document.getElementById("sendToPhone").style.display="none";
+  loadSentMessages();
+});
+document.getElementById("sendTo").addEventListener("change",e=>{document.getElementById("sendToPhone").style.display = e.target.value === "one" ? "block" : "none";});
+
+document.getElementById("sessionForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("sessionMsg"),t=document.getElementById("sesTitle").value.trim(),d=getPersianDate("sesDay","sesMonth","sesYear");
+  if(!t||!d){m.textContent="عنوان و تاریخ";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("admin_add_session",{admin_pass:adminPassword,p_title:t,p_date:d,p_desc:document.getElementById("sesDesc").value.trim()});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
+});
+
+document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("memberLoginMsg"),nid=document.getElementById("mLoginNid").value.trim(),pw=document.getElementById("mLoginPass").value;
+  if(!/^\d{10}$/.test(nid)){m.textContent="کد ملی ۱۰ رقم";m.style.color="red";return;}
+  if(!pw){m.textContent="رمز عبور را وارد کن";m.style.color="red";return;}
+  m.textContent="بررسی...";m.style.color="#555";
+  const ph=await hashPassword(pw);
+  const {data,error}=await db.rpc("member_login",{p_nid:nid,p_hash:ph});
+  if(error||!data||!data.length){m.textContent="❌ کد ملی یا رمز اشتباه";m.style.color="red";return;}
+  currentMember=data[0];
+  saveMemberLocal(currentMember);
+  localStorage.setItem("anvar_registered", "1");
+  await renderMemberPanel();
+  if(onlineChannel) onlineChannel.track({ user_id: localStorage.getItem("onlineUserId"), name: currentMember.name||"مهمان", joined_at: new Date().toISOString() });
+});
+
+async function renderMemberPanel(){
+  const el = id => document.getElementById(id);
+  if (el("memberLoginBox")) el("memberLoginBox").style.display = "none";
+  if (el("memberPanelBox")) el("memberPanelBox").style.display = "block";
+  if (el("cardName")) el("cardName").textContent = currentMember.name || "-";
+  if (el("cardCode")) el("cardCode").textContent = currentMember.member_code || "در انتظار...";
+  if (el("cardDate") && currentMember.created_at) el("cardDate").textContent = new Date(currentMember.created_at).toLocaleDateString("fa-IR");
+  const cp = el("cardPhoto");
+  if (cp) {
+    if (currentMember.avatar_url) cp.innerHTML = '<img src="' + esc(currentMember.avatar_url) + '">';
+    else cp.textContent = (currentMember.name || "?").charAt(0);
+  }
+  if (el("ideaUserName")) el("ideaUserName").textContent = currentMember.name || "";
+  if (el("ideaUserNotice")) el("ideaUserNotice").style.display = "block";
+  if (el("ideaName")) { el("ideaName").value = currentMember.name || ""; el("ideaName").style.display = "none"; }
+  if (el("epName")) el("epName").value = currentMember.name || "";
+  setPersianDate("epDay","epMonth","epYear", currentMember.birth_date || "");
+  if (el("epPhone")) el("epPhone").value = currentMember.phone || "";
+  await loadMyIdeas();
+  await loadMyIdeasInThinkPage();
+  await loadPolls();
+  await loadMyClasses();
+  await loadClasses();
+  await loadMyMessages();
+  await loadMyAttendance();
+  await loadMyVotes();
+}
+
+document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
+  currentMember=null;
+  clearMemberLocal();
+  document.getElementById("memberLoginBox").style.display="block";
+  document.getElementById("memberPanelBox").style.display="none";
+  document.getElementById("mLoginNid").value="";
+  document.getElementById("mLoginPass").value="";
+  document.getElementById("memberLoginMsg").textContent="";
+  document.getElementById("editProfileBox").style.display="none";
+  document.getElementById("changePasswordBox").style.display="none";
+  document.getElementById("ideaUserNotice").style.display="none";
+  document.getElementById("ideaName").style.display="block";
+  document.getElementById("ideaName").value="";
+  loadPolls();loadClasses();
+  loadMyIdeasInThinkPage();
+});
+
+async function uploadAvatar(){
+  if(!currentMember)return;
+  const f=document.getElementById("avatarFile").files[0];
+  const m=document.getElementById("avatarMsg");
+  if(!f){m.textContent="عکسی نیست";m.style.color="red";return;}
+  if(f.size>3*1024*1024){m.textContent="حجم کمتر از ۳ مگابایت";m.style.color="red";return;}
+  m.textContent="آپلود...";m.style.color="#555";
+  const fn="av_"+currentMember.national_id+"_"+Date.now()+"."+f.name.split(".").pop();
+  const {error:ue}=await db.storage.from("avatars").upload(fn,f,{upsert:true});
+  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
+  const {data:ud}=db.storage.from("avatars").getPublicUrl(fn);
+  const {error:de}=await db.rpc("member_update_avatar",{p_phone:currentMember.phone,new_url:ud.publicUrl});
+  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
+  currentMember.avatar_url=ud.publicUrl;
+  saveMemberLocal(currentMember);
+  document.getElementById("cardPhoto").innerHTML=`<img src="${esc(ud.publicUrl)}">`;
+  m.textContent="✅ ذخیره شد";m.style.color="green";
+  document.getElementById("avatarFile").value="";
+}
+
+function toggleEditProfile(){const b=document.getElementById("editProfileBox");b.style.display = b.style.display === "none" ? "block" : "none";}
+function toggleChangePassword(){const b=document.getElementById("changePasswordBox");b.style.display = b.style.display === "none" ? "block" : "none";}
+
+document.getElementById("editProfileForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("editProfileMsg");
+  if(!currentMember)return;
+  const n=document.getElementById("epName").value.trim();
+  const bd=getPersianDate("epDay","epMonth","epYear");
+  const ph=document.getElementById("epPhone").value.trim();
+  if(!n||!bd||!ph){m.textContent="همه فیلدها الزامی";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const {error}=await db.rpc("member_full_update",{p_phone:currentMember.phone,new_name:n,new_birth:bd,new_phone:ph});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  currentMember.name=n;currentMember.birth_date=bd;currentMember.phone=ph;
+  saveMemberLocal(currentMember);
+  document.getElementById("cardName").textContent=n;
+  m.textContent="✅ ذخیره شد";m.style.color="green";
+  setTimeout(()=>{document.getElementById("editProfileBox").style.display="none";m.textContent="";},1000);
+});
+
+document.getElementById("changePasswordForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("changePasswordMsg");
+  if(!currentMember)return;
+  const oldPw=document.getElementById("cpOld").value;
+  const newPw=document.getElementById("cpNew").value;
+  const newPw2=document.getElementById("cpNew2").value;
+  if(newPw.length<4){m.textContent="رمز جدید حداقل ۴ کاراکتر";m.style.color="red";return;}
+  if(newPw!==newPw2){m.textContent="رمز و تکرار یکسان نیستند";m.style.color="red";return;}
+  m.textContent="ذخیره...";m.style.color="#555";
+  const oldH=await hashPassword(oldPw);
+  const newH=await hashPassword(newPw);
+  const {error}=await db.rpc("member_change_password",{p_nid:currentMember.national_id,old_hash:oldH,new_hash:newH});
+  if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
+  m.textContent="✅ رمز تغییر کرد";m.style.color="green";
+  document.getElementById("cpOld").value="";document.getElementById("cpNew").value="";document.getElementById("cpNew2").value="";
+  setTimeout(()=>{document.getElementById("changePasswordBox").style.display="none";m.textContent="";},1500);
+});
+
+async function loadMyIdeas(){
+  const b=document.getElementById("myIdeas");if(!currentMember||!b)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.from("ideas").select("*").eq("member_nid", currentMember.national_id).order("created_at",{ascending:false});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>ایده‌ای نیست.</p>";return;}
+  b.innerHTML=data.map(i=>`<div class="myidea"><strong style="color:#084c47">${esc(i.category||"سایر")}</strong><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
+}
+
+async function loadMyMessages(){
+  const b=document.getElementById("myMessages");if(!currentMember||!b)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.rpc("member_get_messages",{p_phone:currentMember.phone});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>پیامی ندارید.</p>";return;}
+  const unread = data.filter(m=>!m.is_read).length;
+  const ub = document.getElementById("unreadCount");
+  if(unread>0){ub.textContent=fa(unread);ub.style.display="inline-block";}else{ub.style.display="none";}
+  b.innerHTML=data.map(m=>`<div class="msg-card ${!m.is_read?'unread':''}"><h5>${esc(m.title||"بدون عنوان")}</h5><div class="m-content">${esc(m.content||"")}</div><div class="m-date">🗓 ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div></div>`).join("");
+}
+
+async function loadMyAttendance(){
+  const b=document.getElementById("myAttendance");if(!currentMember||!b)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.rpc("member_get_my_attendance",{p_phone:currentMember.phone});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>در جلسه‌ای نبوده‌اید.</p>";return;}
+  const icon={present:"✅",absent:"❌",late:"⏰"};
+  b.innerHTML=data.map(a=>`<div class="myidea" style="border-right-color:${a.status==='present'?'#2e8b57':a.status==='absent'?'#c94f4f':'#c48b1f'}"><strong style="color:#084c47">${icon[a.status]||'؟'} ${esc(a.session_title)}</strong><div style="font-size:11px;color:#777;margin-top:4px">📅 ${esc(a.session_date)}</div></div>`).join("");
+}
+
+async function loadMyVotes(){
+  const b=document.getElementById("myVotes");if(!currentMember||!b)return;
+  b.innerHTML="<p style='color:#888'>بارگذاری...</p>";
+  const {data,error}=await db.rpc("member_get_my_votes",{p_phone:currentMember.phone});
+  if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
+  if(!data||!data.length){b.innerHTML="<p style='color:#888;font-size:12px'>رأی نداده‌اید.</p>";return;}
+  b.innerHTML=data.map(v=>`<div class="myidea" style="border-right-color:#1e6bb8"><strong style="color:#084c47">🗳 ${esc(v.question)}</strong><div style="font-size:12px;color:#0b6b62;margin-top:4px">رأی شما: <b>${esc(v.voted_option||'-')}</b></div></div>`).join("");
+}
+
+document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
+document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
+
+function updateRegisterVisibility(){
+  const sec = document.getElementById("registerSection");
+  if(!sec) return;
+  const registered = localStorage.getItem("anvar_registered") === "1";
+  if (registered) sec.style.display = "none";
+  else sec.style.display = "block";
+}
+
+async function autoLoginMember(){
+  const saved=loadMemberLocal();
+  if(!saved||!saved.national_id){updateRegisterVisibility();return;}
+  try {
+    const {data,error}=await db.from("members").select("id,name,national_id,birth_date,phone,avatar_url,member_code,created_at").eq("national_id",saved.national_id).limit(1);
+    if(!error && data && data.length){
+      currentMember=data[0];
+      saveMemberLocal(currentMember);
+      localStorage.setItem("anvar_registered", "1");
+      await renderMemberPanel();
+    }
+  } catch(e){}
+  updateRegisterVisibility();
+}
+
+(async () => {
+  selectPanel("main");
+  setupOnlineCounter();
+  updateRegisterVisibility();
+  showInstallBoxIfNeeded();
+  await autoLoginMember();
+  await render();
+})();
+</script>
+</body>
+  </html>
