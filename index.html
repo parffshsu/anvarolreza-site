@@ -48,7 +48,7 @@ body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color
 header{background:linear-gradient(135deg,#084c47,#0b6b62);color:#fff;padding:14px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;max-width:1100px;margin:auto;position:relative}
 .logo{font-weight:bold;font-size:16px;cursor:pointer}
-.nav-right{display:flex;align-items:center;gap:10px}
+.nav-right{display:flex;align-items:center;gap:8px}
 .online-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:20px;font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.25)}
 .online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;animation:pulse-dot 2s infinite}
 .online-eye{font-size:14px;animation:pulse-eye 2s infinite}
@@ -56,6 +56,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;m
 .online-label{font-size:11px;opacity:.85}
 @keyframes pulse-dot{0%{box-shadow:0 0 0 0 rgba(46,204,113,.7)}70%{box-shadow:0 0 0 8px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
 @keyframes pulse-eye{0%,100%{opacity:1}50%{opacity:.5}}
+.search-btn{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);color:#fff;font-size:18px;padding:4px 10px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
+.search-btn:hover{background:rgba(255,255,255,.25)}
 .menu-btn{background:transparent;border:2px solid #fff;color:#fff;font-size:22px;padding:4px 12px;border-radius:8px;cursor:pointer}
 .menu{display:none;position:absolute;top:60px;left:7%;background:#084c47;border-radius:12px;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:100;min-width:230px;max-height:75vh;overflow-y:auto;animation:menuIn .25s ease}
 .menu.open{display:block}
@@ -228,17 +230,21 @@ html[data-theme="dark"] .news-card.pinned{background:linear-gradient(135deg,#2a2
 .event-card .info{font-size:12px;color:var(--text-soft);margin:5px 0}
 .event-card .desc{font-size:11px;color:var(--text-mute);margin-top:6px;line-height:1.5}
 .event-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.poll-card{background:var(--bg-card);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);margin:12px 0;color:var(--text)}
+.poll-card{background:var(--bg-card);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);margin:12px 0;color:var(--text);position:relative}
+.poll-card.expired{opacity:.75;border:2px dashed #c94f4f}
 .poll-card h4{margin:0 0 6px;color:var(--accent);font-size:15px}
-.poll-card .sub{font-size:11px;color:var(--text-mute);margin-bottom:12px}
+.poll-card .sub{font-size:11px;color:var(--text-mute);margin-bottom:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.poll-card .expired-badge{background:#c94f4f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;font-weight:bold}
+.poll-card .expire-badge-active{background:#c48b1f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px}
 .poll-option{margin:6px 0;position:relative}
 .poll-option button{width:100%;text-align:right;background:var(--bg-soft);border:2px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;cursor:pointer;color:var(--accent);font-weight:bold;position:relative;overflow:hidden;z-index:1;font-family:inherit}
 .poll-option button.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
+.poll-option button:disabled{opacity:.6;cursor:not-allowed}
 .poll-option .bar{position:absolute;top:0;right:0;height:100%;background:linear-gradient(90deg,#d9efeb,#b8e0d9);border-radius:8px;z-index:-1;transition:width .6s ease}
 html[data-theme="dark"] .poll-option .bar{background:linear-gradient(90deg,#1e3533,#254543)}
 .poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
 .poll-option .result{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--accent);font-weight:bold}
-.poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
+.poll-card .del-btn{position:absolute;top:14px;left:14px;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
 .member{padding:10px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
 .idea{padding:10px 12px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:10px;margin-top:6px}
@@ -259,16 +265,12 @@ html[data-theme="dark"] .status{background:#1e3533;color:#7ef5d4}
 .idea-card .idea-admin-reply{background:var(--bg-card);border-right:3px solid #c48b1f;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:12px;line-height:1.7}
 .idea-card .idea-admin-reply .reply-label{font-weight:bold;color:#c48b1f;font-size:11px;display:block;margin-bottom:4px}
 .idea-card .idea-delete-btn{background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:bold}
-
-/* ============ رأی‌گیری روی ایده‌ها ============ */
 .idea-card .idea-vote-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
 .idea-card .vote-btn{background:var(--bg-card);border:2px solid var(--border);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;color:var(--accent);font-weight:bold;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
 .idea-card .vote-btn:hover{background:var(--bg-soft2);transform:translateY(-2px)}
 .idea-card .vote-btn.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
 .idea-card .vote-btn .vote-count{background:rgba(0,0,0,.1);border-radius:12px;padding:1px 8px;font-size:12px}
 .idea-card .vote-btn.voted .vote-count{background:rgba(255,255,255,.25)}
-
-/* ============ گزارش حضور اعضا ============ */
 .attendance-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
 .att-stat-card{background:var(--bg-card);border-radius:12px;padding:14px;box-shadow:0 3px 10px var(--shadow);border-right:4px solid #1e6bb8}
 .att-stat-card h5{margin:0 0 8px;font-size:13px;color:var(--accent)}
@@ -332,32 +334,34 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 .report-stat .ri{font-size:22px}
 .report-stat .rv{font-size:20px;font-weight:bold;color:var(--accent);margin:5px 0}
 .report-stat .rk{font-size:11px;color:var(--text-soft)}
-.membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:20px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:18px}
-.membership-card::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
-.membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:70px;opacity:.08;transform:rotate(-15deg)}
-.membership-card .mc-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:10px;margin-bottom:12px;position:relative;z-index:1}
-.membership-card .mc-brand{font-size:14px;font-weight:bold}
-.membership-card .mc-shield{font-size:22px}
-.membership-card .mc-body{display:flex;gap:14px;align-items:center;position:relative;z-index:1}
-.membership-card .mc-photo{width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.3)}
-.membership-card .mc-photo img{width:100%;height:100%;object-fit:cover}
-.membership-card .mc-details{flex:1;min-width:0}
-.membership-card .mc-name{font-size:16px;font-weight:bold;margin-bottom:5px}
-.membership-card .mc-row{font-size:11px;margin:3px 0;opacity:.9}
-.membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:12px;letter-spacing:1px;margin-top:3px;border:1px solid rgba(255,255,255,.2)}
-.membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.2);font-size:10px;opacity:.85;position:relative;z-index:1}
-.membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:10px}
-.contact-section{background:linear-gradient(135deg,#084c47,#0b6b62);border-radius:18px;padding:28px 22px;color:#fff;text-align:center;margin:30px 0;box-shadow:0 12px 32px rgba(8,76,71,.3)}
-.contact-section h3{margin:0 0 8px;font-size:18px}
-.contact-section p{margin:0 0 18px;font-size:13px;opacity:.9}
-.contact-links{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto}
-.contact-link{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px 18px;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;transition:all .3s}
-.contact-link:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
-.contact-link .cl-icon{font-size:22px}
-.locked-ideas{background:linear-gradient(135deg,#fff7e6,#fff);border:2px dashed #c48b1f;border-radius:14px;padding:24px;text-align:center;color:#7a5b00;font-size:13px;line-height:1.8}
-html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,#1c2626);color:#f0d68a}
-.locked-ideas .lock-icon{font-size:38px;display:block;margin-bottom:10px}
-.sort-hint{font-size:11px;color:var(--text-mute);margin-top:-6px}
+/* ============ گزارش هفتگی ============ */
+.weekly-report{background:var(--bg-card);border-radius:14px;padding:20px;box-shadow:0 6px 20px var(--shadow);margin-top:14px}
+.weekly-report-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;border-bottom:2px solid var(--border-soft);padding-bottom:12px}
+.weekly-report-header h3{margin:0;color:var(--accent);font-size:17px}
+.weekly-report-header .wr-range{font-size:12px;color:var(--text-mute);background:var(--bg-soft);padding:4px 12px;border-radius:10px}
+.weekly-report-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.wr-item{background:var(--bg-soft);border-radius:12px;padding:14px;text-align:center;border-bottom:3px solid var(--accent2)}
+.wr-item .wr-icon{font-size:26px;margin-bottom:6px}
+.wr-item .wr-num{font-size:22px;font-weight:bold;color:var(--accent);margin:4px 0}
+.wr-item .wr-label{font-size:11px;color:var(--text-soft)}
+.wr-item .wr-detail{font-size:10px;color:var(--text-mute);margin-top:4px}
+/* ============ جستجوی سراسری ============ */
+.search-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1500;justify-content:center;align-items:flex-start;padding:80px 20px 20px;overflow-y:auto}
+.search-modal-bg.open{display:flex}
+.search-modal{background:var(--bg-card);border-radius:16px;padding:20px;max-width:640px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
+.search-modal h3{color:var(--accent);margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:8px}
+.search-modal .sm-close{background:transparent;border:none;color:var(--text-mute);font-size:26px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
+.search-modal input[type="text"]{width:100%;padding:14px 16px;font-size:16px;border-radius:12px;border:2px solid var(--border);background:var(--bg-soft);color:var(--text)}
+.search-results{margin-top:16px;max-height:60vh;overflow-y:auto}
+.sr-group{margin-bottom:14px}
+.sr-group-title{font-size:12px;color:var(--accent2);font-weight:bold;margin-bottom:6px;padding:4px 0;border-bottom:1px dashed var(--border-soft);display:flex;align-items:center;gap:6px}
+.sr-item{background:var(--bg-soft);border-radius:10px;padding:10px 12px;margin:6px 0;font-size:13px;cursor:pointer;transition:background .2s;border-right:3px solid var(--accent2)}
+.sr-item:hover{background:var(--bg-soft2);transform:translateX(-2px)}
+.sr-item .sr-title{font-weight:bold;color:var(--text);margin-bottom:3px;font-size:13px}
+.sr-item .sr-desc{font-size:11px;color:var(--text-mute);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-empty{text-align:center;color:var(--text-mute);font-size:13px;padding:20px}
+.sr-loading{text-align:center;color:var(--text-mute);font-size:13px;padding:20px}
+.sr-hint{font-size:11px;color:var(--text-mute);text-align:center;margin-top:8px}
 @media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}}
 @media(max-width:600px){
   .library-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
@@ -378,6 +382,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <nav>
 <div class="logo" onclick="goHome()">انوارالرضا(ع)</div>
 <div class="nav-right">
+<button class="search-btn" onclick="openSearch()" title="جستجو">🔍</button>
 <div class="online-badge">
 <span class="online-dot"></span>
 <span class="online-eye">👁</span>
@@ -682,8 +687,8 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <button class="btn" type="submit">ورود</button>
 </form>
 <p id="loginMsg"></p>
-                                                                </div>
-<div id="panelBox" style="display:none">
+  </div>    
+  <div id="panelBox" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
 <button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
@@ -702,6 +707,13 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <div class="stat"><b id="memberCount">۰</b>عضو</div>
 <div class="stat"><b id="ideaCount">۰</b>ایده</div>
 <div class="stat"><b id="doneCount">۰</b>اجرا</div>
+</div>
+</div>
+
+<div id="sectionWeeklyReport" class="admin-section" data-panels="main,ertebat,resane,roshd">
+<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📈 گزارش هفتگی کانون</h3>
+<div class="weekly-report" id="weeklyReportBox">
+<p style="text-align:center;color:var(--text-mute);font-size:13px">در حال بارگذاری...</p>
 </div>
 </div>
 
@@ -939,6 +951,13 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <input class="poll-opt" placeholder="گزینه ۱" required>
 <input class="poll-opt" placeholder="گزینه ۲" required>
 </div>
+<label style="font-size:12px;color:var(--text-soft);margin-top:4px">⏰ تاریخ انقضا (اختیاری):</label>
+<div class="date-picker">
+<select id="pollExpireDay"><option value="">روز</option></select>
+<select id="pollExpireMonth"><option value="">ماه</option></select>
+<select id="pollExpireYear"><option value="">سال</option></select>
+</div>
+<input id="pollExpireHour" type="number" min="0" max="23" placeholder="ساعت (۰-۲۳)" style="margin-top:4px">
 <button type="button" class="btn" onclick="addPollOption()" style="background:#1e6bb8">➕ گزینه</button>
 <button class="btn" type="submit">ساخت</button>
 </form>
@@ -992,6 +1011,17 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <button class="btn" type="submit">ذخیره</button>
 </form>
 <p id="geMsg"></p>
+</div>
+</div>
+
+<div class="search-modal-bg" id="searchModal">
+<div class="search-modal">
+<button class="sm-close" onclick="closeSearch()">✕</button>
+<h3>🔍 جستجوی سراسری</h3>
+<input type="text" id="searchInputGlobal" placeholder="چی میخوای پیدا کنی؟ (خبر، کتاب، کلاس، ویدیو، رویداد، ایده)" oninput="performSearch()">
+<div class="search-results" id="searchResults">
+<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>
+</div>
 </div>
 </div>
 
@@ -1116,7 +1146,7 @@ function fillDateSelects(d,m,y){
   if(me&&me.options.length<=1) PERSIAN_MONTHS.forEach((n,i)=>{const o=document.createElement("option");o.value=String(i+1).padStart(2,"0");o.textContent=n;me.appendChild(o);});
   if(ye&&ye.options.length<=1) for(let y2=1405;y2>=1360;y2--){const o=document.createElement("option");o.value=String(y2);o.textContent=fa(y2);ye.appendChild(o);}
 }
-["birthDay|birthMonth|birthYear","editBirthDay|editBirthMonth|editBirthYear","eDay|eMonth|eYear","sesDay|sesMonth|sesYear","epDay|epMonth|epYear"].forEach(s=>{const [d,m,y]=s.split("|");fillDateSelects(d,m,y);});
+["birthDay|birthMonth|birthYear","editBirthDay|editBirthMonth|editBirthYear","eDay|eMonth|eYear","sesDay|sesMonth|sesYear","epDay|epMonth|epYear","pollExpireDay|pollExpireMonth|pollExpireYear"].forEach(s=>{const [d,m,y]=s.split("|");fillDateSelects(d,m,y);});
 
 function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=document.getElementById(m).value,yy=document.getElementById(y).value;if(!dd||!mm||!yy)return "";return `${yy}/${mm}/${dd}`;}
 function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
@@ -1197,7 +1227,104 @@ async function render(){
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
   if(adminPassword){
-    Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary(), loadAttendanceReport()]);
+    Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary(), loadAttendanceReport(), loadWeeklyReport()]);
+  }
+}
+
+/* ============ گزارش هفتگی ============ */
+async function loadWeeklyReport(){
+  const box = document.getElementById("weeklyReportBox");
+  if(!box) return;
+  box.innerHTML = "<p style='text-align:center;color:var(--text-mute);font-size:13px'>در حال بارگذاری...</p>";
+  const now = new Date();
+  const weekAgo = new Date(now.getTime() - 7*24*60*60*1000);
+  const weekAgoISO = weekAgo.toISOString();
+  const nowISO = now.toISOString();
+
+  try {
+    // آمار از دیتابیس
+    const [
+      newMembersRes,
+      newIdeasRes,
+      newMessagesRes,
+      newSessionsRes,
+      newAttendanceRes,
+      totalMembersRes,
+      totalIdeasRes,
+      totalBooksRes,
+      totalClassesRes
+    ] = await Promise.all([
+      db.from("members").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
+      db.from("ideas").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
+      db.from("messages").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
+      db.from("sessions").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
+      db.from("attendance").select("*", {count:"exact", head:true}).eq("status", "present").gte("created_at", weekAgoISO),
+      db.from("members").select("*", {count:"exact", head:true}),
+      db.from("ideas").select("*", {count:"exact", head:true}),
+      db.from("library").select("*", {count:"exact", head:true}),
+      db.from("classes").select("*", {count:"exact", head:true})
+    ]);
+
+    const newMembers = newMembersRes.count || 0;
+    const newIdeas = newIdeasRes.count || 0;
+    const newMessages = newMessagesRes.count || 0;
+    const newSessions = newSessionsRes.count || 0;
+    const newAttendance = newAttendanceRes.count || 0;
+    const totalMembers = totalMembersRes.count || 0;
+    const totalIdeas = totalIdeasRes.count || 0;
+    const totalBooks = totalBooksRes.count || 0;
+    const totalClasses = totalClassesRes.count || 0;
+
+    const faDate = (d) => d.toLocaleDateString("fa-IR");
+    const rangeStr = `${faDate(weekAgo)} تا ${faDate(now)}`;
+
+    box.innerHTML = `
+      <div class="weekly-report-header">
+        <h3>📊 خلاصه‌ی هفته‌ی گذشته</h3>
+        <span class="wr-range">🗓 ${rangeStr}</span>
+      </div>
+      <div class="weekly-report-grid">
+        <div class="wr-item">
+          <div class="wr-icon">👥</div>
+          <div class="wr-num">${fa(newMembers)}</div>
+          <div class="wr-label">عضو جدید</div>
+          <div class="wr-detail">کل: ${fa(totalMembers)}</div>
+        </div>
+        <div class="wr-item">
+          <div class="wr-icon">💡</div>
+          <div class="wr-num">${fa(newIdeas)}</div>
+          <div class="wr-label">ایده جدید</div>
+          <div class="wr-detail">کل: ${fa(totalIdeas)}</div>
+        </div>
+        <div class="wr-item">
+          <div class="wr-icon">📬</div>
+          <div class="wr-num">${fa(newMessages)}</div>
+          <div class="wr-label">پیام ارسالی</div>
+        </div>
+        <div class="wr-item">
+          <div class="wr-icon">📅</div>
+          <div class="wr-num">${fa(newSessions)}</div>
+          <div class="wr-label">جلسه</div>
+        </div>
+        <div class="wr-item">
+          <div class="wr-icon">✅</div>
+          <div class="wr-num">${fa(newAttendance)}</div>
+          <div class="wr-label">حضور ثبت‌شده</div>
+        </div>
+        <div class="wr-item">
+          <div class="wr-icon">📚</div>
+          <div class="wr-num">${fa(totalBooks)}</div>
+          <div class="wr-label">کتاب موجود</div>
+        </div>
+        <div class="wr-item">
+          <div class="wr-icon">🎓</div>
+          <div class="wr-num">${fa(totalClasses)}</div>
+          <div class="wr-label">کلاس فعال</div>
+        </div>
+      </div>
+    `;
+  } catch(e) {
+    box.innerHTML = "<p style='color:red;text-align:center;font-size:13px'>خطا: "+esc(e.message)+"</p>";
   }
 }
 
@@ -1221,7 +1348,6 @@ async function loadApprovedIdeas(){
   const box = document.getElementById("approvedIdeasBox");
   if(!box) return;
   box.innerHTML = "<p style='text-align:center;color:var(--text-mute);font-size:13px'>در حال بارگذاری...</p>";
-  // دریافت رأی‌های من
   myIdeaVotes = [];
   if(currentMember){
     const {data: mv} = await db.rpc("get_my_idea_votes", {p_nid: currentMember.national_id});
@@ -1243,7 +1369,6 @@ function renderIdeaCard(i, allowDelete, allowVote){
   const canDelete = allowDelete && (st === "ثبت شد" || st === "");
   const deleteBtn = canDelete ? `<button class="idea-delete-btn" onclick="deleteMyIdea(${i.id})">🗑 حذف</button>` : "";
 
-  // رأی‌گیری
   let voteHtml = "";
   if(allowVote){
     const voteCount = i.vote_count || 0;
@@ -1310,6 +1435,17 @@ async function loadEvents(){
 }
 async function deleteEvent(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_event",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadEvents();}
 
+/* ============ نظرسنجی با انقضا ============ */
+function isPollExpired(p){
+  if(!p.expires_at) return false;
+  return new Date(p.expires_at) < new Date();
+}
+function formatPollExpire(p){
+  if(!p.expires_at) return "";
+  const d = new Date(p.expires_at);
+  return d.toLocaleDateString("fa-IR") + " - " + d.toLocaleTimeString("fa-IR", {hour:"2-digit", minute:"2-digit"});
+}
+
 async function loadPolls(){
   const b=document.getElementById("pollsBox");if(!b)return;
   const {data:polls}=await db.from("polls").select("*").order("created_at",{ascending:false});
@@ -1317,9 +1453,34 @@ async function loadPolls(){
   allPolls=polls||[];allVotes=votes||[];
   if(!allPolls.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute);font-size:13px'>نظرسنجی‌ای نیست.</p>";return;}
   const myNid=currentMember?currentMember.national_id:null;
-  b.innerHTML=allPolls.map(p=>{const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;const myVote=myNid?pv.find(v=>v.voter_phone===myNid):null;const opts=p.options||[];return `<div class="poll-card">${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}<h4>${esc(p.question)}</h4><div class="sub">👥 ${fa(total)} رأی</div>${opts.map((o,i)=>{const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})"><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;}).join("")}</div>`;}).join("");
+  b.innerHTML=allPolls.map(p=>{
+    const pv=allVotes.filter(v=>v.poll_id===p.id),total=pv.length;
+    const myVote=myNid?pv.find(v=>v.voter_phone===myNid):null;
+    const opts=p.options||[];
+    const expired = isPollExpired(p);
+    const expireStr = formatPollExpire(p);
+    const expiredBadge = expired ? '<span class="expired-badge">⛔ منقضی شده</span>' : (expireStr ? `<span class="expire-badge-active">⏰ تا ${expireStr}</span>` : "");
+    return `<div class="poll-card ${expired?'expired':''}">
+      ${adminPassword?`<button class="del-btn" onclick="deletePoll(${p.id})">🗑</button>`:""}
+      <h4>${esc(p.question)}</h4>
+      <div class="sub"><span>👥 ${fa(total)} رأی</span>${expiredBadge}</div>
+      ${opts.map((o,i)=>{
+        const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;
+        return `<div class="poll-option">
+          <button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})" ${expired?'disabled':''}>
+            <div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}
+          </button>
+        </div>`;
+      }).join("")}
+    </div>`;
+  }).join("");
 }
-async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.national_id});if(error){alert("خطا: "+error.message);return;}alert("ثبت شد ✅");loadPolls();loadMyVotes();}
+async function votePoll(id,idx){
+  if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}
+  const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.national_id});
+  if(error){alert("خطا: "+error.message);return;}
+  alert("ثبت شد ✅");loadPolls();loadMyVotes();
+}
 async function deletePoll(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_poll",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadPolls();}
 function addPollOption(){const b=document.getElementById("pollOptionsBox"),c=b.querySelectorAll("input").length;if(c>=8){alert("حداکثر ۸");return;}const i=document.createElement("input");i.className="poll-opt";i.placeholder=`گزینه ${c+1}`;b.appendChild(i);}
 
@@ -1876,7 +2037,6 @@ async function loadReports(){
   }).join("");
 }
 
-/* ============ گزارش حضور اعضا (پیشرفته) ============ */
 async function loadAttendanceReport(){
   const box = document.getElementById("attendanceStatsBox");
   if(!box) return;
@@ -2007,7 +2167,7 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
     else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
     showSectionsForPanel(userPanel);
   }
-  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAttendanceReport()]);
+  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAttendanceReport(), loadWeeklyReport()]);
 });
 
 document.getElementById("logoutBtn").addEventListener("click",()=>{
@@ -2101,13 +2261,61 @@ document.getElementById("pollForm").addEventListener("submit",async e=>{
   const m=document.getElementById("pollMsg"),q=document.getElementById("pQuestion").value.trim();
   const o=Array.from(document.querySelectorAll(".poll-opt")).map(i=>i.value.trim()).filter(v=>v);
   if(!q||o.length<2){m.textContent="سؤال + ۲ گزینه";m.style.color="red";return;}
+
+  // محاسبه انقضا
+  const expDay = document.getElementById("pollExpireDay").value;
+  const expMonth = document.getElementById("pollExpireMonth").value;
+  const expYear = document.getElementById("pollExpireYear").value;
+  const expHour = document.getElementById("pollExpireHour").value;
+  let expiresAt = null;
+  if(expDay && expMonth && expYear){
+    // تبدیل شمسی به میلادی تقریبی (برای درست کار کردن باید کتابخانه باشه، ولی ساده نگه می‌داریم)
+    // تبدیل شمسی به ISO از طریق Date با احتیاط
+    const shamsiStr = `${expYear}/${expMonth}/${expDay}`;
+    // چون تبدیل دقیق شمسی به میلادی پیچیده‌ست، از یه کتابخانه ساده استفاده می‌کنیم یا از تاریخ روز+روز اختلاف
+    // راه ساده‌تر: فیلد تاریخ رو به صورت متن ISO می‌گیریم
+    // ولی برای سادگی: از تاریخ امروز + تعداد روز اختلاف استفاده می‌کنیم
+    // بهتر: از روش تبدیل Date استاندارد
+    try {
+      // تبدیل شمسی به میلادی
+      const g = shamsiToGregorian(parseInt(expYear), parseInt(expMonth), parseInt(expDay));
+      const dt = new Date(g.gy, g.gm - 1, g.gd, expHour ? parseInt(expHour) : 23, 59, 59);
+      expiresAt = dt.toISOString();
+    } catch(err) {
+      m.textContent="خطا در تاریخ انقضا"; m.style.color="red"; return;
+    }
+  }
+
   m.textContent="ذخیره...";m.style.color="var(--text-soft)";
-  const {error}=await db.rpc("admin_add_poll",{admin_pass:adminPassword,p_question:q,p_options:o});
+  const {error}=await db.rpc("admin_add_poll",{admin_pass:adminPassword,p_question:q,p_options:o,p_expires:expiresAt});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
   m.textContent="✅";m.style.color="green";e.target.reset();
   document.getElementById("pollOptionsBox").innerHTML='<input class="poll-opt" placeholder="گزینه ۱" required><input class="poll-opt" placeholder="گزینه ۲" required>';
   loadPolls();
 });
+
+// تابع کمکی تبدیل شمسی به میلادی
+function shamsiToGregorian(jy, jm, jd){
+  let gy = jy + 621;
+  const j_days_in_month = [31,31,31,31,31,31,30,30,30,30,30,29];
+  let j_day_no = 365 * (jy - 1) + Math.floor((jy - 1) / 4) + jd;
+  for (let i = 0; i < jm - 1; i++) j_day_no += j_days_in_month[i];
+  let g_day_no = j_day_no + 79;
+  gy = 1600 + 400 * Math.floor(g_day_no / 146097);
+  g_day_no = g_day_no % 146097;
+  let leap = true;
+  if (g_day_no >= 36525) { g_day_no--; gy += 100 * Math.floor(g_day_no / 36524); g_day_no = g_day_no % 36524; if (g_day_no >= 365) g_day_no++; else leap = false; }
+  gy += 4 * Math.floor(g_day_no / 1461);
+  g_day_no %= 1461;
+  if (g_day_no >= 366) { leap = false; g_day_no--; gy += Math.floor(g_day_no / 365); g_day_no = g_day_no % 365; }
+  let gd = g_day_no + 1;
+  const g_days_in_month = [31,28,31,30,31,30,31,31,30,31,30,31];
+  if (leap) g_days_in_month[1] = 29;
+  let gm = 0;
+  while (gd > g_days_in_month[gm]) { gd -= g_days_in_month[gm]; gm++; }
+  gm++;
+  return {gy, gm, gd};
+}
 
 document.getElementById("classForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -2359,6 +2567,77 @@ async function autoLoginMember(){
   updateRegisterVisibility();
 }
 
+/* ============ جستجوی سراسری ============ */
+let searchTimeout = null;
+function openSearch(){
+  document.getElementById("searchModal").classList.add("open");
+  setTimeout(()=>{ document.getElementById("searchInputGlobal").focus(); }, 100);
+}
+function closeSearch(){
+  document.getElementById("searchModal").classList.remove("open");
+  document.getElementById("searchInputGlobal").value = "";
+  document.getElementById("searchResults").innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>';
+}
+document.getElementById("searchModal").addEventListener("click", e => {
+  if(e.target.id === "searchModal") closeSearch();
+});
+
+function performSearch(){
+  const q = document.getElementById("searchInputGlobal").value.trim().toLowerCase();
+  const res = document.getElementById("searchResults");
+  if(q.length < 2){ res.innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>'; return; }
+  res.innerHTML = '<p class="sr-loading">🔍 در حال جستجو...</p>';
+  if(searchTimeout) clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => doSearchNow(q), 300);
+}
+
+async function doSearchNow(q){
+  const res = document.getElementById("searchResults");
+  try {
+    const [newsR, libraryR, videosR, eventsR, classesR, weeklyR, ideasR] = await Promise.all([
+      db.from("news").select("*").or(`title.ilike.%${q}%,content.ilike.%${q}%`).limit(5),
+      db.from("library").select("*").or(`title.ilike.%${q}%,description.ilike.%${q}%,author.ilike.%${q}%`).limit(5),
+      db.from("videos").select("*").or(`title.ilike.%${q}%,description.ilike.%${q}%`).limit(5),
+      db.from("events").select("*").or(`title.ilike.%${q}%,description.ilike.%${q}%,place.ilike.%${q}%`).limit(5),
+      db.from("classes").select("*").or(`title.ilike.%${q}%,description.ilike.%${q}%,teacher.ilike.%${q}%`).limit(5),
+      db.from("weekly").select("*").or(`title.ilike.%${q}%,description.ilike.%${q}%`).limit(5),
+      db.rpc("get_public_ideas")
+    ]);
+
+    let html = "";
+    let total = 0;
+
+    const addGroup = (title, icon, items, mapFn) => {
+      if(!items || !items.length) return;
+      total += items.length;
+      html += `<div class="sr-group"><div class="sr-group-title">${icon} ${title} (${fa(items.length)})</div>`;
+      items.forEach(it => { html += mapFn(it); });
+      html += `</div>`;
+    };
+
+    addGroup("اخبار", "📢", newsR.data, n => `<div class="sr-item" onclick="closeSearch();showPage('page-news')"><div class="sr-title">${esc(n.title)}</div><div class="sr-desc">${esc(n.content||"")}</div></div>`);
+    addGroup("کتاب‌ها", "📚", libraryR.data, bk => `<div class="sr-item" onclick="closeSearch();showPage('page-library')"><div class="sr-title">${esc(bk.title)}</div><div class="sr-desc">${esc(bk.description||"")}</div></div>`);
+    addGroup("ویدیوها", "🎥", videosR.data, v => `<div class="sr-item" onclick="closeSearch();showPage('page-videos')"><div class="sr-title">${esc(v.title)}</div><div class="sr-desc">${esc(v.description||"")}</div></div>`);
+    addGroup("رویدادها", "📅", eventsR.data, e => `<div class="sr-item" onclick="closeSearch();showPage('page-events')"><div class="sr-title">${esc(e.title)} (${esc(e.event_date||"")})</div><div class="sr-desc">${esc(e.description||"")}</div></div>`);
+    addGroup("کلاس‌ها", "🎓", classesR.data, c => `<div class="sr-item" onclick="closeSearch();showPage('page-classes')"><div class="sr-title">${esc(c.title)}</div><div class="sr-desc">${esc(c.description||"")} ${c.teacher?"— "+esc(c.teacher):""}</div></div>`);
+    addGroup("برنامه‌های هفتگی", "🗓", weeklyR.data, w => `<div class="sr-item" onclick="closeSearch();showPage('page-events')"><div class="sr-title">${esc(w.title)} — ${esc(w.day)}</div><div class="sr-desc">${esc(w.description||"")}</div></div>`);
+
+    // ایده‌های عمومی
+    if(ideasR.data){
+      const matchedIdeas = ideasR.data.filter(i => (i.content||"").toLowerCase().includes(q) || (i.name||"").toLowerCase().includes(q));
+      addGroup("ایده‌های تأییدشده", "💡", matchedIdeas.slice(0,5), i => `<div class="sr-item" onclick="closeSearch();showPage('page-think')"><div class="sr-title">${esc(i.name||"ناشناس")} — ${esc(i.category||"")}</div><div class="sr-desc">${esc(i.content||"")}</div></div>`);
+    }
+
+    if(total === 0){
+      res.innerHTML = '<p class="sr-empty">❌ چیزی پیدا نشد</p>';
+    } else {
+      res.innerHTML = html;
+    }
+  } catch(e) {
+    res.innerHTML = '<p class="sr-empty" style="color:red">خطا: '+esc(e.message)+'</p>';
+  }
+}
+
 window.addEventListener("storage", (e) => {
   if (e.key === "anvar_theme") {
     const newTheme = e.newValue || "light";
@@ -2380,4 +2659,4 @@ window.addEventListener("storage", (e) => {
 })();
 </script>
 </body>
-  </html>                                                         
+  </html>
