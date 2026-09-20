@@ -28,37 +28,21 @@
 
 <style>
 :root{
-  --bg:#f7fafc;
-  --bg-card:#fff;
-  --bg-soft:#f2faf8;
-  --bg-soft2:#f7fafc;
-  --text:#222;
-  --text-soft:#555;
-  --text-mute:#888;
-  --border:#d6e2e0;
-  --border-soft:#e5e7eb;
-  --accent:#084c47;
-  --accent2:#0b6b62;
-  --shadow:rgba(0,0,0,.06);
-  --shadow-strong:rgba(0,0,0,.15);
+  --bg:#f7fafc;--bg-card:#fff;--bg-soft:#f2faf8;--bg-soft2:#f7fafc;
+  --text:#222;--text-soft:#555;--text-mute:#888;
+  --border:#d6e2e0;--border-soft:#e5e7eb;
+  --accent:#084c47;--accent2:#0b6b62;
+  --shadow:rgba(0,0,0,.06);--shadow-strong:rgba(0,0,0,.15);
   --hero-bg:linear-gradient(135deg,#e6f5f3,#fff);
   --card-bg-soft:linear-gradient(135deg,#e6f5f3,#fff);
   --card-bg-soft2:linear-gradient(135deg,#fff,#f2faf8);
 }
 html[data-theme="dark"]{
-  --bg:#121a1a;
-  --bg-card:#1c2626;
-  --bg-soft:#223030;
-  --bg-soft2:#1a2424;
-  --text:#e8f0ef;
-  --text-soft:#b8c8c6;
-  --text-mute:#7a8c8a;
-  --border:#2d3e3d;
-  --border-soft:#2a3838;
-  --accent:#3aa5a5;
-  --accent2:#2e8b8b;
-  --shadow:rgba(0,0,0,.3);
-  --shadow-strong:rgba(0,0,0,.5);
+  --bg:#121a1a;--bg-card:#1c2626;--bg-soft:#223030;--bg-soft2:#1a2424;
+  --text:#e8f0ef;--text-soft:#b8c8c6;--text-mute:#7a8c8a;
+  --border:#2d3e3d;--border-soft:#2a3838;
+  --accent:#3aa5a5;--accent2:#2e8b8b;
+  --shadow:rgba(0,0,0,.3);--shadow-strong:rgba(0,0,0,.5);
   --hero-bg:linear-gradient(135deg,#1a2b29,#1c2626);
   --card-bg-soft:linear-gradient(135deg,#1a2b29,#1c2626);
   --card-bg-soft2:linear-gradient(135deg,#1c2626,#1a2b29);
@@ -171,17 +155,66 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .class-card .c-count{position:absolute;top:12px;left:46px;background:#7a3fa0;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
 .reg-list{background:var(--bg-soft2);border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
 .reg-list .reg-item{padding:5px 0;border-bottom:1px dashed var(--border)}
-.library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.book-card{background:var(--bg-card);border-radius:12px;padding:16px;box-shadow:0 4px 12px var(--shadow);position:relative;border-top:4px solid #2e8b57;text-align:center;cursor:pointer;transition:transform .25s,box-shadow .25s;color:var(--text)}
+.library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.book-card{background:var(--bg-card);border-radius:14px;padding:16px;box-shadow:0 4px 12px var(--shadow);position:relative;border-top:4px solid #2e8b57;text-align:center;cursor:pointer;transition:transform .25s,box-shadow .25s;color:var(--text)}
 .book-card:hover{transform:translateY(-5px);box-shadow:0 10px 24px var(--shadow-strong)}
-.book-card .book-icon{font-size:40px;margin-bottom:6px}
-.book-card h4{margin:6px 0;color:var(--accent);font-size:14px}
+.book-card .book-icon{font-size:50px;margin-bottom:8px}
+.book-card .book-cover-img{width:100%;height:200px;object-fit:cover;border-radius:10px;background:var(--bg-soft);margin-bottom:10px;display:block}
+.book-card h4{margin:6px 0;color:var(--accent);font-size:15px}
+.book-card .b-author{font-size:11px;color:var(--text-mute);margin-bottom:4px}
 .book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:10px;padding:2px 10px;border-radius:10px;margin-bottom:6px}
 html[data-theme="dark"] .book-card .b-cat{background:#1e3533;color:#7ef5d4}
-.book-card .b-desc{font-size:11px;color:var(--text-mute);line-height:1.5;margin:6px 0}
-.book-card .b-download{display:inline-block;background:#2e8b57;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:12px;margin-top:6px}
-.book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.book-card .sort-badge{position:absolute;top:8px;right:8px;background:#c48b1f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:bold}
+.book-card .b-desc{font-size:11px;color:var(--text-mute);line-height:1.5;margin:6px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;line-height:1;z-index:2}
+.book-card .sort-badge{position:absolute;top:8px;right:8px;background:#c48b1f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:bold;z-index:2}
+.book-card .b-media-icons{display:flex;gap:6px;justify-content:center;margin-top:8px}
+.book-card .b-media-icons span{font-size:16px}
+
+/* ============ صفحه‌ی جزئیات کتاب ============ */
+.book-detail-card{background:var(--bg-card);border-radius:18px;padding:24px;box-shadow:0 8px 28px var(--shadow);display:flex;gap:24px;flex-wrap:wrap;margin-top:10px}
+.book-detail-cover{width:200px;height:290px;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px var(--shadow-strong);flex-shrink:0;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:80px}
+.book-detail-body{flex:1;min-width:240px}
+.book-detail-body h2{margin:0 0 8px;color:var(--accent);font-size:24px}
+.book-detail-author{color:var(--text-soft);font-size:14px;margin:0 0 6px}
+.book-detail-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:11px;padding:3px 12px;border-radius:12px;margin-bottom:12px}
+html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
+.book-detail-desc{color:var(--text-soft);line-height:1.9;font-size:14px;margin-bottom:18px;white-space:pre-line}
+.book-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.book-actions a,.book-actions button{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:bold;font-family:inherit;border:none;cursor:pointer;transition:transform .2s}
+.book-actions a:hover,.book-actions button:hover{transform:translateY(-2px)}
+.btn-download{background:#2e8b57;color:#fff}
+.btn-audio{background:#1e6bb8;color:#fff}
+.btn-parts{background:#0b6b62;color:#fff}
+.btn-parts.active{background:#b91c1c}
+
+/* ============ پخش‌کننده‌ی صوت ============ */
+.audio-player{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:14px;padding:16px;color:#fff;margin-bottom:16px;box-shadow:0 6px 20px rgba(8,76,71,.3)}
+.audio-player .ap-title{font-size:13px;margin-bottom:12px;opacity:.95;font-weight:bold;display:flex;align-items:center;gap:6px}
+.audio-player .ap-controls{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.audio-player .ap-play{background:#fff;color:#084c47;border:none;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.audio-player .ap-play:hover{transform:scale(1.05)}
+.audio-player .ap-skip{background:rgba(255,255,255,.15);color:#fff;border:none;width:38px;height:38px;border-radius:50%;font-size:14px;cursor:pointer;flex-shrink:0}
+.audio-player .ap-progress{flex:1;min-width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px;position:relative;cursor:pointer}
+.audio-player .ap-progress-bar{height:100%;background:#fff;border-radius:3px;width:0%;transition:width .1s}
+.audio-player .ap-time{font-size:11px;font-family:monospace;min-width:80px;text-align:center;opacity:.9}
+.audio-player .ap-extras{display:flex;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap}
+.audio-player .ap-volume{width:80px;accent-color:#fff}
+.audio-player .ap-speed{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 10px;font-size:12px;font-family:inherit;cursor:pointer}
+
+/* ============ لیست قسمت‌ها ============ */
+.parts-container{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.parts-container.hidden{display:none}
+.part-item{background:var(--bg-soft);border:1px solid var(--border);border-right:4px solid #0b6b62;padding:14px 16px;border-radius:10px;transition:background .2s,transform .2s;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.part-item:hover{background:var(--bg-soft2);transform:translateX(-4px)}
+.part-item .part-info{flex:1;min-width:150px}
+.part-item .part-title{font-weight:bold;color:var(--text);font-size:14px;display:block;margin-bottom:4px}
+.part-item .part-meta{font-size:11px;color:var(--text-mute)}
+.part-item .part-actions{display:flex;gap:6px;flex-wrap:wrap}
+.part-item .part-actions a,.part-item .part-actions button{padding:6px 12px;border-radius:8px;font-size:12px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;font-weight:bold}
+.part-btn-open{background:#1e6bb8;color:#fff}
+.part-btn-dl{background:#2e8b57;color:#fff}
+
+/* ============ ویدیو و بقیه ============ */
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .video-card{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative}
 .video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
@@ -295,7 +328,20 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,#1c2626);color:#f0d68a}
 .locked-ideas .lock-icon{font-size:38px;display:block;margin-bottom:10px}
 .sort-hint{font-size:11px;color:var(--text-mute);margin-top:-6px}
+/* حالت‌های ریسپانسیو */
 @media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}}
+@media(max-width:600px){
+  .library-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .book-card{padding:12px}
+  .book-card .book-cover-img{height:170px}
+  .book-card h4{font-size:13px}
+  .book-detail-card{padding:16px;gap:16px}
+  .book-detail-cover{width:100%;height:260px;font-size:60px}
+  .book-detail-body h2{font-size:20px}
+  .book-actions a,.book-actions button{padding:9px 14px;font-size:13px;flex:1;justify-content:center}
+  .audio-player .ap-progress{min-width:100%}
+  .audio-player .ap-time{min-width:auto}
+}
 </style>
 </head>
 <body>
@@ -371,7 +417,6 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 </section>
 
-<!-- 📲 دکمه افزودن به صفحه اصلی -->
 <section>
 <div class="install-box" id="installBox">
 <h3>📲 سایت رو روی صفحه اصلی گوشیت داشته باش!</h3>
@@ -444,7 +489,39 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>📚 کتابخانه</h2></div>
+
+<!-- نمای لیست کتاب‌ها -->
+<div id="booksListView">
+<p style="text-align:center;color:var(--text-mute);font-size:13px;margin-bottom:18px">برای مشاهده‌ی توضیحات و قسمت‌های هر کتاب، روی آن کلیک کنید</p>
 <div class="library-grid" id="libraryGrid"></div>
+</div>
+
+<!-- نمای جزئیات کتاب -->
+<div id="bookDetailView" style="display:none">
+<button class="back-btn" onclick="backToBooksList()">← بازگشت به لیست کتاب‌ها</button>
+<div class="book-detail-card">
+<div id="bdCover" class="book-detail-cover">📖</div>
+<div class="book-detail-body">
+<h2 id="bdTitle"></h2>
+<p class="book-detail-author" id="bdAuthor"></p>
+<span class="book-detail-cat" id="bdCat" style="display:none"></span>
+<div class="book-detail-desc" id="bdDesc"></div>
+
+<!-- پخش‌کننده صوت -->
+<div id="bdAudioPlayer"></div>
+
+<!-- دکمه‌های دانلود -->
+<div class="book-actions" id="bdActions"></div>
+
+<!-- دکمه قسمت‌ها -->
+<button class="btn-parts" id="partsToggleBtn" onclick="toggleBookParts()">📑 قسمت‌های این کتاب</button>
+
+<!-- لیست قسمت‌ها -->
+<div class="parts-container hidden" id="partsContainer"></div>
+</div>
+</div>
+</div>
+
 </section>
 </div>
 
@@ -795,17 +872,25 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📚 افزودن کتاب/جزوه</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="bookForm">
-<input id="bTitle" placeholder="عنوان" required>
+<input id="bTitle" placeholder="عنوان کتاب" required>
+<input id="bAuthor" placeholder="نویسنده (اختیاری)">
 <select id="bCat"><option value="قرآن">قرآن</option><option value="احکام">احکام</option><option value="تقویتی درسی">تقویتی</option><option value="رسانه">رسانه</option><option value="عمومی">عمومی</option></select>
-<textarea id="bDesc" placeholder="توضیحات"></textarea>
-<input type="file" id="bFile" accept=".pdf,.doc,.docx,.zip,.ppt,.pptx" required>
+<textarea id="bDesc" placeholder="توضیحات کتاب..."></textarea>
+<label style="font-size:12px;color:var(--text-soft)">🖼 عکس جلد (اختیاری):</label>
+<input type="file" id="bCover" accept="image/*">
+<label style="font-size:12px;color:var(--text-soft)">📄 فایل اصلی (PDF یا هرچیز، اختیاری):</label>
+<input type="file" id="bFile" accept=".pdf,.doc,.docx,.zip,.ppt,.pptx">
+<label style="font-size:12px;color:var(--text-soft)">🎧 فایل صوتی (اختیاری):</label>
+<input type="file" id="bAudio" accept="audio/*">
+<label style="font-size:12px;color:var(--text-soft)">📑 قسمت‌ها (هر خط: عنوان | لینک | تعداد صفحه)</label>
+<textarea id="bParts" placeholder="فصل اول | https://... | 12&#10;فصل دوم | https://... | 18" style="min-height:80px"></textarea>
 <input id="bSort" type="number" placeholder="ترتیب نمایش (مثلاً ۱، ۲، ۳)" style="margin-bottom:6px">
 <p class="sort-hint">عدد کمتر = بالاتر</p>
-<button class="btn" type="submit">آپلود</button>
+<button class="btn" type="submit">💾 ذخیره کتاب</button>
 </form>
 <p id="bookMsg"></p>
 </div>
-<h4 style="margin-top:20px;font-size:14px;color:var(--accent)">📋 لیست کتاب‌ها (برای حذف)</h4>
+<h4 style="margin-top:20px;font-size:14px;color:var(--accent)">📋 لیست کتاب‌ها (ویرایش/حذف)</h4>
 <div id="adminLibraryGrid" class="library-grid"></div>
 </div>
 
@@ -896,16 +981,14 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
-let adminPassword = null, currentPanel = null, allMembers = [], currentMember = null, allPolls = [], allVotes = [], galleryImages = [], lbIndex = 0, allClasses = [], allClassRegs = [], allSessions = [], currentSessionId = null;
+let adminPassword = null, currentPanel = null, allMembers = [], currentMember = null, allPolls = [], allVotes = [], galleryImages = [], lbIndex = 0, allClasses = [], allClassRegs = [], allSessions = [], currentSessionId = null, allBooks = [], currentBook = null;
 
 const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "resane777", roshd: "roshd666" };
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
 /* ============ تغییر تم ============ */
-function getCurrentTheme(){
-  return document.documentElement.getAttribute("data-theme") || "light";
-}
+function getCurrentTheme(){ return document.documentElement.getAttribute("data-theme") || "light"; }
 function applyTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
   try { localStorage.setItem("anvar_theme", theme); } catch(e){}
@@ -918,22 +1001,13 @@ function updateThemeMenuItem(){
   const label = document.getElementById("themeLabel");
   if (!icon || !label) return;
   const current = getCurrentTheme();
-  if (current === "dark") {
-    icon.textContent = "☀️";
-    label.textContent = "حالت روز";
-  } else {
-    icon.textContent = "🌙";
-    label.textContent = "حالت شب";
-  }
+  if (current === "dark") { icon.textContent = "☀️"; label.textContent = "حالت روز"; }
+  else { icon.textContent = "🌙"; label.textContent = "حالت شب"; }
 }
-function toggleTheme(){
-  const current = getCurrentTheme();
-  applyTheme(current === "dark" ? "light" : "dark");
-}
+function toggleTheme(){ applyTheme(getCurrentTheme() === "dark" ? "light" : "dark"); }
 
 /* ============ نصب PWA ============ */
 let deferredPrompt = null;
-
 function showInstallBoxIfNeeded(){
   const box = document.getElementById("installBox");
   if (!box) return;
@@ -942,19 +1016,17 @@ function showInstallBoxIfNeeded(){
   if (isStandalone) { localStorage.setItem("pwa_installed", "1"); box.style.display = "none"; return; }
   box.style.display = "block";
 }
-
 window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; });
 window.addEventListener("appinstalled", () => { deferredPrompt = null; localStorage.setItem("pwa_installed", "1"); const box = document.getElementById("installBox"); if (box) box.style.display = "none"; });
-
 function installPWA() {
   if (!deferredPrompt) {
     const ua = navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipad|ipod/.test(ua);
     const isAndroid = /android/.test(ua);
     const isChrome = /chrome/.test(ua) && !/edg/.test(ua);
-    if (isIOS) { alert("📲 افزودن به صفحه اصلی روی آیفون:\n\n۱. دکمه‌ی اشتراک‌گذاری (⬆️) پایین سافاری رو بزن\n۲. «Add to Home Screen» یا «افزودن به صفحه اصلی» رو انتخاب کن"); }
-    else if (isAndroid && isChrome) { alert("📲 افزودن به صفحه اصلی روی اندروید:\n\nاز منوی مرورگر (سه نقطه بالا سمت راست) گزینه‌ی «Install app» یا «Add to Home screen» رو بزن"); }
-    else { alert("📲 برای افزودن:\n\nاز منوی مرورگر گزینه‌ی «Install App» یا «افزودن به صفحه اصلی» رو انتخاب کن"); }
+    if (isIOS) alert("📲 افزودن به صفحه اصلی روی آیفون:\n\n۱. دکمه‌ی اشتراک‌گذاری (⬆️) پایین سافاری رو بزن\n۲. «Add to Home Screen» یا «افزودن به صفحه اصلی» رو انتخاب کن");
+    else if (isAndroid && isChrome) alert("📲 افزودن به صفحه اصلی روی اندروید:\n\nاز منوی مرورگر (سه نقطه بالا سمت راست) گزینه‌ی «Install app» یا «Add to Home screen» رو بزن");
+    else alert("📲 برای افزودن:\n\nاز منوی مرورگر گزینه‌ی «Install App» یا «افزودن به صفحه اصلی» رو انتخاب کن");
     return;
   }
   deferredPrompt.prompt();
@@ -963,7 +1035,6 @@ function installPWA() {
     deferredPrompt = null;
   });
 }
-
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js").then(() => console.log("✅ Service Worker ثبت شد")).catch(err => console.log("❌ خطای Service Worker:", err));
@@ -1001,6 +1072,7 @@ function showPage(id){
   const p=document.getElementById(id);
   if(p){p.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
   if(id === "page-think" && currentMember){ loadMyIdeasInThinkPage(); }
+  if(id === "page-library"){ backToBooksList(); }
 }
 function goHome(){showPage("page-home");}
 
@@ -1182,21 +1254,350 @@ async function loadVideos(){
 }
 async function deleteVideo(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadVideos();}
 
+/* ============ کتابخانه ============ */
 async function loadLibrary(){
   const b=document.getElementById("libraryGrid");if(!b)return;
-  const {data}=await db.from("library").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
-  if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute)'>کتابی نیست.</p>";return;}
-  b.innerHTML=data.map(bk=>`<div class="book-card">${adminPassword&&bk.sort_order?`<span class="sort-badge">#${fa(bk.sort_order)}</span>`:""}${adminPassword?`<button class="del-btn" onclick="deleteBook(${bk.id})">✕</button>`:""}<div class="book-icon">📖</div><h4>${esc(bk.title)}</h4>${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}<a href="${esc(bk.file_url)}" target="_blank" download class="b-download">📥 دانلود</a></div>`).join("");
+  b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
+  const {data, error}=await db.from("library").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
+  if(error){b.innerHTML="<p style='color:red'>خطا: "+esc(error.message)+"</p>";return;}
+  allBooks=data||[];
+  if(!allBooks.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>هنوز کتابی اضافه نشده.</p>";return;}
+  b.innerHTML=allBooks.map(bk=>{
+    const coverHtml = bk.cover_url
+      ? `<img src="${esc(bk.cover_url)}" class="book-cover-img" alt="${esc(bk.title)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="book-icon" style="display:none">📖</div>`
+      : `<div class="book-icon">📖</div>`;
+    const mediaIcons = `${bk.file_url?'<span title="فایل">📄</span>':''}${bk.audio_url?'<span title="صوتی">🎧</span>':''}`;
+    return `<div class="book-card" onclick="openBookDetail(${bk.id})">
+      ${adminPassword&&bk.sort_order?`<span class="sort-badge">#${fa(bk.sort_order)}</span>`:""}
+      ${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteBook(${bk.id})">✕</button>`:""}
+      ${coverHtml}
+      <h4>${esc(bk.title)}</h4>
+      ${bk.author?`<div class="b-author">✍️ ${esc(bk.author)}</div>`:""}
+      ${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}
+      ${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}
+      ${mediaIcons?`<div class="b-media-icons">${mediaIcons}</div>`:""}
+    </div>`;
+  }).join("");
 }
 
 async function loadAdminLibrary(){
   const b=document.getElementById("adminLibraryGrid");if(!b)return;
-  const {data}=await db.from("library").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
-  if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>کتابی نیست.</p>";return;}
-  b.innerHTML=data.map(bk=>`<div class="book-card">${bk.sort_order?`<span class="sort-badge">#${fa(bk.sort_order)}</span>`:""}<button class="del-btn" onclick="deleteBook(${bk.id})">✕</button><div class="book-icon">📖</div><h4>${esc(bk.title)}</h4>${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}${bk.description?`<div class="b-desc">${esc(bk.description)}</div>`:""}<a href="${esc(bk.file_url)}" target="_blank" download class="b-download">📥 دانلود</a></div>`).join("");
+  const {data, error}=await db.from("library").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
+  if(error){b.innerHTML="<p style='color:red;font-size:12px'>خطا: "+esc(error.message)+"</p>";return;}
+  allBooks=data||[];
+  if(!allBooks.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>کتابی نیست.</p>";return;}
+  b.innerHTML=allBooks.map(bk=>{
+    const coverHtml = bk.cover_url
+      ? `<img src="${esc(bk.cover_url)}" class="book-cover-img" alt="${esc(bk.title)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="book-icon" style="display:none">📖</div>`
+      : `<div class="book-icon">📖</div>`;
+    const mediaIcons = `${bk.file_url?'<span title="فایل">📄</span>':''}${bk.audio_url?'<span title="صوتی">🎧</span>':''}`;
+    return `<div class="book-card">
+      ${bk.sort_order?`<span class="sort-badge">#${fa(bk.sort_order)}</span>`:""}
+      <button class="del-btn" onclick="deleteBook(${bk.id})">✕</button>
+      ${coverHtml}
+      <h4>${esc(bk.title)}</h4>
+      ${bk.author?`<div class="b-author">✍️ ${esc(bk.author)}</div>`:""}
+      ${bk.category?`<span class="b-cat">${esc(bk.category)}</span>`:""}
+      ${mediaIcons?`<div class="b-media-icons">${mediaIcons}</div>`:""}
+    </div>`;
+  }).join("");
 }
 
-async function deleteBook(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadLibrary();loadAdminLibrary();}
+async function deleteBook(id){
+  if(!confirm("حذف شود؟")) return;
+  const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});
+  if(error){alert("خطا: "+error.message);return;}
+  loadLibrary();loadAdminLibrary();
+}
+
+/* ============ جزئیات کتاب ============ */
+async function openBookDetail(bookId){
+  const bk = allBooks.find(x=>x.id===bookId);
+  if(!bk) return;
+  currentBook = bk;
+
+  // پوشش
+  const coverEl = document.getElementById("bdCover");
+  if(bk.cover_url){
+    coverEl.innerHTML = `<img src="${esc(bk.cover_url)}" style="width:100%;height:100%;object-fit:cover;border-radius:12px" alt="${esc(bk.title)}">`;
+  } else {
+    coverEl.innerHTML = "📖";
+  }
+
+  // اطلاعات
+  document.getElementById("bdTitle").textContent = bk.title || "";
+  document.getElementById("bdAuthor").textContent = bk.author ? "✍️ نویسنده: " + bk.author : "";
+  const catEl = document.getElementById("bdCat");
+  if(bk.category){ catEl.textContent = bk.category; catEl.style.display = "inline-block"; }
+  else { catEl.style.display = "none"; }
+  document.getElementById("bdDesc").textContent = bk.description || "";
+
+  // پخش‌کننده صوت
+  const audioBox = document.getElementById("bdAudioPlayer");
+  if(bk.audio_url){
+    audioBox.innerHTML = renderAudioPlayer(bk.audio_url);
+    setTimeout(() => setupAudioPlayer(), 100);
+  } else {
+    audioBox.innerHTML = "";
+  }
+
+  // دکمه‌ها
+  const actionsBox = document.getElementById("bdActions");
+  let actionsHtml = "";
+  if(bk.file_url){
+    actionsHtml += `<a href="${esc(bk.file_url)}" target="_blank" download class="btn-download">📥 دانلود فایل</a>`;
+  }
+  actionsBox.innerHTML = actionsHtml;
+
+  // قسمت‌ها
+  const partsBox = document.getElementById("partsContainer");
+  partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>بارگذاری قسمت‌ها...</p>";
+  partsBox.classList.add("hidden");
+  const btn = document.getElementById("partsToggleBtn");
+  btn.classList.remove("active");
+  btn.textContent = "📑 قسمت‌های این کتاب";
+
+  const {data: parts, error} = await db.from("book_parts").select("*").eq("book_id", bookId).order("part_order",{ascending:true});
+  if(error || !parts || !parts.length){
+    partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>هنوز قسمتی برای این کتاب ثبت نشده.</p>";
+  } else {
+    partsBox.innerHTML = parts.map(p => {
+      const isAudio = p.file_type === "audio" || (p.file_url && /\.(mp3|wav|m4a|ogg)$/i.test(p.file_url));
+      const btnOpen = isAudio
+        ? `<button class="part-btn-open" onclick="playPartAudio('${esc(p.file_url||'')}')">🎧 پخش صوت</button>`
+        : (p.file_url ? `<a href="${esc(p.file_url)}" target="_blank" class="part-btn-open">📂 باز کردن</a>` : "");
+      const btnDl = p.file_url
+        ? `<a href="${esc(p.file_url)}" target="_blank" download class="part-btn-dl">📥 دانلود</a>`
+        : "";
+      return `<div class="part-item">
+        <div class="part-info">
+          <span class="part-title">${esc(p.title)}</span>
+          ${p.pages?`<span class="part-meta">📄 ${fa(p.pages)} صفحه</span>`:""}
+        </div>
+        <div class="part-actions">${btnOpen}${btnDl}</div>
+      </div>`;
+    }).join("");
+  }
+
+  // نمایش
+  document.getElementById("booksListView").style.display = "none";
+  document.getElementById("bookDetailView").style.display = "block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function backToBooksList(){
+  const dv = document.getElementById("bookDetailView");
+  const lv = document.getElementById("booksListView");
+  if(dv) dv.style.display = "none";
+  if(lv) lv.style.display = "block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function toggleBookParts(){
+  const box = document.getElementById("partsContainer");
+  const btn = document.getElementById("partsToggleBtn");
+  const hidden = box.classList.contains("hidden");
+  if(hidden){
+    box.classList.remove("hidden");
+    btn.classList.add("active");
+    btn.textContent = "✖ بستن قسمت‌ها";
+  } else {
+    box.classList.add("hidden");
+    btn.classList.remove("active");
+    btn.textContent = "📑 قسمت‌های این کتاب";
+  }
+}
+
+function playPartAudio(url){
+  if(!url){ alert("فایلی وجود ندارد"); return; }
+  // جایگزینی پخش‌کننده با فایل جدید
+  const audioBox = document.getElementById("bdAudioPlayer");
+  audioBox.innerHTML = renderAudioPlayer(url);
+  setTimeout(() => {
+    setupAudioPlayer();
+    const audio = document.getElementById("globalAudio");
+    if(audio) audio.play();
+  }, 100);
+}
+
+/* ============ پخش‌کننده‌ی صوت ============ */
+function renderAudioPlayer(url){
+  return `<div class="audio-player">
+    <div class="ap-title">🎧 پخش صوت</div>
+    <audio id="globalAudio" preload="metadata" src="${esc(url)}"></audio>
+    <div class="ap-controls">
+      <button class="ap-skip" onclick="audioSkip(-10)" title="۱۰ ثانیه عقب">⏪</button>
+      <button class="ap-play" id="audioPlayBtn" onclick="audioToggle()">▶️</button>
+      <button class="ap-skip" onclick="audioSkip(10)" title="۱۰ ثانیه جلو">⏩</button>
+      <div class="ap-progress" id="audioProgress" onclick="audioSeek(event)">
+        <div class="ap-progress-bar" id="audioProgressBar"></div>
+      </div>
+      <div class="ap-time" id="audioTime">۰:۰۰ / ۰:۰۰</div>
+    </div>
+    <div class="ap-extras">
+      <span>🔊</span>
+      <input type="range" class="ap-volume" id="audioVolume" min="0" max="1" step="0.1" value="1" oninput="audioSetVolume(this.value)">
+      <select class="ap-speed" id="audioSpeed" onchange="audioSetSpeed(this.value)">
+        <option value="0.5">۰.۵x</option>
+        <option value="1" selected>۱x</option>
+        <option value="1.25">۱.۲۵x</option>
+        <option value="1.5">۱.۵x</option>
+        <option value="2">۲x</option>
+      </select>
+    </div>
+  </div>`;
+}
+
+let audioPlayerBound = false;
+function setupAudioPlayer(){
+  const audio = document.getElementById("globalAudio");
+  if(!audio) return;
+  audio.addEventListener("timeupdate", () => {
+    const cur = audio.currentTime, dur = audio.duration || 0;
+    const pct = dur ? (cur/dur)*100 : 0;
+    const bar = document.getElementById("audioProgressBar");
+    const time = document.getElementById("audioTime");
+    if(bar) bar.style.width = pct + "%";
+    if(time) time.textContent = formatTime(cur) + " / " + formatTime(dur);
+  });
+  audio.addEventListener("ended", () => {
+    const btn = document.getElementById("audioPlayBtn");
+    if(btn) btn.textContent = "▶️";
+  });
+  audio.addEventListener("play", () => {
+    const btn = document.getElementById("audioPlayBtn");
+    if(btn) btn.textContent = "⏸";
+  });
+  audio.addEventListener("pause", () => {
+    const btn = document.getElementById("audioPlayBtn");
+    if(btn) btn.textContent = "▶️";
+  });
+}
+
+function audioToggle(){
+  const audio = document.getElementById("globalAudio");
+  if(!audio) return;
+  if(audio.paused) audio.play();
+  else audio.pause();
+}
+function audioSkip(sec){
+  const audio = document.getElementById("globalAudio");
+  if(!audio) return;
+  audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + sec));
+}
+function audioSeek(e){
+  const audio = document.getElementById("globalAudio");
+  if(!audio) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  if(audio.duration) audio.currentTime = pct * audio.duration;
+}
+function audioSetVolume(v){
+  const audio = document.getElementById("globalAudio");
+  if(audio) audio.volume = parseFloat(v);
+}
+function audioSetSpeed(v){
+  const audio = document.getElementById("globalAudio");
+  if(audio) audio.playbackRate = parseFloat(v);
+}
+function formatTime(s){
+  s = Math.floor(s || 0);
+  const m = Math.floor(s/60), sec = s%60;
+  return `${fa(m)}:${sec<10?'۰':''}${fa(sec)}`;
+}
+
+/* ============ ذخیره‌ی کتاب ============ */
+document.getElementById("bookForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const m = document.getElementById("bookMsg");
+  const t = document.getElementById("bTitle").value.trim();
+  const author = document.getElementById("bAuthor").value.trim();
+  const cat = document.getElementById("bCat").value;
+  const desc = document.getElementById("bDesc").value.trim();
+  const coverFile = document.getElementById("bCover").files[0];
+  const bookFile = document.getElementById("bFile").files[0];
+  const audioFile = document.getElementById("bAudio").files[0];
+  const partsRaw = document.getElementById("bParts").value.trim();
+  const srt = getSort("bSort");
+
+  if(!t){ m.textContent="عنوان الزامی"; m.style.color="red"; return; }
+  m.textContent = "در حال آپلود..."; m.style.color="var(--text-soft)";
+
+  // ۱. آپلود عکس جلد
+  let coverUrl = "";
+  if(coverFile){
+    if(coverFile.size > 5*1024*1024){ m.textContent="عکس کمتر از ۵ مگ"; m.style.color="red"; return; }
+    const cfn = "cover_"+Date.now()+"_"+coverFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
+    const {error:ce} = await db.storage.from("library").upload(cfn, coverFile);
+    if(ce){ m.textContent="خطا عکس: "+ce.message; m.style.color="red"; return; }
+    coverUrl = db.storage.from("library").getPublicUrl(cfn).data.publicUrl;
+  }
+
+  // ۲. آپلود فایل اصلی
+  let mainUrl = "";
+  let ext = "";
+  if(bookFile){
+    if(bookFile.size > 50*1024*1024){ m.textContent="فایل اصلی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
+    const bfn = Date.now()+"_"+bookFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
+    const {error:be} = await db.storage.from("library").upload(bfn, bookFile);
+    if(be){ m.textContent="خطا فایل: "+be.message; m.style.color="red"; return; }
+    mainUrl = db.storage.from("library").getPublicUrl(bfn).data.publicUrl;
+    ext = bookFile.name.split(".").pop();
+  }
+
+  // ۳. آپلود فایل صوتی
+  let audioUrl = "";
+  if(audioFile){
+    if(audioFile.size > 50*1024*1024){ m.textContent="فایل صوتی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
+    const afn = "audio_"+Date.now()+"_"+audioFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
+    const {error:ae} = await db.storage.from("library").upload(afn, audioFile);
+    if(ae){ m.textContent="خطا صوت: "+ae.message; m.style.color="red"; return; }
+    audioUrl = db.storage.from("library").getPublicUrl(afn).data.publicUrl;
+  }
+
+  // ۴. ذخیره‌ی کتاب
+  const {data: inserted, error: de} = await db.from("library").insert([{
+    title: t,
+    author: author || null,
+    description: desc || null,
+    category: cat,
+    file_url: mainUrl || null,
+    file_type: ext || null,
+    cover_url: coverUrl || null,
+    audio_url: audioUrl || null,
+    sort_order: srt
+  }]).select();
+
+  if(de){ m.textContent="خطا: "+de.message; m.style.color="red"; return; }
+  const bookId = inserted[0].id;
+
+  // ۵. ذخیره‌ی قسمت‌ها
+  if(partsRaw){
+    const lines = partsRaw.split("\n").map(l=>l.trim()).filter(l=>l);
+    const partsToInsert = lines.map((line, i) => {
+      const parts = line.split("|").map(s=>(s||"").trim());
+      const title = parts[0] || ("قسمت "+(i+1));
+      const link = parts[1] || "";
+      const pages = parts[2] ? parseInt(parts[2]) : null;
+      const ftype = link && /\.(mp3|wav|m4a|ogg)$/i.test(link) ? "audio" : "file";
+      return { book_id: bookId, title, file_url: link || null, file_type: ftype, pages, part_order: i };
+    });
+    const {error: pe} = await db.from("book_parts").insert(partsToInsert);
+    if(pe){ m.textContent = "کتاب ذخیره شد ولی قسمت‌ها خطا: "+pe.message; m.style.color="orange"; loadLibrary(); loadAdminLibrary(); return; }
+  }
+
+  m.textContent="✅ کتاب ذخیره شد"; m.style.color="green";
+  e.target.reset();
+  loadLibrary(); loadAdminLibrary();
+});
+
+async function deleteBook(id){
+  if(!confirm("حذف شود؟")) return;
+  const {error} = await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});
+  if(error){ alert("خطا: "+error.message); return; }
+  loadLibrary();
+  loadAdminLibrary();
+}
 
 async function loadClasses(){
   const b=document.getElementById("classesGrid");if(!b)return;
@@ -1547,22 +1948,6 @@ document.getElementById("videoForm").addEventListener("submit",async e=>{
   const {error:de}=await db.rpc("admin_add_video",{admin_pass:adminPassword,p_title:t,p_url:ud.publicUrl,p_thumb:"",p_desc:d,p_sort:srt});
   if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
   m.textContent="✅";m.style.color="green";e.target.reset();loadVideos();
-});
-
-document.getElementById("bookForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-  const m=document.getElementById("bookMsg"),t=document.getElementById("bTitle").value.trim(),f=document.getElementById("bFile").files[0],srt=getSort("bSort");
-  if(!t||!f){m.textContent="عنوان و فایل";m.style.color="red";return;}
-  if(f.size>20*1024*1024){m.textContent="کمتر از ۲۰ مگ";m.style.color="red";return;}
-  m.textContent="آپلود...";m.style.color="var(--text-soft)";
-  const fn=Date.now()+"_"+f.name.replace(/[^a-zA-Z0-9._-]/g,"");
-  const {error:ue}=await db.storage.from("library").upload(fn,f);
-  if(ue){m.textContent="خطا: "+ue.message;m.style.color="red";return;}
-  const {data:ud}=db.storage.from("library").getPublicUrl(fn);
-  const ext=f.name.split(".").pop();
-  const {error:de}=await db.rpc("admin_add_book",{admin_pass:adminPassword,p_title:t,p_desc:document.getElementById("bDesc").value.trim(),p_url:ud.publicUrl,p_type:ext,p_cat:document.getElementById("bCat").value,p_sort:srt});
-  if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
-  m.textContent="✅";m.style.color="green";e.target.reset();loadLibrary();loadAdminLibrary();
 });
 
 document.getElementById("sendMsgForm").addEventListener("submit",async e=>{
