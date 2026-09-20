@@ -206,45 +206,85 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .part-btn-open{background:#1e6bb8;color:#fff}
 .part-btn-dl{background:#2e8b57;color:#fff}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.video-card{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative}
-.video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
+.video-card{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.video-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px var(--shadow-strong)}
+.video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000;pointer-events:none}
 .video-card .v-info{padding:12px}
 .video-card h4{margin:0 0 6px;color:var(--accent);font-size:14px}
 .video-card .v-desc{font-size:11px;color:var(--text-mute);line-height:1.5}
+.video-card .v-stats{display:flex;gap:12px;margin-top:8px;font-size:12px;color:var(--text-soft)}
+.video-card .v-stats span{display:inline-flex;align-items:center;gap:4px}
 .video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1;z-index:2}
 .video-card .sort-badge{position:absolute;top:8px;right:8px;background:#c48b1f;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;z-index:2;font-weight:bold}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.news-card{background:var(--bg-card);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);border-right:5px solid #0b6b62;position:relative;color:var(--text)}
-.news-card.pinned{border-right-color:#c48b1f;background:linear-gradient(135deg,#fffaf0,#fff)}
-html[data-theme="dark"] .news-card.pinned{background:linear-gradient(135deg,#2a2418,#1c2626)}
-.news-card .pin-badge{position:absolute;top:10px;left:10px;background:#c48b1f;color:#fff;font-size:10px;padding:3px 10px;border-radius:12px}
-.news-card .sort-badge{position:absolute;top:10px;right:10px;background:#1e6bb8;color:#fff;font-size:10px;padding:3px 10px;border-radius:12px;font-weight:bold}
-.news-card h4{margin:6px 0 10px;color:var(--accent);font-size:15px}
-.news-card .content{font-size:12px;line-height:1.8;color:var(--text-soft);white-space:pre-line}
-.news-card .date{font-size:11px;color:var(--text-mute);margin-top:10px}
-.news-card .del-btn{position:absolute;bottom:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
-.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.event-card{background:var(--card-bg-soft);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);border-top:4px solid #1e6bb8;position:relative;color:var(--text)}
-.event-card .date-badge{display:inline-block;background:#1e6bb8;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
-.event-card h4{margin:6px 0;color:var(--accent);font-size:15px}
-.event-card .info{font-size:12px;color:var(--text-soft);margin:5px 0}
-.event-card .desc{font-size:11px;color:var(--text-mute);margin-top:6px;line-height:1.5}
-.event-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.poll-card{background:var(--bg-card);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);margin:12px 0;color:var(--text);position:relative}
-.poll-card.expired{opacity:.75;border:2px dashed #c94f4f}
-.poll-card h4{margin:0 0 6px;color:var(--accent);font-size:15px}
-.poll-card .sub{font-size:11px;color:var(--text-mute);margin-bottom:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
-.poll-card .expired-badge{background:#c94f4f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;font-weight:bold}
-.poll-card .expire-badge-active{background:#c48b1f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px}
-.poll-option{margin:6px 0;position:relative}
-.poll-option button{width:100%;text-align:right;background:var(--bg-soft);border:2px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;cursor:pointer;color:var(--accent);font-weight:bold;position:relative;overflow:hidden;z-index:1;font-family:inherit}
-.poll-option button.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
-.poll-option button:disabled{opacity:.6;cursor:not-allowed}
-.poll-option .bar{position:absolute;top:0;right:0;height:100%;background:linear-gradient(90deg,#d9efeb,#b8e0d9);border-radius:8px;z-index:-1;transition:width .6s ease}
-html[data-theme="dark"] .poll-option .bar{background:linear-gradient(90deg,#1e3533,#254543)}
-.poll-option button.voted .bar{background:linear-gradient(90deg,#0b6b62,#095a52);opacity:.35}
-.poll-option .result{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--accent);font-weight:bold}
-.poll-card .del-btn{position:absolute;top:14px;left:14px;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
+.video-card .play-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.55);color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:26px;pointer-events:none;z-index:1}
+
+/* ============ مودال ویدیو ============ */
+.video-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2500;justify-content:center;align-items:flex-start;padding:20px;overflow-y:auto}
+.video-modal-bg.open{display:flex}
+.video-modal{background:var(--bg-card);border-radius:18px;max-width:900px;width:100%;margin:auto;padding:20px;position:relative;color:var(--text);animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.video-modal .vm-close{position:absolute;top:12px;left:14px;background:rgba(0,0,0,.1);border:none;color:var(--text);font-size:22px;width:38px;height:38px;border-radius:50%;cursor:pointer;line-height:1;z-index:5}
+html[data-theme="dark"] .video-modal .vm-close{background:rgba(255,255,255,.1)}
+.video-modal video{width:100%;max-height:65vh;border-radius:12px;background:#000;display:block}
+.video-modal .vm-title{margin:16px 0 8px;color:var(--accent);font-size:20px;padding-left:50px}
+.video-modal .vm-desc{color:var(--text-soft);font-size:14px;line-height:1.8;margin-bottom:14px;white-space:pre-line}
+.video-modal .vm-actions{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.video-modal .vm-like-btn{background:var(--bg-soft);border:2px solid var(--border);border-radius:24px;padding:8px 18px;font-size:14px;cursor:pointer;color:var(--accent);font-weight:bold;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.video-modal .vm-like-btn:hover{background:var(--bg-soft2);transform:translateY(-2px)}
+.video-modal .vm-like-btn.liked{background:#ff4757;color:#fff;border-color:#ff4757}
+.video-modal .vm-like-btn .like-count{background:rgba(0,0,0,.08);border-radius:12px;padding:2px 10px;font-size:13px}
+.video-modal .vm-like-btn.liked .like-count{background:rgba(255,255,255,.25)}
+.video-modal .vm-comment-count{font-size:13px;color:var(--text-soft);display:inline-flex;align-items:center;gap:6px}
+.video-modal .vm-comments-section{border-top:2px solid var(--border-soft);padding-top:16px}
+.video-modal .vm-comments-section h4{margin:0 0 12px;color:var(--accent);font-size:15px}
+.video-modal .vm-comment-form{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.video-modal .vm-comment-form textarea{min-height:70px;font-size:13px}
+.video-modal .vm-comment-form button{align-self:flex-end;background:#0b6b62;color:#fff;border:none;padding:8px 20px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit}
+.video-modal .vm-comment-form button:disabled{background:#888;cursor:not-allowed}
+.video-modal .vm-login-notice{background:var(--bg-soft);border:2px dashed var(--border);border-radius:12px;padding:14px;text-align:center;font-size:13px;color:var(--text-soft);margin-bottom:16px}
+.video-modal .vm-login-notice button{background:#c48b1f;color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit;margin-top:8px}
+.video-modal .vm-comments-list{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow-y:auto;padding-right:4px}
+.video-modal .vm-comment{background:var(--bg-soft);border-radius:10px;padding:10px 12px;font-size:13px;position:relative}
+.video-modal .vm-comment .vmc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;gap:8px;flex-wrap:wrap}
+.video-modal .vm-comment .vmc-name{font-weight:bold;color:var(--accent);font-size:12px}
+.video-modal .vm-comment .vmc-date{font-size:10px;color:var(--text-mute)}
+.video-modal .vm-comment .vmc-text{color:var(--text);line-height:1.7;font-size:13px}
+.video-modal .vm-comment .vmc-del{background:#c94f4f;color:#fff;border:none;border-radius:6px;padding:2px 8px;font-size:10px;cursor:pointer;font-family:inherit;margin-top:6px}
+.video-modal .vm-comments-empty{text-align:center;color:var(--text-mute);font-size:12px;padding:14px}
+
+/* ============ بنر تولد ============ */
+.birthday-banner{background:linear-gradient(135deg,#ff6b9d,#c44569);color:#fff;border-radius:14px;padding:18px 20px;margin-bottom:16px;text-align:center;box-shadow:0 8px 24px rgba(196,69,105,.35);animation:birthdayPulse 2s ease-in-out infinite}
+@keyframes birthdayPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.birthday-banner .bb-icon{font-size:38px;display:block;margin-bottom:6px}
+.birthday-banner .bb-text{font-size:15px;font-weight:bold;line-height:1.8}
+
+/* ============ اعلان‌ها (پیام‌های خونده‌نشده) ============ */
+.messages-header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.messages-header h3{margin:0;color:var(--accent);font-size:15px;display:inline-flex;align-items:center;gap:8px}
+.messages-header .mark-all-btn{background:#2e8b57;color:#fff;border:none;padding:6px 14px;border-radius:10px;font-size:12px;font-weight:bold;cursor:pointer;font-family:inherit}
+.msg-card{cursor:pointer;transition:transform .2s}
+.msg-card:hover{transform:translateX(-3px)}
+.msg-card.unread{border-right-width:6px;background:var(--card-bg-soft)}
+.msg-card .read-badge{display:inline-block;background:#2e8b57;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;margin-right:6px}
+
+/* ============ مودال جستجو ============ */
+.search-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1500;justify-content:center;align-items:flex-start;padding:80px 20px 20px;overflow-y:auto}
+.search-modal-bg.open{display:flex}
+.search-modal{background:var(--bg-card);border-radius:16px;padding:20px;max-width:640px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
+.search-modal h3{color:var(--accent);margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:8px}
+.search-modal .sm-close{background:transparent;border:none;color:var(--text-mute);font-size:26px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
+.search-modal input[type="text"]{width:100%;padding:14px 16px;font-size:16px;border-radius:12px;border:2px solid var(--border);background:var(--bg-soft);color:var(--text)}
+.search-results{margin-top:16px;max-height:60vh;overflow-y:auto}
+.sr-group{margin-bottom:14px}
+.sr-group-title{font-size:12px;color:var(--accent2);font-weight:bold;margin-bottom:6px;padding:4px 0;border-bottom:1px dashed var(--border-soft);display:flex;align-items:center;gap:6px}
+.sr-item{background:var(--bg-soft);border-radius:10px;padding:10px 12px;margin:6px 0;font-size:13px;cursor:pointer;transition:background .2s;border-right:3px solid var(--accent2)}
+.sr-item:hover{background:var(--bg-soft2);transform:translateX(-2px)}
+.sr-item .sr-title{font-weight:bold;color:var(--text);margin-bottom:3px;font-size:13px}
+.sr-item .sr-desc{font-size:11px;color:var(--text-mute);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-empty{text-align:center;color:var(--text-mute);font-size:13px;padding:20px}
+.sr-loading{text-align:center;color:var(--text-mute);font-size:13px;padding:20px}
+.sr-hint{font-size:11px;color:var(--text-mute);text-align:center;margin-top:8px}
+
 .member{padding:10px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
 .idea{padding:10px 12px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:10px;margin-top:6px}
@@ -314,12 +354,6 @@ html[data-theme="dark"] .status{background:#1e3533;color:#7ef5d4}
 .login-tab{padding:7px 12px;background:var(--bg-soft);border:2px solid var(--border);border-radius:10px;font-size:12px;cursor:pointer;color:var(--accent);font-weight:bold;font-family:inherit;transition:all .2s}
 .login-tab.active{background:#0b6b62;color:#fff;border-color:#0b6b62}
 #panelTabs{margin:0 0 14px 0;padding:10px;background:var(--bg-soft2);border-radius:12px}
-.msg-card{background:var(--bg-card);border-radius:12px;padding:12px;margin:6px 0;box-shadow:0 3px 10px var(--shadow);border-right:4px solid #1e6bb8;font-size:12px;position:relative}
-.msg-card.unread{background:var(--card-bg-soft);border-right-color:#c48b1f}
-.msg-card h5{margin:0 0 5px;color:var(--accent);font-size:13px}
-.msg-card .m-content{color:var(--text-soft);line-height:1.6}
-.msg-card .m-date{font-size:10px;color:var(--text-mute);margin-top:6px}
-.msg-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
 .unread-badge{display:inline-block;background:#c94f4f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;margin-right:6px}
 .birthday-card{background:linear-gradient(135deg,#fff7e6,#fff);border-radius:12px;padding:12px;margin:6px 0;font-size:12px;border-right:4px solid #c48b1f}
 html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418,#1c2626)}
@@ -334,7 +368,6 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 .report-stat .ri{font-size:22px}
 .report-stat .rv{font-size:20px;font-weight:bold;color:var(--accent);margin:5px 0}
 .report-stat .rk{font-size:11px;color:var(--text-soft)}
-/* ============ گزارش هفتگی ============ */
 .weekly-report{background:var(--bg-card);border-radius:14px;padding:20px;box-shadow:0 6px 20px var(--shadow);margin-top:14px}
 .weekly-report-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;border-bottom:2px solid var(--border-soft);padding-bottom:12px}
 .weekly-report-header h3{margin:0;color:var(--accent);font-size:17px}
@@ -345,23 +378,39 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 .wr-item .wr-num{font-size:22px;font-weight:bold;color:var(--accent);margin:4px 0}
 .wr-item .wr-label{font-size:11px;color:var(--text-soft)}
 .wr-item .wr-detail{font-size:10px;color:var(--text-mute);margin-top:4px}
-/* ============ جستجوی سراسری ============ */
-.search-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1500;justify-content:center;align-items:flex-start;padding:80px 20px 20px;overflow-y:auto}
-.search-modal-bg.open{display:flex}
-.search-modal{background:var(--bg-card);border-radius:16px;padding:20px;max-width:640px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
-.search-modal h3{color:var(--accent);margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:8px}
-.search-modal .sm-close{background:transparent;border:none;color:var(--text-mute);font-size:26px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
-.search-modal input[type="text"]{width:100%;padding:14px 16px;font-size:16px;border-radius:12px;border:2px solid var(--border);background:var(--bg-soft);color:var(--text)}
-.search-results{margin-top:16px;max-height:60vh;overflow-y:auto}
-.sr-group{margin-bottom:14px}
-.sr-group-title{font-size:12px;color:var(--accent2);font-weight:bold;margin-bottom:6px;padding:4px 0;border-bottom:1px dashed var(--border-soft);display:flex;align-items:center;gap:6px}
-.sr-item{background:var(--bg-soft);border-radius:10px;padding:10px 12px;margin:6px 0;font-size:13px;cursor:pointer;transition:background .2s;border-right:3px solid var(--accent2)}
-.sr-item:hover{background:var(--bg-soft2);transform:translateX(-2px)}
-.sr-item .sr-title{font-weight:bold;color:var(--text);margin-bottom:3px;font-size:13px}
-.sr-item .sr-desc{font-size:11px;color:var(--text-mute);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sr-empty{text-align:center;color:var(--text-mute);font-size:13px;padding:20px}
-.sr-loading{text-align:center;color:var(--text-mute);font-size:13px;padding:20px}
-.sr-hint{font-size:11px;color:var(--text-mute);text-align:center;margin-top:8px}
+.membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:20px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:18px}
+.membership-card::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
+.membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:70px;opacity:.08;transform:rotate(-15deg)}
+.membership-card .mc-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:10px;margin-bottom:12px;position:relative;z-index:1}
+.membership-card .mc-brand{font-size:14px;font-weight:bold}
+.membership-card .mc-shield{font-size:22px}
+.membership-card .mc-body{display:flex;gap:14px;align-items:center;position:relative;z-index:1}
+.membership-card .mc-photo{width:72px;height:72px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,.3)}
+.membership-card .mc-photo img{width:100%;height:100%;object-fit:cover}
+.membership-card .mc-details{flex:1;min-width:0}
+.membership-card .mc-name{font-size:16px;font-weight:bold;margin-bottom:5px}
+.membership-card .mc-row{font-size:11px;margin:3px 0;opacity:.9}
+.membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:12px;letter-spacing:1px;margin-top:3px;border:1px solid rgba(255,255,255,.2)}
+.membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.2);font-size:10px;opacity:.85;position:relative;z-index:1}
+.membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:10px}
+.contact-section{background:linear-gradient(135deg,#084c47,#0b6b62);border-radius:18px;padding:28px 22px;color:#fff;text-align:center;margin:30px 0;box-shadow:0 12px 32px rgba(8,76,71,.3)}
+.contact-section h3{margin:0 0 8px;font-size:18px}
+.contact-section p{margin:0 0 18px;font-size:13px;opacity:.9}
+.contact-links{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto}
+.contact-link{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px 18px;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;transition:all .3s}
+.contact-link:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.contact-link .cl-icon{font-size:22px}
+.locked-ideas{background:linear-gradient(135deg,#fff7e6,#fff);border:2px dashed #c48b1f;border-radius:14px;padding:24px;text-align:center;color:#7a5b00;font-size:13px;line-height:1.8}
+html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,#1c2626);color:#f0d68a}
+.locked-ideas .lock-icon{font-size:38px;display:block;margin-bottom:10px}
+.sort-hint{font-size:11px;color:var(--text-mute);margin-top:-6px}
+.poll-card.expired{opacity:.75;border:2px dashed #c94f4f}
+.poll-card .sub{font-size:11px;color:var(--text-mute);margin-bottom:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.poll-card .expired-badge{background:#c94f4f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;font-weight:bold}
+.poll-card .expire-badge-active{background:#c48b1f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px}
+.poll-card .del-btn{position:absolute;top:14px;left:14px;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
+.poll-card{position:relative}
+.poll-option button:disabled{opacity:.6;cursor:not-allowed}
 @media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}}
 @media(max-width:600px){
   .library-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
@@ -374,6 +423,8 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
   .book-actions a,.book-actions button{padding:9px 14px;font-size:13px;flex:1;justify-content:center}
   .audio-player .ap-progress{min-width:100%}
   .audio-player .ap-time{min-width:auto}
+  .video-modal{padding:14px}
+  .video-modal .vm-title{font-size:17px}
 }
 </style>
 </head>
@@ -556,7 +607,7 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 <div class="page" id="page-videos">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
-<div class="title"><h2>🎥 گالری ویدیو</h2></div>
+<div class="title"><h2>🎥 گالری ویدیو</h2><p>برای دیدن ویدیو، روی آن کلیک کنید</p></div>
 <div class="video-grid" id="videosGrid"></div>
 </section>
 </div>
@@ -587,6 +638,9 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 <p id="memberLoginMsg"></p>
 </div>
 <div id="memberPanelBox" style="display:none">
+
+<div id="birthdayBannerBox"></div>
+
 <div class="membership-card">
 <div class="mc-top">
 <div class="mc-brand">🕌 کانون انوارالرضا(ع)</div>
@@ -646,8 +700,12 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 </div>
 </div>
 
-<h3 style="color:var(--accent);margin-top:16px;font-size:15px">📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
+<div class="messages-header">
+<h3>📬 پیام‌های من <span id="unreadCount" class="unread-badge" style="display:none">۰</span></h3>
+<button class="mark-all-btn" onclick="markAllMessagesRead()" id="markAllBtn" style="display:none">✅ خونده‌شده کردن همه</button>
+</div>
 <div id="myMessages"><p style="color:var(--text-mute);font-size:13px">پیامی ندارید.</p></div>
+
 <h3 style="color:var(--accent);margin-top:16px;font-size:15px">📊 تاریخچه حضور من</h3>
 <div id="myAttendance"><p style="color:var(--text-mute);font-size:13px">در جلسه‌ای نبوده‌اید.</p></div>
 <h3 style="color:var(--accent);margin-top:16px;font-size:15px">🗳 تاریخچه رأی‌های من</h3>
@@ -687,7 +745,7 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 <button class="btn" type="submit">ورود</button>
 </form>
 <p id="loginMsg"></p>
-  </div>    
+  </div>
   <div id="panelBox" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
@@ -774,6 +832,16 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 <div id="sectionBirthdays" class="admin-section" data-panels="main,ertebat">
 <h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🎂 تولدهای این هفته</h3>
 <div class="card" style="background:var(--bg-soft2)"><div id="birthdaysBox"></div></div>
+</div>
+
+<div id="sectionBirthdayMsg" class="admin-section" data-panels="main,ertebat">
+<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">💌 پیام تبریک تولد</h3>
+<div class="card" style="background:var(--bg-soft2)">
+<p style="font-size:12px;color:var(--text-soft);margin:0 0 8px">این پیام برای اعضایی که امروز تولدشونه، توی پنل اعضا نمایش داده میشه:</p>
+<textarea id="birthdayMsgInput" style="min-height:80px" placeholder="🎂 تولدت مبارک! ..."></textarea>
+<button class="btn" onclick="saveBirthdayMsg()" style="margin-top:8px">💾 ذخیره</button>
+<p id="birthdayMsgStatus" style="font-size:12px;margin-top:8px"></p>
+</div>
 </div>
 
 <div id="sectionAttendance" class="admin-section" data-panels="main,ertebat">
@@ -1018,10 +1086,18 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 <div class="search-modal">
 <button class="sm-close" onclick="closeSearch()">✕</button>
 <h3>🔍 جستجوی سراسری</h3>
-<input type="text" id="searchInputGlobal" placeholder="چی میخوای پیدا کنی؟ (خبر، کتاب، کلاس، ویدیو، رویداد، ایده)" oninput="performSearch()">
+<input type="text" id="searchInputGlobal" placeholder="چی میخوای پیدا کنی؟" oninput="performSearch()">
 <div class="search-results" id="searchResults">
 <p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>
 </div>
+</div>
+</div>
+
+<!-- مودال ویدیو -->
+<div class="video-modal-bg" id="videoModal">
+<div class="video-modal">
+<button class="vm-close" onclick="closeVideoModal()">✕</button>
+<div id="videoModalContent"></div>
 </div>
 </div>
 
@@ -1043,13 +1119,13 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const fa = n => new Intl.NumberFormat("fa-IR").format(n);
 const esc = s => String(s || "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 
-let adminPassword = null, currentPanel = null, allMembers = [], currentMember = null, allPolls = [], allVotes = [], galleryImages = [], lbIndex = 0, allClasses = [], allClassRegs = [], allSessions = [], currentSessionId = null, allBooks = [], currentBook = null, myIdeaVotes = [];
+let adminPassword = null, currentPanel = null, allMembers = [], currentMember = null, allPolls = [], allVotes = [], galleryImages = [], lbIndex = 0, allClasses = [], allClassRegs = [], allSessions = [], currentSessionId = null, allBooks = [], currentBook = null, myIdeaVotes = [], allVideos = [], myVideoLikes = [], currentVideoId = null;
 
 const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "resane777", roshd: "roshd666" };
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-/* ============ وضعیت ایده‌ها ============ */
+/* ============ ابزارها ============ */
 function statusClass(status){
   const s = status || "ثبت شد";
   if(s === "ثبت شد" || s === "") return "status-new";
@@ -1075,7 +1151,7 @@ function renderStars(rating){
   return out;
 }
 
-/* ============ تغییر تم ============ */
+/* ============ تم ============ */
 function getCurrentTheme(){ return document.documentElement.getAttribute("data-theme") || "light"; }
 function applyTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
@@ -1094,7 +1170,7 @@ function updateThemeMenuItem(){
 }
 function toggleTheme(){ applyTheme(getCurrentTheme() === "dark" ? "light" : "dark"); }
 
-/* ============ نصب PWA ============ */
+/* ============ PWA ============ */
 let deferredPrompt = null;
 function showInstallBoxIfNeeded(){
   const box = document.getElementById("installBox");
@@ -1186,6 +1262,7 @@ function showSectionsForPanel(p){
   const t=document.getElementById("panelTitle"); if(t) t.textContent = PANEL_NAMES[p];
 }
 
+/* ============ آنلاین ============ */
 let onlineChannel = null, onlineTimer = null;
 function setupOnlineCounter(){
   if (typeof supabase === "undefined") return;
@@ -1214,6 +1291,7 @@ function setupOnlineCounter(){
   window.addEventListener("beforeunload", () => { if (onlineChannel) onlineChannel.untrack(); });
 }
 
+/* ============ رندر کلی ============ */
 async function render(){
   const [memberCountRes, ideasRes] = await Promise.all([
     db.rpc("get_member_count"),
@@ -1227,7 +1305,7 @@ async function render(){
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
   if(adminPassword){
-    Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary(), loadAttendanceReport(), loadWeeklyReport()]);
+    Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary(), loadAttendanceReport(), loadWeeklyReport(), loadBirthdayMsgSetting()]);
   }
 }
 
@@ -1239,21 +1317,8 @@ async function loadWeeklyReport(){
   const now = new Date();
   const weekAgo = new Date(now.getTime() - 7*24*60*60*1000);
   const weekAgoISO = weekAgo.toISOString();
-  const nowISO = now.toISOString();
-
   try {
-    // آمار از دیتابیس
-    const [
-      newMembersRes,
-      newIdeasRes,
-      newMessagesRes,
-      newSessionsRes,
-      newAttendanceRes,
-      totalMembersRes,
-      totalIdeasRes,
-      totalBooksRes,
-      totalClassesRes
-    ] = await Promise.all([
+    const [newMembersRes, newIdeasRes, newMessagesRes, newSessionsRes, newAttendanceRes, totalMembersRes, totalIdeasRes, totalBooksRes, totalClassesRes] = await Promise.all([
       db.from("members").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
       db.from("ideas").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
       db.from("messages").select("*", {count:"exact", head:true}).gte("created_at", weekAgoISO),
@@ -1264,65 +1329,22 @@ async function loadWeeklyReport(){
       db.from("library").select("*", {count:"exact", head:true}),
       db.from("classes").select("*", {count:"exact", head:true})
     ]);
-
-    const newMembers = newMembersRes.count || 0;
-    const newIdeas = newIdeasRes.count || 0;
-    const newMessages = newMessagesRes.count || 0;
-    const newSessions = newSessionsRes.count || 0;
-    const newAttendance = newAttendanceRes.count || 0;
-    const totalMembers = totalMembersRes.count || 0;
-    const totalIdeas = totalIdeasRes.count || 0;
-    const totalBooks = totalBooksRes.count || 0;
-    const totalClasses = totalClassesRes.count || 0;
-
     const faDate = (d) => d.toLocaleDateString("fa-IR");
     const rangeStr = `${faDate(weekAgo)} تا ${faDate(now)}`;
-
     box.innerHTML = `
       <div class="weekly-report-header">
         <h3>📊 خلاصه‌ی هفته‌ی گذشته</h3>
         <span class="wr-range">🗓 ${rangeStr}</span>
       </div>
       <div class="weekly-report-grid">
-        <div class="wr-item">
-          <div class="wr-icon">👥</div>
-          <div class="wr-num">${fa(newMembers)}</div>
-          <div class="wr-label">عضو جدید</div>
-          <div class="wr-detail">کل: ${fa(totalMembers)}</div>
-        </div>
-        <div class="wr-item">
-          <div class="wr-icon">💡</div>
-          <div class="wr-num">${fa(newIdeas)}</div>
-          <div class="wr-label">ایده جدید</div>
-          <div class="wr-detail">کل: ${fa(totalIdeas)}</div>
-        </div>
-        <div class="wr-item">
-          <div class="wr-icon">📬</div>
-          <div class="wr-num">${fa(newMessages)}</div>
-          <div class="wr-label">پیام ارسالی</div>
-        </div>
-        <div class="wr-item">
-          <div class="wr-icon">📅</div>
-          <div class="wr-num">${fa(newSessions)}</div>
-          <div class="wr-label">جلسه</div>
-        </div>
-        <div class="wr-item">
-          <div class="wr-icon">✅</div>
-          <div class="wr-num">${fa(newAttendance)}</div>
-          <div class="wr-label">حضور ثبت‌شده</div>
-        </div>
-        <div class="wr-item">
-          <div class="wr-icon">📚</div>
-          <div class="wr-num">${fa(totalBooks)}</div>
-          <div class="wr-label">کتاب موجود</div>
-        </div>
-        <div class="wr-item">
-          <div class="wr-icon">🎓</div>
-          <div class="wr-num">${fa(totalClasses)}</div>
-          <div class="wr-label">کلاس فعال</div>
-        </div>
-      </div>
-    `;
+        <div class="wr-item"><div class="wr-icon">👥</div><div class="wr-num">${fa(newMembersRes.count||0)}</div><div class="wr-label">عضو جدید</div><div class="wr-detail">کل: ${fa(totalMembersRes.count||0)}</div></div>
+        <div class="wr-item"><div class="wr-icon">💡</div><div class="wr-num">${fa(newIdeasRes.count||0)}</div><div class="wr-label">ایده جدید</div><div class="wr-detail">کل: ${fa(totalIdeasRes.count||0)}</div></div>
+        <div class="wr-item"><div class="wr-icon">📬</div><div class="wr-num">${fa(newMessagesRes.count||0)}</div><div class="wr-label">پیام ارسالی</div></div>
+        <div class="wr-item"><div class="wr-icon">📅</div><div class="wr-num">${fa(newSessionsRes.count||0)}</div><div class="wr-label">جلسه</div></div>
+        <div class="wr-item"><div class="wr-icon">✅</div><div class="wr-num">${fa(newAttendanceRes.count||0)}</div><div class="wr-label">حضور ثبت‌شده</div></div>
+        <div class="wr-item"><div class="wr-icon">📚</div><div class="wr-num">${fa(totalBooksRes.count||0)}</div><div class="wr-label">کتاب</div></div>
+        <div class="wr-item"><div class="wr-icon">🎓</div><div class="wr-num">${fa(totalClassesRes.count||0)}</div><div class="wr-label">کلاس</div></div>
+      </div>`;
   } catch(e) {
     box.innerHTML = "<p style='color:red;text-align:center;font-size:13px'>خطا: "+esc(e.message)+"</p>";
   }
@@ -1343,7 +1365,6 @@ async function loadMyIdeasInThinkPage(){
   ib.innerHTML = data.map(i=>renderIdeaCard(i, true, false)).join("");
 }
 
-/* ============ ایده‌های تأییدشده با رأی‌گیری ============ */
 async function loadApprovedIdeas(){
   const box = document.getElementById("approvedIdeasBox");
   if(!box) return;
@@ -1359,7 +1380,6 @@ async function loadApprovedIdeas(){
   box.innerHTML = data.map(i=>renderIdeaCard(i, false, true)).join("");
 }
 
-/* ============ رندر کارت ایده ============ */
 function renderIdeaCard(i, allowDelete, allowVote){
   const st = i.status || "ثبت شد";
   const stClass = statusClass(st);
@@ -1368,22 +1388,15 @@ function renderIdeaCard(i, allowDelete, allowVote){
   const replyHtml = i.admin_reply ? `<div class="idea-admin-reply"><span class="reply-label">💬 پاسخ مدیر:</span>${esc(i.admin_reply)}</div>` : "";
   const canDelete = allowDelete && (st === "ثبت شد" || st === "");
   const deleteBtn = canDelete ? `<button class="idea-delete-btn" onclick="deleteMyIdea(${i.id})">🗑 حذف</button>` : "";
-
   let voteHtml = "";
   if(allowVote){
     const voteCount = i.vote_count || 0;
     const voted = myIdeaVotes.includes(i.id);
-    voteHtml = `<button class="vote-btn ${voted?'voted':''}" onclick="toggleIdeaVote(${i.id}, ${voted})">
-      ${voted ? "👍 رأی داده‌اید" : "👍 رأی بده"}
-      <span class="vote-count">${fa(voteCount)}</span>
-    </button>`;
+    voteHtml = `<button class="vote-btn ${voted?'voted':''}" onclick="toggleIdeaVote(${i.id}, ${voted})">${voted ? "👍 رأی داده‌اید" : "👍 رأی بده"}<span class="vote-count">${fa(voteCount)}</span></button>`;
   } else {
     const voteCount = i.vote_count;
-    if(voteCount !== undefined && voteCount > 0){
-      voteHtml = `<span class="vote-btn" style="cursor:default">👍 <span class="vote-count">${fa(voteCount)} رأی</span></span>`;
-    }
+    if(voteCount !== undefined && voteCount > 0){ voteHtml = `<span class="vote-btn" style="cursor:default">👍 <span class="vote-count">${fa(voteCount)} رأی</span></span>`; }
   }
-
   return `<div class="idea-card">
     <div class="idea-head">
       <span class="idea-cat">${esc(i.category||"سایر")}</span>
@@ -1435,16 +1448,8 @@ async function loadEvents(){
 }
 async function deleteEvent(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_event",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadEvents();}
 
-/* ============ نظرسنجی با انقضا ============ */
-function isPollExpired(p){
-  if(!p.expires_at) return false;
-  return new Date(p.expires_at) < new Date();
-}
-function formatPollExpire(p){
-  if(!p.expires_at) return "";
-  const d = new Date(p.expires_at);
-  return d.toLocaleDateString("fa-IR") + " - " + d.toLocaleTimeString("fa-IR", {hour:"2-digit", minute:"2-digit"});
-}
+function isPollExpired(p){ if(!p.expires_at) return false; return new Date(p.expires_at) < new Date(); }
+function formatPollExpire(p){ if(!p.expires_at) return ""; const d = new Date(p.expires_at); return d.toLocaleDateString("fa-IR") + " - " + d.toLocaleTimeString("fa-IR", {hour:"2-digit", minute:"2-digit"}); }
 
 async function loadPolls(){
   const b=document.getElementById("pollsBox");if(!b)return;
@@ -1466,21 +1471,12 @@ async function loadPolls(){
       <div class="sub"><span>👥 ${fa(total)} رأی</span>${expiredBadge}</div>
       ${opts.map((o,i)=>{
         const c=pv.filter(v=>v.option_index===i).length,pc=total?Math.round((c/total)*100):0,voted=myVote&&myVote.option_index===i;
-        return `<div class="poll-option">
-          <button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})" ${expired?'disabled':''}>
-            <div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}
-          </button>
-        </div>`;
+        return `<div class="poll-option"><button class="${voted?'voted':''}" onclick="votePoll(${p.id},${i})" ${expired?'disabled':''}><div class="bar" style="width:${pc}%"></div>${esc(o)}${total?`<span class="result">${pc}٪ (${fa(c)})</span>`:""}</button></div>`;
       }).join("")}
     </div>`;
   }).join("");
 }
-async function votePoll(id,idx){
-  if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}
-  const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.national_id});
-  if(error){alert("خطا: "+error.message);return;}
-  alert("ثبت شد ✅");loadPolls();loadMyVotes();
-}
+async function votePoll(id,idx){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("vote_poll",{p_poll_id:id,p_option:idx,p_phone:currentMember.national_id});if(error){alert("خطا: "+error.message);return;}alert("ثبت شد ✅");loadPolls();loadMyVotes();}
 async function deletePoll(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_poll",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadPolls();}
 function addPollOption(){const b=document.getElementById("pollOptionsBox"),c=b.querySelectorAll("input").length;if(c>=8){alert("حداکثر ۸");return;}const i=document.createElement("input");i.className="poll-opt";i.placeholder=`گزینه ${c+1}`;b.appendChild(i);}
 
@@ -1544,14 +1540,166 @@ document.getElementById("galleryEditForm").addEventListener("submit",async e=>{
 });
 document.getElementById("galleryEditModal").addEventListener("click",e=>{if(e.target.id==="galleryEditModal")closeGalleryEdit();});
 
+/* ============ ویدیوها ============ */
 async function loadVideos(){
   const b=document.getElementById("videosGrid");if(!b)return;
-  const {data}=await db.from("videos").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
-  if(!data||!data.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute)'>ویدیویی نیست.</p>";return;}
-  b.innerHTML=data.map(v=>`<div class="video-card">${adminPassword&&v.sort_order?`<span class="sort-badge">#${fa(v.sort_order)}</span>`:""}${adminPassword?`<button class="del-btn" onclick="deleteVideo(${v.id})">✕</button>`:""}<video controls preload="metadata" src="${esc(v.video_url)}"></video><div class="v-info"><h4>${esc(v.title)}</h4>${v.description?`<div class="v-desc">${esc(v.description)}</div>`:""}</div></div>`).join("");
+  b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
+  const {data, error} = await db.rpc("get_videos_with_stats");
+  if(error){
+    const {data:fallback} = await db.from("videos").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
+    allVideos = (fallback||[]).map(v => ({...v, like_count:0, comment_count:0}));
+  } else {
+    allVideos = data || [];
+  }
+  if(!allVideos.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute)'>ویدیویی نیست.</p>";return;}
+  b.innerHTML=allVideos.map(v=>`<div class="video-card" onclick="openVideoModal(${v.id})">
+    ${adminPassword&&v.sort_order?`<span class="sort-badge">#${fa(v.sort_order)}</span>`:""}
+    ${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteVideo(${v.id})">✕</button>`:""}
+    <video preload="metadata" src="${esc(v.video_url)}" muted></video>
+    <div class="play-overlay">▶</div>
+    <div class="v-info">
+      <h4>${esc(v.title)}</h4>
+      ${v.description?`<div class="v-desc">${esc(v.description)}</div>`:""}
+      <div class="v-stats">
+        <span>❤️ ${fa(v.like_count||0)}</span>
+        <span>💬 ${fa(v.comment_count||0)}</span>
+      </div>
+    </div>
+  </div>`).join("");
 }
 async function deleteVideo(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadVideos();}
 
+/* ============ مودال ویدیو ============ */
+async function openVideoModal(videoId){
+  const v = allVideos.find(x => x.id === videoId);
+  if(!v) return;
+  currentVideoId = videoId;
+  document.body.style.overflow = "hidden";
+  document.getElementById("videoModal").classList.add("open");
+  await renderVideoModal(v);
+}
+
+async function renderVideoModal(v){
+  // لایک‌های من
+  myVideoLikes = [];
+  if(currentMember){
+    const {data: ml} = await db.rpc("get_my_video_likes", {p_nid: currentMember.national_id});
+    if(ml) myVideoLikes = ml.map(x => x.video_id);
+  }
+  const liked = myVideoLikes.includes(v.id);
+
+  // کامنت‌ها
+  const {data: comments} = await db.from("video_comments").select("*").eq("video_id", v.id).order("created_at",{ascending:false});
+  const commentsList = comments || [];
+
+  const commentFormHtml = currentMember ? `
+    <div class="vm-comment-form">
+      <textarea id="vmCommentText" placeholder="نظرت رو بنویس..."></textarea>
+      <button onclick="submitVideoComment(${v.id})">📤 ارسال کامنت</button>
+    </div>` : `
+    <div class="vm-login-notice">
+      🔒 برای ثبت کامنت ابتدا وارد پنل اعضا شوید
+      <br>
+      <button onclick="closeVideoModal();showPage('page-member')">👤 ورود به پنل اعضا</button>
+    </div>`;
+
+  const commentsHtml = commentsList.length ? commentsList.map(c => {
+    const isMine = currentMember && c.commenter_nid === currentMember.national_id;
+    return `<div class="vm-comment">
+      <div class="vmc-head">
+        <span class="vmc-name">👤 ${esc(c.commenter_name)}</span>
+        <span class="vmc-date">${new Date(c.created_at).toLocaleDateString("fa-IR")}</span>
+      </div>
+      <div class="vmc-text">${esc(c.comment_text)}</div>
+      ${isMine ? `<button class="vmc-del" onclick="deleteVideoComment(${c.id}, ${v.id})">🗑 حذف</button>` : ""}
+    </div>`;
+  }).join("") : `<div class="vm-comments-empty">هنوز کامنتی ثبت نشده. اولین نفر باش!</div>`;
+
+  document.getElementById("videoModalContent").innerHTML = `
+    <video id="vmVideo" controls autoplay src="${esc(v.video_url)}"></video>
+    <h3 class="vm-title">${esc(v.title)}</h3>
+    ${v.description?`<div class="vm-desc">${esc(v.description)}</div>`:""}
+    <div class="vm-actions">
+      <button class="vm-like-btn ${liked?'liked':''}" onclick="toggleVideoLike(${v.id})">
+        ${liked ? "❤️ پسندیدی" : "🤍 لایک کن"}
+        <span class="like-count">${fa(v.like_count||0)}</span>
+      </button>
+      <span class="vm-comment-count">💬 ${fa(commentsList.length)} کامنت</span>
+    </div>
+    <div class="vm-comments-section">
+      <h4>💬 کامنت‌ها</h4>
+      ${commentFormHtml}
+      <div class="vm-comments-list" id="vmCommentsList">${commentsHtml}</div>
+    </div>
+  `;
+}
+
+function closeVideoModal(){
+  const v = document.getElementById("vmVideo");
+  if(v){ v.pause(); v.src = ""; }
+  document.getElementById("videoModal").classList.remove("open");
+  document.body.style.overflow = "";
+  currentVideoId = null;
+}
+
+document.getElementById("videoModal").addEventListener("click", e => {
+  if(e.target.id === "videoModal") closeVideoModal();
+});
+
+async function toggleVideoLike(videoId){
+  if(!currentMember){ alert("برای لایک کردن ابتدا وارد پنل اعضا شوید"); closeVideoModal(); showPage("page-member"); return; }
+  const {error} = await db.rpc("toggle_video_like", {p_nid: currentMember.national_id, p_video_id: videoId});
+  if(error){ alert("خطا: "+error.message); return; }
+  // بروزرسانی
+  const {data: stats} = await db.rpc("get_videos_with_stats");
+  if(stats){
+    allVideos = stats;
+    const v = allVideos.find(x => x.id === videoId);
+    if(v){
+      const {data: ml} = await db.rpc("get_my_video_likes", {p_nid: currentMember.national_id});
+      myVideoLikes = ml ? ml.map(x => x.video_id) : [];
+      await renderVideoModal(v);
+      loadVideos();
+    }
+  }
+}
+
+async function submitVideoComment(videoId){
+  if(!currentMember){ alert("ابتدا وارد پنل اعضا شوید"); return; }
+  const ta = document.getElementById("vmCommentText");
+  if(!ta) return;
+  const txt = ta.value.trim();
+  if(txt.length < 2){ alert("متن کامنت خیلی کوتوله"); return; }
+  const {error} = await db.rpc("add_video_comment", {
+    p_video_id: videoId,
+    p_nid: currentMember.national_id,
+    p_name: currentMember.name,
+    p_text: txt
+  });
+  if(error){ alert("خطا: "+error.message); return; }
+  ta.value = "";
+  const v = allVideos.find(x => x.id === videoId);
+  if(v){
+    const {data: stats} = await db.rpc("get_videos_with_stats");
+    if(stats){ allVideos = stats; const nv = allVideos.find(x => x.id === videoId); if(nv) await renderVideoModal(nv); }
+    loadVideos();
+  }
+}
+
+async function deleteVideoComment(commentId, videoId){
+  if(!currentMember){ alert("ابتدا وارد پنل اعضا شوید"); return; }
+  if(!confirm("این کامنت حذف شود؟")) return;
+  const {error} = await db.rpc("delete_video_comment", {p_comment_id: commentId, p_nid: currentMember.national_id});
+  if(error){ alert("خطا: "+error.message); return; }
+  const v = allVideos.find(x => x.id === videoId);
+  if(v){
+    const {data: stats} = await db.rpc("get_videos_with_stats");
+    if(stats){ allVideos = stats; const nv = allVideos.find(x => x.id === videoId); if(nv) await renderVideoModal(nv); }
+    loadVideos();
+  }
+}
+
+/* ============ کتابخانه ============ */
 async function loadLibrary(){
   const b=document.getElementById("libraryGrid");if(!b)return;
   b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
@@ -1611,65 +1759,40 @@ async function openBookDetail(bookId){
   const bk = allBooks.find(x=>x.id===bookId);
   if(!bk) return;
   currentBook = bk;
-
   const coverEl = document.getElementById("bdCover");
   if(bk.cover_url){
     coverEl.innerHTML = `<img src="${esc(bk.cover_url)}" style="width:100%;height:100%;object-fit:cover;border-radius:12px" alt="${esc(bk.title)}">`;
-  } else {
-    coverEl.innerHTML = "📖";
-  }
-
+  } else { coverEl.innerHTML = "📖"; }
   document.getElementById("bdTitle").textContent = bk.title || "";
   document.getElementById("bdAuthor").textContent = bk.author ? "✍️ نویسنده: " + bk.author : "";
   const catEl = document.getElementById("bdCat");
   if(bk.category){ catEl.textContent = bk.category; catEl.style.display = "inline-block"; }
   else { catEl.style.display = "none"; }
   document.getElementById("bdDesc").textContent = bk.description || "";
-
   const audioBox = document.getElementById("bdAudioPlayer");
-  if(bk.audio_url){
-    audioBox.innerHTML = renderAudioPlayer(bk.audio_url);
-    setTimeout(() => setupAudioPlayer(), 100);
-  } else {
-    audioBox.innerHTML = "";
-  }
-
+  if(bk.audio_url){ audioBox.innerHTML = renderAudioPlayer(bk.audio_url); setTimeout(() => setupAudioPlayer(), 100); }
+  else { audioBox.innerHTML = ""; }
   const actionsBox = document.getElementById("bdActions");
   let actionsHtml = "";
-  if(bk.file_url){
-    actionsHtml += `<a href="${esc(bk.file_url)}" target="_blank" download class="btn-download">📥 دانلود فایل</a>`;
-  }
+  if(bk.file_url){ actionsHtml += `<a href="${esc(bk.file_url)}" target="_blank" download class="btn-download">📥 دانلود فایل</a>`; }
   actionsBox.innerHTML = actionsHtml;
-
   const partsBox = document.getElementById("partsContainer");
   partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>بارگذاری قسمت‌ها...</p>";
   partsBox.classList.add("hidden");
   const btn = document.getElementById("partsToggleBtn");
   btn.classList.remove("active");
   btn.textContent = "📑 قسمت‌های این کتاب";
-
   const {data: parts, error} = await db.from("book_parts").select("*").eq("book_id", bookId).order("part_order",{ascending:true});
   if(error || !parts || !parts.length){
     partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>هنوز قسمتی برای این کتاب ثبت نشده.</p>";
   } else {
     partsBox.innerHTML = parts.map(p => {
       const isAudio = p.file_type === "audio" || (p.file_url && /\.(mp3|wav|m4a|ogg)$/i.test(p.file_url));
-      const btnOpen = isAudio
-        ? `<button class="part-btn-open" onclick="playPartAudio('${esc(p.file_url||'')}')">🎧 پخش صوت</button>`
-        : (p.file_url ? `<a href="${esc(p.file_url)}" target="_blank" class="part-btn-open">📂 باز کردن</a>` : "");
-      const btnDl = p.file_url
-        ? `<a href="${esc(p.file_url)}" target="_blank" download class="part-btn-dl">📥 دانلود</a>`
-        : "";
-      return `<div class="part-item">
-        <div class="part-info">
-          <span class="part-title">${esc(p.title)}</span>
-          ${p.pages?`<span class="part-meta">📄 ${fa(p.pages)} صفحه</span>`:""}
-        </div>
-        <div class="part-actions">${btnOpen}${btnDl}</div>
-      </div>`;
+      const btnOpen = isAudio ? `<button class="part-btn-open" onclick="playPartAudio('${esc(p.file_url||'')}')">🎧 پخش صوت</button>` : (p.file_url ? `<a href="${esc(p.file_url)}" target="_blank" class="part-btn-open">📂 باز کردن</a>` : "");
+      const btnDl = p.file_url ? `<a href="${esc(p.file_url)}" target="_blank" download class="part-btn-dl">📥 دانلود</a>` : "";
+      return `<div class="part-item"><div class="part-info"><span class="part-title">${esc(p.title)}</span>${p.pages?`<span class="part-meta">📄 ${fa(p.pages)} صفحه</span>`:""}</div><div class="part-actions">${btnOpen}${btnDl}</div></div>`;
     }).join("");
   }
-
   document.getElementById("booksListView").style.display = "none";
   document.getElementById("bookDetailView").style.display = "block";
   window.scrollTo({top:0,behavior:"smooth"});
@@ -1687,26 +1810,15 @@ function toggleBookParts(){
   const box = document.getElementById("partsContainer");
   const btn = document.getElementById("partsToggleBtn");
   const hidden = box.classList.contains("hidden");
-  if(hidden){
-    box.classList.remove("hidden");
-    btn.classList.add("active");
-    btn.textContent = "✖ بستن قسمت‌ها";
-  } else {
-    box.classList.add("hidden");
-    btn.classList.remove("active");
-    btn.textContent = "📑 قسمت‌های این کتاب";
-  }
+  if(hidden){ box.classList.remove("hidden"); btn.classList.add("active"); btn.textContent = "✖ بستن قسمت‌ها"; }
+  else { box.classList.add("hidden"); btn.classList.remove("active"); btn.textContent = "📑 قسمت‌های این کتاب"; }
 }
 
 function playPartAudio(url){
   if(!url){ alert("فایلی وجود ندارد"); return; }
   const audioBox = document.getElementById("bdAudioPlayer");
   audioBox.innerHTML = renderAudioPlayer(url);
-  setTimeout(() => {
-    setupAudioPlayer();
-    const audio = document.getElementById("globalAudio");
-    if(audio) audio.play();
-  }, 100);
+  setTimeout(() => { setupAudioPlayer(); const audio = document.getElementById("globalAudio"); if(audio) audio.play(); }, 100);
 }
 
 function renderAudioPlayer(url){
@@ -1717,9 +1829,7 @@ function renderAudioPlayer(url){
       <button class="ap-skip" onclick="audioSkip(-10)" title="۱۰ ثانیه عقب">⏪</button>
       <button class="ap-play" id="audioPlayBtn" onclick="audioToggle()">▶️</button>
       <button class="ap-skip" onclick="audioSkip(10)" title="۱۰ ثانیه جلو">⏩</button>
-      <div class="ap-progress" id="audioProgress" onclick="audioSeek(event)">
-        <div class="ap-progress-bar" id="audioProgressBar"></div>
-      </div>
+      <div class="ap-progress" id="audioProgress" onclick="audioSeek(event)"><div class="ap-progress-bar" id="audioProgressBar"></div></div>
       <div class="ap-time" id="audioTime">۰:۰۰ / ۰:۰۰</div>
     </div>
     <div class="ap-extras">
@@ -1747,51 +1857,17 @@ function setupAudioPlayer(){
     if(bar) bar.style.width = pct + "%";
     if(time) time.textContent = formatTime(cur) + " / " + formatTime(dur);
   });
-  audio.addEventListener("ended", () => {
-    const btn = document.getElementById("audioPlayBtn");
-    if(btn) btn.textContent = "▶️";
-  });
-  audio.addEventListener("play", () => {
-    const btn = document.getElementById("audioPlayBtn");
-    if(btn) btn.textContent = "⏸";
-  });
-  audio.addEventListener("pause", () => {
-    const btn = document.getElementById("audioPlayBtn");
-    if(btn) btn.textContent = "▶️";
-  });
+  audio.addEventListener("ended", () => { const btn = document.getElementById("audioPlayBtn"); if(btn) btn.textContent = "▶️"; });
+  audio.addEventListener("play", () => { const btn = document.getElementById("audioPlayBtn"); if(btn) btn.textContent = "⏸"; });
+  audio.addEventListener("pause", () => { const btn = document.getElementById("audioPlayBtn"); if(btn) btn.textContent = "▶️"; });
 }
 
-function audioToggle(){
-  const audio = document.getElementById("globalAudio");
-  if(!audio) return;
-  if(audio.paused) audio.play();
-  else audio.pause();
-}
-function audioSkip(sec){
-  const audio = document.getElementById("globalAudio");
-  if(!audio) return;
-  audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + sec));
-}
-function audioSeek(e){
-  const audio = document.getElementById("globalAudio");
-  if(!audio) return;
-  const rect = e.currentTarget.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  if(audio.duration) audio.currentTime = pct * audio.duration;
-}
-function audioSetVolume(v){
-  const audio = document.getElementById("globalAudio");
-  if(audio) audio.volume = parseFloat(v);
-}
-function audioSetSpeed(v){
-  const audio = document.getElementById("globalAudio");
-  if(audio) audio.playbackRate = parseFloat(v);
-}
-function formatTime(s){
-  s = Math.floor(s || 0);
-  const m = Math.floor(s/60), sec = s%60;
-  return `${fa(m)}:${sec<10?'۰':''}${fa(sec)}`;
-}
+function audioToggle(){ const audio = document.getElementById("globalAudio"); if(!audio) return; if(audio.paused) audio.play(); else audio.pause(); }
+function audioSkip(sec){ const audio = document.getElementById("globalAudio"); if(!audio) return; audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + sec)); }
+function audioSeek(e){ const audio = document.getElementById("globalAudio"); if(!audio) return; const rect = e.currentTarget.getBoundingClientRect(); const pct = (e.clientX - rect.left) / rect.width; if(audio.duration) audio.currentTime = pct * audio.duration; }
+function audioSetVolume(v){ const audio = document.getElementById("globalAudio"); if(audio) audio.volume = parseFloat(v); }
+function audioSetSpeed(v){ const audio = document.getElementById("globalAudio"); if(audio) audio.playbackRate = parseFloat(v); }
+function formatTime(s){ s = Math.floor(s || 0); const m = Math.floor(s/60), sec = s%60; return `${fa(m)}:${sec<10?'۰':''}${fa(sec)}`; }
 
 document.getElementById("bookForm").addEventListener("submit", async e => {
   e.preventDefault();
@@ -1805,10 +1881,8 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
   const audioFile = document.getElementById("bAudio").files[0];
   const partsRaw = document.getElementById("bParts").value.trim();
   const srt = getSort("bSort");
-
   if(!t){ m.textContent="عنوان الزامی"; m.style.color="red"; return; }
   m.textContent = "در حال آپلود..."; m.style.color="var(--text-soft)";
-
   let coverUrl = "";
   if(coverFile){
     if(coverFile.size > 5*1024*1024){ m.textContent="عکس کمتر از ۵ مگ"; m.style.color="red"; return; }
@@ -1817,9 +1891,7 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     if(ce){ m.textContent="خطا عکس: "+ce.message; m.style.color="red"; return; }
     coverUrl = db.storage.from("library").getPublicUrl(cfn).data.publicUrl;
   }
-
-  let mainUrl = "";
-  let ext = "";
+  let mainUrl = "", ext = "";
   if(bookFile){
     if(bookFile.size > 50*1024*1024){ m.textContent="فایل اصلی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
     const bfn = Date.now()+"_"+bookFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
@@ -1828,7 +1900,6 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     mainUrl = db.storage.from("library").getPublicUrl(bfn).data.publicUrl;
     ext = bookFile.name.split(".").pop();
   }
-
   let audioUrl = "";
   if(audioFile){
     if(audioFile.size > 50*1024*1024){ m.textContent="فایل صوتی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
@@ -1837,16 +1908,13 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     if(ae){ m.textContent="خطا صوت: "+ae.message; m.style.color="red"; return; }
     audioUrl = db.storage.from("library").getPublicUrl(afn).data.publicUrl;
   }
-
   const {data: inserted, error: de} = await db.from("library").insert([{
     title: t, author: author || null, description: desc || null, category: cat,
     file_url: mainUrl || null, file_type: ext || null, cover_url: coverUrl || null,
     audio_url: audioUrl || null, sort_order: srt
   }]).select();
-
   if(de){ m.textContent="خطا: "+de.message; m.style.color="red"; return; }
   const bookId = inserted[0].id;
-
   if(partsRaw){
     const lines = partsRaw.split("\n").map(l=>l.trim()).filter(l=>l);
     const partsToInsert = lines.map((line, i) => {
@@ -1860,7 +1928,6 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     const {error: pe} = await db.from("book_parts").insert(partsToInsert);
     if(pe){ m.textContent = "کتاب ذخیره شد ولی قسمت‌ها خطا: "+pe.message; m.style.color="orange"; loadLibrary(); loadAdminLibrary(); return; }
   }
-
   m.textContent="✅ کتاب ذخیره شد"; m.style.color="green";
   e.target.reset();
   loadLibrary(); loadAdminLibrary();
@@ -1907,7 +1974,6 @@ function openEdit(id){const m=allMembers.find(x=>x.id===id);if(!m)return;documen
 function closeEdit(){document.getElementById("editModal").classList.remove("open");}
 async function deleteMember(id,name){if(!confirm(`حذف «${name}»؟`))return;const {error}=await db.rpc("admin_delete_member",{admin_pass:adminPassword,member_id:id});if(error){alert("خطا: "+error.message);return;}alert("حذف شد ✅");loadMembers();render();}
 
-/* ============ ایده‌ها - پنل مدیر ============ */
 async function loadAdminIdeas(){
   const b=document.getElementById("adminIdeas");if(!b)return;
   b.innerHTML="<p>بارگذاری...</p>";
@@ -1925,15 +1991,8 @@ async function loadAdminIdeas(){
       </div>
       <div class="content">${esc(i.content||"")}</div>
       ${replyShow}
-      <div class="rating-row">
-        <span style="font-size:12px;color:var(--text-soft)">امتیاز:</span>
-        ${starsHtml}
-        <span style="font-size:11px;color:var(--text-mute)">(${fa(rating)}/۵)</span>
-      </div>
-      <div class="reply-box">
-        <textarea id="reply-${i.id}" placeholder="پاسخ مدیر...">${esc(i.admin_reply||"")}</textarea>
-        <button onclick="saveReply(${i.id})">💾 ذخیره پاسخ</button>
-      </div>
+      <div class="rating-row"><span style="font-size:12px;color:var(--text-soft)">امتیاز:</span>${starsHtml}<span style="font-size:11px;color:var(--text-mute)">(${fa(rating)}/۵)</span></div>
+      <div class="reply-box"><textarea id="reply-${i.id}" placeholder="پاسخ مدیر...">${esc(i.admin_reply||"")}</textarea><button onclick="saveReply(${i.id})">💾 ذخیره پاسخ</button></div>
       <div class="actions">
         <button class="b-review" onclick="updateIdea(${i.id},'در حال بررسی')">🔎 بررسی</button>
         <button class="b-approve" onclick="updateIdea(${i.id},'تأیید شد')">✅ تأیید</button>
@@ -1947,21 +2006,8 @@ async function loadAdminIdeas(){
 }
 async function updateIdea(id,ns){const {error}=await db.rpc("admin_update_idea_status",{admin_pass:adminPassword,idea_id:id,new_status:ns});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();loadApprovedIdeas();}
 async function deleteIdea(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_idea",{admin_pass:adminPassword,idea_id:id});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();loadApprovedIdeas();}
-async function setIdeaRating(id, rating){
-  const {error}=await db.rpc("admin_rate_idea",{admin_pass:adminPassword,idea_id:id,new_rating:rating});
-  if(error){alert("خطا: "+error.message);return;}
-  await loadAdminIdeas();
-}
-async function saveReply(id){
-  const ta = document.getElementById("reply-"+id);
-  if(!ta) return;
-  const txt = ta.value.trim();
-  if(!txt){ alert("متن پاسخ خالیه"); return; }
-  const {error}=await db.rpc("admin_reply_idea",{admin_pass:adminPassword,idea_id:id,reply_text:txt});
-  if(error){alert("خطا: "+error.message);return;}
-  alert("✅ پاسخ ذخیره شد");
-  await loadAdminIdeas();
-}
+async function setIdeaRating(id, rating){const {error}=await db.rpc("admin_rate_idea",{admin_pass:adminPassword,idea_id:id,new_rating:rating});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();}
+async function saveReply(id){const ta = document.getElementById("reply-"+id); if(!ta) return; const txt = ta.value.trim(); if(!txt){ alert("متن پاسخ خالیه"); return; } const {error}=await db.rpc("admin_reply_idea",{admin_pass:adminPassword,idea_id:id,reply_text:txt}); if(error){alert("خطا: "+error.message);return;} alert("✅ پاسخ ذخیره شد"); await loadAdminIdeas();}
 
 function renderMemberSelector(){
   const b=document.getElementById("memberSelector");if(!b)return;
@@ -2009,6 +2055,29 @@ async function loadBirthdays(){
 }
 function updateBirthdays(){loadBirthdays();}
 
+/* ============ پیام تبریک تولد ============ */
+async function loadBirthdayMsgSetting(){
+  const ta = document.getElementById("birthdayMsgInput");
+  if(!ta) return;
+  const {data} = await db.rpc("get_app_setting", {p_key: "birthday_message"});
+  if(data) ta.value = data;
+  else ta.value = "🎂 تولدت مبارک! ان‌شاءالله سالی پر از خیر و برکت داشته باشی 💚";
+}
+
+async function saveBirthdayMsg(){
+  const ta = document.getElementById("birthdayMsgInput");
+  const s = document.getElementById("birthdayMsgStatus");
+  if(!ta || !s) return;
+  const txt = ta.value.trim();
+  if(!txt){ s.textContent = "متن خالیه"; s.style.color = "red"; return; }
+  s.textContent = "ذخیره..."; s.style.color = "var(--text-soft)";
+  const {error} = await db.rpc("admin_set_app_setting", {admin_pass: adminPassword, p_key: "birthday_message", p_value: txt});
+  if(error){ s.textContent = "خطا: "+error.message; s.style.color = "red"; return; }
+  s.textContent = "✅ ذخیره شد"; s.style.color = "green";
+  setTimeout(()=>{ s.textContent = ""; }, 2000);
+}
+
+/* ============ گزارشات ============ */
 async function loadReports(){
   const s = document.getElementById("reportsStats");
   const a = document.getElementById("reportsAttendance");
@@ -2047,16 +2116,7 @@ async function loadAttendanceReport(){
   box.innerHTML = `<div class="attendance-stats">` + data.map(x => {
     const total = (x.present_count||0) + (x.absent_count||0) + (x.late_count||0);
     const pct = total ? Math.round(((x.present_count||0) / total) * 100) : 0;
-    return `<div class="att-stat-card">
-      <h5>👤 ${esc(x.member_name)}</h5>
-      <div class="att-numbers">
-        <span>✅ حاضر: <b>${fa(x.present_count||0)}</b></span>
-        <span>❌ غایب: <b>${fa(x.absent_count||0)}</b></span>
-        <span>⏰ تأخیر: <b>${fa(x.late_count||0)}</b></span>
-      </div>
-      <div class="att-bar"><div class="att-bar-inner" style="width:${pct}%"></div></div>
-      <div class="att-pct">📊 ${pct}٪ حضور (از ${fa(total)} جلسه)</div>
-    </div>`;
+    return `<div class="att-stat-card"><h5>👤 ${esc(x.member_name)}</h5><div class="att-numbers"><span>✅ حاضر: <b>${fa(x.present_count||0)}</b></span><span>❌ غایب: <b>${fa(x.absent_count||0)}</b></span><span>⏰ تأخیر: <b>${fa(x.late_count||0)}</b></span></div><div class="att-bar"><div class="att-bar-inner" style="width:${pct}%"></div></div><div class="att-pct">📊 ${pct}٪ حضور (از ${fa(total)} جلسه)</div></div>`;
   }).join("") + `</div>`;
 }
 
@@ -2095,7 +2155,6 @@ async function setAtt(phone, name, status){
   openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
   loadAttendanceReport();
 }
-
 async function fillAbsents(){
   if(!currentSessionId){ alert("اول یه جلسه باز کن"); return; }
   if(!confirm("برای همه‌ی اعضایی که وضعیتشون ثبت نشده، «غایب» ثبت شود؟")) return;
@@ -2106,6 +2165,7 @@ async function fillAbsents(){
   loadSessions(); loadAttendanceReport();
 }
 
+/* ============ ثبت‌نام ============ */
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=document.getElementById("registerMsg");
@@ -2167,7 +2227,7 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
     else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
     showSectionsForPanel(userPanel);
   }
-  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAttendanceReport(), loadWeeklyReport()]);
+  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAttendanceReport(), loadWeeklyReport(), loadBirthdayMsgSetting()]);
 });
 
 document.getElementById("logoutBtn").addEventListener("click",()=>{
@@ -2261,31 +2321,18 @@ document.getElementById("pollForm").addEventListener("submit",async e=>{
   const m=document.getElementById("pollMsg"),q=document.getElementById("pQuestion").value.trim();
   const o=Array.from(document.querySelectorAll(".poll-opt")).map(i=>i.value.trim()).filter(v=>v);
   if(!q||o.length<2){m.textContent="سؤال + ۲ گزینه";m.style.color="red";return;}
-
-  // محاسبه انقضا
   const expDay = document.getElementById("pollExpireDay").value;
   const expMonth = document.getElementById("pollExpireMonth").value;
   const expYear = document.getElementById("pollExpireYear").value;
   const expHour = document.getElementById("pollExpireHour").value;
   let expiresAt = null;
   if(expDay && expMonth && expYear){
-    // تبدیل شمسی به میلادی تقریبی (برای درست کار کردن باید کتابخانه باشه، ولی ساده نگه می‌داریم)
-    // تبدیل شمسی به ISO از طریق Date با احتیاط
-    const shamsiStr = `${expYear}/${expMonth}/${expDay}`;
-    // چون تبدیل دقیق شمسی به میلادی پیچیده‌ست، از یه کتابخانه ساده استفاده می‌کنیم یا از تاریخ روز+روز اختلاف
-    // راه ساده‌تر: فیلد تاریخ رو به صورت متن ISO می‌گیریم
-    // ولی برای سادگی: از تاریخ امروز + تعداد روز اختلاف استفاده می‌کنیم
-    // بهتر: از روش تبدیل Date استاندارد
     try {
-      // تبدیل شمسی به میلادی
       const g = shamsiToGregorian(parseInt(expYear), parseInt(expMonth), parseInt(expDay));
       const dt = new Date(g.gy, g.gm - 1, g.gd, expHour ? parseInt(expHour) : 23, 59, 59);
       expiresAt = dt.toISOString();
-    } catch(err) {
-      m.textContent="خطا در تاریخ انقضا"; m.style.color="red"; return;
-    }
+    } catch(err) { m.textContent="خطا در تاریخ انقضا"; m.style.color="red"; return; }
   }
-
   m.textContent="ذخیره...";m.style.color="var(--text-soft)";
   const {error}=await db.rpc("admin_add_poll",{admin_pass:adminPassword,p_question:q,p_options:o,p_expires:expiresAt});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
@@ -2294,7 +2341,6 @@ document.getElementById("pollForm").addEventListener("submit",async e=>{
   loadPolls();
 });
 
-// تابع کمکی تبدیل شمسی به میلادی
 function shamsiToGregorian(jy, jm, jd){
   let gy = jy + 621;
   const j_days_in_month = [31,31,31,31,31,31,30,30,30,30,30,29];
@@ -2378,6 +2424,7 @@ document.getElementById("sessionForm").addEventListener("submit",async e=>{
   m.textContent="✅";m.style.color="green";e.target.reset();loadSessions();loadReports();
 });
 
+/* ============ ورود اعضا ============ */
 document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const m=document.getElementById("memberLoginMsg"),nid=document.getElementById("mLoginNid").value.trim(),pw=document.getElementById("mLoginPass").value;
@@ -2421,6 +2468,26 @@ async function renderMemberPanel(){
   await loadMyMessages();
   await loadMyAttendance();
   await loadMyVotes();
+  await checkBirthdayBanner();
+}
+
+/* ============ بنر تولد ============ */
+async function checkBirthdayBanner(){
+  const box = document.getElementById("birthdayBannerBox");
+  if(!box || !currentMember || !currentMember.birth_date) return;
+  const p = currentMember.birth_date.split("/");
+  if(p.length !== 3) return;
+  const bm = parseInt(p[1]), bd = parseInt(p[2]);
+  const now = new Date();
+  const g2j = (gy,gm,gd)=>{const g_d_m=[0,31,59,90,120,151,181,212,243,273,304,334];let jy=gy<=1600?621:979;const gy2=gy<=1600?gy-621:gy-1600;const days=(gy2*365)+Math.floor((gy2+3)/4)+g_d_m[gm-1]+gd-(gm>2?1:0);jy+=33*Math.floor(days/12053);let d=days%12053;jy+=4*Math.floor(d/1461);d%=1461;if(d>365){jy+=Math.floor((d-1)/365);d=(d-1)%365;}const jm=d<186?1+Math.floor(d/31):7+Math.floor((d-186)/30);const jd=1+(d<186?d%31:(d-186)%30);return{jy,jm,jd};};
+  const today = g2j(now.getFullYear(), now.getMonth()+1, now.getDate());
+  if(bm === today.jm && bd === today.jd){
+    let msg = "🎂 تولدت مبارک! ان‌شاءالله سالی پر از خیر و برکت داشته باشی 💚";
+    try { const {data} = await db.rpc("get_app_setting", {p_key: "birthday_message"}); if(data) msg = data; } catch(e){}
+    box.innerHTML = `<div class="birthday-banner"><span class="bb-icon">🎉🎂🎈</span><div class="bb-text">${esc(msg)}</div></div>`;
+  } else {
+    box.innerHTML = "";
+  }
 }
 
 document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
@@ -2436,6 +2503,7 @@ document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
   document.getElementById("ideaUserNotice").style.display="none";
   document.getElementById("ideaName").style.display="block";
   document.getElementById("ideaName").value="";
+  document.getElementById("birthdayBannerBox").innerHTML="";
   loadPolls();loadClasses();
   loadMyIdeasInThinkPage();
   loadApprovedIdeas();
@@ -2510,16 +2578,50 @@ async function loadMyIdeas(){
   b.innerHTML=data.map(i=>renderIdeaCard(i, true, false)).join("");
 }
 
+/* ============ پیام‌ها (با خونده‌نشده) ============ */
 async function loadMyMessages(){
-  const b=document.getElementById("myMessages");if(!currentMember||!b)return;
+  const b=document.getElementById("myMessages");
+  if(!currentMember||!b)return;
   b.innerHTML="<p style='color:var(--text-mute)'>بارگذاری...</p>";
   const {data,error}=await db.rpc("member_get_messages",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
-  if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>پیامی ندارید.</p>";return;}
-  const unread = data.filter(m=>!m.is_read).length;
+  if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>پیامی ندارید.</p>"; return;}
+
+  // مرتب‌سازی: خونده‌نشده‌ها اول
+  const sorted = [...data].sort((a,b) => {
+    if(a.is_read === b.is_read) return new Date(b.created_at) - new Date(a.created_at);
+    return a.is_read ? 1 : -1;
+  });
+
+  const unread = sorted.filter(m=>!m.is_read).length;
   const ub = document.getElementById("unreadCount");
-  if(unread>0){ub.textContent=fa(unread);ub.style.display="inline-block";}else{ub.style.display="none";}
-  b.innerHTML=data.map(m=>`<div class="msg-card ${!m.is_read?'unread':''}"><h5>${esc(m.title||"بدون عنوان")}</h5><div class="m-content">${esc(m.content||"")}</div><div class="m-date">🗓 ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div></div>`).join("");
+  const mb = document.getElementById("markAllBtn");
+  if(unread>0){ ub.textContent=fa(unread); ub.style.display="inline-block"; if(mb) mb.style.display="inline-block"; }
+  else { ub.style.display="none"; if(mb) mb.style.display="none"; }
+
+  b.innerHTML = sorted.map(m=>{
+    const cls = m.is_read ? "msg-card" : "msg-card unread";
+    return `<div class="${cls}" onclick="markMessageRead(${m.id})">
+      <h5>${esc(m.title||"بدون عنوان")} ${m.is_read ? '<span class="read-badge">✅ خونده شده</span>' : ''}</h5>
+      <div class="m-content">${esc(m.content||"")}</div>
+      <div class="m-date">🗓 ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div>
+    </div>`;
+  }).join("");
+}
+
+async function markMessageRead(msgId){
+  if(!currentMember) return;
+  const {error} = await db.rpc("member_mark_message_read", {msg_id: msgId, p_phone: currentMember.phone});
+  if(error){ console.log(error); return; }
+  loadMyMessages();
+}
+
+async function markAllMessagesRead(){
+  if(!currentMember) return;
+  if(!confirm("همه پیام‌ها به عنوان خونده‌شده علامت بخورن؟")) return;
+  const {error} = await db.rpc("member_mark_all_messages_read", {p_phone: currentMember.phone});
+  if(error){ alert("خطا: "+error.message); return; }
+  loadMyMessages();
 }
 
 async function loadMyAttendance(){
@@ -2567,7 +2669,7 @@ async function autoLoginMember(){
   updateRegisterVisibility();
 }
 
-/* ============ جستجوی سراسری ============ */
+/* ============ جستجو ============ */
 let searchTimeout = null;
 function openSearch(){
   document.getElementById("searchModal").classList.add("open");
@@ -2578,9 +2680,7 @@ function closeSearch(){
   document.getElementById("searchInputGlobal").value = "";
   document.getElementById("searchResults").innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>';
 }
-document.getElementById("searchModal").addEventListener("click", e => {
-  if(e.target.id === "searchModal") closeSearch();
-});
+document.getElementById("searchModal").addEventListener("click", e => { if(e.target.id === "searchModal") closeSearch(); });
 
 function performSearch(){
   const q = document.getElementById("searchInputGlobal").value.trim().toLowerCase();
@@ -2603,10 +2703,7 @@ async function doSearchNow(q){
       db.from("weekly").select("*").or(`title.ilike.%${q}%,description.ilike.%${q}%`).limit(5),
       db.rpc("get_public_ideas")
     ]);
-
-    let html = "";
-    let total = 0;
-
+    let html = ""; let total = 0;
     const addGroup = (title, icon, items, mapFn) => {
       if(!items || !items.length) return;
       total += items.length;
@@ -2614,25 +2711,18 @@ async function doSearchNow(q){
       items.forEach(it => { html += mapFn(it); });
       html += `</div>`;
     };
-
     addGroup("اخبار", "📢", newsR.data, n => `<div class="sr-item" onclick="closeSearch();showPage('page-news')"><div class="sr-title">${esc(n.title)}</div><div class="sr-desc">${esc(n.content||"")}</div></div>`);
     addGroup("کتاب‌ها", "📚", libraryR.data, bk => `<div class="sr-item" onclick="closeSearch();showPage('page-library')"><div class="sr-title">${esc(bk.title)}</div><div class="sr-desc">${esc(bk.description||"")}</div></div>`);
     addGroup("ویدیوها", "🎥", videosR.data, v => `<div class="sr-item" onclick="closeSearch();showPage('page-videos')"><div class="sr-title">${esc(v.title)}</div><div class="sr-desc">${esc(v.description||"")}</div></div>`);
     addGroup("رویدادها", "📅", eventsR.data, e => `<div class="sr-item" onclick="closeSearch();showPage('page-events')"><div class="sr-title">${esc(e.title)} (${esc(e.event_date||"")})</div><div class="sr-desc">${esc(e.description||"")}</div></div>`);
     addGroup("کلاس‌ها", "🎓", classesR.data, c => `<div class="sr-item" onclick="closeSearch();showPage('page-classes')"><div class="sr-title">${esc(c.title)}</div><div class="sr-desc">${esc(c.description||"")} ${c.teacher?"— "+esc(c.teacher):""}</div></div>`);
     addGroup("برنامه‌های هفتگی", "🗓", weeklyR.data, w => `<div class="sr-item" onclick="closeSearch();showPage('page-events')"><div class="sr-title">${esc(w.title)} — ${esc(w.day)}</div><div class="sr-desc">${esc(w.description||"")}</div></div>`);
-
-    // ایده‌های عمومی
     if(ideasR.data){
       const matchedIdeas = ideasR.data.filter(i => (i.content||"").toLowerCase().includes(q) || (i.name||"").toLowerCase().includes(q));
       addGroup("ایده‌های تأییدشده", "💡", matchedIdeas.slice(0,5), i => `<div class="sr-item" onclick="closeSearch();showPage('page-think')"><div class="sr-title">${esc(i.name||"ناشناس")} — ${esc(i.category||"")}</div><div class="sr-desc">${esc(i.content||"")}</div></div>`);
     }
-
-    if(total === 0){
-      res.innerHTML = '<p class="sr-empty">❌ چیزی پیدا نشد</p>';
-    } else {
-      res.innerHTML = html;
-    }
+    if(total === 0){ res.innerHTML = '<p class="sr-empty">❌ چیزی پیدا نشد</p>'; }
+    else { res.innerHTML = html; }
   } catch(e) {
     res.innerHTML = '<p class="sr-empty" style="color:red">خطا: '+esc(e.message)+'</p>';
   }
@@ -2645,6 +2735,13 @@ window.addEventListener("storage", (e) => {
       document.documentElement.setAttribute("data-theme", newTheme);
       updateThemeMenuItem();
     }
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape"){
+    if(document.getElementById("searchModal").classList.contains("open")) closeSearch();
+    if(document.getElementById("videoModal").classList.contains("open")) closeVideoModal();
   }
 });
 
