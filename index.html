@@ -6,7 +6,6 @@
 <title>کانون فرهنگی دینی انوارالرضا(ع)</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 
-<!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#084c47">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -169,8 +168,6 @@ html[data-theme="dark"] .book-card .b-cat{background:#1e3533;color:#7ef5d4}
 .book-card .sort-badge{position:absolute;top:8px;right:8px;background:#c48b1f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:bold;z-index:2}
 .book-card .b-media-icons{display:flex;gap:6px;justify-content:center;margin-top:8px}
 .book-card .b-media-icons span{font-size:16px}
-
-/* ============ صفحه‌ی جزئیات کتاب ============ */
 .book-detail-card{background:var(--bg-card);border-radius:18px;padding:24px;box-shadow:0 8px 28px var(--shadow);display:flex;gap:24px;flex-wrap:wrap;margin-top:10px}
 .book-detail-cover{width:200px;height:290px;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px var(--shadow-strong);flex-shrink:0;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:80px}
 .book-detail-body{flex:1;min-width:240px}
@@ -186,8 +183,6 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .btn-audio{background:#1e6bb8;color:#fff}
 .btn-parts{background:#0b6b62;color:#fff}
 .btn-parts.active{background:#b91c1c}
-
-/* ============ پخش‌کننده‌ی صوت ============ */
 .audio-player{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:14px;padding:16px;color:#fff;margin-bottom:16px;box-shadow:0 6px 20px rgba(8,76,71,.3)}
 .audio-player .ap-title{font-size:13px;margin-bottom:12px;opacity:.95;font-weight:bold;display:flex;align-items:center;gap:6px}
 .audio-player .ap-controls{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
@@ -200,8 +195,6 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .audio-player .ap-extras{display:flex;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap}
 .audio-player .ap-volume{width:80px;accent-color:#fff}
 .audio-player .ap-speed{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 10px;font-size:12px;font-family:inherit;cursor:pointer}
-
-/* ============ لیست قسمت‌ها ============ */
 .parts-container{margin-top:16px;display:flex;flex-direction:column;gap:10px}
 .parts-container.hidden{display:none}
 .part-item{background:var(--bg-soft);border:1px solid var(--border);border-right:4px solid #0b6b62;padding:14px 16px;border-radius:10px;transition:background .2s,transform .2s;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
@@ -213,8 +206,6 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .part-item .part-actions a,.part-item .part-actions button{padding:6px 12px;border-radius:8px;font-size:12px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;font-weight:bold}
 .part-btn-open{background:#1e6bb8;color:#fff}
 .part-btn-dl{background:#2e8b57;color:#fff}
-
-/* ============ ویدیو و بقیه ============ */
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .video-card{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative}
 .video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000}
@@ -253,13 +244,42 @@ html[data-theme="dark"] .poll-option .bar{background:linear-gradient(90deg,#1e35
 .poll-card .del-btn{float:left;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
 .member{padding:10px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
 .idea{padding:10px 12px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
+
+/* ============ وضعیت ایده‌ها ============ */
 .status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:10px;margin-top:6px}
 html[data-theme="dark"] .status{background:#1e3533;color:#7ef5d4}
-.admin-idea{padding:12px;border-radius:10px;background:var(--bg-soft);margin:8px 0;font-size:12px;border-right:4px solid #0b6b62}
-.admin-idea .content{margin:6px 0;line-height:1.6}
-.admin-idea .actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-.admin-idea .actions button{padding:5px 10px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit}
-.b-review{background:#c48b1f}.b-approve{background:#2e8b57}.b-run{background:#1e6bb8}.b-done{background:#7a3fa0}.b-del{background:#c94f4f}
+.status-new{background:#e0e7ff;color:#3730a3}
+.status-review{background:#fef3c7;color:#92400e}
+.status-approved{background:#d1fae5;color:#065f46}
+.status-running{background:#dbeafe;color:#1e40af}
+.status-done{background:#c7d2fe;color:#3730a3}
+.status-rejected{background:#fee2e2;color:#991b1b}
+
+.idea-card{padding:14px;border-radius:12px;background:var(--bg-soft);margin:10px 0;font-size:13px;border-right:4px solid #0b6b62;position:relative;transition:transform .2s}
+.idea-card:hover{transform:translateX(-2px)}
+.idea-card .idea-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px}
+.idea-card .idea-cat{font-size:11px;color:var(--text-mute);font-weight:bold}
+.idea-card .idea-content{line-height:1.7;color:var(--text);margin:6px 0}
+.idea-card .idea-footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap;gap:6px}
+.idea-card .idea-stars{font-size:14px;letter-spacing:2px}
+.idea-card .idea-admin-reply{background:var(--bg-card);border-right:3px solid #c48b1f;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:12px;line-height:1.7}
+.idea-card .idea-admin-reply .reply-label{font-weight:bold;color:#c48b1f;font-size:11px;display:block;margin-bottom:4px}
+.idea-card .idea-delete-btn{background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:bold}
+
+/* ============ اتاق فکر - پنل مدیر ============ */
+.admin-idea{padding:14px;border-radius:10px;background:var(--bg-soft);margin:10px 0;font-size:13px;border-right:4px solid #0b6b62}
+.admin-idea .content{margin:8px 0;line-height:1.7}
+.admin-idea .actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.admin-idea .actions button{padding:6px 12px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit;font-weight:bold}
+.admin-idea .rating-row{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.admin-idea .rating-row .star-btn{background:transparent;border:none;font-size:22px;cursor:pointer;color:#ccc;padding:2px;transition:transform .15s}
+.admin-idea .rating-row .star-btn:hover{transform:scale(1.15)}
+.admin-idea .rating-row .star-btn.on{color:#f5b400}
+.admin-idea .reply-box{margin-top:10px}
+.admin-idea .reply-box textarea{min-height:60px;font-size:12px;width:100%}
+.admin-idea .reply-box button{margin-top:6px;background:#c48b1f;color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:bold}
+.admin-idea .admin-reply-show{background:var(--bg-card);border-right:3px solid #c48b1f;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:12px;line-height:1.6}
+.b-review{background:#c48b1f}.b-approve{background:#2e8b57}.b-run{background:#1e6bb8}.b-done{background:#7a3fa0}.b-del{background:#c94f4f}.b-reject{background:#b91c1c}
 .members-toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
 .members-toolbar input{flex:1;min-width:150px}
 .member-actions{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
@@ -328,7 +348,6 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,#1c2626);color:#f0d68a}
 .locked-ideas .lock-icon{font-size:38px;display:block;margin-bottom:10px}
 .sort-hint{font-size:11px;color:var(--text-mute);margin-top:-6px}
-/* حالت‌های ریسپانسیو */
 @media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}}
 @media(max-width:600px){
   .library-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
@@ -489,14 +508,10 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
 <div class="title"><h2>📚 کتابخانه</h2></div>
-
-<!-- نمای لیست کتاب‌ها -->
 <div id="booksListView">
 <p style="text-align:center;color:var(--text-mute);font-size:13px;margin-bottom:18px">برای مشاهده‌ی توضیحات و قسمت‌های هر کتاب، روی آن کلیک کنید</p>
 <div class="library-grid" id="libraryGrid"></div>
 </div>
-
-<!-- نمای جزئیات کتاب -->
 <div id="bookDetailView" style="display:none">
 <button class="back-btn" onclick="backToBooksList()">← بازگشت به لیست کتاب‌ها</button>
 <div class="book-detail-card">
@@ -506,22 +521,13 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <p class="book-detail-author" id="bdAuthor"></p>
 <span class="book-detail-cat" id="bdCat" style="display:none"></span>
 <div class="book-detail-desc" id="bdDesc"></div>
-
-<!-- پخش‌کننده صوت -->
 <div id="bdAudioPlayer"></div>
-
-<!-- دکمه‌های دانلود -->
 <div class="book-actions" id="bdActions"></div>
-
-<!-- دکمه قسمت‌ها -->
 <button class="btn-parts" id="partsToggleBtn" onclick="toggleBookParts()">📑 قسمت‌های این کتاب</button>
-
-<!-- لیست قسمت‌ها -->
 <div class="parts-container hidden" id="partsContainer"></div>
 </div>
 </div>
 </div>
-
 </section>
 </div>
 
@@ -987,6 +993,34 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
+/* ============ وضعیت ایده‌ها ============ */
+function statusClass(status){
+  const s = status || "ثبت شد";
+  if(s === "ثبت شد" || s === "") return "status-new";
+  if(s === "در حال بررسی") return "status-review";
+  if(s === "تأیید شد") return "status-approved";
+  if(s === "در حال اجرا") return "status-running";
+  if(s === "اجرا شد") return "status-done";
+  if(s === "رد شد") return "status-rejected";
+  return "status-new";
+}
+function statusIcon(status){
+  const s = status || "ثبت شد";
+  if(s === "در حال بررسی") return "🔎";
+  if(s === "تأیید شد") return "✅";
+  if(s === "در حال اجرا") return "🚀";
+  if(s === "اجرا شد") return "🏆";
+  if(s === "رد شد") return "❌";
+  return "🆕";
+}
+function renderStars(rating){
+  let out = "";
+  for(let i=1; i<=5; i++){
+    out += i <= (rating||0) ? "★" : "☆";
+  }
+  return out;
+}
+
 /* ============ تغییر تم ============ */
 function getCurrentTheme(){ return document.documentElement.getAttribute("data-theme") || "light"; }
 function applyTheme(theme){
@@ -1143,6 +1177,7 @@ async function render(){
   }
 }
 
+/* ============ ایده‌های من (کاربر) ============ */
 async function loadMyIdeasInThinkPage(){
   const ib = document.getElementById("ideas");
   if(!ib) return;
@@ -1154,7 +1189,37 @@ async function loadMyIdeasInThinkPage(){
   const {data, error} = await db.from("ideas").select("*").eq("member_nid", currentMember.national_id).order("created_at",{ascending:false});
   if(error){ ib.innerHTML = "<p style='color:red;font-size:12px'>خطا: "+esc(error.message)+"</p>"; return; }
   if(!data || !data.length){ ib.innerHTML = "<p style='color:var(--text-mute);font-size:12px'>هنوز ایده‌ای ثبت نکرده‌اید.</p>"; return; }
-  ib.innerHTML = data.map(i=>`<div class="idea"><strong>${esc(i.category||"سایر")}</strong><p style="margin:4px 0">${esc(i.content||"")}</p><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
+  ib.innerHTML = data.map(i=>renderIdeaCard(i, true)).join("");
+}
+
+function renderIdeaCard(i, allowDelete){
+  const st = i.status || "ثبت شد";
+  const stClass = statusClass(st);
+  const stIcon = statusIcon(st);
+  const stars = i.rating ? `<div class="idea-stars">${renderStars(i.rating)}</div>` : "";
+  const replyHtml = i.admin_reply ? `<div class="idea-admin-reply"><span class="reply-label">💬 پاسخ مدیر:</span>${esc(i.admin_reply)}</div>` : "";
+  const canDelete = allowDelete && (st === "ثبت شد" || st === "");
+  const deleteBtn = canDelete ? `<button class="idea-delete-btn" onclick="deleteMyIdea(${i.id})">🗑 حذف</button>` : "";
+  return `<div class="idea-card">
+    <div class="idea-head">
+      <span class="idea-cat">${esc(i.category||"سایر")}</span>
+      <span class="status ${stClass}">${stIcon} ${esc(st)}</span>
+    </div>
+    <div class="idea-content">${esc(i.content||"")}</div>
+    ${replyHtml}
+    <div class="idea-footer">${stars}${deleteBtn}</div>
+  </div>`;
+}
+
+async function deleteMyIdea(id){
+  if(!currentMember){ alert("اول وارد پنل اعضا شوید"); return; }
+  if(!confirm("این ایده حذف شود؟")) return;
+  const {error} = await db.rpc("member_delete_idea", { p_nid: currentMember.national_id, idea_id: id });
+  if(error){ alert("خطا: "+error.message); return; }
+  alert("✅ حذف شد");
+  loadMyIdeasInThinkPage();
+  loadMyIdeas();
+  render();
 }
 
 async function loadNews(){
@@ -1254,7 +1319,6 @@ async function loadVideos(){
 }
 async function deleteVideo(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadVideos();}
 
-/* ============ کتابخانه ============ */
 async function loadLibrary(){
   const b=document.getElementById("libraryGrid");if(!b)return;
   b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
@@ -1310,13 +1374,11 @@ async function deleteBook(id){
   loadLibrary();loadAdminLibrary();
 }
 
-/* ============ جزئیات کتاب ============ */
 async function openBookDetail(bookId){
   const bk = allBooks.find(x=>x.id===bookId);
   if(!bk) return;
   currentBook = bk;
 
-  // پوشش
   const coverEl = document.getElementById("bdCover");
   if(bk.cover_url){
     coverEl.innerHTML = `<img src="${esc(bk.cover_url)}" style="width:100%;height:100%;object-fit:cover;border-radius:12px" alt="${esc(bk.title)}">`;
@@ -1324,7 +1386,6 @@ async function openBookDetail(bookId){
     coverEl.innerHTML = "📖";
   }
 
-  // اطلاعات
   document.getElementById("bdTitle").textContent = bk.title || "";
   document.getElementById("bdAuthor").textContent = bk.author ? "✍️ نویسنده: " + bk.author : "";
   const catEl = document.getElementById("bdCat");
@@ -1332,7 +1393,6 @@ async function openBookDetail(bookId){
   else { catEl.style.display = "none"; }
   document.getElementById("bdDesc").textContent = bk.description || "";
 
-  // پخش‌کننده صوت
   const audioBox = document.getElementById("bdAudioPlayer");
   if(bk.audio_url){
     audioBox.innerHTML = renderAudioPlayer(bk.audio_url);
@@ -1341,7 +1401,6 @@ async function openBookDetail(bookId){
     audioBox.innerHTML = "";
   }
 
-  // دکمه‌ها
   const actionsBox = document.getElementById("bdActions");
   let actionsHtml = "";
   if(bk.file_url){
@@ -1349,7 +1408,6 @@ async function openBookDetail(bookId){
   }
   actionsBox.innerHTML = actionsHtml;
 
-  // قسمت‌ها
   const partsBox = document.getElementById("partsContainer");
   partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>بارگذاری قسمت‌ها...</p>";
   partsBox.classList.add("hidden");
@@ -1379,7 +1437,6 @@ async function openBookDetail(bookId){
     }).join("");
   }
 
-  // نمایش
   document.getElementById("booksListView").style.display = "none";
   document.getElementById("bookDetailView").style.display = "block";
   window.scrollTo({top:0,behavior:"smooth"});
@@ -1410,7 +1467,6 @@ function toggleBookParts(){
 
 function playPartAudio(url){
   if(!url){ alert("فایلی وجود ندارد"); return; }
-  // جایگزینی پخش‌کننده با فایل جدید
   const audioBox = document.getElementById("bdAudioPlayer");
   audioBox.innerHTML = renderAudioPlayer(url);
   setTimeout(() => {
@@ -1420,7 +1476,6 @@ function playPartAudio(url){
   }, 100);
 }
 
-/* ============ پخش‌کننده‌ی صوت ============ */
 function renderAudioPlayer(url){
   return `<div class="audio-player">
     <div class="ap-title">🎧 پخش صوت</div>
@@ -1448,7 +1503,6 @@ function renderAudioPlayer(url){
   </div>`;
 }
 
-let audioPlayerBound = false;
 function setupAudioPlayer(){
   const audio = document.getElementById("globalAudio");
   if(!audio) return;
@@ -1506,7 +1560,6 @@ function formatTime(s){
   return `${fa(m)}:${sec<10?'۰':''}${fa(sec)}`;
 }
 
-/* ============ ذخیره‌ی کتاب ============ */
 document.getElementById("bookForm").addEventListener("submit", async e => {
   e.preventDefault();
   const m = document.getElementById("bookMsg");
@@ -1523,7 +1576,6 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
   if(!t){ m.textContent="عنوان الزامی"; m.style.color="red"; return; }
   m.textContent = "در حال آپلود..."; m.style.color="var(--text-soft)";
 
-  // ۱. آپلود عکس جلد
   let coverUrl = "";
   if(coverFile){
     if(coverFile.size > 5*1024*1024){ m.textContent="عکس کمتر از ۵ مگ"; m.style.color="red"; return; }
@@ -1533,7 +1585,6 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     coverUrl = db.storage.from("library").getPublicUrl(cfn).data.publicUrl;
   }
 
-  // ۲. آپلود فایل اصلی
   let mainUrl = "";
   let ext = "";
   if(bookFile){
@@ -1545,7 +1596,6 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     ext = bookFile.name.split(".").pop();
   }
 
-  // ۳. آپلود فایل صوتی
   let audioUrl = "";
   if(audioFile){
     if(audioFile.size > 50*1024*1024){ m.textContent="فایل صوتی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
@@ -1555,23 +1605,15 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     audioUrl = db.storage.from("library").getPublicUrl(afn).data.publicUrl;
   }
 
-  // ۴. ذخیره‌ی کتاب
   const {data: inserted, error: de} = await db.from("library").insert([{
-    title: t,
-    author: author || null,
-    description: desc || null,
-    category: cat,
-    file_url: mainUrl || null,
-    file_type: ext || null,
-    cover_url: coverUrl || null,
-    audio_url: audioUrl || null,
-    sort_order: srt
+    title: t, author: author || null, description: desc || null, category: cat,
+    file_url: mainUrl || null, file_type: ext || null, cover_url: coverUrl || null,
+    audio_url: audioUrl || null, sort_order: srt
   }]).select();
 
   if(de){ m.textContent="خطا: "+de.message; m.style.color="red"; return; }
   const bookId = inserted[0].id;
 
-  // ۵. ذخیره‌ی قسمت‌ها
   if(partsRaw){
     const lines = partsRaw.split("\n").map(l=>l.trim()).filter(l=>l);
     const partsToInsert = lines.map((line, i) => {
@@ -1590,14 +1632,6 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
   e.target.reset();
   loadLibrary(); loadAdminLibrary();
 });
-
-async function deleteBook(id){
-  if(!confirm("حذف شود؟")) return;
-  const {error} = await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});
-  if(error){ alert("خطا: "+error.message); return; }
-  loadLibrary();
-  loadAdminLibrary();
-}
 
 async function loadClasses(){
   const b=document.getElementById("classesGrid");if(!b)return;
@@ -1640,15 +1674,61 @@ function openEdit(id){const m=allMembers.find(x=>x.id===id);if(!m)return;documen
 function closeEdit(){document.getElementById("editModal").classList.remove("open");}
 async function deleteMember(id,name){if(!confirm(`حذف «${name}»؟`))return;const {error}=await db.rpc("admin_delete_member",{admin_pass:adminPassword,member_id:id});if(error){alert("خطا: "+error.message);return;}alert("حذف شد ✅");loadMembers();render();}
 
+/* ============ ایده‌ها - پنل مدیر ============ */
 async function loadAdminIdeas(){
   const b=document.getElementById("adminIdeas");if(!b)return;
   b.innerHTML="<p>بارگذاری...</p>";
   const {data}=await db.from("ideas").select("*").order("created_at",{ascending:false}).limit(100);
   if(!data||!data.length){b.innerHTML="<p>ایده‌ای نیست.</p>";return;}
-  b.innerHTML=data.map(i=>`<div class="admin-idea"><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:var(--text-mute)">— ${esc(i.category||"سایر")}</span>${i.member_nid?` <span style="font-size:10px;color:var(--accent2)">(${esc(i.member_nid)})</span>`:""}<div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span><div class="actions"><button class="b-review" onclick="updateIdea(${i.id},'در حال بررسی')">🔎 بررسی</button><button class="b-approve" onclick="updateIdea(${i.id},'تأیید شد')">✅ تأیید</button><button class="b-run" onclick="updateIdea(${i.id},'در حال اجرا')">🚀 اجرا</button><button class="b-done" onclick="updateIdea(${i.id},'اجرا شد')">🏆 پایان</button><button class="b-del" onclick="deleteIdea(${i.id})">🗑</button></div></div>`).join("");
+  b.innerHTML=data.map(i=>{
+    const st = i.status || "ثبت شد";
+    const rating = i.rating || 0;
+    const starsHtml = [1,2,3,4,5].map(n => `<button class="star-btn ${n<=rating?'on':''}" onclick="setIdeaRating(${i.id},${n})" title="${n} ستاره">★</button>`).join("");
+    const replyShow = i.admin_reply ? `<div class="admin-reply-show"><b>💬 پاسخ:</b> ${esc(i.admin_reply)}</div>` : "";
+    return `<div class="admin-idea">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <div><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:var(--text-mute)">— ${esc(i.category||"سایر")}</span>${i.member_nid?` <span style="font-size:10px;color:var(--accent2)">(${esc(i.member_nid)})</span>`:""}</div>
+        <span class="status ${statusClass(st)}">${statusIcon(st)} ${esc(st)}</span>
+      </div>
+      <div class="content">${esc(i.content||"")}</div>
+      ${replyShow}
+      <div class="rating-row">
+        <span style="font-size:12px;color:var(--text-soft)">امتیاز:</span>
+        ${starsHtml}
+        <span style="font-size:11px;color:var(--text-mute)">(${fa(rating)}/۵)</span>
+      </div>
+      <div class="reply-box">
+        <textarea id="reply-${i.id}" placeholder="پاسخ مدیر...">${esc(i.admin_reply||"")}</textarea>
+        <button onclick="saveReply(${i.id})">💾 ذخیره پاسخ</button>
+      </div>
+      <div class="actions">
+        <button class="b-review" onclick="updateIdea(${i.id},'در حال بررسی')">🔎 بررسی</button>
+        <button class="b-approve" onclick="updateIdea(${i.id},'تأیید شد')">✅ تأیید</button>
+        <button class="b-run" onclick="updateIdea(${i.id},'در حال اجرا')">🚀 اجرا</button>
+        <button class="b-done" onclick="updateIdea(${i.id},'اجرا شد')">🏆 پایان</button>
+        <button class="b-reject" onclick="updateIdea(${i.id},'رد شد')">❌ رد</button>
+        <button class="b-del" onclick="deleteIdea(${i.id})">🗑 حذف</button>
+      </div>
+    </div>`;
+  }).join("");
 }
 async function updateIdea(id,ns){const {error}=await db.rpc("admin_update_idea_status",{admin_pass:adminPassword,idea_id:id,new_status:ns});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
 async function deleteIdea(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_idea",{admin_pass:adminPassword,idea_id:id});if(error){alert("خطا: "+error.message);return;}await loadAdminIdeas();render();}
+async function setIdeaRating(id, rating){
+  const {error}=await db.rpc("admin_rate_idea",{admin_pass:adminPassword,idea_id:id,new_rating:rating});
+  if(error){alert("خطا: "+error.message);return;}
+  await loadAdminIdeas();
+}
+async function saveReply(id){
+  const ta = document.getElementById("reply-"+id);
+  if(!ta) return;
+  const txt = ta.value.trim();
+  if(!txt){ alert("متن پاسخ خالیه"); return; }
+  const {error}=await db.rpc("admin_reply_idea",{admin_pass:adminPassword,idea_id:id,reply_text:txt});
+  if(error){alert("خطا: "+error.message);return;}
+  alert("✅ پاسخ ذخیره شد");
+  await loadAdminIdeas();
+}
 
 function renderMemberSelector(){
   const b=document.getElementById("memberSelector");if(!b)return;
@@ -2110,7 +2190,7 @@ async function loadMyIdeas(){
   const {data,error}=await db.from("ideas").select("*").eq("member_nid", currentMember.national_id).order("created_at",{ascending:false});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
   if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>ایده‌ای نیست.</p>";return;}
-  b.innerHTML=data.map(i=>`<div class="myidea"><strong style="color:var(--accent)">${esc(i.category||"سایر")}</strong><div class="content">${esc(i.content||"")}</div><span class="status">${esc(i.status||"ثبت شد")}</span></div>`).join("");
+  b.innerHTML=data.map(i=>renderIdeaCard(i, true)).join("");
 }
 
 async function loadMyMessages(){
