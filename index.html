@@ -34,6 +34,7 @@
   --hero-bg:linear-gradient(135deg,#e6f5f3,#fff);
   --card-bg-soft:linear-gradient(135deg,#e6f5f3,#fff);
   --card-bg-soft2:linear-gradient(135deg,#fff,#f2faf8);
+  --page-accent:#084c47;--page-accent2:#1e6bb8;--page-gradient:linear-gradient(135deg,#084c47,#1e6bb8);
 }
 html[data-theme="dark"]{
   --bg:#121a1a;--bg-card:#1c2626;--bg-soft:#223030;--bg-soft2:#1a2424;
@@ -47,7 +48,7 @@ html[data-theme="dark"]{
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .3s,color .3s}
-header{background:linear-gradient(135deg,#084c47,#0b6b62);color:#fff;padding:14px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+header{background:var(--page-gradient);color:#fff;padding:14px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:background .3s}
 nav{display:flex;justify-content:space-between;align-items:center;padding:0 7%;max-width:1100px;margin:auto;position:relative}
 .logo{font-weight:bold;font-size:16px;cursor:pointer}
 .nav-right{display:flex;align-items:center;gap:8px}
@@ -73,9 +74,9 @@ section{padding:40px 7%;max-width:1100px;margin:auto;animation:pageIn .4s ease}
 .page{display:none}
 .page.active{display:block}
 .hero{padding:40px 7% 30px;background:var(--hero-bg);text-align:center}
-h1{font-size:34px;color:var(--accent);margin:12px 0}
+h1{font-size:34px;color:var(--page-accent);margin:12px 0}
 .title{text-align:center;margin-bottom:24px}
-.title h2{color:var(--accent);font-size:24px}
+.title h2{color:var(--page-accent);font-size:24px}
 .title p{font-size:12px;color:var(--text-mute);margin:6px 0 0}
 .card{background:var(--bg-card);border-radius:14px;padding:20px;box-shadow:0 6px 20px var(--shadow);margin:14px 0;animation:cardIn .5s ease;color:var(--text)}
 @keyframes cardIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
@@ -84,14 +85,13 @@ input,select,textarea,button{padding:11px;border-radius:10px;border:1px solid va
 textarea{min-height:90px;resize:vertical}
 button{cursor:pointer;transition:transform .15s}
 button:active{transform:scale(.96)}
-.btn{display:inline-block;background:#0b6b62;color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;font-size:14px}
+.btn{display:inline-block;background:var(--page-accent2);color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;font-size:14px;transition:background .3s}
 .notice{padding:12px;border-radius:10px;background:#fff7e6;color:#7a5b00;font-size:13px}
 html[data-theme="dark"] .notice{background:#3a2f14;color:#f0d68a}
-.badge{display:inline-block;padding:5px 12px;border-radius:20px;background:#d9efeb;color:#084c47;font-size:13px;font-weight:bold}
-html[data-theme="dark"] .badge{background:#1e3533;color:#7ef5d4}
+.badge{display:inline-block;padding:5px 12px;border-radius:20px;background:var(--page-accent2);color:#fff;font-size:13px;font-weight:bold}
 .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 .stat{background:var(--bg-soft);border-radius:10px;padding:14px 20px;text-align:center;min-width:90px}
-.stat b{display:block;font-size:22px;color:var(--accent)}
+.stat b{display:block;font-size:22px;color:var(--page-accent)}
 footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-top:40px;font-size:13px}
 .shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
 .shortcut{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 6px;border-radius:14px;color:#fff;cursor:pointer;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;text-align:center;min-height:100px}
@@ -107,18 +107,19 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-green{background:linear-gradient(135deg,#26de81,#20bf6b)}
 .sc-red{background:linear-gradient(135deg,#eb3b5a,#b71540)}
 .sc-orange{background:linear-gradient(135deg,#ffa726,#e65100)}
+.sc-futsal{background:linear-gradient(135deg,#166534,#22c55e)}
 .install-box{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:16px;padding:22px;color:#fff;text-align:center;margin:24px 0;box-shadow:0 10px 28px rgba(8,76,71,.3);position:relative;overflow:hidden;display:none}
 .install-box::before{content:"";position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);border-radius:50%}
 .install-box h3{margin:0 0 8px;font-size:17px;position:relative;z-index:1}
 .install-box p{margin:0 0 14px;font-size:12px;opacity:.9;position:relative;z-index:1}
 .install-box button{background:#fff;color:#084c47;border:none;padding:12px 24px;border-radius:12px;font-weight:bold;font-size:14px;cursor:pointer;font-family:inherit;position:relative;z-index:1;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .install-box button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
-.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--bg-card);color:var(--accent);padding:10px 18px;border-radius:10px;border:2px solid var(--border);text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;box-shadow:0 2px 8px var(--shadow)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--bg-card);color:var(--page-accent);padding:10px 18px;border-radius:10px;border:2px solid var(--border);text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;margin-bottom:20px;box-shadow:0 2px 8px var(--shadow)}
 .gallery-wrap{position:relative}
 .gallery-grid{display:flex;gap:14px;overflow-x:auto;padding:8px 4px 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 .gallery-grid::-webkit-scrollbar{height:6px}
 .gallery-grid::-webkit-scrollbar-track{background:var(--border-soft);border-radius:4px}
-.gallery-grid::-webkit-scrollbar-thumb{background:#0b6b62;border-radius:4px}
+.gallery-grid::-webkit-scrollbar-thumb{background:var(--page-accent2);border-radius:4px}
 .gallery-item{flex:0 0 82%;max-width:380px;scroll-snap-align:center;border-radius:14px;overflow:hidden;background:var(--bg-card);box-shadow:0 6px 20px rgba(0,0,0,.1);position:relative;cursor:pointer;transition:transform .3s}
 .gallery-item:active{transform:scale(.98)}
 .gallery-item img{width:100%;height:220px;object-fit:cover;display:block;background:var(--bg-soft)}
@@ -138,32 +139,31 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:50px;height:50px;border-radius:50%;cursor:pointer}
 .lightbox .lb-prev{left:20px}.lightbox .lb-next{right:20px}
 .weekly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.weekly-card{background:var(--card-bg-soft);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);border-right:5px solid #0b6b62;position:relative}
-.weekly-card .day{display:inline-block;background:#084c47;color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
-.weekly-card h4{margin:6px 0;color:var(--accent);font-size:16px}
+.weekly-card{background:var(--card-bg-soft);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);border-right:5px solid var(--page-accent2);position:relative}
+.weekly-card .day{display:inline-block;background:var(--page-accent);color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:8px}
+.weekly-card h4{margin:6px 0;color:var(--page-accent);font-size:16px}
 .weekly-card .info{font-size:12px;color:var(--text-soft);margin:5px 0}
 .weekly-card .desc{font-size:12px;color:var(--text-mute);margin-top:8px;line-height:1.6}
 .weekly-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
 .class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.class-card{background:var(--card-bg-soft2);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);position:relative;border-right:5px solid #7a3fa0;color:var(--text)}
-.class-card h4{margin:0 0 8px;color:var(--accent);font-size:16px}
+.class-card{background:var(--card-bg-soft2);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);position:relative;border-right:5px solid var(--page-accent2);color:var(--text)}
+.class-card h4{margin:0 0 8px;color:var(--page-accent);font-size:16px}
 .class-card .c-info{font-size:12px;color:var(--text-soft);margin:4px 0}
 .class-card .c-desc{font-size:12px;color:var(--text-mute);line-height:1.6;margin:8px 0}
-.class-card .c-reg{background:#7a3fa0;color:#fff;border:none;padding:10px 16px;border-radius:10px;font-size:13px;cursor:pointer;width:100%;font-family:inherit}
+.class-card .c-reg{background:var(--page-accent2);color:#fff;border:none;padding:10px 16px;border-radius:10px;font-size:13px;cursor:pointer;width:100%;font-family:inherit}
 .class-card .c-reg.done{background:#888;cursor:default}
 .class-card .del-btn{position:absolute;top:10px;left:10px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
-.class-card .c-count{position:absolute;top:12px;left:46px;background:#7a3fa0;color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
+.class-card .c-count{position:absolute;top:12px;left:46px;background:var(--page-accent2);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
 .reg-list{background:var(--bg-soft2);border-radius:10px;padding:12px;margin-top:10px;font-size:12px}
 .reg-list .reg-item{padding:5px 0;border-bottom:1px dashed var(--border)}
 .library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-.book-card{background:var(--bg-card);border-radius:14px;padding:16px;box-shadow:0 4px 12px var(--shadow);position:relative;border-top:4px solid #2e8b57;text-align:center;cursor:pointer;transition:transform .25s,box-shadow .25s;color:var(--text)}
+.book-card{background:var(--bg-card);border-radius:14px;padding:16px;box-shadow:0 4px 12px var(--shadow);position:relative;border-top:4px solid var(--page-accent2);text-align:center;cursor:pointer;transition:transform .25s,box-shadow .25s;color:var(--text)}
 .book-card:hover{transform:translateY(-5px);box-shadow:0 10px 24px var(--shadow-strong)}
 .book-card .book-icon{font-size:50px;margin-bottom:8px}
 .book-card .book-cover-img{width:100%;height:200px;object-fit:cover;border-radius:10px;background:var(--bg-soft);margin-bottom:10px;display:block}
-.book-card h4{margin:6px 0;color:var(--accent);font-size:15px}
+.book-card h4{margin:6px 0;color:var(--page-accent);font-size:15px}
 .book-card .b-author{font-size:11px;color:var(--text-mute);margin-bottom:4px}
-.book-card .b-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:10px;padding:2px 10px;border-radius:10px;margin-bottom:6px}
-html[data-theme="dark"] .book-card .b-cat{background:#1e3533;color:#7ef5d4}
+.book-card .b-cat{display:inline-block;background:var(--bg-soft);color:var(--page-accent2);font-size:10px;padding:2px 10px;border-radius:10px;margin-bottom:6px;border:1px solid var(--border)}
 .book-card .b-desc{font-size:11px;color:var(--text-mute);line-height:1.5;margin:6px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .book-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;line-height:1;z-index:2}
 .book-card .sort-badge{position:absolute;top:8px;right:8px;background:#c48b1f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:bold;z-index:2}
@@ -172,23 +172,21 @@ html[data-theme="dark"] .book-card .b-cat{background:#1e3533;color:#7ef5d4}
 .book-detail-card{background:var(--bg-card);border-radius:18px;padding:24px;box-shadow:0 8px 28px var(--shadow);display:flex;gap:24px;flex-wrap:wrap;margin-top:10px}
 .book-detail-cover{width:200px;height:290px;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px var(--shadow-strong);flex-shrink:0;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:80px}
 .book-detail-body{flex:1;min-width:240px}
-.book-detail-body h2{margin:0 0 8px;color:var(--accent);font-size:24px}
+.book-detail-body h2{margin:0 0 8px;color:var(--page-accent);font-size:24px}
 .book-detail-author{color:var(--text-soft);font-size:14px;margin:0 0 6px}
-.book-detail-cat{display:inline-block;background:#d9efeb;color:#084c47;font-size:11px;padding:3px 12px;border-radius:12px;margin-bottom:12px}
-html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
+.book-detail-cat{display:inline-block;background:var(--bg-soft);color:var(--page-accent2);font-size:11px;padding:3px 12px;border-radius:12px;margin-bottom:12px;border:1px solid var(--border)}
 .book-detail-desc{color:var(--text-soft);line-height:1.9;font-size:14px;margin-bottom:18px;white-space:pre-line}
 .book-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
 .book-actions a,.book-actions button{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:bold;font-family:inherit;border:none;cursor:pointer;transition:transform .2s}
 .book-actions a:hover,.book-actions button:hover{transform:translateY(-2px)}
-.btn-download{background:#2e8b57;color:#fff}
+.btn-download{background:var(--page-accent2);color:#fff}
 .btn-audio{background:#1e6bb8;color:#fff}
-.btn-parts{background:#0b6b62;color:#fff}
+.btn-parts{background:var(--page-accent);color:#fff}
 .btn-parts.active{background:#b91c1c}
-.audio-player{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:14px;padding:16px;color:#fff;margin-bottom:16px;box-shadow:0 6px 20px rgba(8,76,71,.3)}
+.audio-player{background:var(--page-gradient);border-radius:14px;padding:16px;color:#fff;margin-bottom:16px;box-shadow:0 6px 20px rgba(8,76,71,.3)}
 .audio-player .ap-title{font-size:13px;margin-bottom:12px;opacity:.95;font-weight:bold;display:flex;align-items:center;gap:6px}
 .audio-player .ap-controls{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-.audio-player .ap-play{background:#fff;color:#084c47;border:none;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .2s}
-.audio-player .ap-play:hover{transform:scale(1.05)}
+.audio-player .ap-play{background:#fff;color:var(--page-accent);border:none;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .audio-player .ap-skip{background:rgba(255,255,255,.15);color:#fff;border:none;width:38px;height:38px;border-radius:50%;font-size:14px;cursor:pointer;flex-shrink:0}
 .audio-player .ap-progress{flex:1;min-width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px;position:relative;cursor:pointer}
 .audio-player .ap-progress-bar{height:100%;background:#fff;border-radius:3px;width:0%;transition:width .1s}
@@ -198,7 +196,7 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .audio-player .ap-speed{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:4px 10px;font-size:12px;font-family:inherit;cursor:pointer}
 .parts-container{margin-top:16px;display:flex;flex-direction:column;gap:10px}
 .parts-container.hidden{display:none}
-.part-item{background:var(--bg-soft);border:1px solid var(--border);border-right:4px solid #0b6b62;padding:14px 16px;border-radius:10px;transition:background .2s,transform .2s;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.part-item{background:var(--bg-soft);border:1px solid var(--border);border-right:4px solid var(--page-accent2);padding:14px 16px;border-radius:10px;transition:background .2s,transform .2s;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .part-item:hover{background:var(--bg-soft2);transform:translateX(-4px)}
 .part-item .part-info{flex:1;min-width:150px}
 .part-item .part-title{font-weight:bold;color:var(--text);font-size:14px;display:block;margin-bottom:4px}
@@ -206,13 +204,13 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .part-item .part-actions{display:flex;gap:6px;flex-wrap:wrap}
 .part-item .part-actions a,.part-item .part-actions button{padding:6px 12px;border-radius:8px;font-size:12px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;font-weight:bold}
 .part-btn-open{background:#1e6bb8;color:#fff}
-.part-btn-dl{background:#2e8b57;color:#fff}
+.part-btn-dl{background:var(--page-accent2);color:#fff}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .video-card{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative;cursor:pointer;transition:transform .25s,box-shadow .25s}
 .video-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px var(--shadow-strong)}
 .video-card video{width:100%;height:200px;object-fit:contain;display:block;background:#000;pointer-events:none}
 .video-card .v-info{padding:12px}
-.video-card h4{margin:0 0 6px;color:var(--accent);font-size:14px}
+.video-card h4{margin:0 0 6px;color:var(--page-accent);font-size:14px}
 .video-card .v-desc{font-size:11px;color:var(--text-mute);line-height:1.5}
 .video-card .v-stats{display:flex;gap:12px;margin-top:8px;font-size:12px;color:var(--text-soft)}
 .video-card .v-stats span{display:inline-flex;align-items:center;gap:4px}
@@ -226,36 +224,70 @@ html[data-theme="dark"] .book-detail-cat{background:#1e3533;color:#7ef5d4}
 .video-modal .vm-close{position:absolute;top:12px;left:14px;background:rgba(0,0,0,.1);border:none;color:var(--text);font-size:22px;width:38px;height:38px;border-radius:50%;cursor:pointer;line-height:1;z-index:5}
 html[data-theme="dark"] .video-modal .vm-close{background:rgba(255,255,255,.1)}
 .video-modal video{width:100%;max-height:65vh;border-radius:12px;background:#000;display:block}
-.video-modal .vm-title{margin:16px 0 8px;color:var(--accent);font-size:20px;padding-left:50px}
+.video-modal .vm-title{margin:16px 0 8px;color:var(--page-accent);font-size:20px;padding-left:50px}
 .video-modal .vm-desc{color:var(--text-soft);font-size:14px;line-height:1.8;margin-bottom:14px;white-space:pre-line}
 .video-modal .vm-actions{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
-.video-modal .vm-like-btn{background:var(--bg-soft);border:2px solid var(--border);border-radius:24px;padding:8px 18px;font-size:14px;cursor:pointer;color:var(--accent);font-weight:bold;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.video-modal .vm-like-btn{background:var(--bg-soft);border:2px solid var(--border);border-radius:24px;padding:8px 18px;font-size:14px;cursor:pointer;color:var(--page-accent);font-weight:bold;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
 .video-modal .vm-like-btn:hover{background:var(--bg-soft2);transform:translateY(-2px)}
 .video-modal .vm-like-btn.liked{background:#ff4757;color:#fff;border-color:#ff4757}
 .video-modal .vm-like-btn .like-count{background:rgba(0,0,0,.08);border-radius:12px;padding:2px 10px;font-size:13px}
 .video-modal .vm-like-btn.liked .like-count{background:rgba(255,255,255,.25)}
 .video-modal .vm-comment-count{font-size:13px;color:var(--text-soft);display:inline-flex;align-items:center;gap:6px}
 .video-modal .vm-comments-section{border-top:2px solid var(--border-soft);padding-top:16px}
-.video-modal .vm-comments-section h4{margin:0 0 12px;color:var(--accent);font-size:15px}
+.video-modal .vm-comments-section h4{margin:0 0 12px;color:var(--page-accent);font-size:15px}
 .video-modal .vm-comment-form{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
 .video-modal .vm-comment-form textarea{min-height:70px;font-size:13px}
-.video-modal .vm-comment-form button{align-self:flex-end;background:#0b6b62;color:#fff;border:none;padding:8px 20px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit}
+.video-modal .vm-comment-form button{align-self:flex-end;background:var(--page-accent2);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit}
 .video-modal .vm-login-notice{background:var(--bg-soft);border:2px dashed var(--border);border-radius:12px;padding:14px;text-align:center;font-size:13px;color:var(--text-soft);margin-bottom:16px}
 .video-modal .vm-login-notice button{background:#c48b1f;color:#fff;border:none;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;font-family:inherit;margin-top:8px}
 .video-modal .vm-comments-list{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow-y:auto;padding-right:4px}
 .video-modal .vm-comment{background:var(--bg-soft);border-radius:10px;padding:10px 12px;font-size:13px;position:relative}
 .video-modal .vm-comment .vmc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;gap:8px;flex-wrap:wrap}
-.video-modal .vm-comment .vmc-name{font-weight:bold;color:var(--accent);font-size:12px}
+.video-modal .vm-comment .vmc-name{font-weight:bold;color:var(--page-accent);font-size:12px}
 .video-modal .vm-comment .vmc-date{font-size:10px;color:var(--text-mute)}
 .video-modal .vm-comment .vmc-text{color:var(--text);line-height:1.7;font-size:13px}
 .video-modal .vm-comment .vmc-del{background:#c94f4f;color:#fff;border:none;border-radius:6px;padding:2px 8px;font-size:10px;cursor:pointer;font-family:inherit;margin-top:6px}
 .video-modal .vm-comments-empty{text-align:center;color:var(--text-mute);font-size:12px;padding:14px}
+
+/* باشگاه فوتسال */
+.futsal-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:24px;background:var(--bg-card);padding:8px;border-radius:14px;box-shadow:0 4px 16px var(--shadow);max-width:400px;margin-left:auto;margin-right:auto}
+.futsal-tab{flex:1;padding:12px;border:none;border-radius:10px;background:transparent;font-family:inherit;font-size:14px;font-weight:bold;color:var(--text-soft);cursor:pointer;transition:all .2s}
+.futsal-tab.active{background:var(--page-accent2);color:#fff}
+.futsal-section{display:none}
+.futsal-section.active{display:block}
+.futsal-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.futsal-photo-item{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative;cursor:pointer;transition:transform .25s}
+.futsal-photo-item:hover{transform:translateY(-5px);box-shadow:0 10px 24px var(--shadow-strong)}
+.futsal-photo-item img{width:100%;height:180px;object-fit:cover;display:block;background:var(--bg-soft)}
+.futsal-photo-item .fp-caption{padding:10px 12px;font-size:12px;color:var(--text-soft);line-height:1.6;text-align:center}
+.futsal-photo-item .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:14px;z-index:2;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.futsal-videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.futsal-video-card{background:var(--bg-card);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);position:relative}
+.futsal-video-card video{width:100%;height:200px;object-fit:contain;background:#000;display:block}
+.futsal-video-card .fv-info{padding:12px}
+.futsal-video-card h4{margin:0 0 6px;color:var(--page-accent);font-size:14px}
+.futsal-video-card .fv-desc{font-size:11px;color:var(--text-mute);line-height:1.5}
+.futsal-video-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;z-index:2;line-height:1}
+
+/* ============ رنگ اختصاصی هر صفحه ============ */
+body[data-page-theme="home"]{--page-accent:#084c47;--page-accent2:#1e6bb8;--page-gradient:linear-gradient(135deg,#084c47,#1e6bb8)}
+body[data-page-theme="news"]{--page-accent:#be185d;--page-accent2:#ec4899;--page-gradient:linear-gradient(135deg,#be185d,#ec4899)}
+body[data-page-theme="think"]{--page-accent:#6d28d9;--page-accent2:#8b5cf6;--page-gradient:linear-gradient(135deg,#6d28d9,#8b5cf6)}
+body[data-page-theme="classes"]{--page-accent:#c2410c;--page-accent2:#f97316;--page-gradient:linear-gradient(135deg,#c2410c,#f97316)}
+body[data-page-theme="library"]{--page-accent:#92400e;--page-accent2:#b45309;--page-gradient:linear-gradient(135deg,#92400e,#b45309)}
+body[data-page-theme="videos"]{--page-accent:#991b1b;--page-accent2:#dc2626;--page-gradient:linear-gradient(135deg,#991b1b,#dc2626)}
+body[data-page-theme="events"]{--page-accent:#a16207;--page-accent2:#eab308;--page-gradient:linear-gradient(135deg,#a16207,#eab308)}
+body[data-page-theme="member"]{--page-accent:#1e40af;--page-accent2:#3b82f6;--page-gradient:linear-gradient(135deg,#1e40af,#3b82f6)}
+body[data-page-theme="admin"]{--page-accent:#1e293b;--page-accent2:#475569;--page-gradient:linear-gradient(135deg,#1e293b,#475569)}
+body[data-page-theme="about"]{--page-accent:#084c47;--page-accent2:#1e6bb8;--page-gradient:linear-gradient(135deg,#084c47,#1e6bb8)}
+body[data-page-theme="futsal"]{--page-accent:#166534;--page-accent2:#22c55e;--page-gradient:linear-gradient(135deg,#166534,#22c55e)}
+
 .birthday-banner{background:linear-gradient(135deg,#ff6b9d,#c44569);color:#fff;border-radius:14px;padding:18px 20px;margin-bottom:16px;text-align:center;box-shadow:0 8px 24px rgba(196,69,105,.35);animation:birthdayPulse 2s ease-in-out infinite}
 @keyframes birthdayPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 .birthday-banner .bb-icon{font-size:38px;display:block;margin-bottom:6px}
 .birthday-banner .bb-text{font-size:15px;font-weight:bold;line-height:1.8}
 .messages-header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.messages-header h3{margin:0;color:var(--accent);font-size:15px;display:inline-flex;align-items:center;gap:8px}
+.messages-header h3{margin:0;color:var(--page-accent);font-size:15px;display:inline-flex;align-items:center;gap:8px}
 .messages-header .mark-all-btn{background:#2e8b57;color:#fff;border:none;padding:6px 14px;border-radius:10px;font-size:12px;font-weight:bold;cursor:pointer;font-family:inherit}
 .msg-card{cursor:pointer;transition:transform .2s}
 .msg-card:hover{transform:translateX(-3px)}
@@ -264,13 +296,13 @@ html[data-theme="dark"] .video-modal .vm-close{background:rgba(255,255,255,.1)}
 .search-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1500;justify-content:center;align-items:flex-start;padding:80px 20px 20px;overflow-y:auto}
 .search-modal-bg.open{display:flex}
 .search-modal{background:var(--bg-card);border-radius:16px;padding:20px;max-width:640px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
-.search-modal h3{color:var(--accent);margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:8px}
+.search-modal h3{color:var(--page-accent);margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:8px}
 .search-modal .sm-close{background:transparent;border:none;color:var(--text-mute);font-size:26px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
 .search-modal input[type="text"]{width:100%;padding:14px 16px;font-size:16px;border-radius:12px;border:2px solid var(--border);background:var(--bg-soft);color:var(--text)}
 .search-results{margin-top:16px;max-height:60vh;overflow-y:auto}
 .sr-group{margin-bottom:14px}
-.sr-group-title{font-size:12px;color:var(--accent2);font-weight:bold;margin-bottom:6px;padding:4px 0;border-bottom:1px dashed var(--border-soft);display:flex;align-items:center;gap:6px}
-.sr-item{background:var(--bg-soft);border-radius:10px;padding:10px 12px;margin:6px 0;font-size:13px;cursor:pointer;transition:background .2s;border-right:3px solid var(--accent2)}
+.sr-group-title{font-size:12px;color:var(--page-accent2);font-weight:bold;margin-bottom:6px;padding:4px 0;border-bottom:1px dashed var(--border-soft);display:flex;align-items:center;gap:6px}
+.sr-item{background:var(--bg-soft);border-radius:10px;padding:10px 12px;margin:6px 0;font-size:13px;cursor:pointer;transition:background .2s;border-right:3px solid var(--page-accent2)}
 .sr-item:hover{background:var(--bg-soft2);transform:translateX(-2px)}
 .sr-item .sr-title{font-weight:bold;color:var(--text);margin-bottom:3px;font-size:13px}
 .sr-item .sr-desc{font-size:11px;color:var(--text-mute);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -279,15 +311,14 @@ html[data-theme="dark"] .video-modal .vm-close{background:rgba(255,255,255,.1)}
 .sr-hint{font-size:11px;color:var(--text-mute);text-align:center;margin-top:8px}
 .member{padding:10px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
 .idea{padding:10px 12px;border-radius:8px;background:var(--bg-soft);margin:4px 0;font-size:12px}
-.status{display:inline-block;padding:2px 10px;border-radius:12px;background:#d9efeb;color:#084c47;font-size:10px;margin-top:6px}
-html[data-theme="dark"] .status{background:#1e3533;color:#7ef5d4}
+.status{display:inline-block;padding:2px 10px;border-radius:12px;background:var(--bg-soft);color:var(--page-accent2);font-size:10px;margin-top:6px;border:1px solid var(--border)}
 .status-new{background:#e0e7ff;color:#3730a3}
 .status-review{background:#fef3c7;color:#92400e}
 .status-approved{background:#d1fae5;color:#065f46}
 .status-running{background:#dbeafe;color:#1e40af}
 .status-done{background:#c7d2fe;color:#3730a3}
 .status-rejected{background:#fee2e2;color:#991b1b}
-.idea-card{padding:14px;border-radius:12px;background:var(--bg-soft);margin:10px 0;font-size:13px;border-right:4px solid #0b6b62;position:relative;transition:transform .2s}
+.idea-card{padding:14px;border-radius:12px;background:var(--bg-soft);margin:10px 0;font-size:13px;border-right:4px solid var(--page-accent2);position:relative;transition:transform .2s}
 .idea-card:hover{transform:translateX(-2px)}
 .idea-card .idea-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px}
 .idea-card .idea-cat{font-size:11px;color:var(--text-mute);font-weight:bold}
@@ -298,26 +329,25 @@ html[data-theme="dark"] .status{background:#1e3533;color:#7ef5d4}
 .idea-card .idea-admin-reply .reply-label{font-weight:bold;color:#c48b1f;font-size:11px;display:block;margin-bottom:4px}
 .idea-card .idea-delete-btn{background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:bold}
 .idea-card .idea-vote-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
-.idea-card .vote-btn{background:var(--bg-card);border:2px solid var(--border);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;color:var(--accent);font-weight:bold;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.idea-card .vote-btn{background:var(--bg-card);border:2px solid var(--border);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;color:var(--page-accent);font-weight:bold;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
 .idea-card .vote-btn:hover{background:var(--bg-soft2);transform:translateY(-2px)}
-.idea-card .vote-btn.voted{background:#0b6b62;color:#fff;border-color:#0b6b62}
+.idea-card .vote-btn.voted{background:var(--page-accent2);color:#fff;border-color:var(--page-accent2)}
 .idea-card .vote-btn .vote-count{background:rgba(0,0,0,.1);border-radius:12px;padding:1px 8px;font-size:12px}
 .idea-card .vote-btn.voted .vote-count{background:rgba(255,255,255,.25)}
 .attendance-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
 .att-stat-card{background:var(--bg-card);border-radius:12px;padding:14px;box-shadow:0 3px 10px var(--shadow);border-right:4px solid #1e6bb8}
-.att-stat-card h5{margin:0 0 8px;font-size:13px;color:var(--accent)}
+.att-stat-card h5{margin:0 0 8px;font-size:13px;color:var(--page-accent)}
 .att-stat-card .att-numbers{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--text-soft)}
 .att-stat-card .att-numbers span{display:inline-flex;align-items:center;gap:4px}
 .att-stat-card .att-bar{height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden;margin-top:8px}
-.att-stat-card .att-bar-inner{height:100%;background:linear-gradient(90deg,#0b6b62,#2e8b57)}
+.att-stat-card .att-bar-inner{height:100%;background:var(--page-gradient)}
 .att-stat-card .att-pct{font-size:11px;color:var(--text-mute);margin-top:4px}
-.admin-idea{padding:14px;border-radius:10px;background:var(--bg-soft);margin:10px 0;font-size:13px;border-right:4px solid #0b6b62}
+.admin-idea{padding:14px;border-radius:10px;background:var(--bg-soft);margin:10px 0;font-size:13px;border-right:4px solid var(--page-accent2)}
 .admin-idea .content{margin:8px 0;line-height:1.7}
 .admin-idea .actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
 .admin-idea .actions button{padding:6px 12px;font-size:11px;border-radius:8px;border:none;cursor:pointer;color:#fff;font-family:inherit;font-weight:bold}
 .admin-idea .rating-row{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
 .admin-idea .rating-row .star-btn{background:transparent;border:none;font-size:22px;cursor:pointer;color:#ccc;padding:2px;transition:transform .15s}
-.admin-idea .rating-row .star-btn:hover{transform:scale(1.15)}
 .admin-idea .rating-row .star-btn.on{color:#f5b400}
 .admin-idea .reply-box{margin-top:10px}
 .admin-idea .reply-box textarea{min-height:60px;font-size:12px;width:100%}
@@ -333,18 +363,18 @@ html[data-theme="dark"] .status{background:#1e3533;color:#7ef5d4}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-bg.open{display:flex}
 .modal{background:var(--bg-card);border-radius:14px;padding:22px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;color:var(--text)}
-.modal h3{color:var(--accent);margin:0 0 14px;font-size:16px}
+.modal h3{color:var(--page-accent);margin:0 0 14px;font-size:16px}
 .modal .close{background:transparent;border:none;color:var(--text-mute);font-size:24px;cursor:pointer;position:absolute;top:10px;left:14px;line-height:1}
 .profile-header{display:flex;align-items:center;gap:16px;padding:16px;background:var(--card-bg-soft);border-radius:12px;margin-bottom:14px}
-.profile-avatar{width:60px;height:60px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;overflow:hidden}
+.profile-avatar{width:60px;height:60px;border-radius:50%;background:var(--page-accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;overflow:hidden}
 .profile-avatar img{width:100%;height:100%;object-fit:cover}
-.profile-info h3{margin:0 0 4px;color:var(--accent);font-size:16px}
+.profile-info h3{margin:0 0 4px;color:var(--page-accent);font-size:16px}
 .profile-info p{margin:2px 0;font-size:12px;color:var(--text-soft)}
-.myidea{padding:10px 12px;border-radius:10px;background:var(--bg-soft);margin:6px 0;font-size:12px;border-right:4px solid #0b6b62}
+.myidea{padding:10px 12px;border-radius:10px;background:var(--bg-soft);margin:6px 0;font-size:12px;border-right:4px solid var(--page-accent2)}
 .myidea .content{margin:5px 0;line-height:1.6}
 .login-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;justify-content:center}
-.login-tab{padding:7px 12px;background:var(--bg-soft);border:2px solid var(--border);border-radius:10px;font-size:12px;cursor:pointer;color:var(--accent);font-weight:bold;font-family:inherit;transition:all .2s}
-.login-tab.active{background:#0b6b62;color:#fff;border-color:#0b6b62}
+.login-tab{padding:7px 12px;background:var(--bg-soft);border:2px solid var(--border);border-radius:10px;font-size:12px;cursor:pointer;color:var(--page-accent);font-weight:bold;font-family:inherit;transition:all .2s}
+.login-tab.active{background:var(--page-accent2);color:#fff;border-color:var(--page-accent2)}
 #panelTabs{margin:0 0 14px 0;padding:10px;background:var(--bg-soft2);border-radius:12px}
 .unread-badge{display:inline-block;background:#c94f4f;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;margin-right:6px}
 .birthday-card{background:linear-gradient(135deg,#fff7e6,#fff);border-radius:12px;padding:12px;margin:6px 0;font-size:12px;border-right:4px solid #c48b1f}
@@ -352,25 +382,22 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 .attendance-row{display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid var(--border-soft);font-size:12px;flex-wrap:wrap}
 .attendance-row .att-name{flex:1;min-width:100px}
 .att-btn{padding:4px 10px;border:none;border-radius:6px;font-size:11px;cursor:pointer;color:#fff;font-weight:bold;font-family:inherit}
-.att-present{background:#2e8b57}
-.att-absent{background:#c94f4f}
-.att-late{background:#c48b1f}
+.att-present{background:#2e8b57}.att-absent{background:#c94f4f}.att-late{background:#c48b1f}
 .att-active{box-shadow:0 0 0 3px rgba(11,107,98,.3);transform:scale(1.05)}
-.report-stat{background:var(--bg-card);border-radius:12px;padding:12px;text-align:center;box-shadow:0 4px 12px var(--shadow);border-top:4px solid #0b6b62}
+.report-stat{background:var(--bg-card);border-radius:12px;padding:12px;text-align:center;box-shadow:0 4px 12px var(--shadow);border-top:4px solid var(--page-accent2)}
 .report-stat .ri{font-size:22px}
-.report-stat .rv{font-size:20px;font-weight:bold;color:var(--accent);margin:5px 0}
+.report-stat .rv{font-size:20px;font-weight:bold;color:var(--page-accent);margin:5px 0}
 .report-stat .rk{font-size:11px;color:var(--text-soft)}
 .weekly-report{background:var(--bg-card);border-radius:14px;padding:20px;box-shadow:0 6px 20px var(--shadow);margin-top:14px}
 .weekly-report-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;border-bottom:2px solid var(--border-soft);padding-bottom:12px}
-.weekly-report-header h3{margin:0;color:var(--accent);font-size:17px}
+.weekly-report-header h3{margin:0;color:var(--page-accent);font-size:17px}
 .weekly-report-header .wr-range{font-size:12px;color:var(--text-mute);background:var(--bg-soft);padding:4px 12px;border-radius:10px}
 .weekly-report-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-.wr-item{background:var(--bg-soft);border-radius:12px;padding:14px;text-align:center;border-bottom:3px solid var(--accent2)}
+.wr-item{background:var(--bg-soft);border-radius:12px;padding:14px;text-align:center;border-bottom:3px solid var(--page-accent2)}
 .wr-item .wr-icon{font-size:26px;margin-bottom:6px}
-.wr-item .wr-num{font-size:22px;font-weight:bold;color:var(--accent);margin:4px 0}
+.wr-item .wr-num{font-size:22px;font-weight:bold;color:var(--page-accent);margin:4px 0}
 .wr-item .wr-label{font-size:11px;color:var(--text-soft)}
-.wr-item .wr-detail{font-size:10px;color:var(--text-mute);margin-top:4px}
-.membership-card{background:linear-gradient(135deg,#084c47 0%,#0b6b62 50%,#0a5d54 100%);border-radius:18px;padding:20px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:18px}
+.membership-card{background:var(--page-gradient);border-radius:18px;padding:20px;color:#fff;box-shadow:0 12px 32px rgba(8,76,71,.35);position:relative;overflow:hidden;margin-bottom:18px}
 .membership-card::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
 .membership-card::after{content:"💚";position:absolute;bottom:10px;left:15px;font-size:70px;opacity:.08;transform:rotate(-15deg)}
 .membership-card .mc-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:10px;margin-bottom:12px;position:relative;z-index:1}
@@ -385,7 +412,7 @@ html[data-theme="dark"] .birthday-card{background:linear-gradient(135deg,#2a2418
 .membership-card .mc-code{background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:8px;font-family:monospace;font-size:12px;letter-spacing:1px;margin-top:3px;border:1px solid rgba(255,255,255,.2)}
 .membership-card .mc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.2);font-size:10px;opacity:.85;position:relative;z-index:1}
 .membership-card .mc-status{background:#2e8b57;padding:3px 10px;border-radius:10px;font-weight:bold;font-size:10px}
-.contact-section{background:linear-gradient(135deg,#084c47,#0b6b62);border-radius:18px;padding:28px 22px;color:#fff;text-align:center;margin:30px 0;box-shadow:0 12px 32px rgba(8,76,71,.3)}
+.contact-section{background:var(--page-gradient);border-radius:18px;padding:28px 22px;color:#fff;text-align:center;margin:30px 0;box-shadow:0 12px 32px rgba(8,76,71,.3)}
 .contact-section h3{margin:0 0 8px;font-size:18px}
 .contact-section p{margin:0 0 18px;font-size:13px;opacity:.9}
 .contact-links{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto}
@@ -401,9 +428,22 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 .poll-card .expired-badge{background:#c94f4f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;font-weight:bold}
 .poll-card .expire-badge-active{background:#c48b1f;color:#fff;font-size:10px;padding:2px 10px;border-radius:10px}
 .poll-card .del-btn{position:absolute;top:14px;left:14px;background:#c94f4f;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
-.poll-card{position:relative}
+.poll-card{position:relative;background:var(--bg-card);border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);margin:12px 0}
+.poll-card h4{margin:0 0 6px;color:var(--page-accent);font-size:15px}
+.poll-option{margin:6px 0;position:relative}
+.poll-option button{width:100%;text-align:right;background:var(--bg-soft);border:2px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;cursor:pointer;color:var(--page-accent);font-weight:bold;position:relative;overflow:hidden;z-index:1;font-family:inherit}
+.poll-option button.voted{background:var(--page-accent2);color:#fff;border-color:var(--page-accent2)}
 .poll-option button:disabled{opacity:.6;cursor:not-allowed}
-@media(max-width:800px){.online-label{display:none}.membership-card .mc-photo{width:60px;height:60px;font-size:22px}}
+.poll-option .bar{position:absolute;top:0;right:0;height:100%;background:var(--bg-soft2);border-radius:8px;z-index:-1;transition:width .6s ease}
+.poll-option button.voted .bar{background:var(--page-accent2);opacity:.35}
+.poll-option .result{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--page-accent);font-weight:bold}
+.msg-card{background:var(--bg-card);border-radius:12px;padding:12px;margin:6px 0;box-shadow:0 3px 10px var(--shadow);border-right:4px solid #1e6bb8;font-size:12px;position:relative}
+.msg-card h5{margin:0 0 5px;color:var(--page-accent);font-size:13px}
+.msg-card .m-content{color:var(--text-soft);line-height:1.6}
+.msg-card .m-date{font-size:10px;color:var(--text-mute);margin-top:6px}
+.msg-card .del-btn{position:absolute;top:8px;left:8px;background:#c94f4f;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:11px;line-height:1}
+
+@media(max-width:800px){.online-label{display:none}}
 @media(max-width:600px){
   .library-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
   .book-card{padding:12px}
@@ -413,14 +453,13 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
   .book-detail-cover{width:100%;height:260px;font-size:60px}
   .book-detail-body h2{font-size:20px}
   .book-actions a,.book-actions button{padding:9px 14px;font-size:13px;flex:1;justify-content:center}
-  .audio-player .ap-progress{min-width:100%}
-  .audio-player .ap-time{min-width:auto}
   .video-modal{padding:14px}
   .video-modal .vm-title{font-size:17px}
+  .futsal-photos-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
 }
 </style>
 </head>
-<body>
+<body data-page-theme="home">
 <header>
 <nav>
 <div class="logo" onclick="goHome()">انوارالرضا(ع)</div>
@@ -491,6 +530,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <a class="shortcut sc-green" onclick="showPage('page-library')"><span class="sc-icon">📚</span><span class="sc-label">کتابخانه</span></a>
 <a class="shortcut sc-red" onclick="showPage('page-videos')"><span class="sc-icon">🎥</span><span class="sc-label">ویدیوها</span></a>
 <a class="shortcut sc-orange" onclick="showPage('page-events')"><span class="sc-icon">📅</span><span class="sc-label">رویدادها</span></a>
+<a class="shortcut sc-futsal" onclick="showPage('page-futsal')"><span class="sc-icon">⚽</span><span class="sc-label">باشگاه فوتسال</span></a>
 </div>
 </section>
 
@@ -531,7 +571,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
 <div class="card">
 <h3>ثبت ایده</h3>
-<div id="ideaUserNotice" style="display:none;padding:10px;background:#e6f5f3;border-radius:8px;font-size:13px;color:#084c47;margin-bottom:10px">✅ وارد شده‌اید: <b id="ideaUserName"></b></div>
+<div id="ideaUserNotice" style="display:none;padding:10px;background:var(--bg-soft);border-radius:8px;font-size:13px;color:var(--page-accent);margin-bottom:10px">✅ وارد شده‌اید: <b id="ideaUserName"></b></div>
 <form id="ideaForm">
 <input id="ideaName" placeholder="نام (اختیاری)">
 <select id="ideaCat"><option value="برنامه‌ها">برنامه‌ها</option><option value="محتوا">محتوا</option><option value="جذب مخاطب">جذب مخاطب</option><option value="سایر">سایر</option></select>
@@ -602,6 +642,23 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </section>
 </div>
 
+<div class="page" id="page-futsal">
+<section>
+<button class="back-btn" onclick="goHome()">← بازگشت</button>
+<div class="title"><h2>⚽ باشگاه فوتسال انوارالرضا</h2><p>گالری عکس و ویدیو باشگاه</p></div>
+<div class="futsal-tabs">
+<button class="futsal-tab active" data-tab="photos" onclick="switchFutsalTab('photos')">📸 گالری عکس</button>
+<button class="futsal-tab" data-tab="videos" onclick="switchFutsalTab('videos')">🎥 گالری ویدیو</button>
+</div>
+<div class="futsal-section active" id="futsalSection-photos">
+<div class="futsal-photos-grid" id="futsalPhotosGrid"></div>
+</div>
+<div class="futsal-section" id="futsalSection-videos">
+<div class="futsal-videos-grid" id="futsalVideosGrid"></div>
+</div>
+</section>
+</div>
+
 <div class="page" id="page-member">
 <section>
 <button class="back-btn" onclick="goHome()">← بازگشت</button>
@@ -639,7 +696,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <p id="avatarMsg" style="font-size:12px;text-align:center"></p>
 <div id="editProfileBox" style="display:none;margin-bottom:14px">
 <div class="card" style="background:var(--bg-soft2)">
-<h4 style="margin:0 0 10px;color:var(--accent);font-size:14px">✏️ ویرایش پروفایل</h4>
+<h4 style="margin:0 0 10px;color:var(--page-accent);font-size:14px">✏️ ویرایش پروفایل</h4>
 <form id="editProfileForm">
 <input id="epName" placeholder="نام و نام خانوادگی" required>
 <div class="date-picker"><select id="epDay" required><option value="">روز</option></select><select id="epMonth" required><option value="">ماه</option></select><select id="epYear" required><option value="">سال</option></select></div>
@@ -651,7 +708,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 <div id="changePasswordBox" style="display:none;margin-bottom:14px">
 <div class="card" style="background:var(--bg-soft2)">
-<h4 style="margin:0 0 10px;color:var(--accent);font-size:14px">🔑 تغییر رمز عبور</h4>
+<h4 style="margin:0 0 10px;color:var(--page-accent);font-size:14px">🔑 تغییر رمز عبور</h4>
 <form id="changePasswordForm">
 <input id="cpOld" type="password" placeholder="رمز فعلی" required>
 <input id="cpNew" type="password" placeholder="رمز جدید (حداقل ۴ کاراکتر)" required minlength="4">
@@ -666,13 +723,13 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <button class="mark-all-btn" onclick="markAllMessagesRead()" id="markAllBtn" style="display:none">✅ خونده‌شده کردن همه</button>
 </div>
 <div id="myMessages"><p style="color:var(--text-mute);font-size:13px">پیامی ندارید.</p></div>
-<h3 style="color:var(--accent);margin-top:16px;font-size:15px">📊 تاریخچه حضور من</h3>
+<h3 style="color:var(--page-accent);margin-top:16px;font-size:15px">📊 تاریخچه حضور من</h3>
 <div id="myAttendance"><p style="color:var(--text-mute);font-size:13px">در جلسه‌ای نبوده‌اید.</p></div>
-<h3 style="color:var(--accent);margin-top:16px;font-size:15px">🗳 تاریخچه رأی‌های من</h3>
+<h3 style="color:var(--page-accent);margin-top:16px;font-size:15px">🗳 تاریخچه رأی‌های من</h3>
 <div id="myVotes"><p style="color:var(--text-mute);font-size:13px">رأی نداده‌اید.</p></div>
-<h3 style="color:var(--accent);margin-top:16px;font-size:15px">🎓 کلاس‌های من</h3>
+<h3 style="color:var(--page-accent);margin-top:16px;font-size:15px">🎓 کلاس‌های من</h3>
 <div id="myClasses"><p style="color:var(--text-mute);font-size:13px">در کلاسی نیستید.</p></div>
-<h3 style="color:var(--accent);margin-top:16px;font-size:15px">💡 ایده‌های من</h3>
+<h3 style="color:var(--page-accent);margin-top:16px;font-size:15px">💡 ایده‌های من</h3>
 <div id="myIdeas"><p style="color:var(--text-mute);font-size:13px">ایده‌ای نیست.</p></div>
 </div>
 </div>
@@ -720,7 +777,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="statsCard" class="card" style="background:var(--card-bg-soft);margin-bottom:14px">
-<h3 style="margin:0 0 14px;color:var(--accent);font-size:15px">📊 آمار کانون</h3>
+<h3 style="margin:0 0 14px;color:var(--page-accent);font-size:15px">📊 آمار کانون</h3>
 <div class="stats">
 <div class="stat"><b id="memberCount">۰</b>عضو</div>
 <div class="stat"><b id="ideaCount">۰</b>ایده</div>
@@ -729,38 +786,38 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionWeeklyReport" class="admin-section" data-panels="main,ertebat,resane,roshd">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📈 گزارش هفتگی کانون</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📈 گزارش هفتگی کانون</h3>
 <div class="weekly-report" id="weeklyReportBox"><p style="text-align:center;color:var(--text-mute);font-size:13px">در حال بارگذاری...</p></div>
 </div>
 
 <div id="sectionMembers" class="admin-section" data-panels="main,ertebat">
 <div class="members-toolbar">
 <input id="searchInput" placeholder="🔍 جستجو..." oninput="filterMembers()">
-<button class="btn" id="downloadBtn" style="background:#2e8b57;font-size:13px">📥 Excel</button>
+<button class="btn" id="downloadBtn" style="background:var(--page-accent2);font-size:13px">📥 Excel</button>
 </div>
 <div id="members"></div>
 </div>
 
 <div id="sectionReports" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📊 گزارش‌گیری</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📊 گزارش‌گیری</h3>
 <div id="reportsStats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:14px"></div>
-<h4 style="color:var(--accent);margin-top:16px;font-size:14px">📋 آمار حضور</h4>
+<h4 style="color:var(--page-accent);margin-top:16px;font-size:14px">📋 آمار حضور</h4>
 <div id="reportsAttendance"></div>
 </div>
 
 <div id="sectionContact" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📢 ارتباط با اعضا</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📢 ارتباط با اعضا</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-<button type="button" class="btn" onclick="selectAllMembers()" style="background:#1e6bb8;font-size:12px;padding:6px 12px">✅ همه</button>
+<button type="button" class="btn" onclick="selectAllMembers()" style="background:var(--page-accent2);font-size:12px;padding:6px 12px">✅ همه</button>
 <button type="button" class="btn" onclick="deselectAllMembers()" style="background:#888;font-size:12px;padding:6px 12px">✖ لغو</button>
 </div>
 <div id="memberSelector" style="max-height:220px;overflow-y:auto;background:var(--bg-card);border-radius:10px;padding:10px;border:1px solid var(--border)"></div>
-<p style="font-size:12px;color:var(--accent2);margin:8px 0">تعداد: <b id="selectedCount">۰</b></p>
+<p style="font-size:12px;color:var(--page-accent2);margin:8px 0">تعداد: <b id="selectedCount">۰</b></p>
 <input id="msgText" placeholder="متن پیام..." style="margin-bottom:10px">
 <div style="display:flex;gap:8px;flex-wrap:wrap">
-<button type="button" class="btn" onclick="copyNumbers()" style="background:#2e8b57;font-size:12px">📋 کپی شماره‌ها</button>
-<button type="button" class="btn" onclick="saveGroup()" style="background:#1e6bb8;font-size:12px">💾 گروه</button>
+<button type="button" class="btn" onclick="copyNumbers()" style="background:var(--page-accent2);font-size:12px">📋 کپی شماره‌ها</button>
+<button type="button" class="btn" onclick="saveGroup()" style="background:var(--page-accent2);font-size:12px">💾 گروه</button>
 </div>
 <input id="groupName" placeholder="اسم گروه" style="margin-top:10px">
 <p id="msgStatus" style="font-size:12px"></p>
@@ -769,13 +826,10 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionMessages" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📬 ارسال پیام به اعضا</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📬 ارسال پیام به اعضا</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="sendMsgForm">
-<select id="sendTo" required style="margin-bottom:8px">
-<option value="all">📢 همه اعضا</option>
-<option value="one">👤 یک عضو خاص</option>
-</select>
+<select id="sendTo" required style="margin-bottom:8px"><option value="all">📢 همه اعضا</option><option value="one">👤 یک عضو خاص</option></select>
 <input id="sendToPhone" placeholder="شماره" style="display:none;margin-bottom:8px">
 <input id="msgTitle" placeholder="عنوان" required>
 <textarea id="msgBody" placeholder="متن..." required></textarea>
@@ -783,17 +837,17 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </form>
 <p id="sendMsgStatus"></p>
 </div>
-<h4 style="margin-top:16px;font-size:14px;color:var(--accent)">📋 پیام‌های ارسال‌شده</h4>
+<h4 style="margin-top:16px;font-size:14px;color:var(--page-accent)">📋 پیام‌های ارسال‌شده</h4>
 <div id="sentMessagesList"></div>
 </div>
 
 <div id="sectionBirthdays" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🎂 تولدهای این هفته</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">🎂 تولدهای این هفته</h3>
 <div class="card" style="background:var(--bg-soft2)"><div id="birthdaysBox"></div></div>
 </div>
 
 <div id="sectionBirthdayMsg" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">💌 پیام تبریک تولد</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">💌 پیام تبریک تولد</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <p style="font-size:12px;color:var(--text-soft);margin:0 0 8px">این پیام برای اعضایی که امروز تولدشونه، توی پنل اعضا نمایش داده میشه:</p>
 <textarea id="birthdayMsgInput" style="min-height:80px" placeholder="🎂 تولدت مبارک! ..."></textarea>
@@ -803,7 +857,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionAttendance" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📊 حضور و غیاب</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📊 حضور و غیاب</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="sessionForm">
 <input id="sesTitle" placeholder="عنوان جلسه" required>
@@ -813,18 +867,18 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </form>
 <p id="sessionMsg"></p>
 </div>
-<h4 style="margin-top:16px;font-size:14px;color:var(--accent)">📋 جلسات</h4>
+<h4 style="margin-top:16px;font-size:14px;color:var(--page-accent)">📋 جلسات</h4>
 <div id="sessionsList"></div>
 </div>
 
 <div id="sectionAttendanceReport" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📈 گزارش حضور اعضا</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📈 گزارش حضور اعضا</h3>
 <p style="font-size:12px;color:var(--text-mute);margin-bottom:12px">آمار حضور هر عضو در جلسات</p>
 <div id="attendanceStatsBox"><p style="text-align:center;color:var(--text-mute);font-size:13px">در حال بارگذاری...</p></div>
 </div>
 
 <div id="sectionEvents" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🗓 افزودن رویداد</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">🗓 افزودن رویداد</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="eventForm">
 <input id="eTitle" placeholder="عنوان" required>
@@ -838,7 +892,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionWeekly" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📅 افزودن رویداد ثابت</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📅 افزودن رویداد ثابت</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="weeklyForm">
 <select id="wDay" required><option value="">روز...</option><option value="شنبه">شنبه</option><option value="یکشنبه">یکشنبه</option><option value="دوشنبه">دوشنبه</option><option value="سه‌شنبه">سه‌شنبه</option><option value="چهارشنبه">چهارشنبه</option><option value="پنجشنبه">پنجشنبه</option><option value="جمعه">جمعه</option></select>
@@ -853,13 +907,13 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionNews" class="admin-section" data-panels="main,ertebat">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📢 افزودن خبر</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📢 افزودن خبر</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="newsForm">
 <input id="nTitle" placeholder="عنوان" required>
 <textarea id="nContent" placeholder="متن..." required></textarea>
 <label style="display:flex;align-items:center;gap:8px;font-size:13px"><input type="checkbox" id="nPinned" style="width:auto"> 📌 سنجاق</label>
-<input id="nSort" type="number" placeholder="ترتیب نمایش (مثلاً ۱، ۲، ۳)" style="margin-bottom:6px">
+<input id="nSort" type="number" placeholder="ترتیب نمایش" style="margin-bottom:6px">
 <p class="sort-hint">عدد کمتر = بالاتر</p>
 <button class="btn" type="submit">افزودن</button>
 </form>
@@ -868,38 +922,60 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionVideos" class="admin-section" data-panels="main,resane">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🎥 آپلود ویدیو</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">🎥 آپلود ویدیو</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="videoForm">
 <input id="vTitle" placeholder="عنوان" required>
 <textarea id="vDesc" placeholder="توضیحات"></textarea>
 <input type="file" id="vFile" accept="video/*" required>
 <p style="font-size:11px;color:var(--text-mute);margin:0">⚠️ حداکثر ۵۰ مگابایت</p>
-<input id="vSort" type="number" placeholder="ترتیب نمایش (مثلاً ۱، ۲، ۳)" style="margin-bottom:6px">
+<input id="vSort" type="number" placeholder="ترتیب نمایش" style="margin-bottom:6px">
 <p class="sort-hint">عدد کمتر = بالاتر</p>
 <button class="btn" type="submit">آپلود</button>
 </form>
 <p id="videoMsg"></p>
 </div>
+<h3 style="margin-top:24px;font-size:15px;color:#166534">⚽ آپلود ویدیو فوتسال</h3>
+<div class="card" style="background:var(--bg-soft2)">
+<form id="futsalVideoForm">
+<input id="futsalVideoTitle" placeholder="عنوان" required>
+<textarea id="futsalVideoDesc" placeholder="توضیحات"></textarea>
+<input type="file" id="futsalVideoFile" accept="video/*" required>
+<p style="font-size:11px;color:var(--text-mute);margin:0">⚠️ حداکثر ۵۰ مگابایت</p>
+<button class="btn" type="submit" style="background:#166534">آپلود فوتسال</button>
+</form>
+<p id="futsalVideoMsg"></p>
+</div>
 </div>
 
 <div id="sectionGallery" class="admin-section" data-panels="main,resane">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🖼 آپلود عکس</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">🖼 آپلود عکس</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="uploadForm">
 <input type="file" id="galleryFile" accept="image/*" required>
 <input id="galleryCaption" placeholder="توضیح عکس">
 <input id="galleryDate" placeholder="تاریخ (مثلاً ۲۱ شهریور ۱۴۰۵)">
-<input id="gallerySort" type="number" placeholder="ترتیب نمایش (مثلاً ۱، ۲، ۳)" style="margin-bottom:6px">
+<input id="gallerySort" type="number" placeholder="ترتیب نمایش" style="margin-bottom:6px">
 <p class="sort-hint">عدد کمتر = بالاتر</p>
 <button class="btn" type="submit">آپلود</button>
 </form>
 <p id="uploadMsg"></p>
 </div>
+<h3 style="margin-top:24px;font-size:15px;color:#166534">⚽ آپلود عکس فوتسال</h3>
+<div class="card" style="background:var(--bg-soft2)">
+<form id="futsalPhotoForm">
+<input type="file" id="futsalPhotoFile" accept="image/*" required>
+<input id="futsalPhotoCaption" placeholder="توضیح عکس">
+<button class="btn" type="submit" style="background:#166534">آپلود فوتسال</button>
+</form>
+<p id="futsalPhotoMsg"></p>
+</div>
+<h4 style="margin-top:16px;font-size:14px;color:#166534">📋 عکس‌های فوتسال (حذف)</h4>
+<div id="adminFutsalPhotosGrid" class="futsal-photos-grid"></div>
 </div>
 
 <div id="sectionAbout" class="admin-section" data-panels="main,resane">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🌟 ویرایش درباره کانون</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">🌟 ویرایش درباره کانون</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="aboutForm">
 <input id="aboutTitleInput" placeholder="عنوان" required>
@@ -911,7 +987,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionClasses" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">🎓 افزودن کلاس</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">🎓 افزودن کلاس</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="classForm">
 <input id="cTitle" placeholder="عنوان" required>
@@ -919,7 +995,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <input id="cSchedule" placeholder="زمان">
 <input id="cCap" type="number" placeholder="ظرفیت">
 <textarea id="cDesc" placeholder="توضیحات"></textarea>
-<input id="cSort" type="number" placeholder="ترتیب نمایش (مثلاً ۱، ۲، ۳)" style="margin-bottom:6px">
+<input id="cSort" type="number" placeholder="ترتیب نمایش" style="margin-bottom:6px">
 <p class="sort-hint">عدد کمتر = بالاتر</p>
 <button class="btn" type="submit">افزودن</button>
 </form>
@@ -928,7 +1004,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 </div>
 
 <div id="sectionLibrary" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📚 افزودن کتاب/جزوه</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📚 افزودن کتاب/جزوه</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="bookForm">
 <input id="bTitle" placeholder="عنوان کتاب" required>
@@ -937,29 +1013,29 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <textarea id="bDesc" placeholder="توضیحات کتاب..."></textarea>
 <label style="font-size:12px;color:var(--text-soft)">🖼 عکس جلد (اختیاری):</label>
 <input type="file" id="bCover" accept="image/*">
-<label style="font-size:12px;color:var(--text-soft)">📄 فایل اصلی (PDF یا هرچیز، اختیاری):</label>
+<label style="font-size:12px;color:var(--text-soft)">📄 فایل اصلی (اختیاری):</label>
 <input type="file" id="bFile" accept=".pdf,.doc,.docx,.zip,.ppt,.pptx">
 <label style="font-size:12px;color:var(--text-soft)">🎧 فایل صوتی (اختیاری):</label>
 <input type="file" id="bAudio" accept="audio/*">
 <label style="font-size:12px;color:var(--text-soft)">📑 قسمت‌ها (هر خط: عنوان | لینک | تعداد صفحه)</label>
-<textarea id="bParts" placeholder="فصل اول | https://... | 12&#10;فصل دوم | https://... | 18" style="min-height:80px"></textarea>
-<input id="bSort" type="number" placeholder="ترتیب نمایش (مثلاً ۱، ۲، ۳)" style="margin-bottom:6px">
+<textarea id="bParts" placeholder="فصل اول | https://... | 12" style="min-height:80px"></textarea>
+<input id="bSort" type="number" placeholder="ترتیب نمایش" style="margin-bottom:6px">
 <p class="sort-hint">عدد کمتر = بالاتر</p>
 <button class="btn" type="submit">💾 ذخیره کتاب</button>
 </form>
 <p id="bookMsg"></p>
 </div>
-<h4 style="margin-top:20px;font-size:14px;color:var(--accent)">📋 لیست کتاب‌ها (ویرایش/حذف)</h4>
+<h4 style="margin-top:20px;font-size:14px;color:var(--page-accent)">📋 لیست کتاب‌ها</h4>
 <div id="adminLibraryGrid" class="library-grid"></div>
 </div>
 
 <div id="sectionIdeas" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">💡 مدیریت ایده‌ها</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">💡 مدیریت ایده‌ها</h3>
 <div id="adminIdeas"></div>
 </div>
 
 <div id="sectionPolls" class="admin-section" data-panels="main,roshd">
-<h3 style="margin-top:24px;font-size:15px;color:var(--accent)">📊 ساخت نظرسنجی</h3>
+<h3 style="margin-top:24px;font-size:15px;color:var(--page-accent)">📊 ساخت نظرسنجی</h3>
 <div class="card" style="background:var(--bg-soft2)">
 <form id="pollForm">
 <input id="pQuestion" placeholder="سؤال" required>
@@ -967,7 +1043,7 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <label style="font-size:12px;color:var(--text-soft);margin-top:4px">⏰ تاریخ انقضا (اختیاری):</label>
 <div class="date-picker"><select id="pollExpireDay"><option value="">روز</option></select><select id="pollExpireMonth"><option value="">ماه</option></select><select id="pollExpireYear"><option value="">سال</option></select></div>
 <input id="pollExpireHour" type="number" min="0" max="23" placeholder="ساعت (۰-۲۳)" style="margin-top:4px">
-<button type="button" class="btn" onclick="addPollOption()" style="background:#1e6bb8">➕ گزینه</button>
+<button type="button" class="btn" onclick="addPollOption()" style="background:var(--page-accent2)">➕ گزینه</button>
 <button class="btn" type="submit">ساخت</button>
 </form>
 <p id="pollMsg"></p>
@@ -1007,19 +1083,27 @@ const PANEL_PASSWORDS = { main: "anvar1403", ertebat: "ertebat888", resane: "res
 const PANEL_NAMES = { main: "🔐 پنل مدیر اصلی", ertebat: "📞 پنل ارتباطات", resane: "🎥 پنل رسانه", roshd: "🌱 پنل رشد" };
 const PERSIAN_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
 
-/* ============ تابع بهینه‌سازی عکس Supabase ============ */
+/* ============ تم صفحه ============ */
+const PAGE_THEMES = {
+  "page-home":"home","page-news":"news","page-think":"think","page-classes":"classes",
+  "page-library":"library","page-videos":"videos","page-events":"events",
+  "page-member":"member","page-admin":"admin","page-about":"about","page-futsal":"futsal"
+};
+function applyPageTheme(pageId){
+  const theme = PAGE_THEMES[pageId] || "home";
+  document.body.setAttribute("data-page-theme", theme);
+}
+
 function optimizeImg(url, width){
   if(!url) return url;
-  // اگه از Supabase Storage هست، از render transform استفاده کن
   if(url.includes("/storage/v1/object/public/")){
     const transformed = url.replace("/storage/v1/object/public/", "/storage/v1/render/image/public/");
     const sep = transformed.includes("?") ? "&" : "?";
-    return transformed + sep + "width=" + width + "&quality=70&format=webp&resize=contain";
+    return transformed + sep + "width=" + width + "&quality=70&format=webp";
   }
   return url;
 }
 
-/* ============ ابزارها ============ */
 function statusClass(status){
   const s = status || "ثبت شد";
   if(s === "ثبت شد" || s === "") return "status-new";
@@ -1045,7 +1129,6 @@ function renderStars(rating){
   return out;
 }
 
-/* ============ تم ============ */
 function getCurrentTheme(){ return document.documentElement.getAttribute("data-theme") || "light"; }
 function applyTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
@@ -1064,7 +1147,6 @@ function updateThemeMenuItem(){
 }
 function toggleTheme(){ applyTheme(getCurrentTheme() === "dark" ? "light" : "dark"); }
 
-/* ============ PWA ============ */
 let deferredPrompt = null;
 function showInstallBoxIfNeeded(){
   const box = document.getElementById("installBox");
@@ -1121,17 +1203,18 @@ function fillDateSelects(d,m,y){
 function getPersianDate(d,m,y){const dd=document.getElementById(d).value,mm=document.getElementById(m).value,yy=document.getElementById(y).value;if(!dd||!mm||!yy)return "";return `${yy}/${mm}/${dd}`;}
 function setPersianDate(d,m,y,v){const p=(v||"").split("/");if(p.length===3){document.getElementById(y).value=p[0];document.getElementById(m).value=p[1];document.getElementById(d).value=p[2];}else{document.getElementById(y).value="";document.getElementById(m).value="";document.getElementById(d).value="";}}
 function toggleMenu(){document.getElementById("menu").classList.toggle("open");}
-function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank" style="color:#0b6b62;font-weight:bold">$1</a>');}
+function linkify(t){return esc(t).replace(/(ble\.ir\/[^\s]+|https?:\/\/[^\s]+)/g,'<a href="https://$1" target="_blank" style="color:var(--page-accent);font-weight:bold">$1</a>');}
 function animateCount(el,t){if(!el)return;const dur=800,st=performance.now();function tick(now){const p=Math.min((now-st)/dur,1);el.textContent=fa(Math.floor(0+t*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(tick);else el.textContent=fa(t);}requestAnimationFrame(tick);}
 function getSort(id){const el=document.getElementById(id);if(!el)return 0;const v=parseInt(el.value);return isNaN(v)?0:v;}
 
-/* ============ showPage با چک لاگین ============ */
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   const p=document.getElementById(id);
   if(p){p.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+  applyPageTheme(id);
   if(id === "page-think"){ loadMyIdeasInThinkPage(); loadApprovedIdeas(); }
   if(id === "page-library"){ backToBooksList(); }
+  if(id === "page-futsal"){ loadFutsalPhotos(); loadFutsalVideos(); }
   if(id === "page-member"){
     const loginBox = document.getElementById("memberLoginBox");
     const panelBox = document.getElementById("memberPanelBox");
@@ -1168,7 +1251,6 @@ function showSectionsForPanel(p){
   const t=document.getElementById("panelTitle"); if(t) t.textContent = PANEL_NAMES[p];
 }
 
-/* ============ آنلاین ============ */
 let onlineChannel = null, onlineTimer = null;
 function setupOnlineCounter(){
   if (typeof supabase === "undefined") return;
@@ -1197,34 +1279,141 @@ function setupOnlineCounter(){
   window.addEventListener("beforeunload", () => { if (onlineChannel) onlineChannel.untrack(); });
 }
 
-/* ============ رندر کلی با تأخیر ============ */
 async function render(){
-  // اولویت ۱: آمار و گالری و اخبار (سریع‌ترین)
   const [memberCountRes, ideasRes] = await Promise.all([
     db.rpc("get_member_count"),
     db.from("ideas").select("*").order("created_at",{ascending:false}).limit(50)
   ]);
-  Promise.all([loadGallery(), loadNews()]);
-
+  Promise.all([loadNews(), loadEvents(), loadPolls(), loadAbout(), loadWeekly(), loadGallery(), loadVideos(), loadLibrary(), loadClasses(), loadApprovedIdeas()]);
   const mc = memberCountRes.data;
   const ideas = ideasRes.data || [];
   const done = ideas.filter(i=>i.status==="اجرا شد").length;
   animateCount(document.getElementById("memberCount"), mc||0);
   animateCount(document.getElementById("ideaCount"), ideas.length);
   animateCount(document.getElementById("doneCount"), done);
-
-  // اولویت ۲: تأخیر ۵۰۰ms
-  setTimeout(() => { Promise.all([loadEvents(), loadPolls(), loadAbout(), loadWeekly()]); }, 500);
-
-  // اولویت ۳: تأخیر ۱۰۰۰ms
-  setTimeout(() => { Promise.all([loadVideos(), loadLibrary(), loadClasses(), loadApprovedIdeas()]); }, 1000);
-
   if(adminPassword){
-    setTimeout(() => {
-      Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary(), loadAttendanceReport(), loadWeeklyReport(), loadBirthdayMsgSetting()]);
-    }, 300);
+    Promise.all([loadMembers(), loadAdminIdeas(), loadGroups(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAdminLibrary(), loadAttendanceReport(), loadWeeklyReport(), loadBirthdayMsgSetting(), loadAdminFutsalPhotos()]);
   }
 }
+
+/* ============ باشگاه فوتسال ============ */
+function switchFutsalTab(tab){
+  document.querySelectorAll(".futsal-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
+  document.querySelectorAll(".futsal-section").forEach(s => s.classList.remove("active"));
+  const el = document.getElementById("futsalSection-" + tab);
+  if(el) el.classList.add("active");
+}
+
+async function loadFutsalPhotos(){
+  const b = document.getElementById("futsalPhotosGrid");
+  if(!b) return;
+  b.innerHTML = "<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
+  const { data } = await db.from("gallery").select("*").eq("category","futsal").order("created_at",{ascending:false});
+  if(!data || !data.length){
+    b.innerHTML = "<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>هنوز عکسی اضافه نشده</p>";
+    return;
+  }
+  b.innerHTML = data.map((g,i) => `
+    <div class="futsal-photo-item" onclick="openFutsalLightbox(${i})">
+      <img src="${optimizeImg(esc(g.url), 400)}" loading="lazy">
+      ${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteFutsalPhoto(${g.id})">✕</button>`:""}
+      ${g.caption?`<div class="fp-caption">${esc(g.caption)}</div>`:""}
+    </div>
+  `).join("");
+  window._futsalPhotos = data;
+}
+
+function openFutsalLightbox(i){
+  if(!window._futsalPhotos || !window._futsalPhotos[i]) return;
+  document.getElementById("lbImg").src = optimizeImg(window._futsalPhotos[i].url, 1200);
+  document.getElementById("lbCaption").textContent = window._futsalPhotos[i].caption || "";
+  document.getElementById("lightbox").classList.add("open");
+}
+
+async function loadFutsalVideos(){
+  const b = document.getElementById("futsalVideosGrid");
+  if(!b) return;
+  b.innerHTML = "<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
+  const { data } = await db.from("videos").select("*").eq("category","futsal").order("created_at",{ascending:false});
+  if(!data || !data.length){
+    b.innerHTML = "<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>هنوز ویدیویی اضافه نشده</p>";
+    return;
+  }
+  b.innerHTML = data.map(v => `
+    <div class="futsal-video-card">
+      ${adminPassword?`<button class="del-btn" onclick="deleteFutsalVideo(${v.id})">✕</button>`:""}
+      <video controls preload="metadata" src="${esc(v.video_url)}"></video>
+      <div class="fv-info"><h4>${esc(v.title)}</h4>${v.description?`<div class="fv-desc">${esc(v.description)}</div>`:""}</div>
+    </div>
+  `).join("");
+}
+
+async function deleteFutsalPhoto(id){
+  if(!confirm("حذف شود؟")) return;
+  const { error } = await db.rpc("admin_delete_gallery",{admin_pass:adminPassword,item_id:id});
+  if(error){ alert("خطا: " + error.message); return; }
+  loadFutsalPhotos(); loadGallery(); loadAdminFutsalPhotos();
+}
+
+async function deleteFutsalVideo(id){
+  if(!confirm("حذف شود؟")) return;
+  const { error } = await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});
+  if(error){ alert("خطا: " + error.message); return; }
+  loadFutsalVideos(); loadVideos();
+}
+
+async function loadAdminFutsalPhotos(){
+  const b = document.getElementById("adminFutsalPhotosGrid");
+  if(!b) return;
+  const { data } = await db.from("gallery").select("*").eq("category","futsal").order("created_at",{ascending:false});
+  if(!data || !data.length){ b.innerHTML = "<p style='color:var(--text-mute);font-size:12px'>عکسی نیست.</p>"; return; }
+  b.innerHTML = data.map(g => `
+    <div class="futsal-photo-item">
+      <img src="${optimizeImg(esc(g.url), 300)}">
+      <button class="del-btn" onclick="deleteFutsalPhoto(${g.id})">✕</button>
+      ${g.caption?`<div class="fp-caption">${esc(g.caption)}</div>`:""}
+    </div>
+  `).join("");
+}
+
+document.getElementById("futsalPhotoForm")?.addEventListener("submit", async e => {
+  e.preventDefault();
+  const m = document.getElementById("futsalPhotoMsg");
+  const f = document.getElementById("futsalPhotoFile").files[0];
+  const c = document.getElementById("futsalPhotoCaption").value.trim();
+  if(!f){ m.textContent = "عکس انتخاب کن"; m.style.color = "red"; return; }
+  if(f.size > 5*1024*1024){ m.textContent = "کمتر از ۵ مگ"; m.style.color = "red"; return; }
+  m.textContent = "آپلود..."; m.style.color = "var(--text-soft)";
+  const fn = "futsal_" + Date.now() + "_" + f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const { error: ue } = await db.storage.from("gallery").upload(fn, f);
+  if(ue){ m.textContent = "خطا: " + ue.message; m.style.color = "red"; return; }
+  const { data: ud } = db.storage.from("gallery").getPublicUrl(fn);
+  const { error: de } = await db.from("gallery").insert([{ url: ud.publicUrl, caption: c, category: "futsal" }]);
+  if(de){ m.textContent = "خطا: " + de.message; m.style.color = "red"; return; }
+  m.textContent = "✅ آپلود شد"; m.style.color = "green";
+  e.target.reset();
+  loadFutsalPhotos(); loadGallery(); loadAdminFutsalPhotos();
+});
+
+document.getElementById("futsalVideoForm")?.addEventListener("submit", async e => {
+  e.preventDefault();
+  const m = document.getElementById("futsalVideoMsg");
+  const t = document.getElementById("futsalVideoTitle").value.trim();
+  const d = document.getElementById("futsalVideoDesc").value.trim();
+  const f = document.getElementById("futsalVideoFile").files[0];
+  if(!t || !f){ m.textContent = "عنوان و فایل الزامی"; m.style.color = "red"; return; }
+  if(f.size > 50*1024*1024){ m.textContent = "کمتر از ۵۰ مگ"; m.style.color = "red"; return; }
+  m.textContent = "آپلود..."; m.style.color = "var(--text-soft)";
+  const fn = "futsal_vid_" + Date.now() + "_" + f.name.replace(/[^a-zA-Z0-9._-]/g,"");
+  const { error: ue } = await db.storage.from("videos").upload(fn, f);
+  if(ue){ m.textContent = "خطا: " + ue.message; m.style.color = "red"; return; }
+  const { data: ud } = db.storage.from("videos").getPublicUrl(fn);
+  const { error: de } = await db.from("videos").insert([{ title: t, description: d, video_url: ud.publicUrl, category: "futsal" }]);
+  if(de){ m.textContent = "خطا: " + de.message; m.style.color = "red"; return; }
+  m.textContent = "✅ آپلود شد"; m.style.color = "green";
+  e.target.reset();
+  loadFutsalVideos(); loadVideos();
+});
 
 /* ============ گزارش هفتگی ============ */
 async function loadWeeklyReport(){
@@ -1251,8 +1440,8 @@ async function loadWeeklyReport(){
     box.innerHTML = `
       <div class="weekly-report-header"><h3>📊 خلاصه‌ی هفته‌ی گذشته</h3><span class="wr-range">🗓 ${rangeStr}</span></div>
       <div class="weekly-report-grid">
-        <div class="wr-item"><div class="wr-icon">👥</div><div class="wr-num">${fa(newMembersRes.count||0)}</div><div class="wr-label">عضو جدید</div><div class="wr-detail">کل: ${fa(totalMembersRes.count||0)}</div></div>
-        <div class="wr-item"><div class="wr-icon">💡</div><div class="wr-num">${fa(newIdeasRes.count||0)}</div><div class="wr-label">ایده جدید</div><div class="wr-detail">کل: ${fa(totalIdeasRes.count||0)}</div></div>
+        <div class="wr-item"><div class="wr-icon">👥</div><div class="wr-num">${fa(newMembersRes.count||0)}</div><div class="wr-label">عضو جدید</div></div>
+        <div class="wr-item"><div class="wr-icon">💡</div><div class="wr-num">${fa(newIdeasRes.count||0)}</div><div class="wr-label">ایده جدید</div></div>
         <div class="wr-item"><div class="wr-icon">📬</div><div class="wr-num">${fa(newMessagesRes.count||0)}</div><div class="wr-label">پیام ارسالی</div></div>
         <div class="wr-item"><div class="wr-icon">📅</div><div class="wr-num">${fa(newSessionsRes.count||0)}</div><div class="wr-label">جلسه</div></div>
         <div class="wr-item"><div class="wr-icon">✅</div><div class="wr-num">${fa(newAttendanceRes.count||0)}</div><div class="wr-label">حضور ثبت‌شده</div></div>
@@ -1262,7 +1451,6 @@ async function loadWeeklyReport(){
   } catch(e) { box.innerHTML = "<p style='color:red;text-align:center;font-size:13px'>خطا: "+esc(e.message)+"</p>"; }
 }
 
-/* ============ ایده‌های من ============ */
 async function loadMyIdeasInThinkPage(){
   const ib = document.getElementById("ideas");
   if(!ib) return;
@@ -1336,12 +1524,9 @@ async function deleteMyIdea(id){
   const {error} = await db.rpc("member_delete_idea", { p_nid: currentMember.national_id, idea_id: id });
   if(error){ alert("خطا: "+error.message); return; }
   alert("✅ حذف شد");
-  loadMyIdeasInThinkPage();
-  loadMyIdeas();
-  render();
+  loadMyIdeasInThinkPage(); loadMyIdeas(); render();
 }
 
-/* ============ اخبار و رویدادها ============ */
 async function loadNews(){
   const b=document.getElementById("newsGrid");if(!b)return;
   const {data}=await db.from("news").select("*").order("is_pinned",{ascending:false}).order("sort_order",{ascending:true}).order("created_at",{ascending:false});
@@ -1407,14 +1592,13 @@ async function loadWeekly(){
 }
 async function deleteWeekly(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_weekly",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadWeekly();}
 
-/* ============ گالری (با بهینه‌سازی عکس) ============ */
 async function loadGallery(){
   const b=document.getElementById("galleryGrid");if(!b)return;
-  const {data}=await db.from("gallery").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
+  const {data}=await db.from("gallery").select("*").neq("category","futsal").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
   if(!data||!data.length){galleryImages=[];b.innerHTML="<p style='text-align:center;color:var(--text-mute);font-size:13px;width:100%'>عکسی نیست.</p>";return;}
   galleryImages=data;
   b.innerHTML=data.map((g,i)=>`<div class="gallery-item" onclick="openLightbox(${i})">
-    <img src="${optimizeImg(esc(g.url), 400)}" loading="lazy" decoding="async" alt="">
+    <img src="${optimizeImg(esc(g.url), 400)}" loading="lazy" decoding="async">
     ${adminPassword&&g.sort_order?`<span class="sort-badge">#${fa(g.sort_order)}</span>`:""}
     ${adminPassword?`<button class="del-btn" onclick="event.stopPropagation();deleteGalleryImg(${g.id})">✕</button><button class="edit-btn" onclick="event.stopPropagation();openGalleryEdit(${g.id},'${esc((g.caption||'').replace(/'/g,"&#39;"))}','${esc(g.photo_date||'')}',${g.sort_order||0})">✏</button>`:""}
     <div class="gallery-info">${g.photo_date?`<div class="g-date">📅 ${esc(g.photo_date)}</div>`:""}${g.caption?`<div class="g-cap">${esc(g.caption)}</div>`:""}</div>
@@ -1456,16 +1640,15 @@ document.getElementById("galleryEditForm").addEventListener("submit",async e=>{
 });
 document.getElementById("galleryEditModal").addEventListener("click",e=>{if(e.target.id==="galleryEditModal")closeGalleryEdit();});
 
-/* ============ ویدیوها ============ */
 async function loadVideos(){
   const b=document.getElementById("videosGrid");if(!b)return;
   b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
   const {data, error} = await db.rpc("get_videos_with_stats");
   if(error){
-    const {data:fallback} = await db.from("videos").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
+    const {data:fallback} = await db.from("videos").select("*").neq("category","futsal").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
     allVideos = (fallback||[]).map(v => ({...v, like_count:0, comment_count:0}));
   } else {
-    allVideos = data || [];
+    allVideos = (data || []).filter(v => v.category !== "futsal");
   }
   if(!allVideos.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute)'>ویدیویی نیست.</p>";return;}
   b.innerHTML=allVideos.map(v=>`<div class="video-card" onclick="openVideoModal(${v.id})">
@@ -1482,7 +1665,6 @@ async function loadVideos(){
 }
 async function deleteVideo(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_video",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadVideos();}
 
-/* ============ مودال ویدیو (با حفظ زمان) ============ */
 async function openVideoModal(videoId){
   const v = allVideos.find(x => x.id === videoId);
   if(!v) return;
@@ -1493,24 +1675,17 @@ async function openVideoModal(videoId){
 }
 
 async function renderVideoModal(v, preserveTime){
-  // ذخیره‌ی وضعیت فعلی ویدیو
   let savedTime = 0, wasPlaying = false;
   if(preserveTime){
     const oldVideo = document.getElementById("vmVideo");
-    if(oldVideo){
-      savedTime = oldVideo.currentTime || 0;
-      wasPlaying = !oldVideo.paused;
-      oldVideo.pause();
-    }
+    if(oldVideo){ savedTime = oldVideo.currentTime || 0; wasPlaying = !oldVideo.paused; oldVideo.pause(); }
   }
-
   myVideoLikes = [];
   if(currentMember){
     const {data: ml} = await db.rpc("get_my_video_likes", {p_nid: currentMember.national_id});
     if(ml) myVideoLikes = ml.map(x => x.video_id);
   }
   const liked = myVideoLikes.includes(v.id);
-
   const {data: comments} = await db.from("video_comments").select("*").eq("video_id", v.id).order("created_at",{ascending:false});
   const commentsList = comments || [];
 
@@ -1549,17 +1724,12 @@ async function renderVideoModal(v, preserveTime){
       <h4>💬 کامنت‌ها</h4>
       ${commentFormHtml}
       <div class="vm-comments-list" id="vmCommentsList">${commentsHtml}</div>
-    </div>
-  `;
+    </div>`;
 
-  // بازیابی زمان ویدیو
   if(preserveTime && savedTime > 0){
     setTimeout(() => {
       const newVideo = document.getElementById("vmVideo");
-      if(newVideo){
-        newVideo.currentTime = savedTime;
-        if(wasPlaying) newVideo.play();
-      }
+      if(newVideo){ newVideo.currentTime = savedTime; if(wasPlaying) newVideo.play(); }
     }, 150);
   }
 }
@@ -1571,7 +1741,6 @@ function closeVideoModal(){
   document.body.style.overflow = "";
   currentVideoId = null;
 }
-
 document.getElementById("videoModal").addEventListener("click", e => { if(e.target.id === "videoModal") closeVideoModal(); });
 
 async function toggleVideoLike(videoId){
@@ -1580,7 +1749,7 @@ async function toggleVideoLike(videoId){
   if(error){ alert("خطا: "+error.message); return; }
   const {data: stats} = await db.rpc("get_videos_with_stats");
   if(stats){
-    allVideos = stats;
+    allVideos = stats.filter(v => v.category !== "futsal");
     const v = allVideos.find(x => x.id === videoId);
     if(v){ await renderVideoModal(v, true); loadVideos(); }
   }
@@ -1598,7 +1767,7 @@ async function submitVideoComment(videoId){
   const v = allVideos.find(x => x.id === videoId);
   if(v){
     const {data: stats} = await db.rpc("get_videos_with_stats");
-    if(stats){ allVideos = stats; const nv = allVideos.find(x => x.id === videoId); if(nv) await renderVideoModal(nv, true); }
+    if(stats){ allVideos = stats.filter(x => x.category !== "futsal"); const nv = allVideos.find(x => x.id === videoId); if(nv) await renderVideoModal(nv, true); }
     loadVideos();
   }
 }
@@ -1611,12 +1780,11 @@ async function deleteVideoComment(commentId, videoId){
   const v = allVideos.find(x => x.id === videoId);
   if(v){
     const {data: stats} = await db.rpc("get_videos_with_stats");
-    if(stats){ allVideos = stats; const nv = allVideos.find(x => x.id === videoId); if(nv) await renderVideoModal(nv, true); }
+    if(stats){ allVideos = stats.filter(x => x.category !== "futsal"); const nv = allVideos.find(x => x.id === videoId); if(nv) await renderVideoModal(nv, true); }
     loadVideos();
   }
 }
 
-/* ============ کتابخانه ============ */
 async function loadLibrary(){
   const b=document.getElementById("libraryGrid");if(!b)return;
   b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>بارگذاری...</p>";
@@ -1626,7 +1794,7 @@ async function loadLibrary(){
   if(!allBooks.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute);grid-column:1/-1'>هنوز کتابی اضافه نشده.</p>";return;}
   b.innerHTML=allBooks.map(bk=>{
     const coverHtml = bk.cover_url
-      ? `<img src="${optimizeImg(esc(bk.cover_url), 400)}" class="book-cover-img" alt="${esc(bk.title)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="book-icon" style="display:none">📖</div>`
+      ? `<img src="${optimizeImg(esc(bk.cover_url), 400)}" class="book-cover-img" alt="${esc(bk.title)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="book-icon" style="display:none">📖</div>`
       : `<div class="book-icon">📖</div>`;
     const mediaIcons = `${bk.file_url?'<span title="فایل">📄</span>':''}${bk.audio_url?'<span title="صوتی">🎧</span>':''}`;
     return `<div class="book-card" onclick="openBookDetail(${bk.id})">
@@ -1650,7 +1818,7 @@ async function loadAdminLibrary(){
   if(!allBooks.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>کتابی نیست.</p>";return;}
   b.innerHTML=allBooks.map(bk=>{
     const coverHtml = bk.cover_url
-      ? `<img src="${optimizeImg(esc(bk.cover_url), 300)}" class="book-cover-img" alt="${esc(bk.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="book-icon" style="display:none">📖</div>`
+      ? `<img src="${optimizeImg(esc(bk.cover_url), 300)}" class="book-cover-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="book-icon" style="display:none">📖</div>`
       : `<div class="book-icon">📖</div>`;
     const mediaIcons = `${bk.file_url?'<span title="فایل">📄</span>':''}${bk.audio_url?'<span title="صوتی">🎧</span>':''}`;
     return `<div class="book-card">
@@ -1665,30 +1833,22 @@ async function loadAdminLibrary(){
   }).join("");
 }
 
-async function deleteBook(id){
-  if(!confirm("حذف شود؟")) return;
-  const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});
-  if(error){alert("خطا: "+error.message);return;}
-  loadLibrary();loadAdminLibrary();
-}
+async function deleteBook(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_book",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadLibrary();loadAdminLibrary();}
 
 async function openBookDetail(bookId){
   const bk = allBooks.find(x=>x.id===bookId);
   if(!bk) return;
   currentBook = bk;
   const coverEl = document.getElementById("bdCover");
-  if(bk.cover_url){
-    coverEl.innerHTML = `<img src="${optimizeImg(esc(bk.cover_url), 500)}" style="width:100%;height:100%;object-fit:cover;border-radius:12px" alt="${esc(bk.title)}">`;
-  } else { coverEl.innerHTML = "📖"; }
+  if(bk.cover_url){ coverEl.innerHTML = `<img src="${optimizeImg(esc(bk.cover_url), 500)}" style="width:100%;height:100%;object-fit:cover;border-radius:12px" alt="${esc(bk.title)}">`; }
+  else { coverEl.innerHTML = "📖"; }
   document.getElementById("bdTitle").textContent = bk.title || "";
   document.getElementById("bdAuthor").textContent = bk.author ? "✍️ نویسنده: " + bk.author : "";
   const catEl = document.getElementById("bdCat");
-  if(bk.category){ catEl.textContent = bk.category; catEl.style.display = "inline-block"; }
-  else { catEl.style.display = "none"; }
+  if(bk.category){ catEl.textContent = bk.category; catEl.style.display = "inline-block"; } else { catEl.style.display = "none"; }
   document.getElementById("bdDesc").textContent = bk.description || "";
   const audioBox = document.getElementById("bdAudioPlayer");
-  if(bk.audio_url){ audioBox.innerHTML = renderAudioPlayer(bk.audio_url); setTimeout(() => setupAudioPlayer(), 100); }
-  else { audioBox.innerHTML = ""; }
+  if(bk.audio_url){ audioBox.innerHTML = renderAudioPlayer(bk.audio_url); setTimeout(() => setupAudioPlayer(), 100); } else { audioBox.innerHTML = ""; }
   const actionsBox = document.getElementById("bdActions");
   let actionsHtml = "";
   if(bk.file_url){ actionsHtml += `<a href="${esc(bk.file_url)}" target="_blank" download class="btn-download">📥 دانلود فایل</a>`; }
@@ -1697,8 +1857,7 @@ async function openBookDetail(bookId){
   partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>بارگذاری قسمت‌ها...</p>";
   partsBox.classList.add("hidden");
   const btn = document.getElementById("partsToggleBtn");
-  btn.classList.remove("active");
-  btn.textContent = "📑 قسمت‌های این کتاب";
+  btn.classList.remove("active"); btn.textContent = "📑 قسمت‌های این کتاب";
   const {data: parts, error} = await db.from("book_parts").select("*").eq("book_id", bookId).order("part_order",{ascending:true});
   if(error || !parts || !parts.length){
     partsBox.innerHTML = "<p style='color:var(--text-mute);font-size:13px;text-align:center'>هنوز قسمتی برای این کتاب ثبت نشده.</p>";
@@ -1743,9 +1902,9 @@ function renderAudioPlayer(url){
     <div class="ap-title">🎧 پخش صوت</div>
     <audio id="globalAudio" preload="metadata" src="${esc(url)}"></audio>
     <div class="ap-controls">
-      <button class="ap-skip" onclick="audioSkip(-10)" title="۱۰ ثانیه عقب">⏪</button>
+      <button class="ap-skip" onclick="audioSkip(-10)">⏪</button>
       <button class="ap-play" id="audioPlayBtn" onclick="audioToggle()">▶️</button>
-      <button class="ap-skip" onclick="audioSkip(10)" title="۱۰ ثانیه جلو">⏩</button>
+      <button class="ap-skip" onclick="audioSkip(10)">⏩</button>
       <div class="ap-progress" id="audioProgress" onclick="audioSeek(event)"><div class="ap-progress-bar" id="audioProgressBar"></div></div>
       <div class="ap-time" id="audioTime">۰:۰۰ / ۰:۰۰</div>
     </div>
@@ -1774,11 +1933,9 @@ function setupAudioPlayer(){
     if(bar) bar.style.width = pct + "%";
     if(time) time.textContent = formatTime(cur) + " / " + formatTime(dur);
   });
-  audio.addEventListener("ended", () => { const btn = document.getElementById("audioPlayBtn"); if(btn) btn.textContent = "▶️"; });
   audio.addEventListener("play", () => { const btn = document.getElementById("audioPlayBtn"); if(btn) btn.textContent = "⏸"; });
   audio.addEventListener("pause", () => { const btn = document.getElementById("audioPlayBtn"); if(btn) btn.textContent = "▶️"; });
 }
-
 function audioToggle(){ const audio = document.getElementById("globalAudio"); if(!audio) return; if(audio.paused) audio.play(); else audio.pause(); }
 function audioSkip(sec){ const audio = document.getElementById("globalAudio"); if(!audio) return; audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + sec)); }
 function audioSeek(e){ const audio = document.getElementById("globalAudio"); if(!audio) return; const rect = e.currentTarget.getBoundingClientRect(); const pct = (e.clientX - rect.left) / rect.width; if(audio.duration) audio.currentTime = pct * audio.duration; }
@@ -1805,24 +1962,24 @@ document.getElementById("bookForm").addEventListener("submit", async e => {
     if(coverFile.size > 5*1024*1024){ m.textContent="عکس کمتر از ۵ مگ"; m.style.color="red"; return; }
     const cfn = "cover_"+Date.now()+"_"+coverFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
     const {error:ce} = await db.storage.from("library").upload(cfn, coverFile);
-    if(ce){ m.textContent="خطا عکس: "+ce.message; m.style.color="red"; return; }
+    if(ce){ m.textContent="خطا: "+ce.message; m.style.color="red"; return; }
     coverUrl = db.storage.from("library").getPublicUrl(cfn).data.publicUrl;
   }
   let mainUrl = "", ext = "";
   if(bookFile){
-    if(bookFile.size > 50*1024*1024){ m.textContent="فایل اصلی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
+    if(bookFile.size > 50*1024*1024){ m.textContent="کمتر از ۵۰ مگ"; m.style.color="red"; return; }
     const bfn = Date.now()+"_"+bookFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
     const {error:be} = await db.storage.from("library").upload(bfn, bookFile);
-    if(be){ m.textContent="خطا فایل: "+be.message; m.style.color="red"; return; }
+    if(be){ m.textContent="خطا: "+be.message; m.style.color="red"; return; }
     mainUrl = db.storage.from("library").getPublicUrl(bfn).data.publicUrl;
     ext = bookFile.name.split(".").pop();
   }
   let audioUrl = "";
   if(audioFile){
-    if(audioFile.size > 50*1024*1024){ m.textContent="فایل صوتی کمتر از ۵۰ مگ"; m.style.color="red"; return; }
+    if(audioFile.size > 50*1024*1024){ m.textContent="کمتر از ۵۰ مگ"; m.style.color="red"; return; }
     const afn = "audio_"+Date.now()+"_"+audioFile.name.replace(/[^a-zA-Z0-9._-]/g,"");
     const {error:ae} = await db.storage.from("library").upload(afn, audioFile);
-    if(ae){ m.textContent="خطا صوت: "+ae.message; m.style.color="red"; return; }
+    if(ae){ m.textContent="خطا: "+ae.message; m.style.color="red"; return; }
     audioUrl = db.storage.from("library").getPublicUrl(afn).data.publicUrl;
   }
   const {data: inserted, error: de} = await db.from("library").insert([{
@@ -1857,7 +2014,7 @@ async function loadClasses(){
   allClasses=cls||[];allClassRegs=regs||[];
   if(!allClasses.length){b.innerHTML="<p style='text-align:center;color:var(--text-mute)'>کلاسی نیست.</p>";return;}
   const myNid=currentMember?currentMember.national_id:null;
-  b.innerHTML=allClasses.map(c=>{const rc=allClassRegs.filter(r=>r.class_id===c.id).length;const isReg=myNid&&allClassRegs.some(r=>r.class_id===c.id&&r.member_phone===myNid);const full=c.capacity&&rc>=c.capacity;return `<div class="class-card">${adminPassword?`<button class="del-btn" onclick="deleteClass(${c.id})">✕</button>`:""}${adminPassword?`<span class="c-count">${fa(rc)}${c.capacity?"/"+fa(c.capacity):""} نفر</span>`:""}<h4>🎓 ${esc(c.title)}</h4>${c.teacher?`<div class="c-info">👨‍🏫 ${esc(c.teacher)}</div>`:""}${c.schedule?`<div class="c-info">🕐 ${esc(c.schedule)}</div>`:""}${c.description?`<div class="c-desc">${esc(c.description)}</div>`:""}${isReg?`<button class="c-reg done">✅ ثبت‌نام شده</button>`:full?`<button class="c-reg done">ظرفیت تکمیل</button>`:`<button class="c-reg" onclick="registerClass(${c.id})">ثبت‌نام</button>`}${adminPassword?`<div class="reg-list" id="regList${c.id}"><button class="btn" style="font-size:11px;padding:4px 10px;background:#1e6bb8" onclick="showRegs(${c.id})">لیست ثبت‌نام</button></div>`:""}</div>`;}).join("");
+  b.innerHTML=allClasses.map(c=>{const rc=allClassRegs.filter(r=>r.class_id===c.id).length;const isReg=myNid&&allClassRegs.some(r=>r.class_id===c.id&&r.member_phone===myNid);const full=c.capacity&&rc>=c.capacity;return `<div class="class-card">${adminPassword?`<button class="del-btn" onclick="deleteClass(${c.id})">✕</button>`:""}${adminPassword?`<span class="c-count">${fa(rc)}${c.capacity?"/"+fa(c.capacity):""} نفر</span>`:""}<h4>🎓 ${esc(c.title)}</h4>${c.teacher?`<div class="c-info">👨‍🏫 ${esc(c.teacher)}</div>`:""}${c.schedule?`<div class="c-info">🕐 ${esc(c.schedule)}</div>`:""}${c.description?`<div class="c-desc">${esc(c.description)}</div>`:""}${isReg?`<button class="c-reg done">✅ ثبت‌نام شده</button>`:full?`<button class="c-reg done">ظرفیت تکمیل</button>`:`<button class="c-reg" onclick="registerClass(${c.id})">ثبت‌نام</button>`}${adminPassword?`<div class="reg-list" id="regList${c.id}"><button class="btn" style="font-size:11px;padding:4px 10px;background:var(--page-accent2)" onclick="showRegs(${c.id})">لیست ثبت‌نام</button></div>`:""}</div>`;}).join("");
 }
 async function registerClass(id){if(!currentMember){alert("اول وارد پنل اعضا شوید");return;}const {error}=await db.rpc("register_class",{p_class_id:id,p_phone:currentMember.national_id,p_name:currentMember.name});if(error){alert("خطا: "+error.message);return;}alert("ثبت‌نام شد ✅");loadClasses();loadMyClasses();}
 async function deleteClass(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_class",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadClasses();}
@@ -1869,7 +2026,7 @@ async function loadMyClasses(){
   if(!regs||!regs.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>در کلاسی نیستید.</p>";return;}
   const {data:cls}=await db.from("classes").select("*");
   const myCls=(cls||[]).filter(c=>regs.some(r=>r.class_id===c.id));
-  b.innerHTML=myCls.map(c=>`<div class="myidea"><strong style="color:var(--accent)">🎓 ${esc(c.title)}</strong>${c.teacher?`<div style="font-size:11px;color:var(--text-mute)">${esc(c.teacher)}</div>`:""}</div>`).join("");
+  b.innerHTML=myCls.map(c=>`<div class="myidea"><strong style="color:var(--page-accent)">🎓 ${esc(c.title)}</strong>${c.teacher?`<div style="font-size:11px;color:var(--text-mute)">${esc(c.teacher)}</div>`:""}</div>`).join("");
 }
 
 async function loadMembers(){
@@ -1883,7 +2040,7 @@ async function loadMembers(){
 function renderMembers(l){
   const b=document.getElementById("members");if(!b)return;
   if(!l.length){b.innerHTML="<p>عضوی نیست.</p>";return;}
-  b.innerHTML=l.map(m=>`<div class="member" style="display:flex;gap:10px;align-items:flex-start"><div style="width:40px;height:40px;border-radius:50%;background:#0b6b62;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;overflow:hidden;flex-shrink:0;font-size:16px">${m.avatar_url?`<img src="${optimizeImg(esc(m.avatar_url), 100)}" style="width:100%;height:100%;object-fit:cover">`:(m.name||"?")[0]}</div><div style="flex:1;min-width:0"><strong>${esc(m.name)}</strong> ${m.member_code?`<span style="background:#d9efeb;color:#084c47;font-size:10px;padding:2px 8px;border-radius:8px;font-family:monospace">${esc(m.member_code)}</span>`:""}<br><span style="font-size:11px;color:var(--text-soft)">کد ملی: ${esc(m.national_id||"-")}</span><br><span style="font-size:11px;color:var(--text-soft)">تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span style="font-size:11px;color:var(--text-soft)">تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div></div>`).join("");
+  b.innerHTML=l.map(m=>`<div class="member" style="display:flex;gap:10px;align-items:flex-start"><div style="width:40px;height:40px;border-radius:50%;background:var(--page-accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;overflow:hidden;flex-shrink:0;font-size:16px">${m.avatar_url?`<img src="${optimizeImg(esc(m.avatar_url), 100)}" style="width:100%;height:100%;object-fit:cover">`:(m.name||"?")[0]}</div><div style="flex:1;min-width:0"><strong>${esc(m.name)}</strong> ${m.member_code?`<span style="background:var(--bg-soft);color:var(--page-accent);font-size:10px;padding:2px 8px;border-radius:8px;font-family:monospace;border:1px solid var(--border)">${esc(m.member_code)}</span>`:""}<br><span style="font-size:11px;color:var(--text-soft)">کد ملی: ${esc(m.national_id||"-")}</span><br><span style="font-size:11px;color:var(--text-soft)">تاریخ تولد: ${esc(m.birth_date||"-")}</span><br><span style="font-size:11px;color:var(--text-soft)">تلفن: ${esc(m.phone||"-")}</span><div class="member-actions"><button class="b-edit" onclick="openEdit(${m.id})">✏ ویرایش</button><button class="b-del-m" onclick="deleteMember(${m.id},'${esc(m.name)}')">🗑 حذف</button></div></div></div>`).join("");
 }
 function filterMembers(){const q=document.getElementById("searchInput").value.trim().toLowerCase();if(!q){renderMembers(allMembers);return;}renderMembers(allMembers.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.national_id||"").includes(q)||(m.phone||"").includes(q)||(m.member_code||"").toLowerCase().includes(q)));}
 function downloadExcel(){if(!allMembers.length){alert("خالی");return;}let c="\uFEFF";c+="نام,کد عضویت,کد ملی,تاریخ تولد,تلفن\n";allMembers.forEach(m=>{c+=`"${(m.name||"").replace(/"/g,'""')}","${m.member_code||""}","${m.national_id||""}","${m.birth_date||""}","${m.phone||""}"\n`;});const b=new Blob([c],{type:"text/csv;charset=utf-8;"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="اعضا.csv";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
@@ -1899,11 +2056,11 @@ async function loadAdminIdeas(){
   b.innerHTML=data.map(i=>{
     const st = i.status || "ثبت شد";
     const rating = i.rating || 0;
-    const starsHtml = [1,2,3,4,5].map(n => `<button class="star-btn ${n<=rating?'on':''}" onclick="setIdeaRating(${i.id},${n})" title="${n} ستاره">★</button>`).join("");
+    const starsHtml = [1,2,3,4,5].map(n => `<button class="star-btn ${n<=rating?'on':''}" onclick="setIdeaRating(${i.id},${n})">★</button>`).join("");
     const replyShow = i.admin_reply ? `<div class="admin-reply-show"><b>💬 پاسخ:</b> ${esc(i.admin_reply)}</div>` : "";
     return `<div class="admin-idea">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
-        <div><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:var(--text-mute)">— ${esc(i.category||"سایر")}</span>${i.member_nid?` <span style="font-size:10px;color:var(--accent2)">(${esc(i.member_nid)})</span>`:""}</div>
+        <div><strong>${esc(i.name||"ناشناس")}</strong> <span style="color:var(--text-mute)">— ${esc(i.category||"سایر")}</span>${i.member_nid?` <span style="font-size:10px;color:var(--page-accent2)">(${esc(i.member_nid)})</span>`:""}</div>
         <span class="status ${statusClass(st)}">${statusIcon(st)} ${esc(st)}</span>
       </div>
       <div class="content">${esc(i.content||"")}</div>
@@ -1939,7 +2096,7 @@ function getSelectedMembers(){const ids=Array.from(document.querySelectorAll(".m
 function showMsgStatus(t,c){const e=document.getElementById("msgStatus");if(!e)return;e.textContent=t;e.style.color=c;}
 function copyNumbers(){const ms=getSelectedMembers();if(!ms.length){showMsgStatus("عضوی انتخاب نشده","red");return;}const ph=ms.map(m=>m.phone).filter(p=>p);if(!ph.length){showMsgStatus("شماره‌ای نیست","red");return;}const t=ph.join(",");navigator.clipboard.writeText(t).then(()=>{showMsgStatus(`✅ ${fa(ph.length)} شماره کپی شد`,"green");}).catch(()=>{const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);showMsgStatus("کپی شد","green");});}
 async function saveGroup(){const n=document.getElementById("groupName").value.trim();const ids=Array.from(document.querySelectorAll(".member-cb:checked")).map(cb=>parseInt(cb.value));if(!n){showMsgStatus("اسم گروه را بنویس","red");return;}if(!ids.length){showMsgStatus("کسی انتخاب نشده","red");return;}const {error}=await db.rpc("admin_add_group",{admin_pass:adminPassword,p_name:n,p_member_ids:ids});if(error){showMsgStatus("خطا: "+error.message,"red");return;}showMsgStatus("✅ ذخیره شد","green");document.getElementById("groupName").value="";loadGroups();}
-async function loadGroups(){const b=document.getElementById("groupsList");if(!b)return;const {data}=await db.from("contact_groups").select("*").order("created_at",{ascending:false});if(!data||!data.length){b.innerHTML="<p style='font-size:11px;color:var(--text-mute)'>گروهی نیست.</p>";return;}b.innerHTML=data.map(g=>{const c=Array.isArray(g.member_ids)?g.member_ids.length:0;return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg-card);border-radius:8px;margin:4px 0;font-size:12px;border:1px solid var(--border)"><span><b>${esc(g.name)}</b> (${fa(c)})</span><span><button onclick="loadGroup(${g.id})" style="background:#0b6b62;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;margin-right:4px">انتخاب</button><button onclick="deleteGroup(${g.id})" style="background:#c94f4f;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit">🗑</button></span></div>`;}).join("");}
+async function loadGroups(){const b=document.getElementById("groupsList");if(!b)return;const {data}=await db.from("contact_groups").select("*").order("created_at",{ascending:false});if(!data||!data.length){b.innerHTML="<p style='font-size:11px;color:var(--text-mute)'>گروهی نیست.</p>";return;}b.innerHTML=data.map(g=>{const c=Array.isArray(g.member_ids)?g.member_ids.length:0;return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg-card);border-radius:8px;margin:4px 0;font-size:12px;border:1px solid var(--border)"><span><b>${esc(g.name)}</b> (${fa(c)})</span><span><button onclick="loadGroup(${g.id})" style="background:var(--page-accent2);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;margin-right:4px">انتخاب</button><button onclick="deleteGroup(${g.id})" style="background:#c94f4f;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit">🗑</button></span></div>`;}).join("");}
 async function loadGroup(id){const {data}=await db.from("contact_groups").select("*").eq("id",id).single();if(!data)return;const ids=data.member_ids||[];document.querySelectorAll(".member-cb").forEach(cb=>{cb.checked=ids.includes(parseInt(cb.value));});updateSelectedCount();showMsgStatus(`✅ «${data.name}» انتخاب شد`,"green");}
 async function deleteGroup(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_group",{admin_pass:adminPassword,item_id:id});if(error){alert("خطا: "+error.message);return;}loadGroups();}
 
@@ -1973,19 +2130,15 @@ async function loadBirthdays(){
 function updateBirthdays(){loadBirthdays();}
 
 async function loadBirthdayMsgSetting(){
-  const ta = document.getElementById("birthdayMsgInput");
-  if(!ta) return;
+  const ta = document.getElementById("birthdayMsgInput"); if(!ta) return;
   const {data} = await db.rpc("get_app_setting", {p_key: "birthday_message"});
   if(data) ta.value = data;
   else ta.value = "🎂 تولدت مبارک! ان‌شاءالله سالی پر از خیر و برکت داشته باشی 💚";
 }
-
 async function saveBirthdayMsg(){
-  const ta = document.getElementById("birthdayMsgInput");
-  const s = document.getElementById("birthdayMsgStatus");
+  const ta = document.getElementById("birthdayMsgInput"); const s = document.getElementById("birthdayMsgStatus");
   if(!ta || !s) return;
-  const txt = ta.value.trim();
-  if(!txt){ s.textContent = "متن خالیه"; s.style.color = "red"; return; }
+  const txt = ta.value.trim(); if(!txt){ s.textContent = "متن خالیه"; s.style.color = "red"; return; }
   s.textContent = "ذخیره..."; s.style.color = "var(--text-soft)";
   const {error} = await db.rpc("admin_set_app_setting", {admin_pass: adminPassword, p_key: "birthday_message", p_value: txt});
   if(error){ s.textContent = "خطا: "+error.message; s.style.color = "red"; return; }
@@ -1994,41 +2147,29 @@ async function saveBirthdayMsg(){
 }
 
 async function loadReports(){
-  const s = document.getElementById("reportsStats");
-  const a = document.getElementById("reportsAttendance");
+  const s = document.getElementById("reportsStats"); const a = document.getElementById("reportsAttendance");
   if(!s) return;
   s.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:var(--text-mute)'>بارگذاری...</p>";
   if(a)a.innerHTML = "";
   const {data: stats, error} = await db.rpc("admin_report_summary", {admin_pass: adminPassword});
   if(error){s.innerHTML = "<p style='color:red'>خطا: "+esc(error.message)+"</p>";return;}
-  const items = [
-    {k:"اعضا", v: stats.members, i:"👥"},{k:"پیام‌ها", v: stats.messages, i:"📬"},{k:"جلسات", v: stats.sessions, i:"📅"},
-    {k:"حضور", v: stats.present, i:"✅"},{k:"ایده‌ها", v: stats.ideas, i:"💡"},{k:"کلاس‌ها", v: stats.classes, i:"🎓"}
-  ];
+  const items = [{k:"اعضا", v: stats.members, i:"👥"},{k:"پیام‌ها", v: stats.messages, i:"📬"},{k:"جلسات", v: stats.sessions, i:"📅"},{k:"حضور", v: stats.present, i:"✅"},{k:"ایده‌ها", v: stats.ideas, i:"💡"},{k:"کلاس‌ها", v: stats.classes, i:"🎓"}];
   s.innerHTML = items.map(x => "<div class='report-stat'><div class='ri'>"+x.i+"</div><div class='rv'>"+fa(x.v)+"</div><div class='rk'>"+x.k+"</div></div>").join("");
   if(!a)return;
   const {data: atts, error: e2} = await db.rpc("admin_report_attendance", {admin_pass: adminPassword});
   if(e2){a.innerHTML = "<p style='color:red'>خطا: "+esc(e2.message)+"</p>";return;}
   if(!atts || !atts.length){a.innerHTML = "<p style='color:var(--text-mute)'>داده‌ای نیست.</p>";return;}
   const maxP = Math.max(...atts.map(x => x.present_count), 1);
-  a.innerHTML = atts.map(x => {
-    const pct = Math.round((x.present_count / maxP) * 100);
-    return "<div style='background:var(--bg-card);border-radius:10px;padding:10px;margin:6px 0;box-shadow:0 2px 8px var(--shadow)'><div style='display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;flex-wrap:wrap;gap:5px'><b>"+esc(x.member_name)+"</b><span style='color:var(--accent2)'>✅ "+fa(x.present_count)+" | ❌ "+fa(x.absent_count)+" | ⏰ "+fa(x.late_count)+"</span></div><div style='background:var(--border-soft);border-radius:6px;height:7px;overflow:hidden'><div style='background:linear-gradient(90deg,#0b6b62,#2e8b57);height:100%;width:"+pct+"%'></div></div></div>";
-  }).join("");
+  a.innerHTML = atts.map(x => { const pct = Math.round((x.present_count / maxP) * 100); return "<div style='background:var(--bg-card);border-radius:10px;padding:10px;margin:6px 0;box-shadow:0 2px 8px var(--shadow)'><div style='display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;flex-wrap:wrap;gap:5px'><b>"+esc(x.member_name)+"</b><span style='color:var(--page-accent2)'>✅ "+fa(x.present_count)+" | ❌ "+fa(x.absent_count)+" | ⏰ "+fa(x.late_count)+"</span></div><div style='background:var(--border-soft);border-radius:6px;height:7px;overflow:hidden'><div style='background:var(--page-gradient);height:100%;width:"+pct+"%'></div></div></div>"; }).join("");
 }
 
 async function loadAttendanceReport(){
-  const box = document.getElementById("attendanceStatsBox");
-  if(!box) return;
+  const box = document.getElementById("attendanceStatsBox"); if(!box) return;
   box.innerHTML = "<p style='text-align:center;color:var(--text-mute);font-size:13px'>در حال بارگذاری...</p>";
   const {data, error} = await db.rpc("admin_report_attendance", {admin_pass: adminPassword});
   if(error){ box.innerHTML = "<p style='color:red;text-align:center;font-size:13px'>خطا: "+esc(error.message)+"</p>"; return; }
   if(!data || !data.length){ box.innerHTML = "<p style='color:var(--text-mute);text-align:center;font-size:13px'>هنوز جلسه‌ای ثبت نشده.</p>"; return; }
-  box.innerHTML = `<div class="attendance-stats">` + data.map(x => {
-    const total = (x.present_count||0) + (x.absent_count||0) + (x.late_count||0);
-    const pct = total ? Math.round(((x.present_count||0) / total) * 100) : 0;
-    return `<div class="att-stat-card"><h5>👤 ${esc(x.member_name)}</h5><div class="att-numbers"><span>✅ حاضر: <b>${fa(x.present_count||0)}</b></span><span>❌ غایب: <b>${fa(x.absent_count||0)}</b></span><span>⏰ تأخیر: <b>${fa(x.late_count||0)}</b></span></div><div class="att-bar"><div class="att-bar-inner" style="width:${pct}%"></div></div><div class="att-pct">📊 ${pct}٪ حضور (از ${fa(total)} جلسه)</div></div>`;
-  }).join("") + `</div>`;
+  box.innerHTML = `<div class="attendance-stats">` + data.map(x => { const total = (x.present_count||0) + (x.absent_count||0) + (x.late_count||0); const pct = total ? Math.round(((x.present_count||0) / total) * 100) : 0; return `<div class="att-stat-card"><h5>👤 ${esc(x.member_name)}</h5><div class="att-numbers"><span>✅ حاضر: <b>${fa(x.present_count||0)}</b></span><span>❌ غایب: <b>${fa(x.absent_count||0)}</b></span><span>⏰ تأخیر: <b>${fa(x.late_count||0)}</b></span></div><div class="att-bar"><div class="att-bar-inner" style="width:${pct}%"></div></div><div class="att-pct">📊 ${pct}٪ حضور (از ${fa(total)} جلسه)</div></div>`; }).join("") + `</div>`;
 }
 
 async function loadSessions(){
@@ -2037,11 +2178,7 @@ async function loadSessions(){
   const {data:att}=await db.from("attendance").select("*");
   allSessions = ses || [];
   if(!allSessions.length){b.innerHTML="<p style='color:var(--text-mute)'>جلسه‌ای نیست.</p>";return;}
-  b.innerHTML=allSessions.map(s=>{
-    const cnt=(att||[]).filter(a=>a.session_id===s.id&&a.status==="present").length;
-    const tot=(att||[]).filter(a=>a.session_id===s.id).length;
-    return `<div class="member" style="border-right:4px solid #1e6bb8"><strong>${esc(s.title)}</strong><div style="font-size:11px;color:var(--text-soft);margin:4px 0">📅 ${esc(s.session_date)} • حاضران: ${fa(cnt)}/${fa(tot)}</div><div class="member-actions"><button class="b-edit" onclick="openAttendance(${s.id},'${esc(s.title)}')">📋 ثبت حضور</button><button class="b-del-m" onclick="deleteSession(${s.id})">🗑 حذف</button></div></div>`;
-  }).join("");
+  b.innerHTML=allSessions.map(s=>{ const cnt=(att||[]).filter(a=>a.session_id===s.id&&a.status==="present").length; const tot=(att||[]).filter(a=>a.session_id===s.id).length; return `<div class="member" style="border-right:4px solid var(--page-accent2)"><strong>${esc(s.title)}</strong><div style="font-size:11px;color:var(--text-soft);margin:4px 0">📅 ${esc(s.session_date)} • حاضران: ${fa(cnt)}/${fa(tot)}</div><div class="member-actions"><button class="b-edit" onclick="openAttendance(${s.id},'${esc(s.title)}')">📋 ثبت حضور</button><button class="b-del-m" onclick="deleteSession(${s.id})">🗑 حذف</button></div></div>`; }).join("");
 }
 async function deleteSession(id){if(!confirm("حذف شود؟"))return;const {error}=await db.rpc("admin_delete_session",{admin_pass:adminPassword,s_id:id});if(error){alert("خطا: "+error.message);return;}loadSessions();loadReports();loadAttendanceReport();}
 
@@ -2052,29 +2189,12 @@ async function openAttendance(sid, title){
   const atts = data || [];
   const b = document.getElementById("attendanceList");
   if(!allMembers.length){b.innerHTML="<p>عضوی نیست.</p>";return;}
-  b.innerHTML = allMembers.map(m=>{
-    const rec = atts.find(a=>a.member_phone===m.phone);
-    const st = rec ? rec.status : null;
-    return `<div class="attendance-row"><span class="att-name">${esc(m.name)}</span><button class="att-btn att-present ${st==='present'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','present')">حاضر</button><button class="att-btn att-absent ${st==='absent'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','absent')">غایب</button><button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">تأخیر</button></div>`;
-  }).join("");
+  b.innerHTML = allMembers.map(m=>{ const rec = atts.find(a=>a.member_phone===m.phone); const st = rec ? rec.status : null; return `<div class="attendance-row"><span class="att-name">${esc(m.name)}</span><button class="att-btn att-present ${st==='present'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','present')">حاضر</button><button class="att-btn att-absent ${st==='absent'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','absent')">غایب</button><button class="att-btn att-late ${st==='late'?'att-active':''}" onclick="setAtt('${esc(m.phone)}','${esc(m.name)}','late')">تأخیر</button></div>`; }).join("");
   document.getElementById("attendanceModal").classList.add("open");
 }
 function closeAttendance(){document.getElementById("attendanceModal").classList.remove("open");}
-async function setAtt(phone, name, status){
-  const {error}=await db.rpc("admin_save_attendance",{admin_pass:adminPassword,s_id:currentSessionId,p_phone:phone,p_name:name,p_status:status});
-  if(error){alert("خطا: "+error.message);return;}
-  openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
-  loadAttendanceReport();
-}
-async function fillAbsents(){
-  if(!currentSessionId){ alert("اول یه جلسه باز کن"); return; }
-  if(!confirm("برای همه‌ی اعضایی که وضعیتشون ثبت نشده، «غایب» ثبت شود؟")) return;
-  const {data, error} = await db.rpc("admin_fill_absents", {admin_pass: adminPassword, s_id: currentSessionId});
-  if(error){ alert("خطا: "+error.message); return; }
-  alert("✅ " + fa(data || 0) + " نفر به عنوان غایب ثبت شدند");
-  openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ",""));
-  loadSessions(); loadAttendanceReport();
-}
+async function setAtt(phone, name, status){ const {error}=await db.rpc("admin_save_attendance",{admin_pass:adminPassword,s_id:currentSessionId,p_phone:phone,p_name:name,p_status:status}); if(error){alert("خطا: "+error.message);return;} openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ","")); loadAttendanceReport(); }
+async function fillAbsents(){ if(!currentSessionId){ alert("اول یه جلسه باز کن"); return; } if(!confirm("برای همه‌ی اعضایی که وضعیتشون ثبت نشده، «غایب» ثبت شود؟")) return; const {data, error} = await db.rpc("admin_fill_absents", {admin_pass: adminPassword, s_id: currentSessionId}); if(error){ alert("خطا: "+error.message); return; } alert("✅ " + fa(data || 0) + " نفر به عنوان غایب ثبت شدند"); openAttendance(currentSessionId, document.getElementById("attModalTitle").textContent.replace("📋 ","")); loadSessions(); loadAttendanceReport(); }
 
 document.getElementById("registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -2091,33 +2211,16 @@ document.getElementById("registerForm").addEventListener("submit",async e=>{
   const ph=await hashPassword(pw);
   const {error}=await db.from("members").insert([{name:n,national_id:ni,birth_date:bd,phone:phone.value.trim(),password_hash:ph}]);
   if(error){msg.textContent="خطا: "+error.message;msg.style.color="red";}
-  else{
-    msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید.";
-    msg.style.color="green";
-    e.target.reset();
-    localStorage.setItem("anvar_registered", "1");
-    localStorage.setItem("memberSaved", JSON.stringify({national_id: ni}));
-    render();
-    updateRegisterVisibility();
-  }
+  else{ msg.textContent="✅ ثبت شد! حالا با کد ملی + رمز وارد پنل اعضا شوید."; msg.style.color="green"; e.target.reset(); localStorage.setItem("anvar_registered", "1"); localStorage.setItem("memberSaved", JSON.stringify({national_id: ni})); render(); updateRegisterVisibility(); }
 });
 
 document.getElementById("ideaForm").addEventListener("submit",async e=>{
   e.preventDefault();
   if(!currentMember){ alert("برای ثبت ایده ابتدا وارد پنل اعضا شوید."); showPage("page-member"); return; }
-  const n = currentMember.name;
-  const mn = currentMember.national_id;
+  const n = currentMember.name; const mn = currentMember.national_id;
   const {error}=await db.from("ideas").insert([{name:n,category:ideaCat.value,content:ideaText.value.trim(),member_nid:mn}]);
   if(error){alert("خطا: "+error.message);}
-  else{
-    alert("✅ ایده‌ی شما ثبت شد (فقط خودتان می‌بینید)");
-    e.target.reset();
-    document.getElementById("ideaUserName").textContent=currentMember.name;
-    document.getElementById("ideaUserNotice").style.display="block";
-    render();
-    loadMyIdeasInThinkPage();
-    loadMyIdeas();
-  }
+  else{ alert("✅ ایده‌ی شما ثبت شد (فقط خودتان می‌بینید)"); e.target.reset(); document.getElementById("ideaUserName").textContent=currentMember.name; document.getElementById("ideaUserNotice").style.display="block"; render(); loadMyIdeasInThinkPage(); loadMyIdeas(); }
 });
 
 document.getElementById("loginForm").addEventListener("submit",async e=>{
@@ -2130,14 +2233,8 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
   document.getElementById("panelBox").style.display="block";
   const tabs = document.getElementById("panelTabs");
   if(p === PANEL_PASSWORDS.main){ tabs.style.display = "flex"; switchPanel("main"); }
-  else {
-    tabs.style.display = "none";
-    let userPanel = "ertebat";
-    if(p === PANEL_PASSWORDS.resane) userPanel = "resane";
-    else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd";
-    showSectionsForPanel(userPanel);
-  }
-  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAttendanceReport(), loadWeeklyReport(), loadBirthdayMsgSetting()]);
+  else { tabs.style.display = "none"; let userPanel = "ertebat"; if(p === PANEL_PASSWORDS.resane) userPanel = "resane"; else if(p === PANEL_PASSWORDS.roshd) userPanel = "roshd"; showSectionsForPanel(userPanel); }
+  Promise.all([loadMembers(), loadAdminIdeas(), loadGallery(), loadWeekly(), loadAbout(), loadNews(), loadEvents(), loadPolls(), loadGroups(), loadVideos(), loadLibrary(), loadAdminLibrary(), loadClasses(), loadSessions(), loadSentMessages(), loadBirthdays(), loadReports(), loadAttendanceReport(), loadWeeklyReport(), loadBirthdayMsgSetting(), loadAdminFutsalPhotos()]);
 });
 
 document.getElementById("logoutBtn").addEventListener("click",()=>{
@@ -2179,10 +2276,7 @@ document.getElementById("uploadForm").addEventListener("submit",async e=>{
   const {data:ud}=db.storage.from("gallery").getPublicUrl(fn);
   const {error:de}=await db.rpc("admin_add_gallery",{admin_pass:adminPassword,p_filename:fn,p_url:ud.publicUrl,p_caption:c,p_sort:srt});
   if(de){m.textContent="خطا: "+de.message;m.style.color="red";return;}
-  if(dt){
-    const {data:latest}=await db.from("gallery").select("id").eq("url",ud.publicUrl).limit(1).single();
-    if(latest){await db.rpc("admin_update_gallery",{admin_pass:adminPassword,item_id:latest.id,new_caption:c,new_date:dt});}
-  }
+  if(dt){ const {data:latest}=await db.from("gallery").select("id").eq("url",ud.publicUrl).limit(1).single(); if(latest){await db.rpc("admin_update_gallery",{admin_pass:adminPassword,item_id:latest.id,new_caption:c,new_date:dt});} }
   m.textContent="✅";m.style.color="green";e.target.reset();loadGallery();
 });
 
@@ -2236,13 +2330,7 @@ document.getElementById("pollForm").addEventListener("submit",async e=>{
   const expYear = document.getElementById("pollExpireYear").value;
   const expHour = document.getElementById("pollExpireHour").value;
   let expiresAt = null;
-  if(expDay && expMonth && expYear){
-    try {
-      const g = shamsiToGregorian(parseInt(expYear), parseInt(expMonth), parseInt(expDay));
-      const dt = new Date(g.gy, g.gm - 1, g.gd, expHour ? parseInt(expHour) : 23, 59, 59);
-      expiresAt = dt.toISOString();
-    } catch(err) { m.textContent="خطا در تاریخ انقضا"; m.style.color="red"; return; }
-  }
+  if(expDay && expMonth && expYear){ try { const g = shamsiToGregorian(parseInt(expYear), parseInt(expMonth), parseInt(expDay)); const dt = new Date(g.gy, g.gm - 1, g.gd, expHour ? parseInt(expHour) : 23, 59, 59); expiresAt = dt.toISOString(); } catch(err) { m.textContent="خطا در تاریخ انقضا"; m.style.color="red"; return; } }
   m.textContent="ذخیره...";m.style.color="var(--text-soft)";
   const {error}=await db.rpc("admin_add_poll",{admin_pass:adminPassword,p_question:q,p_options:o,p_expires:expiresAt});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
@@ -2307,17 +2395,8 @@ document.getElementById("sendMsgForm").addEventListener("submit",async e=>{
   const mode=document.getElementById("sendTo").value;
   if(!title||!body){m.textContent="عنوان و متن";m.style.color="red";return;}
   m.textContent="ارسال...";m.style.color="var(--text-soft)";
-  if(mode==="one"){
-    const ph=document.getElementById("sendToPhone").value.trim();
-    if(!ph){m.textContent="شماره را وارد کن";m.style.color="red";return;}
-    const {error}=await db.rpc("admin_send_message",{admin_pass:adminPassword,to_phone:ph,p_title:title,p_content:body});
-    if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
-  } else {
-    const phones=allMembers.map(x=>x.phone).filter(p=>p);
-    if(!phones.length){m.textContent="عضوی نیست";m.style.color="red";return;}
-    const {error}=await db.rpc("admin_send_bulk",{admin_pass:adminPassword,phones:phones,p_title:title,p_content:body});
-    if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
-  }
+  if(mode==="one"){ const ph=document.getElementById("sendToPhone").value.trim(); if(!ph){m.textContent="شماره را وارد کن";m.style.color="red";return;} const {error}=await db.rpc("admin_send_message",{admin_pass:adminPassword,to_phone:ph,p_title:title,p_content:body}); if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;} }
+  else { const phones=allMembers.map(x=>x.phone).filter(p=>p); if(!phones.length){m.textContent="عضوی نیست";m.style.color="red";return;} const {error}=await db.rpc("admin_send_bulk",{admin_pass:adminPassword,phones:phones,p_title:title,p_content:body}); if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;} }
   m.textContent="✅ ارسال شد";m.style.color="green";e.target.reset();
   document.getElementById("sendToPhone").style.display="none";
   loadSentMessages();
@@ -2350,7 +2429,6 @@ document.getElementById("memberLoginForm").addEventListener("submit",async e=>{
   if(onlineChannel) onlineChannel.track({ user_id: localStorage.getItem("onlineUserId"), name: currentMember.name||"مهمان", joined_at: new Date().toISOString() });
 });
 
-/* ============ renderMemberPanel با try/catch ============ */
 async function renderMemberPanel(){
   const el = id => document.getElementById(id);
   try {
@@ -2360,10 +2438,7 @@ async function renderMemberPanel(){
     if (el("cardCode")) el("cardCode").textContent = currentMember.member_code || "در انتظار...";
     if (el("cardDate") && currentMember.created_at) el("cardDate").textContent = new Date(currentMember.created_at).toLocaleDateString("fa-IR");
     const cp = el("cardPhoto");
-    if (cp) {
-      if (currentMember.avatar_url) cp.innerHTML = '<img src="' + optimizeImg(esc(currentMember.avatar_url), 150) + '">';
-      else cp.textContent = (currentMember.name || "?").charAt(0);
-    }
+    if (cp) { if (currentMember.avatar_url) cp.innerHTML = '<img src="' + optimizeImg(esc(currentMember.avatar_url), 150) + '">'; else cp.textContent = (currentMember.name || "?").charAt(0); }
     if (el("ideaUserName")) el("ideaUserName").textContent = currentMember.name || "";
     if (el("ideaUserNotice")) el("ideaUserNotice").style.display = "block";
     if (el("ideaName")) { el("ideaName").value = currentMember.name || ""; el("ideaName").style.display = "none"; }
@@ -2371,7 +2446,6 @@ async function renderMemberPanel(){
     try { setPersianDate("epDay","epMonth","epYear", currentMember.birth_date || ""); } catch(e){}
     if (el("epPhone")) el("epPhone").value = currentMember.phone || "";
   } catch(e) { console.log("renderMemberPanel base error:", e); }
-
   try { await loadMyIdeas(); } catch(e){ console.log(e); }
   try { await loadMyIdeasInThinkPage(); } catch(e){ console.log(e); }
   try { await loadApprovedIdeas(); } catch(e){ console.log(e); }
@@ -2387,8 +2461,7 @@ async function renderMemberPanel(){
 async function checkBirthdayBanner(){
   const box = document.getElementById("birthdayBannerBox");
   if(!box || !currentMember || !currentMember.birth_date) return;
-  const p = currentMember.birth_date.split("/");
-  if(p.length !== 3) return;
+  const p = currentMember.birth_date.split("/"); if(p.length !== 3) return;
   const bm = parseInt(p[1]), bd = parseInt(p[2]);
   const now = new Date();
   const g2j = (gy,gm,gd)=>{const g_d_m=[0,31,59,90,120,151,181,212,243,273,304,334];let jy=gy<=1600?621:979;const gy2=gy<=1600?gy-621:gy-1600;const days=(gy2*365)+Math.floor((gy2+3)/4)+g_d_m[gm-1]+gd-(gm>2?1:0);jy+=33*Math.floor(days/12053);let d=days%12053;jy+=4*Math.floor(d/1461);d%=1461;if(d>365){jy+=Math.floor((d-1)/365);d=(d-1)%365;}const jm=d<186?1+Math.floor(d/31):7+Math.floor((d-186)/30);const jd=1+(d<186?d%31:(d-186)%30);return{jy,jm,jd};};
@@ -2397,14 +2470,11 @@ async function checkBirthdayBanner(){
     let msg = "🎂 تولدت مبارک! ان‌شاءالله سالی پر از خیر و برکت داشته باشی 💚";
     try { const {data} = await db.rpc("get_app_setting", {p_key: "birthday_message"}); if(data) msg = data; } catch(e){}
     box.innerHTML = `<div class="birthday-banner"><span class="bb-icon">🎉🎂🎈</span><div class="bb-text">${esc(msg)}</div></div>`;
-  } else {
-    box.innerHTML = "";
-  }
+  } else { box.innerHTML = ""; }
 }
 
 document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
-  currentMember=null;
-  clearMemberLocal();
+  currentMember=null; clearMemberLocal();
   document.getElementById("memberLoginBox").style.display="block";
   document.getElementById("memberPanelBox").style.display="none";
   document.getElementById("mLoginNid").value="";
@@ -2416,15 +2486,12 @@ document.getElementById("memberLogoutBtn").addEventListener("click",()=>{
   document.getElementById("ideaName").style.display="block";
   document.getElementById("ideaName").value="";
   document.getElementById("birthdayBannerBox").innerHTML="";
-  loadPolls();loadClasses();
-  loadMyIdeasInThinkPage();
-  loadApprovedIdeas();
+  loadPolls();loadClasses();loadMyIdeasInThinkPage();loadApprovedIdeas();
 });
 
 async function uploadAvatar(){
   if(!currentMember)return;
-  const f=document.getElementById("avatarFile").files[0];
-  const m=document.getElementById("avatarMsg");
+  const f=document.getElementById("avatarFile").files[0]; const m=document.getElementById("avatarMsg");
   if(!f){m.textContent="عکسی نیست";m.style.color="red";return;}
   if(f.size>3*1024*1024){m.textContent="حجم کمتر از ۳ مگابایت";m.style.color="red";return;}
   m.textContent="آپلود...";m.style.color="var(--text-soft)";
@@ -2446,8 +2513,7 @@ function toggleChangePassword(){const b=document.getElementById("changePasswordB
 
 document.getElementById("editProfileForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const m=document.getElementById("editProfileMsg");
-  if(!currentMember)return;
+  const m=document.getElementById("editProfileMsg"); if(!currentMember)return;
   const n=document.getElementById("epName").value.trim();
   const bd=getPersianDate("epDay","epMonth","epYear");
   const ph=document.getElementById("epPhone").value.trim();
@@ -2464,16 +2530,14 @@ document.getElementById("editProfileForm").addEventListener("submit",async e=>{
 
 document.getElementById("changePasswordForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const m=document.getElementById("changePasswordMsg");
-  if(!currentMember)return;
+  const m=document.getElementById("changePasswordMsg"); if(!currentMember)return;
   const oldPw=document.getElementById("cpOld").value;
   const newPw=document.getElementById("cpNew").value;
   const newPw2=document.getElementById("cpNew2").value;
   if(newPw.length<4){m.textContent="رمز جدید حداقل ۴ کاراکتر";m.style.color="red";return;}
   if(newPw!==newPw2){m.textContent="رمز و تکرار یکسان نیستند";m.style.color="red";return;}
   m.textContent="ذخیره...";m.style.color="var(--text-soft)";
-  const oldH=await hashPassword(oldPw);
-  const newH=await hashPassword(newPw);
+  const oldH=await hashPassword(oldPw); const newH=await hashPassword(newPw);
   const {error}=await db.rpc("member_change_password",{p_nid:currentMember.national_id,old_hash:oldH,new_hash:newH});
   if(error){m.textContent="خطا: "+error.message;m.style.color="red";return;}
   m.textContent="✅ رمز تغییر کرد";m.style.color="green";
@@ -2491,41 +2555,19 @@ async function loadMyIdeas(){
 }
 
 async function loadMyMessages(){
-  const b=document.getElementById("myMessages");
-  if(!currentMember||!b)return;
+  const b=document.getElementById("myMessages"); if(!currentMember||!b)return;
   b.innerHTML="<p style='color:var(--text-mute)'>بارگذاری...</p>";
   const {data,error}=await db.rpc("member_get_messages",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
   if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>پیامی ندارید.</p>"; return;}
-  const sorted = [...data].sort((a,b) => {
-    if(a.is_read === b.is_read) return new Date(b.created_at) - new Date(a.created_at);
-    return a.is_read ? 1 : -1;
-  });
+  const sorted = [...data].sort((a,b) => { if(a.is_read === b.is_read) return new Date(b.created_at) - new Date(a.created_at); return a.is_read ? 1 : -1; });
   const unread = sorted.filter(m=>!m.is_read).length;
-  const ub = document.getElementById("unreadCount");
-  const mb = document.getElementById("markAllBtn");
-  if(unread>0){ ub.textContent=fa(unread); ub.style.display="inline-block"; if(mb) mb.style.display="inline-block"; }
-  else { ub.style.display="none"; if(mb) mb.style.display="none"; }
-  b.innerHTML = sorted.map(m=>{
-    const cls = m.is_read ? "msg-card" : "msg-card unread";
-    return `<div class="${cls}" onclick="markMessageRead(${m.id})"><h5>${esc(m.title||"بدون عنوان")} ${m.is_read ? '<span class="read-badge">✅ خونده شده</span>' : ''}</h5><div class="m-content">${esc(m.content||"")}</div><div class="m-date">🗓 ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div></div>`;
-  }).join("");
+  const ub = document.getElementById("unreadCount"); const mb = document.getElementById("markAllBtn");
+  if(unread>0){ ub.textContent=fa(unread); ub.style.display="inline-block"; if(mb) mb.style.display="inline-block"; } else { ub.style.display="none"; if(mb) mb.style.display="none"; }
+  b.innerHTML = sorted.map(m=>{ const cls = m.is_read ? "msg-card" : "msg-card unread"; return `<div class="${cls}" onclick="markMessageRead(${m.id})"><h5>${esc(m.title||"بدون عنوان")} ${m.is_read ? '<span class="read-badge">✅ خونده شده</span>' : ''}</h5><div class="m-content">${esc(m.content||"")}</div><div class="m-date">🗓 ${new Date(m.created_at).toLocaleDateString("fa-IR")}</div></div>`; }).join("");
 }
-
-async function markMessageRead(msgId){
-  if(!currentMember) return;
-  const {error} = await db.rpc("member_mark_message_read", {msg_id: msgId, p_phone: currentMember.phone});
-  if(error){ console.log(error); return; }
-  loadMyMessages();
-}
-
-async function markAllMessagesRead(){
-  if(!currentMember) return;
-  if(!confirm("همه پیام‌ها به عنوان خونده‌شده علامت بخورن؟")) return;
-  const {error} = await db.rpc("member_mark_all_messages_read", {p_phone: currentMember.phone});
-  if(error){ alert("خطا: "+error.message); return; }
-  loadMyMessages();
-}
+async function markMessageRead(msgId){ if(!currentMember) return; const {error} = await db.rpc("member_mark_message_read", {msg_id: msgId, p_phone: currentMember.phone}); if(error){ console.log(error); return; } loadMyMessages(); }
+async function markAllMessagesRead(){ if(!currentMember) return; if(!confirm("همه پیام‌ها به عنوان خونده‌شده علامت بخورن؟")) return; const {error} = await db.rpc("member_mark_all_messages_read", {p_phone: currentMember.phone}); if(error){ alert("خطا: "+error.message); return; } loadMyMessages(); }
 
 async function loadMyAttendance(){
   const b=document.getElementById("myAttendance");if(!currentMember||!b)return;
@@ -2534,7 +2576,7 @@ async function loadMyAttendance(){
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
   if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>در جلسه‌ای نبوده‌اید.</p>";return;}
   const icon={present:"✅",absent:"❌",late:"⏰"};
-  b.innerHTML=data.map(a=>`<div class="myidea" style="border-right-color:${a.status==='present'?'#2e8b57':a.status==='absent'?'#c94f4f':'#c48b1f'}"><strong style="color:var(--accent)">${icon[a.status]||'؟'} ${esc(a.session_title)}</strong><div style="font-size:11px;color:var(--text-mute);margin-top:4px">📅 ${esc(a.session_date)}</div></div>`).join("");
+  b.innerHTML=data.map(a=>`<div class="myidea" style="border-right-color:${a.status==='present'?'#2e8b57':a.status==='absent'?'#c94f4f':'#c48b1f'}"><strong style="color:var(--page-accent)">${icon[a.status]||'؟'} ${esc(a.session_title)}</strong><div style="font-size:11px;color:var(--text-mute);margin-top:4px">📅 ${esc(a.session_date)}</div></div>`).join("");
 }
 
 async function loadMyVotes(){
@@ -2543,67 +2585,30 @@ async function loadMyVotes(){
   const {data,error}=await db.rpc("member_get_my_votes",{p_phone:currentMember.phone});
   if(error){b.innerHTML=`<p style="color:red">خطا: ${esc(error.message)}</p>`;return;}
   if(!data||!data.length){b.innerHTML="<p style='color:var(--text-mute);font-size:12px'>رأی نداده‌اید.</p>";return;}
-  b.innerHTML=data.map(v=>`<div class="myidea" style="border-right-color:#1e6bb8"><strong style="color:var(--accent)">🗳 ${esc(v.question)}</strong><div style="font-size:12px;color:var(--accent2);margin-top:4px">رأی شما: <b>${esc(v.voted_option||'-')}</b></div></div>`).join("");
+  b.innerHTML=data.map(v=>`<div class="myidea" style="border-right-color:var(--page-accent2)"><strong style="color:var(--page-accent)">🗳 ${esc(v.question)}</strong><div style="font-size:12px;color:var(--page-accent2);margin-top:4px">رأی شما: <b>${esc(v.voted_option||'-')}</b></div></div>`).join("");
 }
 
 document.getElementById("editModal").addEventListener("click",e=>{if(e.target.id==="editModal")closeEdit();});
 document.getElementById("attendanceModal").addEventListener("click",e=>{if(e.target.id==="attendanceModal")closeAttendance();});
 
-function updateRegisterVisibility(){
-  const sec = document.getElementById("registerSection");
-  if(!sec) return;
-  const registered = localStorage.getItem("anvar_registered") === "1";
-  if (registered) sec.style.display = "none";
-  else sec.style.display = "block";
-}
+function updateRegisterVisibility(){ const sec = document.getElementById("registerSection"); if(!sec) return; const registered = localStorage.getItem("anvar_registered") === "1"; if (registered) sec.style.display = "none"; else sec.style.display = "block"; }
 
-/* ============ autoLoginMember بهبود یافته ============ */
 async function autoLoginMember(){
   const saved=loadMemberLocal();
   if(!saved||!saved.national_id){updateRegisterVisibility();return;}
   try {
     let {data, error} = await db.from("members").select("*").eq("national_id", saved.national_id).limit(1);
-    if(error || !data || !data.length){
-      const res2 = await db.from("members").select("id,name,national_id,birth_date,phone").eq("national_id", saved.national_id).limit(1);
-      data = res2.data;
-      error = res2.error;
-    }
-    if(!error && data && data.length){
-      currentMember = data[0];
-      saveMemberLocal(currentMember);
-      localStorage.setItem("anvar_registered", "1");
-      try { await renderMemberPanel(); } catch(e) { console.log("renderMemberPanel error:", e); }
-      const loginBox = document.getElementById("memberLoginBox");
-      const panelBox = document.getElementById("memberPanelBox");
-      if(loginBox) loginBox.style.display = "none";
-      if(panelBox) panelBox.style.display = "block";
-    }
+    if(error || !data || !data.length){ const res2 = await db.from("members").select("id,name,national_id,birth_date,phone").eq("national_id", saved.national_id).limit(1); data = res2.data; error = res2.error; }
+    if(!error && data && data.length){ currentMember = data[0]; saveMemberLocal(currentMember); localStorage.setItem("anvar_registered", "1"); try { await renderMemberPanel(); } catch(e) { console.log("renderMemberPanel error:", e); } const loginBox = document.getElementById("memberLoginBox"); const panelBox = document.getElementById("memberPanelBox"); if(loginBox) loginBox.style.display = "none"; if(panelBox) panelBox.style.display = "block"; }
   } catch(e){ console.log("autoLogin error:", e); }
   updateRegisterVisibility();
 }
 
-/* ============ جستجو ============ */
 let searchTimeout = null;
-function openSearch(){
-  document.getElementById("searchModal").classList.add("open");
-  setTimeout(()=>{ document.getElementById("searchInputGlobal").focus(); }, 100);
-}
-function closeSearch(){
-  document.getElementById("searchModal").classList.remove("open");
-  document.getElementById("searchInputGlobal").value = "";
-  document.getElementById("searchResults").innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>';
-}
+function openSearch(){ document.getElementById("searchModal").classList.add("open"); setTimeout(()=>{ document.getElementById("searchInputGlobal").focus(); }, 100); }
+function closeSearch(){ document.getElementById("searchModal").classList.remove("open"); document.getElementById("searchInputGlobal").value = ""; document.getElementById("searchResults").innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>'; }
 document.getElementById("searchModal").addEventListener("click", e => { if(e.target.id === "searchModal") closeSearch(); });
-
-function performSearch(){
-  const q = document.getElementById("searchInputGlobal").value.trim().toLowerCase();
-  const res = document.getElementById("searchResults");
-  if(q.length < 2){ res.innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>'; return; }
-  res.innerHTML = '<p class="sr-loading">🔍 در حال جستجو...</p>';
-  if(searchTimeout) clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => doSearchNow(q), 300);
-}
-
+function performSearch(){ const q = document.getElementById("searchInputGlobal").value.trim().toLowerCase(); const res = document.getElementById("searchResults"); if(q.length < 2){ res.innerHTML = '<p class="sr-hint">حداقل ۲ حرف بنویس تا جستجو شروع شه</p>'; return; } res.innerHTML = '<p class="sr-loading">🔍 در حال جستجو...</p>'; if(searchTimeout) clearTimeout(searchTimeout); searchTimeout = setTimeout(() => doSearchNow(q), 300); }
 async function doSearchNow(q){
   const res = document.getElementById("searchResults");
   try {
@@ -2617,46 +2622,20 @@ async function doSearchNow(q){
       db.rpc("get_public_ideas")
     ]);
     let html = ""; let total = 0;
-    const addGroup = (title, icon, items, mapFn) => {
-      if(!items || !items.length) return;
-      total += items.length;
-      html += `<div class="sr-group"><div class="sr-group-title">${icon} ${title} (${fa(items.length)})</div>`;
-      items.forEach(it => { html += mapFn(it); });
-      html += `</div>`;
-    };
+    const addGroup = (title, icon, items, mapFn) => { if(!items || !items.length) return; total += items.length; html += `<div class="sr-group"><div class="sr-group-title">${icon} ${title} (${fa(items.length)})</div>`; items.forEach(it => { html += mapFn(it); }); html += `</div>`; };
     addGroup("اخبار", "📢", newsR.data, n => `<div class="sr-item" onclick="closeSearch();showPage('page-news')"><div class="sr-title">${esc(n.title)}</div><div class="sr-desc">${esc(n.content||"")}</div></div>`);
     addGroup("کتاب‌ها", "📚", libraryR.data, bk => `<div class="sr-item" onclick="closeSearch();showPage('page-library')"><div class="sr-title">${esc(bk.title)}</div><div class="sr-desc">${esc(bk.description||"")}</div></div>`);
     addGroup("ویدیوها", "🎥", videosR.data, v => `<div class="sr-item" onclick="closeSearch();showPage('page-videos')"><div class="sr-title">${esc(v.title)}</div><div class="sr-desc">${esc(v.description||"")}</div></div>`);
     addGroup("رویدادها", "📅", eventsR.data, e => `<div class="sr-item" onclick="closeSearch();showPage('page-events')"><div class="sr-title">${esc(e.title)} (${esc(e.event_date||"")})</div><div class="sr-desc">${esc(e.description||"")}</div></div>`);
     addGroup("کلاس‌ها", "🎓", classesR.data, c => `<div class="sr-item" onclick="closeSearch();showPage('page-classes')"><div class="sr-title">${esc(c.title)}</div><div class="sr-desc">${esc(c.description||"")} ${c.teacher?"— "+esc(c.teacher):""}</div></div>`);
     addGroup("برنامه‌های هفتگی", "🗓", weeklyR.data, w => `<div class="sr-item" onclick="closeSearch();showPage('page-events')"><div class="sr-title">${esc(w.title)} — ${esc(w.day)}</div><div class="sr-desc">${esc(w.description||"")}</div></div>`);
-    if(ideasR.data){
-      const matchedIdeas = ideasR.data.filter(i => (i.content||"").toLowerCase().includes(q) || (i.name||"").toLowerCase().includes(q));
-      addGroup("ایده‌های تأییدشده", "💡", matchedIdeas.slice(0,5), i => `<div class="sr-item" onclick="closeSearch();showPage('page-think')"><div class="sr-title">${esc(i.name||"ناشناس")} — ${esc(i.category||"")}</div><div class="sr-desc">${esc(i.content||"")}</div></div>`);
-    }
-    if(total === 0){ res.innerHTML = '<p class="sr-empty">❌ چیزی پیدا نشد</p>'; }
-    else { res.innerHTML = html; }
-  } catch(e) {
-    res.innerHTML = '<p class="sr-empty" style="color:red">خطا: '+esc(e.message)+'</p>';
-  }
+    if(ideasR.data){ const matchedIdeas = ideasR.data.filter(i => (i.content||"").toLowerCase().includes(q) || (i.name||"").toLowerCase().includes(q)); addGroup("ایده‌های تأییدشده", "💡", matchedIdeas.slice(0,5), i => `<div class="sr-item" onclick="closeSearch();showPage('page-think')"><div class="sr-title">${esc(i.name||"ناشناس")} — ${esc(i.category||"")}</div><div class="sr-desc">${esc(i.content||"")}</div></div>`); }
+    if(total === 0){ res.innerHTML = '<p class="sr-empty">❌ چیزی پیدا نشد</p>'; } else { res.innerHTML = html; }
+  } catch(e) { res.innerHTML = '<p class="sr-empty" style="color:red">خطا: '+esc(e.message)+'</p>'; }
 }
 
-window.addEventListener("storage", (e) => {
-  if (e.key === "anvar_theme") {
-    const newTheme = e.newValue || "light";
-    if (newTheme !== getCurrentTheme()) {
-      document.documentElement.setAttribute("data-theme", newTheme);
-      updateThemeMenuItem();
-    }
-  }
-});
-
-document.addEventListener("keydown", (e) => {
-  if(e.key === "Escape"){
-    if(document.getElementById("searchModal").classList.contains("open")) closeSearch();
-    if(document.getElementById("videoModal").classList.contains("open")) closeVideoModal();
-  }
-});
+window.addEventListener("storage", (e) => { if (e.key === "anvar_theme") { const newTheme = e.newValue || "light"; if (newTheme !== getCurrentTheme()) { document.documentElement.setAttribute("data-theme", newTheme); updateThemeMenuItem(); } } });
+document.addEventListener("keydown", (e) => { if(e.key === "Escape"){ if(document.getElementById("searchModal").classList.contains("open")) closeSearch(); if(document.getElementById("videoModal").classList.contains("open")) closeVideoModal(); closeLightbox(); } });
 
 (async () => {
   selectPanel("main");
