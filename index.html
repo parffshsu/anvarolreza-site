@@ -2,18 +2,21 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>کانون فرهنگی دینی انوارالرضا(ع)</title>
 <link rel="preconnect" href="https://xbycuiqwljfttrhwjaka.supabase.co" crossorigin>
 <link rel="dns-prefetch" href="https://xbycuiqwljfttrhwjaka.supabase.co">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#084c47">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="انوارالرضا">
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
 <script>
 (function(){
   try {
@@ -107,7 +110,7 @@ footer{background:#10282a;color:#dce8e8;text-align:center;padding:20px;margin-to
 .sc-green{background:linear-gradient(135deg,#26de81,#20bf6b)}
 .sc-red{background:linear-gradient(135deg,#eb3b5a,#b71540)}
 .sc-orange{background:linear-gradient(135deg,#ffa726,#e65100)}
-.sc-futsal{background:linear-gradient(135deg,#166534,#22c55e)}
+.sc-futsal{background:linear-gradient(135deg,#166534,#22c55e);grid-column:1/-1;min-height:80px}
 .install-box{background:linear-gradient(135deg,#0b6b62,#084c47);border-radius:16px;padding:22px;color:#fff;text-align:center;margin:24px 0;box-shadow:0 10px 28px rgba(8,76,71,.3);position:relative;overflow:hidden;display:none}
 .install-box::before{content:"";position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);border-radius:50%}
 .install-box h3{margin:0 0 8px;font-size:17px;position:relative;z-index:1}
@@ -457,8 +460,31 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
   .video-modal .vm-title{font-size:17px}
   .futsal-photos-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
 }
-</style>
-</head>
+
+/* ============ مخصوص حالت اپ (PWA) ============ */
+body.pwa-standalone{
+  padding-top:env(safe-area-inset-top);
+  padding-bottom:env(safe-area-inset-bottom);
+  overscroll-behavior-y:contain;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body.pwa-standalone input,
+body.pwa-standalone textarea,
+body.pwa-standalone select{
+  -webkit-user-select:text;
+  user-select:text;
+}
+body.pwa-standalone header{
+  padding-top:calc(14px + env(safe-area-inset-top));
+  margin-top:calc(-1 * env(safe-area-inset-top));
+}
+body.pwa-standalone footer{
+  padding-bottom:calc(20px + env(safe-area-inset-bottom));
+}
+html,body{overscroll-behavior-y:contain}
+              </style>
+              </head>
 <body data-page-theme="home">
 <header>
 <nav>
@@ -762,8 +788,8 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <button class="btn" type="submit">ورود</button>
 </form>
 <p id="loginMsg"></p>
-  </div>
-  <div id="panelBox" style="display:none">
+</div>
+<div id="panelBox" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h3 style="margin:0;font-size:15px" id="panelTitle">پنل</h3>
 <button class="btn" id="logoutBtn" style="background:#c94f4f;font-size:13px">خروج</button>
@@ -1068,7 +1094,6 @@ html[data-theme="dark"] .locked-ideas{background:linear-gradient(135deg,#2a2418,
 <div class="lightbox" id="lightbox"><button class="lb-close" onclick="closeLightbox()">✕</button><button class="lb-nav lb-prev" onclick="lbPrev()">‹</button><button class="lb-nav lb-next" onclick="lbNext()">›</button><img id="lbImg" src="" alt=""><div class="lb-caption" id="lbCaption"></div></div>
 
 <footer>کانون فرهنگی دینی انوارالرضا(ع) • از دل تا حرم</footer>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://xbycuiqwljfttrhwjaka.supabase.co";
@@ -1147,6 +1172,33 @@ function updateThemeMenuItem(){
 }
 function toggleTheme(){ applyTheme(getCurrentTheme() === "dark" ? "light" : "dark"); }
 
+/* ============ PWA: تشخیص حالت اپ ============ */
+function detectPWA(){
+  try {
+    const isStandalone = window.matchMedia("(display-mode: standalone)").matches 
+      || window.matchMedia("(display-mode: fullscreen)").matches
+      || window.matchMedia("(display-mode: minimal-ui)").matches
+      || window.navigator.standalone === true;
+    if(isStandalone){
+      document.body.classList.add("pwa-standalone");
+    } else {
+      document.body.classList.remove("pwa-standalone");
+    }
+  } catch(e){}
+}
+window.matchMedia("(display-mode: standalone)").addEventListener?.("change", detectPWA);
+window.matchMedia("(display-mode: fullscreen)").addEventListener?.("change", detectPWA);
+window.matchMedia("(display-mode: minimal-ui)").addEventListener?.("change", detectPWA);
+
+/* در حالت اپ، منوی راست‌کلیک و انتخاب متن غیرضروری غیرفعال می‌شه */
+document.addEventListener("contextmenu", (e) => {
+  if(document.body.classList.contains("pwa-standalone")){
+    const t = e.target;
+    if(t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+    e.preventDefault();
+  }
+});
+
 let deferredPrompt = null;
 function showInstallBoxIfNeeded(){
   const box = document.getElementById("installBox");
@@ -1157,7 +1209,7 @@ function showInstallBoxIfNeeded(){
   box.style.display = "block";
 }
 window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; });
-window.addEventListener("appinstalled", () => { deferredPrompt = null; localStorage.setItem("pwa_installed", "1"); const box = document.getElementById("installBox"); if (box) box.style.display = "none"; });
+window.addEventListener("appinstalled", () => { deferredPrompt = null; localStorage.setItem("pwa_installed", "1"); const box = document.getElementById("installBox"); if (box) box.style.display = "none"; detectPWA(); });
 function installPWA() {
   if (!deferredPrompt) {
     const ua = navigator.userAgent.toLowerCase();
@@ -1165,7 +1217,7 @@ function installPWA() {
     const isAndroid = /android/.test(ua);
     const isChrome = /chrome/.test(ua) && !/edg/.test(ua);
     if (isIOS) alert("📲 افزودن به صفحه اصلی روی آیفون:\n\n۱. دکمه‌ی اشتراک‌گذاری (⬆️) پایین سافاری رو بزن\n۲. «Add to Home Screen» یا «افزودن به صفحه اصلی» رو انتخاب کن");
-    else if (isAndroid && isChrome) alert("📲 افزودن به صفحه اصلی روی اندروید:\n\nاز منوی مرورگر (سه نقطه بالا سمت راست) گزینه‌ی «Install app» یا «Add to Home screen» رو بزن");
+    else if (isAndroid && isChrome) alert("📲 افزودن به صفحه اصلی روی اندروید:\n\nاز منوی مرورگر (سه نقطه بالا سمت راست) گزینه‌ی «Install app» یا «Add to home screen» رو بزن");
     else alert("📲 برای افزودن:\n\nاز منوی مرورگر گزینه‌ی «Install App» یا «افزودن به صفحه اصلی» رو انتخاب کن");
     return;
   }
@@ -1414,8 +1466,7 @@ document.getElementById("futsalVideoForm")?.addEventListener("submit", async e =
   e.target.reset();
   loadFutsalVideos(); loadVideos();
 });
-
-/* ============ گزارش هفتگی ============ */
+  /* ============ گزارش هفتگی ============ */
 async function loadWeeklyReport(){
   const box = document.getElementById("weeklyReportBox");
   if(!box) return;
@@ -2637,7 +2688,9 @@ async function doSearchNow(q){
 window.addEventListener("storage", (e) => { if (e.key === "anvar_theme") { const newTheme = e.newValue || "light"; if (newTheme !== getCurrentTheme()) { document.documentElement.setAttribute("data-theme", newTheme); updateThemeMenuItem(); } } });
 document.addEventListener("keydown", (e) => { if(e.key === "Escape"){ if(document.getElementById("searchModal").classList.contains("open")) closeSearch(); if(document.getElementById("videoModal").classList.contains("open")) closeVideoModal(); closeLightbox(); } });
 
+/* ============ راه‌اندازی اولیه ============ */
 (async () => {
+  detectPWA();
   selectPanel("main");
   updateThemeMenuItem();
   setupOnlineCounter();
@@ -2648,4 +2701,4 @@ document.addEventListener("keydown", (e) => { if(e.key === "Escape"){ if(documen
 })();
 </script>
 </body>
-  </html>
+</html>
